@@ -4,7 +4,7 @@
 # Depends on:  ppp, openssl
 
 name=wvdial
-version=1.55
+version=1.56
 release=1
 source=(http://open.nit.ca/download/$name-$version.tar.gz \
         http://open.nit.ca/download/wvstreams-4.2.2.tar.gz \
@@ -14,7 +14,7 @@ build() {
     cd wvstreams-4.2.2
     ./configure --prefix=/usr \
                 --enable-verbose \
-                --without-{bdb,qdbm,pam,tcl,telephony,swig,qt}
+                --without-{bdb,qdbm,pam,tcl,telephony,swig,qt,openslp}
     make
     ln -s ../xplc/include/xplc include/xplc
 
