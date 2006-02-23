@@ -7,7 +7,7 @@ name=grub
 version=0.95
 release=3
 source=(ftp://alpha.gnu.org/gnu/grub/$name-$version.tar.gz \
-	http://crux.nu/files/grub/$version/$name-$version.patch \
+	http://www.varlock.com/files/$name-$version.patch \
 	http://crux.nu/files/grub/$version/crux02.xpm.gz \
 	http://crux.nu/files/grub/$version/crux03.xpm.gz \
 	menu.lst.sample)
