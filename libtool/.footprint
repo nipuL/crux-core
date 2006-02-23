@@ -7,9 +7,9 @@ drwxr-xr-x	root/root	usr/include/
 drwxr-xr-x	root/root	usr/lib/
 -rw-r--r--	root/root	usr/lib/libltdl.a
 -rwxr-xr-x	root/root	usr/lib/libltdl.la
-lrwxrwxrwx	root/root	usr/lib/libltdl.so -> libltdl.so.3.1.2
-lrwxrwxrwx	root/root	usr/lib/libltdl.so.3 -> libltdl.so.3.1.2
--rwxr-xr-x	root/root	usr/lib/libltdl.so.3.1.2
+lrwxrwxrwx	root/root	usr/lib/libltdl.so -> libltdl.so.3.1.4
+lrwxrwxrwx	root/root	usr/lib/libltdl.so.3 -> libltdl.so.3.1.4
+-rwxr-xr-x	root/root	usr/lib/libltdl.so.3.1.4
 drwxr-xr-x	root/root	usr/man/
 drwxr-xr-x	root/root	usr/man/man1/
 -rw-r--r--	root/root	usr/man/man1/libtool.1.gz
