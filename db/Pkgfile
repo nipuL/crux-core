@@ -3,12 +3,17 @@
 # Maintainer:  Per Lidén <per@fukt.bth.se>
 
 name=db
-version=4.3.29
+version=4.4.20
 release=1
-source=(ftp://ftp.sleepycat.com/releases/$name-$version.tar.gz)
+source=(ftp://ftp.sleepycat.com/releases/$name-$version.tar.gz \
+        http://www.sleepycat.com/update/4.4.20/patch.4.4.20.1 \
+        http://www.sleepycat.com/update/4.4.20/patch.4.4.20.2)
 
 build() {
-    cd $name-$version/build_unix
+    cd $name-$version
+    patch -p0 < ../patch.4.4.20.1
+    patch -p0 < ../patch.4.4.20.2
+    cd build_unix
     LDFLAGS="-lpthread" \
     ../dist/configure --prefix=/usr \
 		      --enable-compat185 \
