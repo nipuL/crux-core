@@ -3,14 +3,14 @@
 # Maintainer:  Per Lidén <per@fukt.bth.se>
 
 name=readline
-version=5.0
+version=5.1
 release=1
 source=(http://mirrors.sunsite.dk/gnu/$name/$name-$version.tar.gz \
-	$name-$version-001-005.patch inputrc)
+	$name-$version-001.patch inputrc)
 
 build() {
     cd $name-$version
-    patch -p1 < ../$name-$version-001-005.patch
+    patch -p0 < ../$name-$version-001.patch
     ./configure --prefix=/usr
     make
     make DESTDIR=$PKG install
