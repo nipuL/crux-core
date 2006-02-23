@@ -26,10 +26,11 @@ if [ "$PREVLEVEL" != "N" ]; then
 	/usr/bin/sleep 5
 	/sbin/killall5 -9
 
-	# Start device management daemon
-	/sbin/devfsd /dev
-
-	# Start log daemons
+        # Start udev
+        /bin/mount -n -t proc none /proc
+        /bin/mount -n -t sysfs none /sys
+        /sbin/start_udev
+        
 	/usr/sbin/syslogd
 	/usr/sbin/klogd -c 4
 fi
