@@ -1,0 +1,15 @@
+diff -Nru nfs-utils-1.0.7/support/rpc/svc_auth_gss.c nfs-utils-1.0.7-gcc4/support/rpc/svc_auth_gss.c
+--- nfs-utils-1.0.7/support/rpc/svc_auth_gss.c	2004-10-19 00:23:05.000000000 +0000
++++ nfs-utils-1.0.7-gcc4/support/rpc/svc_auth_gss.c	2005-10-20 19:42:05.000000000 +0000
+@@ -382,7 +382,11 @@
+ 			return (AUTH_FAILED);
+ 		}
+ 		auth->svc_ah_ops = &svc_auth_gss_ops;
++		
++		/*
+ 		SVCAUTH_PRIVATE(auth) = gd;
++		*/
++		auth->svc_ah_private = (caddr_t) gd;
+ 		rqst->rq_xprt->xp_auth = auth;
+ 	}
+ 	else gd = SVCAUTH_PRIVATE(rqst->rq_xprt->xp_auth);
