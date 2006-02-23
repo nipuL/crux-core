@@ -4,9 +4,9 @@
 # Depends on:  freetype, expat
 
 name=fontconfig
-version=2.2.3
+version=2.3.2
 release=1
-source=(http://freedesktop.org/fontconfig/release/$name-$version.tar.gz)
+source=(http://fontconfig.org/release/$name-$version.tar.gz)
 
 build() {
     cd $name-$version
