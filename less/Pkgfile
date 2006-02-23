@@ -4,16 +4,15 @@
 # Depends on:  ncurses
 
 name=less
-version=382
+version=394
 release=1
 source=(http://www.greenwoodsoftware.com/less/$name-$version.tar.gz \
-	lessecho.1 filter)
+	filter)
 
 build() {
     cd $name-$version
     ./configure --prefix=/usr
     make
     make prefix=$PKG/usr install
-    install -m 644 ../lessecho.1 $PKG/usr/man/man1
     install -m 755 -D ../filter $PKG/usr/lib/less/filter
 }
