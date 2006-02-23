@@ -5,7 +5,7 @@
 
 name=grub
 version=0.95
-release=2
+release=3
 source=(ftp://alpha.gnu.org/gnu/grub/$name-$version.tar.gz \
 	http://crux.nu/files/grub/$version/$name-$version.patch \
 	http://crux.nu/files/grub/$version/crux02.xpm.gz \
@@ -16,9 +16,8 @@ build () {
 	cd $name-$version
 
 	# Apply Fedora Linux patches
-	patch -p1 < $SRC/$name-$version.patch
-    
-	unset CXXFLAGS 
+        patch -p1 < $SRC/$name-$version.patch
+        unset CXXFLAGS 
 	export CFLAGS="-Os" 
     
 	autoreconf --install --force
