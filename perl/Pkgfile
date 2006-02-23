@@ -4,8 +4,8 @@
 # Depends on:  db, gdbm
 
 name=perl
-version=5.8.7
-release=2
+version=5.8.8
+release=1
 source=(ftp://ftp.perl.org/pub/CPAN/src/$name-$version.tar.gz \
         $name-$version-CVE-2005-3962.patch)
 
