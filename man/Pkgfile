@@ -3,9 +3,9 @@
 # Maintainer:  Per Lidén <per@fukt.bth.se>
 
 name=man
-version=1.5p
+version=1.6c
 release=1
-source=(ftp://ftp.win.tue.nl/pub/linux-local/utils/man/$name-$version.tar.gz \
+source=(http://primates.ximian.com/~flucifredi/man/$name-$version.tar.gz \
 	makewhatis $name-$version.patch)
 
 build() {

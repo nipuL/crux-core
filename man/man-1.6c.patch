@@ -1,0 +1,26 @@
+diff -Nru man-1.6c.orig/src/makewhatis.sh man-1.6c/src/makewhatis.sh
+--- man-1.6c.orig/src/makewhatis.sh	2006-02-18 10:27:49.000000000 +0100
++++ man-1.6c/src/makewhatis.sh	2006-02-18 10:29:07.000000000 +0100
+@@ -258,7 +258,7 @@
+ 		   $2 ~ /^N[ÉE]V/ || $2 ~ /^NAMA/ || $2 ~ /^Ì¾Á°/ ||
+ 		   $2 ~ /^Ì¾¾Î/ || $2 ~ /^ÀÌ¸§/ || $2 ~ /^NAZWA/ ||
+ 		   $2 ~ /^îáú÷áîéå/ || $2 ~ /^Ãû³Æ/ || $2 ~ /^¦WºÙ/ ||
+-		   $2 ~ /^NOME/ || $2 ~ /^NAAM/) || $2 ~ /^ÈÌÅ/)) ||
++		   $2 ~ /^NOME/ || $2 ~ /^NAAM/ || $2 ~ /^ÈÌÅ/)) ||
+ 		  (pages == "cat" && $1 ~ /^NAME/)) {
+ 		    if (!insh) {
+ 		      insh = 1;
+diff -Nru man-1.6c.orig/src/man.c man-1.6c/src/man.c
+--- man-1.6c.orig/src/man.c	2006-02-18 10:27:49.000000000 +0100
++++ man-1.6c/src/man.c	2006-02-18 10:28:16.000000000 +0100
+@@ -573,7 +573,9 @@
+ 		*  .ev 1; .lt ...; .ev helps for my version of groff.
+ 		* The LL assignment is needed by the mandoc macros.
+ 		*/
+-	       sprintf(eos(bufh), "echo \".ll %d.%di\"; ", ll/10, ll%10);
++              /* use the LL register instead of .ll to keep up with
++               * changes in the groff-1.18 series */
++              sprintf(eos(bufh), "echo \".nr LL %d.%di\"; ", ll/10, ll%10);
+ 	       sprintf(eos(bufh), "echo \".nr LL %d.%di\"; ", ll/10, ll%10);
+ #if 0
+ 	       sprintf(eos(bufh), "echo \".lt %d.%di\"; ", ll/10, ll%10);
