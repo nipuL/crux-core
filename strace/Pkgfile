@@ -3,7 +3,7 @@
 # Maintainer:  Per Lidén <per@fukt.bth.se>
 
 name=strace
-version=4.5.12
+version=4.5.14
 release=1
 source=(http://dl.sourceforge.net/$name/$name-$version.tar.bz2)
 
