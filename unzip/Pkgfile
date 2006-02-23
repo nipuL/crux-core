@@ -1,0 +1,15 @@
+# Description: Decompress utility for zipfiles
+# URL:         http://www.info-zip.org/
+# Maintainer:  Per Lidén <per@fukt.bth.se>
+
+name=unzip
+version=5.52
+release=2
+source=(ftp://ftp.info-zip.org/pub/infozip/src/unzip552.tar.gz)
+
+build() {
+    cd $name-$version
+    make -f unix/Makefile LOCAL_UNZIP="$CFLAGS" prefix=/usr linux
+    make -f unix/Makefile prefix=$PKG/usr install
+    ln -sf unzip $PKG/usr/bin/zipinfo
+}

@@ -1,0 +1,51 @@
+drwxr-xr-x	root/root	etc/
+-rw-r--r--	root/root	etc/exports
+drwxr-xr-x	root/root	etc/rc.d/
+-rwxr-xr-x	root/root	etc/rc.d/nfs
+-rwxr-xr-x	root/root	etc/rc.d/nfsserver
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/man/
+drwxr-xr-x	root/root	usr/man/man5/
+-rw-r--r--	root/root	usr/man/man5/exports.5.gz
+drwxr-xr-x	root/root	usr/man/man7/
+-rw-r--r--	root/root	usr/man/man7/nfsd.7.gz
+drwxr-xr-x	root/root	usr/man/man8/
+-rw-r--r--	root/root	usr/man/man8/exportfs.8.gz
+-rw-r--r--	root/root	usr/man/man8/lockd.8.gz
+-rw-r--r--	root/root	usr/man/man8/mountd.8.gz
+-rw-r--r--	root/root	usr/man/man8/nfsd.8.gz
+-rw-r--r--	root/root	usr/man/man8/nfsstat.8.gz
+-rw-r--r--	root/root	usr/man/man8/nhfsgraph.8.gz
+-rw-r--r--	root/root	usr/man/man8/nhfsnums.8.gz
+-rw-r--r--	root/root	usr/man/man8/nhfsrun.8.gz
+-rw-r--r--	root/root	usr/man/man8/nhfsstone.8.gz
+lrwxrwxrwx	root/root	usr/man/man8/rpc.lockd.8.gz -> lockd.8.gz
+lrwxrwxrwx	root/root	usr/man/man8/rpc.mountd.8.gz -> mountd.8.gz
+lrwxrwxrwx	root/root	usr/man/man8/rpc.nfsd.8.gz -> nfsd.8.gz
+lrwxrwxrwx	root/root	usr/man/man8/rpc.rquotad.8.gz -> rquotad.8.gz
+lrwxrwxrwx	root/root	usr/man/man8/rpc.statd.8.gz -> statd.8.gz
+-rw-r--r--	root/root	usr/man/man8/rquotad.8.gz
+-rw-r--r--	root/root	usr/man/man8/showmount.8.gz
+-rw-r--r--	root/root	usr/man/man8/statd.8.gz
+drwxr-xr-x	root/root	usr/sbin/
+-rwxr-xr-x	root/root	usr/sbin/exportfs
+-rwxr-xr-x	root/root	usr/sbin/nfsstat
+-rwxr-xr-x	root/root	usr/sbin/nhfsgraph
+-rwxr-xr-x	root/root	usr/sbin/nhfsnums
+-rwxr-xr-x	root/root	usr/sbin/nhfsrun
+-rwxr-xr-x	root/root	usr/sbin/nhfsstone
+-rwxr-xr-x	root/root	usr/sbin/rpc.lockd
+-rwxr-xr-x	root/root	usr/sbin/rpc.mountd
+-rwxr-xr-x	root/root	usr/sbin/rpc.nfsd
+-rwxr-xr-x	root/root	usr/sbin/rpc.rquotad
+-rwxr-xr-x	root/root	usr/sbin/rpc.statd
+-rwxr-xr-x	root/root	usr/sbin/showmount
+drwxr-xr-x	root/root	var/
+drwxr-xr-x	root/root	var/lib/
+drwxr-xr-x	root/root	var/lib/nfs/
+-rw-r--r--	root/root	var/lib/nfs/etab (EMPTY)
+-rw-r--r--	root/root	var/lib/nfs/rmtab (EMPTY)
+drwx------	nobody/root	var/lib/nfs/sm.bak/
+drwx------	nobody/root	var/lib/nfs/sm/
+-rw-------	nobody/root	var/lib/nfs/state (EMPTY)
+-rw-r--r--	root/root	var/lib/nfs/xtab (EMPTY)

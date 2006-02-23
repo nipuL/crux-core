@@ -1,0 +1,18 @@
+# Description: GNU database library for C
+# URL:         http://www.gnu.org/software/gdbm/gdbm.html
+# Maintainer:  Per Lidén <per@fukt.bth.se>
+
+name=gdbm
+version=1.8.3
+release=1
+source=(http://mirrors.sunsite.dk/gnu/$name/$name-$version.tar.gz)
+
+build() {
+    cd $name-$version
+    ./configure --prefix=/usr
+    make prefix=/usr
+    make prefix=$PKG/usr install
+    make prefix=$PKG/usr install-compat
+    rm -rf $PKG/usr/info
+    chown -R root.root $PKG
+}

@@ -1,0 +1,28 @@
+# Description: Secure version of the GNU locate program
+# URL:         ftp://ftp.geekreview.org/slocate/
+# Maintainer:  Per Lidén <per@fukt.bth.se>
+
+name=slocate
+version=2.7
+release=3
+source=(http://dl.sourceforge.net/sourceforge/$name/$name-$version.tar.gz \
+	$name-$version.patch slocate)
+
+build() {
+    cd $name-$version
+    patch -p1 < ../$name-$version.patch
+    touch Makefile.in
+    ./configure --prefix=/usr
+    make
+    mkdir -p $PKG/usr/bin $PKG/usr/man/man1 \
+	     $PKG/var/lib/slocate $PKG/etc/cron/daily
+    touch slocate.db
+    chmod 0750 $PKG/var/lib/slocate
+    chgrp slocate $PKG/var/lib/slocate
+    install -m 0640 -g slocate slocate.db $PKG/var/lib/slocate/slocate.db
+    install -m 2755 -g slocate slocate $PKG/usr/bin/slocate
+    install -m 0755 ../slocate $PKG/etc/cron/daily/slocate
+    install -m 0644 doc/slocate.1.linux.gz $PKG/usr/man/man1/slocate.1.gz
+    ln -sf slocate $PKG/usr/bin/locate
+    ln -sf slocate.1.gz $PKG/usr/man/man1/locate.1.gz
+}

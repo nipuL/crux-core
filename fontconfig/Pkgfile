@@ -1,0 +1,18 @@
+# Description: A library for configuring and customizing font access
+# URL:         http://fontconfig.org/wiki/
+# Maintainer:  Per Lidén <per@fukt.bth.se>
+# Depends on:  freetype, expat
+
+name=fontconfig
+version=2.2.3
+release=1
+source=(http://freedesktop.org/fontconfig/release/$name-$version.tar.gz)
+
+build() {
+    cd $name-$version
+    ./configure --prefix=/usr \
+		--sysconfdir=/etc
+    make
+    make DESTDIR=$PKG install
+    rm -rf $PKG/usr/share
+}

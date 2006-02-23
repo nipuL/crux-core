@@ -1,0 +1,26 @@
+# Description: Internet service daemon and Ping
+# URL:         ftp://ftp.uk.linux.org/pub/linux/Networking/netkit
+# Maintainer:  Per Lidén <per@fukt.bth.se>
+
+name=netkit-base
+version=0.17
+release=7
+source=(ftp://ftp.uk.linux.org/pub/linux/Networking/netkit/$name-$version.tar.gz \
+	$name-$version-usagi-20030214.patch \
+	$name-$version-break.patch \
+	inetd.conf inetd services protocols)
+
+build() {
+    cd $name-$version
+    patch -p1 < ../$name-$version-usagi-20030214.patch
+    patch -p1 < ../$name-$version-break.patch
+    ./configure --prefix=/usr \
+		--installroot=$PKG \
+		--enable-ipv6
+    make
+    mkdir -p $PKG/bin $PKG/etc/rc.d $PKG/usr/sbin $PKG/usr/man/man8
+    make install
+    install -m 644 ../inetd.conf $PKG/etc
+    install -m 644 ../{services,protocols} $PKG/etc
+    install -m 755 ../inetd $PKG/etc/rc.d
+}

@@ -1,0 +1,18 @@
+# Description: Library of PNG support functions.
+# URL:         http://www.libpng.org
+# Maintainer:  Per Lidén <per@fukt.bth.se>
+# Depends on:  zlib
+
+name=libpng
+version=1.2.8
+release=1
+source=(http://dl.sourceforge.net/libpng/$name-$version.tar.bz2 \
+	$name-$version.patch)
+
+build() {
+    cd $name-$version 
+    patch -p1 < ../$name-$version.patch
+    cp scripts/makefile.gcmmx makefile
+    mkdir $PKG/usr
+    make DESTDIR=$PKG prefix=/usr install
+}

@@ -1,0 +1,25 @@
+# Description: Very high-quality data compression program
+# URL:         http://www.bzip.org/
+# Maintainer:  Per Lidén <per@fukt.bth.se>
+
+name=bzip2
+version=1.0.3
+release=1
+source=(http://www.bzip.org/1.0.3/$name-$version.tar.gz \
+	$name-$version.patch)
+
+build() {
+    cd $name-$version
+    patch -p1 < ../$name-$version.patch
+    make
+    make PREFIX=$PKG/usr install
+    rm $PKG/usr/bin/{bunzip2,bzcat,bzcmp,bzfgrep,bzegrep,bzmore}
+    ln -sf bzip2 $PKG/usr/bin/bunzip2
+    ln -sf bzip2 $PKG/usr/bin/bzcat
+    ln -sf bzdiff $PKG/usr/bin/bzcmp
+    ln -sf bzgrep $PKG/usr/bin/bzegrep
+    ln -sf bzgrep $PKG/usr/bin/bzfgrep
+    ln -sf bzless $PKG/usr/bin/bzmore
+    ln -sf bzip2.1.gz $PKG/usr/man/man1/bunzip2.1.gz
+    ln -sf bzip2.1.gz $PKG/usr/man/man1/bzcat.1.gz
+}

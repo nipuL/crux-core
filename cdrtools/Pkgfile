@@ -1,0 +1,24 @@
+# Description: A tool to create disk-at-once and track-at-once CDs
+# URL:         http://cdrecord.berlios.de/old/private/cdrecord.html
+# Maintainer:  Per Lidén <per@fukt.bth.se>
+
+name=cdrtools
+version=2.01
+release=2
+source=(ftp://gd.tuwien.ac.at/utils/schilling/cdrtools/$name-$version.tar.bz2 \
+	$name-$version.patch)
+
+build() {
+    cd $name-$version
+    patch -p1 < ../$name-$version.patch
+    ./Gmake.linux
+    ./Gmake.linux INS_BASE=$PKG/usr install
+    ln -sf isoinfo.8 $PKG/usr/man/man8/isodump.8
+    ln -sf isoinfo.8 $PKG/usr/man/man8/devdump.8
+    ln -sf isoinfo.8 $PKG/usr/man/man8/isovfy.8
+    rm -rf $PKG/usr/{include,lib,sbin,man/man5} \
+	   $PKG/usr/man/man1/cdda2ogg.1 \
+	   $PKG/usr/bin/{skel,isodebug}
+    chown -R root.root $PKG
+    chmod -R u+w,g-w $PKG
+}

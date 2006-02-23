@@ -1,0 +1,43 @@
+# Description: Mozilla Web Browser Component
+# URL: http://www.mozilla.com/firefox/
+# Maintainer: Matt Housh, jaeger at morpheus dot net
+# Depends on: libidl, gtk
+
+name=firefox
+version=1.5.0.1
+release=1
+source=(http://ftp.mozilla.org/pub/mozilla.org/$name/releases/$version/source/$name-$version-source.tar.bz2 \
+	mozconfig)
+
+build() {
+	export MOZ_CO_PROJECT=browser
+	export BUILD_OFFICIAL=1
+	export MOZILLA_OFFICIAL=1
+	export MOZILLA_FIVE_HOME=/usr/lib/firefox
+
+	cd mozilla
+	sed -e "s/#CFLAGS#/$CFLAGS/" $SRC/mozconfig > .mozconfig
+	./configure
+	make
+
+	mkdir -p $PKG$MOZILLA_FIVE_HOME
+	cp -rL dist/bin/* $PKG$MOZILLA_FIVE_HOME
+	mkdir -p $PKG/usr/bin
+	ln -s /usr/lib/$name/$name $PKG/usr/bin/$name
+
+	# devel stuff
+	mkdir -p $PKG/usr/share/idl/$name $PKG/usr/include/$name
+	cp -frL dist/idl/* $PKG/usr/share/idl/$name/
+	cp -frL dist/include/* $PKG/usr/include/$name/
+
+	# pkgconfig
+	mkdir -p $PKG/usr/lib/pkgconfig
+	install build/unix/*.pc $PKG/usr/lib/pkgconfig
+	sed -i -e "s|/usr/local|/usr|g" $PKG/usr/lib/pkgconfig/*.pc
+	sed -i -e "s|$name-$version|$name|g" $PKG/usr/lib/pkgconfig/*.pc
+	# disgusting hack
+	sed -i -e 's|\(Cflags:.*\)|\1 -I${includedir}/dom -I${includedir}/necko|' \
+		$PKG/usr/lib/pkgconfig/*.pc
+
+	chmod 644 $PKG/usr/lib/pkgconfig/$name-*.pc
+}

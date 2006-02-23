@@ -1,0 +1,51 @@
+# Description: Mail Transfer Agent
+# URL:         http://sendmail.org/
+# Maintainer:  Per Lidén <per@fukt.bth.se>
+
+name=sendmail
+version=8.13.5
+release=1
+source=(http://www.sendmail.org/ftp/$name.$version.tar.gz \
+	aliases sendmail sendmail.mk sendmail.mc site.config.m4)
+
+build() {
+    cd $name-$version
+    mkdir -p $PKG/usr/{bin,sbin,lib} $PKG/etc/rc.d \
+	     $PKG/usr/man/man{1,5,8} $PKG/var/spool/mqueue \
+	     $PKG/etc/mail/cf/{cf,sh,domain,feature,m4,mailer,ostype}
+
+    sed "s/#CFLAGS#/$CFLAGS/" ../site.config.m4 > devtools/Site/site.config.m4
+
+    (cd libmilter; ./Build; DESTDIR=$PKG ./Build install)
+    (cd sendmail; ./Build; DESTDIR=$PKG ./Build install-set-user-id)
+    (cd mailstats; ./Build; DESTDIR=$PKG ./Build install)
+    (cd makemap; ./Build; DESTDIR=$PKG ./Build install)
+    (cd smrsh; ./Build; DESTDIR=$PKG ./Build install)
+    (cd praliases; ./Build; DESTDIR=$PKG ./Build install)
+    (cd vacation; ./Build; DESTDIR=$PKG ./Build install)
+
+    install -D -m 755 ../sendmail $PKG/etc/rc.d/sendmail
+    install -D -m 644 ../sendmail.mc $PKG/etc/mail/sendmail.mc
+    install -D -m 644 ../sendmail.mk $PKG/etc/mail/Makefile
+    install -D -m 644 ../aliases $PKG/etc/mail/aliases
+    touch $PKG/etc/mail/aliases.db
+    touch $PKG/etc/mail/local-host-names
+    cp cf/README $PKG/etc/mail/cf
+    cp cf/cf/generic-linux.* $PKG/etc/mail/cf/cf   
+    cp cf/domain/generic.m4 $PKG/etc/mail/cf/domain
+    cp cf/feature/* $PKG/etc/mail/cf/feature
+    cp cf/m4/* $PKG/etc/mail/cf/m4
+    cp cf/sh/* $PKG/etc/mail/cf/sh
+    cp cf/mailer/* $PKG/etc/mail/cf/mailer
+    cp cf/ostype/linux.m4 $PKG/etc/mail/cf/ostype
+    make -C $PKG/etc/mail sendmail.cf
+
+    ln -sf ../sbin/sendmail $PKG/usr/bin/newaliases
+    ln -sf ../sbin/sendmail $PKG/usr/bin/mailq
+    ln -sf ../sbin/sendmail $PKG/usr/bin/hoststat
+    ln -sf ../sbin/sendmail $PKG/usr/bin/purgestat
+
+    chown -R root.root $PKG
+    chmod -R +w $PKG
+    chmod 4755 $PKG/usr/sbin/sendmail
+}

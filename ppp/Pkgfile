@@ -1,0 +1,21 @@
+# Description: A daemon which implements the PPP protocol for internetworking over dialup lines
+# URL:         http://www.samba.org/ppp/
+# Maintainer:  Per Lidén <per@fukt.bth.se>
+# Depends on:  zlib, openssl
+
+name=ppp
+version=2.4.3
+release=1
+source=(ftp://ftp.samba.org/pub/ppp/$name-$version.tar.gz \
+	$name-$version-nofilter.patch \
+	$name-$version-makefile.patch)
+
+build () {
+    cd $name-$version
+    patch -p1 < ../$name-$version-nofilter.patch
+    patch -p1 < ../$name-$version-makefile.patch
+    ./configure --prefix=$PKG
+    make
+    make install
+    chmod +w -R $PKG
+}

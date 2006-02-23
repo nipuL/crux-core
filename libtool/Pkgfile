@@ -1,0 +1,20 @@
+# Description: A generic library support script
+# URL:         http://www.gnu.org/software/libtool/
+# Maintainer:  Per Lidén <per@fukt.bth.se>
+
+name=libtool
+version=1.5.20
+release=1
+source=(http://mirrors.sunsite.dk/gnu/$name/$name-$version.tar.gz \
+	libtool.1 libtoolize.1)
+
+build() {
+    cd $name-$version
+    ./configure --prefix=/usr
+    make
+    make DESTDIR=$PKG install
+    rm -fr $PKG/usr/info 
+    mkdir -p $PKG/usr/man/man1
+    cp ../libtool.1 ../libtoolize.1 $PKG/usr/man/man1
+    chown -R root.root $PKG
+}

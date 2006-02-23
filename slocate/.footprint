@@ -1,0 +1,16 @@
+drwxr-xr-x	root/root	etc/
+drwxr-xr-x	root/root	etc/cron/
+drwxr-xr-x	root/root	etc/cron/daily/
+-rwxr-xr-x	root/root	etc/cron/daily/slocate
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/bin/
+lrwxrwxrwx	root/root	usr/bin/locate -> slocate
+-rwxr-sr-x	root/slocate	usr/bin/slocate
+drwxr-xr-x	root/root	usr/man/
+drwxr-xr-x	root/root	usr/man/man1/
+lrwxrwxrwx	root/root	usr/man/man1/locate.1.gz -> slocate.1.gz
+-rw-r--r--	root/root	usr/man/man1/slocate.1.gz
+drwxr-xr-x	root/root	var/
+drwxr-xr-x	root/root	var/lib/
+drwxr-x---	root/slocate	var/lib/slocate/
+-rw-r-----	root/slocate	var/lib/slocate/slocate.db (EMPTY)

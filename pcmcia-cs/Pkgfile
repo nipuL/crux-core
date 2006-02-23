@@ -1,0 +1,17 @@
+# Description: Card Services for Linux
+# URL:         http://pcmcia-cs.sourceforge.net/
+# Maintainer:  Per Lidén <per@fukt.bth.se>
+
+name=pcmcia-cs
+version=3.2.8
+release=1
+source=(http://dl.sourceforge.net/$name/$name-$version.tar.gz \
+	$name-$version-config.patch pcmcia)
+
+build() {
+    cd $name-$version
+    patch -p1 < ../$name-$version-config.patch
+    make all
+    make PREFIX=$PKG install
+    install -D -m 755 ../pcmcia $PKG/etc/rc.d/pcmcia
+}

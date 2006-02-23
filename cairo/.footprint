@@ -1,0 +1,19 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/include/
+drwxr-xr-x	root/root	usr/include/cairo/
+-rw-r--r--	root/root	usr/include/cairo/cairo-features.h
+-rw-r--r--	root/root	usr/include/cairo/cairo-ft.h
+-rw-r--r--	root/root	usr/include/cairo/cairo-glitz.h
+-rw-r--r--	root/root	usr/include/cairo/cairo-pdf.h
+-rw-r--r--	root/root	usr/include/cairo/cairo-ps.h
+-rw-r--r--	root/root	usr/include/cairo/cairo-xlib-xrender.h
+-rw-r--r--	root/root	usr/include/cairo/cairo-xlib.h
+-rw-r--r--	root/root	usr/include/cairo/cairo.h
+drwxr-xr-x	root/root	usr/lib/
+-rw-r--r--	root/root	usr/lib/libcairo.a
+-rwxr-xr-x	root/root	usr/lib/libcairo.la
+lrwxrwxrwx	root/root	usr/lib/libcairo.so -> libcairo.so.2.2.3
+lrwxrwxrwx	root/root	usr/lib/libcairo.so.2 -> libcairo.so.2.2.3
+-rwxr-xr-x	root/root	usr/lib/libcairo.so.2.2.3
+drwxr-xr-x	root/root	usr/lib/pkgconfig/
+-rw-r--r--	root/root	usr/lib/pkgconfig/cairo.pc

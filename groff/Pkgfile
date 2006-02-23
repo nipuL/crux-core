@@ -1,0 +1,26 @@
+# Description: The GNU troff text-formatting system
+# URL:         http://www.gnu.org/software/groff/groff.html
+# Maintainer:  Per Lidén <per@fukt.bth.se>
+# Depends on:  x11
+
+name=groff
+version=1.19.2
+release=4
+source=(http://mirrors.sunsite.dk/gnu/$name/$name-$version.tar.gz \
+        $name-$version-mm.patch)
+
+build() {
+    cd $name-$version
+    patch -p0 < ../$name-$version-mm.patch
+    ./configure --prefix=/usr
+    mkdir -p $PKG/usr
+    make datasubdir=/usr/share/groff
+    make prefix=$PKG/usr \
+         datasubdir=$PKG/usr/share/groff \
+         appresdir=$PKG/etc/X11/app-defaults \
+         install
+    rm -rf $PKG/usr/{info,lib,share/doc}
+    ln -sf eqn $PKG/usr/bin/geqn
+    ln -sf tbl $PKG/usr/bin/gtbl
+    ln -sf soelim $PKG/usr/bin/zsoelim
+}

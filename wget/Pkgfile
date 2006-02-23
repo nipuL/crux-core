@@ -1,0 +1,22 @@
+# Description: A network utility for downloading content from the Web
+# URL:         http://www.gnu.org/software/wget/
+# Maintainer:  Per Lidén <per@fukt.bth.se>
+
+name=wget
+version=1.10.2
+release=1
+source=(http://mirrors.sunsite.dk/gnu/$name/$name-$version.tar.gz \
+	wgetrc)
+
+build() {
+    cd $name-$version
+    ./configure --prefix=/usr \
+		--sysconfdir=/etc \
+		--without-ssl \
+		--disable-debug \
+		--disable-nls
+    make
+    make prefix=$PKG/usr install.bin install.man
+    install -D -m 644 ../wgetrc $PKG/etc/wgetrc
+}
+

@@ -1,0 +1,28 @@
+# Description: Ext2 Filesystem Utilities
+# URL:         http://e2fsprogs.sourceforge.net/
+# Maintainer:  Per Lidén <per@fukt.bth.se>
+
+name=e2fsprogs
+version=1.38
+release=1
+source=(http://dl.sourceforge.net/$name/$name-$version.tar.gz \
+	$name-$version.patch)
+
+build() {
+    cd $name-$version
+    patch -p1 < ../$name-$version.patch
+    mkdir build
+    cd build
+    ../configure --prefix=/usr \
+		 --with-root-prefix= \
+		 --enable-elf-shlibs \
+		 --disable-debugfs \
+		 --disable-imager \
+		 --disable-e2initrd-helper \
+		 --disable-evms \
+		 --disable-nls
+    make
+    make DESTDIR=$PKG install install-libs
+    rm -rf $PKG/usr/info
+    chmod +w -R $PKG
+}

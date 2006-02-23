@@ -1,0 +1,19 @@
+# Description: An arbitrary precision calculator language
+# URL:         http://www.gnu.org/software/bc/bc.html
+# Maintainer:  Per Lidén <per@fukt.bth.se>
+# Depends on:  ncurses, readline
+
+name=bc
+version=1.06
+release=2
+source=(http://mirrors.sunsite.dk/gnu/$name/$name-$version.tar.gz \
+	$name-$version-compile_fixes.patch)
+
+build() { 
+    cd $name-$version
+    patch -p1 < ../$name-$version-compile_fixes.patch
+    ./configure --prefix=/usr --with-readline
+    make
+    make DESTDIR=$PKG install
+    rm -rf $PKG/usr/info
+}

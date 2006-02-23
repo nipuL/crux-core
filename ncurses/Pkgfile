@@ -1,0 +1,25 @@
+# Description: A System V Release 4.0 curses emulation library
+# URL:         http://www.gnu.org/software/ncurses/ncurses.html
+# Maintainer:  Per Lidén <per@fukt.bth.se>
+
+name=ncurses
+version=5.5
+release=1
+source=(http://mirrors.sunsite.dk/gnu/$name/$name-$version.tar.gz)
+
+build() {
+    cd $name-$version
+    ./configure --with-install-prefix=$PKG \
+		--prefix=/usr \
+		--with-normal \
+		--with-shared \
+		--without-debug \
+		--without-ada
+    make
+    make install
+    mkdir $PKG/lib
+    mv $PKG/usr/lib/libncurses.so.* $PKG/lib
+    ln -sf libncurses.so $PKG/usr/lib/libcurses.so
+    ln -sf ../../lib/libncurses.so.5 $PKG/usr/lib/libncurses.so
+    ln -sf ../../lib/libncurses.so.5 $PKG/usr/lib/libncurses.so.5
+}

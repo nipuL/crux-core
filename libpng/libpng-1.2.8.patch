@@ -1,0 +1,43 @@
+diff -ru libpng-1.2.5/scripts/makefile.gcmmx libpng-1.2.5-new/scripts/makefile.gcmmx
+--- libpng-1.2.5/scripts/makefile.gcmmx	2002-10-03 13:32:34.000000000 +0200
++++ libpng-1.2.5-new/scripts/makefile.gcmmx	2003-02-05 20:54:36.000000000 +0100
+@@ -28,8 +28,8 @@
+ # Where the zlib library and include files are located.
+ #ZLIBLIB=/usr/local/lib
+ #ZLIBINC=/usr/local/include
+-ZLIBLIB=../zlib
+-ZLIBINC=../zlib
++ZLIBLIB=/usr/lib
++ZLIBINC=/usr/include
+ 
+ ALIGN=
+ # for i386:
+@@ -43,13 +43,13 @@
+ 
+ # Remove -DPNG_THREAD_UNSAFE_OK if you need thread safety
+ ### for generic gcc:
+-CFLAGS=-DPNG_THREAD_UNSAFE_OK -DPNG_USE_PNGGCCRD -I$(ZLIBINC) -Wall \
+-	-O3 $(ALIGN) -funroll-loops \
+-	-fomit-frame-pointer  # $(WARNMORE) -g -DPNG_DEBUG=5
++#CFLAGS=-DPNG_THREAD_UNSAFE_OK -DPNG_USE_PNGGCCRD -I$(ZLIBINC) -Wall \
++#	-O3 $(ALIGN) -funroll-loops \
++#	-fomit-frame-pointer  # $(WARNMORE) -g -DPNG_DEBUG=5
+ ### for gcc 2.95.2 on 686:
+-#CFLAGS=-DPNG_THREAD_UNSAFE_OK -DPNG_USE_PNGGCCRD -I$(ZLIBINC) -Wall -O3 \
+-#	-mcpu=i686 -malign-double -ffast-math -fstrict-aliasing \
+-#	$(ALIGN) -funroll-loops -funroll-all-loops -fomit-frame-pointer 
++CFLAGS+=-DPNG_THREAD_UNSAFE_OK -DPNG_USE_PNGGCCRD -I$(ZLIBINC) -Wall -O3 \
++	-malign-double -ffast-math -fstrict-aliasing \
++	$(ALIGN) -funroll-loops -funroll-all-loops -fomit-frame-pointer 
+ ### for gcc 2.7.2.3 on 486 and up:
+ #CFLAGS=-DPNG_THREAD_UNSAFE_OK -DPNG_USE_PNGGCCRD -I$(ZLIBINC) -Wall -O3 \
+ #	-m486 -malign-double -ffast-math \
+@@ -131,7 +131,7 @@
+ 
+ libpng.so.3.$(PNGMIN): $(OBJSDLL)
+ 	$(CC) -shared -Wl,-soname,libpng.so.3 \
+-	-o libpng.so.3.$(PNGMIN) \
++	-L$(ZLIBLIB) -lm -lz -o libpng.so.3.$(PNGMIN) \
+ 	$(OBJSDLL)
+ 
+ pngtest: pngtest.o $(LIBNAME).so

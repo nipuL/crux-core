@@ -1,0 +1,18 @@
+# Description: An 8-bit clean, POSIX-compliant line editor
+# URL:         http://www.gnu.org/software/ed/ed.html
+# Maintainer:  Per Lidén <per@fukt.bth.se>
+
+name=ed
+version=0.2
+release=2
+source=(http://mirrors.sunsite.dk/gnu/$name/$name-$version.tar.gz $name-$version.patch)
+
+build() {
+    cd $name-$version
+    patch -p1 < ../$name-$version.patch
+    ./configure --prefix=/usr
+    make
+    make prefix=$PKG/usr install
+    mv $PKG/usr/bin $PKG
+    rm -rf $PKG/usr/info
+}

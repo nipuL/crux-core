@@ -1,0 +1,37 @@
+# Description: GNU GRUB (GRand Unified Bootloader)
+# URL: http://www.gnu.org/software/grub/
+# Maintainer: Matt Housh, jaeger at morpheus dot net
+# Depends on: ncurses, gettext
+
+name=grub
+version=0.95
+release=2
+source=(ftp://alpha.gnu.org/gnu/grub/$name-$version.tar.gz \
+	http://crux.nu/files/grub/$version/$name-$version.patch \
+	http://crux.nu/files/grub/$version/crux02.xpm.gz \
+	http://crux.nu/files/grub/$version/crux03.xpm.gz \
+	menu.lst.sample)
+
+build () {
+	cd $name-$version
+
+	# Apply Fedora Linux patches
+	patch -p1 < $SRC/$name-$version.patch
+    
+	unset CXXFLAGS 
+	export CFLAGS="-Os" 
+    
+	autoreconf --install --force
+
+	./configure --prefix=/usr \
+		--sbindir=/sbin \
+		--disable-nls \
+		--disable-auto-linux-mem-opt 
+		
+	make
+	make DESTDIR=$PKG install
+	rm -rf $PKG/usr/info
+
+	mkdir -p $PKG/boot/grub
+	install -m 644 $SRC/{crux*,menu.lst.sample} $PKG/boot/grub/
+}

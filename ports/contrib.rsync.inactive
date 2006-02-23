@@ -1,0 +1,3 @@
+host=crux.nu
+collection=crux-contrib
+destination=/usr/ports/contrib

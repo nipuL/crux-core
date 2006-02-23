@@ -1,0 +1,6 @@
+define(`confCCOPTS', `#CFLAGS#')
+define(`confENVDEF', `-DNETINET6')
+define(`confMANROOTMAN', `/usr/man/man')
+define(`confDONT_INSTALL_CATMAN')
+define(`confINSTALL_RAWMAN')
+APPENDDEF(`conf_sendmail_ENVDEF', `-DMILTER')

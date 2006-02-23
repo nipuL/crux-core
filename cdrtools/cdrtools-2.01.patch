@@ -1,0 +1,12 @@
+diff -ru cdrtools-2.01/DEFAULTS/Defaults.linux cdrtools-2.01-new/DEFAULTS/Defaults.linux
+--- cdrtools-2.01/DEFAULTS/Defaults.linux	2003-02-16 01:01:48.000000000 +0100
++++ cdrtools-2.01-new/DEFAULTS/Defaults.linux	2005-03-23 22:29:45.925249224 +0100
+@@ -18,7 +18,7 @@
+ ###########################################################################
+ CWARNOPTS=
+ 
+-DEFINCDIRS=	$(SRCROOT)/include /usr/src/linux/include
++DEFINCDIRS=	$(SRCROOT)/include
+ LDPATH=		-L/opt/schily/lib
+ RUNPATH=	-R $(INS_BASE)/lib -R /opt/schily/lib -R $(OLIBSDIR)
+ 

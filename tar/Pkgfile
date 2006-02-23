@@ -1,0 +1,21 @@
+# Description: GNU tar
+# URL:         http://www.gnu.org/software/tar/tar.html
+# Maintainer:  Per Lidén <per@fukt.bth.se>
+
+name=tar
+version=1.15.1
+release=2
+source=(http://mirrors.sunsite.dk/gnu/$name/$name-$version.tar.bz2 \
+	$name-$version-sparse.patch tar.1)
+
+build() {
+    cd $name-$version
+    patch -p1 < ../$name-$version-sparse.patch
+    ./configure --prefix= \
+		--libexec=/usr/lib/tar \
+		--disable-nls
+    make
+    make DESTDIR=$PKG install
+    rm -rf $PKG/{sbin,info}
+    install -D -m 644 ../tar.1 $PKG/usr/man/man1/tar.1
+}

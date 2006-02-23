@@ -1,0 +1,17 @@
+# Description: An OpenGL image compositing library
+# URL: http://www.freedesktop.org/Software/glitz
+# Maintainer: Matt Housh, jaeger at morpheus dot net
+# Depends on: x11
+
+name=glitz
+version=0.4.4
+release=2
+source=(http://cairographics.org/snapshots/$name-$version.tar.gz)
+
+build() {
+	cd $name-$version
+	./configure --prefix=/usr
+	make
+	make DESTDIR=$PKG install
+	sed -i -e "s| -L$SRC/$name-$version/src ||" $PKG/usr/lib/libglitz-glx.la
+}

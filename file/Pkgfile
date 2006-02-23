@@ -1,0 +1,17 @@
+# Description: File type identification utility
+# URL:         ftp://ftp.fu-berlin.de/unix/tools/file/
+# Maintainer:  Per Lidén <per@fukt.bth.se>
+# Depends on:  zlib
+
+name=file
+version=4.16
+release=1
+source=(ftp://ftp.astron.com/pub/file/$name-$version.tar.gz)
+
+build() {
+    cd $name-$version
+    ./configure --prefix=/usr --enable-fsect-man5
+    make
+    make DESTDIR=$PKG install
+    rmdir $PKG/usr/man/man4
+}

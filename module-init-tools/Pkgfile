@@ -1,0 +1,22 @@
+# Description: Kernel module utilities
+# URL:         http://www.kernel.org/pub/linux/kernel/people/rusty/modules
+# Maintainer:  Per Lidén <per@fukt.bth.se>
+
+name=module-init-tools
+version=3.2.2
+release=1
+source=(http://www.kernel.org/pub/linux/kernel/people/rusty/modules/$name-$version.tar.bz2 \
+	modprobe.conf)
+
+build() {
+    cd $name-$version
+    ./configure --prefix=/usr \
+		--bindir=/sbin \
+		--sbindir=/sbin
+    touch *.5 *.8
+    make
+    make DESTDIR=$PKG mandir=/usr/man install
+    install -D -m 644 modprobe.devfs $PKG/etc/modprobe.devfs
+    install -D -m 644 ../modprobe.conf $PKG/etc/modprobe.conf
+    rm -f $PKG/sbin/generate-modprobe.conf
+}

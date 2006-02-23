@@ -1,0 +1,21 @@
+# Description: Fast Lexical Analyzer Generator
+# URL:         http://lex.sourceforge.net/
+# Maintainer:  Per Lidén <per@fukt.bth.se>
+
+name=flex
+version=2.5.31
+release=2
+source=(http://dl.sourceforge.net/lex/$name-$version.tar.bz2 \
+	$name-$version.patch)
+
+build() {
+    cd $name-$version
+    patch -p1 < ../$name-$version.patch
+    ./configure --prefix=/usr --disable-nls
+    touch doc/flex.1 scan.c
+    make
+    make DESTDIR=$PKG install
+    ln -sf flex $PKG/usr/bin/lex
+    ln -sf flex.1.gz $PKG/usr/man/man1/lex.1.gz
+    rm -rf $PKG/usr/info
+}

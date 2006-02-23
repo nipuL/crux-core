@@ -1,0 +1,22 @@
+# Description: Berkeley DB
+# URL:         http://www.sleepycat.com/products/db.shtml
+# Maintainer:  Per Lidén <per@fukt.bth.se>
+
+name=db
+version=4.3.29
+release=1
+source=(ftp://ftp.sleepycat.com/releases/$name-$version.tar.gz)
+
+build() {
+    cd $name-$version/build_unix
+    LDFLAGS="-lpthread" \
+    ../dist/configure --prefix=/usr \
+		      --enable-compat185 \
+		      --enable-shared \
+		      --enable-static \
+		      --enable-cxx
+    make
+    make DESTDIR=$PKG install
+    rm -rf $PKG/usr/docs
+    chmod -R +w $PKG
+}

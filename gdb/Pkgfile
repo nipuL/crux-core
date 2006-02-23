@@ -1,0 +1,17 @@
+# Description: The GNU Debugger (GDB)
+# URL:         http://sources.redhat.com/gdb/
+# Maintainer:  Per Lidén <per@fukt.bth.se>
+# Depends on:  ncurses
+
+name=gdb
+version=6.3
+release=1
+source=(http://mirrors.sunsite.dk/gnu/$name/$name-$version.tar.bz2)
+
+build() {
+    cd $name-$version
+    ./configure --prefix=/usr
+    make
+    make DESTDIR=$PKG install
+    rm -rf $PKG/usr/{info,share,lib,include}
+}

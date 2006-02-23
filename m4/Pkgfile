@@ -1,0 +1,16 @@
+# Description: A standard Unix macro processor with extensions
+# URL:         http://www.seindal.dk/rene/gnu/
+# Maintainer:  Per Lidén <per@fukt.bth.se>
+
+name=m4
+version=1.4.4
+release=1
+source=(http://mirrors.sunsite.dk/gnu/$name/$name-$version.tar.gz)
+
+build() {
+    cd $name-$version
+    ./configure --prefix=/usr
+    make
+    make prefix=$PKG/usr install
+    rm -rf $PKG/usr/info
+}

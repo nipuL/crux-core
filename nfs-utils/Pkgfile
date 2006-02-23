@@ -1,0 +1,24 @@
+# Description: NFS utilities
+# URL:         http://nfs.sourceforge.net/
+# Maintainer:  Per Lidén <per@fukt.bth.se>
+
+name=nfs-utils
+version=1.0.7
+release=2
+source=(http://dl.sourceforge.net/nfs/$name-$version.tar.gz \
+	exports nfs nfsserver)
+
+build () {
+    cd $name-$version
+    ./configure --prefix=/usr \
+		--enable-nfsv3 \
+		--disable-nfsv4 \
+		--disable-gss \
+		--with-statedir=/var/lib/nfs \
+		--sysconfdir=/etc
+    make
+    make install_prefix=$PKG install
+    install -D -m 755 ../nfs $PKG/etc/rc.d/nfs
+    install -D -m 755 ../nfsserver $PKG/etc/rc.d/nfsserver
+    install -D -m 644 ../exports $PKG/etc/exports
+}

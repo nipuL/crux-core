@@ -1,0 +1,29 @@
+# Description: CVS-Aware Network File Distribution System
+# URL:         http://www.cvsup.org/
+# Maintainer:  Per Lidén <per@fukt.bth.se>
+# Depends on:  zlib
+
+name=cvsup
+version=16.1h
+release=2
+source=(ftp://ftp.freebsd.org/pub/FreeBSD/development/CVSup/snapshots/$name-snap-$version.tar.gz \
+	ftp://ftp.freebsd.org/pub/FreeBSD/development/CVSup/ezm3/ezm3-1.1-src.tar.bz2 \
+	ftp://ftp.freebsd.org/pub/FreeBSD/development/CVSup/ezm3/ezm3-1.1-LINUXLIBC6-boot.tar.bz2 \
+	cvsup)
+
+build() {
+    # Build Modula-3 Compiler
+    cd ezm3-1.1
+    export CFLAGS="-O"
+    sed -i "s|/usr/local|$SRC/m3|" m3config/src/LINUXLIBC6
+    sed -i "s|gmake|make|" m3config/src/COMMON
+    make
+
+    # Build CVSup
+    export PATH="$PATH:$SRC/m3/bin"
+    cd ../cvsup-snap-$version
+    make PREFIX=/usr M3FLAGS="-DNOGUI"
+    mkdir -p $PKG/usr/{bin,sbin,man/man1,man/man8}
+    make PREFIX=$PKG/usr install
+    install -D -m 755 ../cvsup $PKG/etc/ports/drivers/cvsup
+}

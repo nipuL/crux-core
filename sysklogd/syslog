@@ -1,0 +1,11 @@
+#!/bin/sh
+#
+# /etc/cron/weekly/syslog: rotate log files
+#
+
+/usr/sbin/rotatelog cron
+/usr/sbin/rotatelog auth
+/usr/sbin/rotatelog mail
+/usr/sbin/rotatelog messages
+
+# End of file

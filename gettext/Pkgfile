@@ -1,0 +1,19 @@
+# Description: The GNU internationalization library
+# URL:         http://www.gnu.org/software/gettext/
+# Maintainer:  Per Lidén <per@fukt.bth.se>
+
+name=gettext
+version=0.14.5
+release=1
+source=(http://mirrors.sunsite.dk/gnu/$name/$name-$version.tar.gz)
+
+build() {
+    cd $name-$version
+    ./configure --prefix=/usr \
+		--mandir=/usr/man \
+		--disable-csharp \
+		--disable-nls
+    make
+    make DESTDIR=$PKG install
+    rm -rf $PKG/usr/info $PKG/usr/share/{doc,emacs,gettext/*.jar}
+}

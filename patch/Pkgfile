@@ -1,0 +1,15 @@
+# Description: GNU patch
+# URL:         http://www.gnu.org/software/patch/patch.html
+# Maintainer:  Per Lidén <per@fukt.bth.se>
+
+name=patch
+version=2.5.4
+release=1
+source=(http://mirrors.sunsite.dk/gnu/$name/$name-$version.tar.gz)
+
+build() {
+    cd $name-$version
+    ./configure --prefix=/usr
+    make
+    make prefix=$PKG/usr install
+}

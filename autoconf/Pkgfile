@@ -1,0 +1,16 @@
+# Description: A package of M4 macros to produce scripts to automatically configure sourcecode
+# URL:         http://www.gnu.org/software/autoconf
+# Maintainer:  Per Lidén <per@fukt.bth.se>
+
+name=autoconf
+version=2.59
+release=1
+source=(http://mirrors.sunsite.dk/gnu/$name/$name-$version.tar.bz2)
+
+build () {
+    cd $name-$version
+    ./configure --prefix=/usr
+    make
+    make prefix=$PKG/usr install
+    rm -rf $PKG/usr/info $PKG/usr/share/emacs
+}

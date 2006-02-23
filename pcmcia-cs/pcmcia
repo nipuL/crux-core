@@ -1,0 +1,27 @@
+#!/bin/sh
+#
+# /etc/rc.d/pcmcia: start/stop cardmgr daemon
+#
+
+case $1 in
+start)
+	/sbin/cardmgr
+	;;
+stop)
+	if [ -f /var/run/cardmgr.pid ]; then
+		kill `cat /var/run/cardmgr.pid`
+	else
+		killall -q /sbin/cardmgr
+	fi
+	;;
+restart)
+	$0 stop
+	sleep 2
+	$0 start
+	;;
+*)
+	echo "usage: $0 [start|stop|restart]"
+	;;
+esac
+
+# End of file

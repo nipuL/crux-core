@@ -1,0 +1,17 @@
+# Description: The GNU Project parser generator
+# URL:         http://www.gnu.org/software/bison/
+# Maintainer:  Per Lidén <per@fukt.bth.se>
+
+name=bison
+version=2.1
+release=1
+source=(http://mirrors.sunsite.dk/gnu/$name/$name-$version.tar.gz)
+
+build() {
+    cd $name-$version
+    ./configure --prefix=/usr \
+		--disable-nls
+    make
+    make DESTDIR=$PKG install
+    rm -rf $PKG/usr/info
+}

@@ -1,0 +1,1884 @@
+diff -Nru netkit-base-0.17/ChangeLog netkit-base/ChangeLog
+--- netkit-base-0.17/ChangeLog	2000-07-25 01:48:33.000000000 +0200
++++ netkit-base/ChangeLog	2001-01-29 19:38:19.000000000 +0100
+@@ -1,3 +1,37 @@
++2001/01/30	yoshfuji
++	- MULOG support for new parser.
++	- removed old parser.
++
++2001/01/29	yoshfuji
++	- remove inet6d things.
++
++2001/01/29	yoshfuji
++	- identd over ipv6 support.
++
++2001/01/28	yoshfuji
++	- do not compile inet6d by default.  if you want inet6d 
++	compiled, do configure with --build-inet6d.
++
++2001/01/28      yoshfuji
++	inetd/{inetd,servtab}.c: revised.
++	- handle {tcp,udp}{4,6,46} more properly.
++	- set IPV6_V6ONLY / if it is not supported, ignore connection
++	  via ipv4-mapped addresses for tcp6 entries.
++	- clean-up.
++
++2001/01/27	yoshfuji
++	inetd/inetd.c ...: import patch to ipv6 integrated inetd from 
++	Mauro Tortonesi <mauro@ferrara.linux.it>;
++	<ftp://ftp.ferrara.linux.it/pub/project6/patches/\
++netkit-base_inetd-0.17-ipv6rel4pre1.patch.gz>
++
++19-Jan-2000:
++	removed ipv6 patch from inet6 and introduce inet6d from KAME.
++	(yoshfuji)
++
++4-Nov-2000:
++	IPv6 enabled inetd (mk@linux-ipv6.org)
++
+ 24-Jul-2000:
+ 	Don't use OPEN_MAX. (Olaf Kirch)
+ 
+diff -Nru netkit-base-0.17/configure netkit-base/configure
+--- netkit-base-0.17/configure	2000-07-29 20:00:28.000000000 +0200
++++ netkit-base/configure	2001-01-29 05:47:51.000000000 +0100
+@@ -29,6 +29,7 @@
+     --manmode=mode        Mode for manual pages [644]
+     --suidmode=mode       Mode for setuid programs [4755]
+     --with-c-compiler=cc  Program for compiling C source [guessed]
++    --enable-ipv6         Enable IPv6 support
+ EOF
+ 	exit 0;;
+ 	--verbose) ;;
+@@ -46,6 +47,11 @@
+ 	--manmode=*) MANMODE=`echo $1 | sed 's/^[^=]*=//'` ;;
+ 	--suidmode=*) SUIDMODE=`echo $1 | sed 's/^[^=]*=//'` ;;
+ 	--with-c-compiler=*) CC=`echo $1 | sed 's/^[^=]*=//'` ;;
++
++	--disable-ipv6) ENABLE_IPV6=no;;
++	--enable-ipv6=*) ENABLE_IPV6=`echo $1 | sed 's/^[^=]*=//'`;;
++	--enable-ipv6) ENABLE_IPV6=yes;;
++
+ 	*) echo "Unrecognized option: $1"; exit 1;;
+ esac 
+ shift
+@@ -167,6 +173,42 @@
+ rm -f __conftest*
+ 
+ ##################################################
++## Enable IPv6
++echo -n "Whether to enable IPv6 support... "
++if [ x"$ENABLE_IPV6" = x"yes" ]; then
++    echo yes
++    CFLAGS="$CFLAGS -DINET6"
++else
++    echo no
++fi
++
++rm -f __conftest*
++
++## Search IPv6 Library / Headers
++if [ x"$ENABLE_IPV6" = x"yes" ]; then
++    echo -n "Search for IPv6 library... "
++    inet6libdirs="/usr/local/v6/lib /usr/local/lib /usr /usr/inet6/lib"
++    inet6libs="inet6"
++    inet6found=no
++    for inet6libdir in $inet6libdirs; do
++	for inet6lib in $inet6libs; do
++	    if [ -d $inet6libdir ] && [ -f $inet6libdir/lib$inet6lib.a ]; then
++		inet6found=yes
++		break 2
++	    fi
++	done
++    done
++    if [ x"$inet6found" = x"yes" ]; then
++	echo "$inet6libdir/lib$inet6lib.a"
++	LIBS="$LIBS -L$inet6libdir -l$inet6lib"
++    else
++	echo "not found"
++    fi
++fi
++
++rm -f __conftest*
++
++##################################################
+ 
+ echo -n 'Checking for BSD signal semantics... '
+ cat <<EOF >__conftest.c
+diff -Nru netkit-base-0.17/etc.sample/inetd.conf netkit-base/etc.sample/inetd.conf
+--- netkit-base-0.17/etc.sample/inetd.conf	1999-07-16 04:27:26.000000000 +0200
++++ netkit-base/etc.sample/inetd.conf	2001-03-02 14:35:46.000000000 +0100
+@@ -9,23 +9,35 @@
+ # <service_name> <sock_type> <proto> <flags> <user> <server_path> <args>
+ #
+ # It is generally considered safer to keep these off.
++#echo     stream  tcp6	nowait	root	internal
+ #echo     stream  tcp	nowait	root	internal
++#echo     dgram   udp6	wait	root	internal
+ #echo     dgram   udp	wait	root	internal
++#discard  stream  tcp6	nowait	root	internal
+ #discard  stream  tcp	nowait	root	internal
++#discard  dgram   udp6	wait	root	internal
+ #discard  dgram   udp	wait	root	internal
++#daytime  stream  tcp6	nowait	root	internal
+ #daytime  stream  tcp	nowait	root	internal
++#daytime  dgram   udp6	wait	root	internal
+ #daytime  dgram   udp	wait	root	internal
++#chargen  stream  tcp6	nowait	root	internal
+ #chargen  stream  tcp	nowait	root	internal
++#chargen  dgram   udp6	wait	root	internal
+ #chargen  dgram   udp	wait	root	internal
++#time     stream  tcp6	nowait	root	internal
+ #time     stream  tcp	nowait	root	internal
++#time     dgram   udp6	wait	root	internal
+ #time     dgram   udp	wait	root	internal
+ #
+ # These are standard services.
+ #
++ftp	stream	tcp6	nowait	root	/usr/local/v6/sbin/tcpd /usr/local/v6/sbin/in.ftpd
+ ftp	stream	tcp	nowait	root	/usr/sbin/tcpd	in.ftpd
+-telnet	stream  tcp     nowait  root    /usr/sbin/tcpd	in.telnetd
+-# nntp	stream	tcp	nowait	root	tcpd	in.nntpd
+-# smtp  stream  tcp     nowait  root    tcpd    sendmail -v
++telnet	stream  tcp6	nowait  root    /usr/local/v6/sbin/tcpd /usr/local/v6/sbin/in.telnetd
++telnet	stream  tcp	nowait  root    /usr/sbin/tcpd	in.telnetd
++# nntp	stream	tcp	nowait	root	tcpd		in.nntpd
++# smtp  stream  tcp	nowait  root    tcpd    	sendmail -v
+ #
+ # Shell, login, exec and talk are BSD protocols.
+ #
+@@ -36,11 +48,17 @@
+ # The talkd from netkit-ntalk 0.12 and higher, however, can speak the
+ # old talk protocol and can be used safely.
+ #
++# The talkd for ipv6 and one for ipv4 should NOT be run at the same time.
++#
++#shell	stream	tcp6	nowait	root	/usr/local/v6/sbin/tcpd /usr/local/v6/sbin/in.rshd -L
+ #shell	stream	tcp	nowait	root	/usr/sbin/tcpd	in.rshd -L
++login	stream	tcp6	nowait	root	/usr/local/v6/sbin/tcpd /usr/local/v6/sbin/in.rlogind -L
+ login	stream	tcp	nowait	root	/usr/sbin/tcpd	in.rlogind -L
++#exec	stream	tcp6	nowait	root	/usr/local/v6/sbin/tcpd /usr/local/v6/sbin/in.rexecd
+ #exec	stream	tcp	nowait	root	/usr/sbin/tcpd	in.rexecd
+ # talk	dgram	udp	wait	root	/usr/sbin/tcpd	in.talkd
+-ntalk	dgram	udp	wait	root	/usr/sbin/tcpd	in.talkd
++ntalk	dgram	udp46	wait	root	/usr/local/v6/sbin/tcpd /usr/local/v6/sbin/in.talkd
++#ntalk	dgram	udp	wait	root	/usr/sbin/tcpd	in.talkd
+ #
+ # Kerberos authenticated services
+ #
+@@ -61,6 +79,7 @@
+ #
+ # Comsat - asynchronous new mail notification. Recommended to leave it off.
+ #
++# comsat	dgram	udp6	wait	root	/usr/local/v6/sbin/in.comsat
+ # comsat	dgram	udp	wait	root	/usr/sbin/tcpd	in.comsat
+ #
+ # The Internet UUCP service.
+@@ -71,6 +90,7 @@
+ # run this only on machines acting as "boot servers." If you don't
+ # need it, don't use it. 
+ #
++# tftp	dgram	udp6	wait	nobody	/usr/local/v6/sbin/tcpd /usr/local/v6/sbin/in.tftpd
+ # tftp	dgram	udp	wait	nobody	/usr/sbin/tcpd	in.tftpd
+ # bootps	dgram	udp	wait	root	/usr/sbin/in.bootpd	in.bootpd
+ #
+@@ -78,6 +98,7 @@
+ # valuable to potential "system crackers."  Many sites choose to disable 
+ # some or all of these services to improve security.
+ #
++finger	stream	tcp6	nowait	nobody	/usr/local/v6/sbin/tcpd /usr/local/v6/sbin/in.fingerd -w
+ finger	stream	tcp	nowait	nobody	/usr/sbin/tcpd	in.fingerd -w
+ #systat	stream	tcp	nowait	nobody	/usr/sbin/tcpd	/bin/ps	-auwwx
+ #netstat	stream	tcp	nowait	root	/usr/sbin/tcpd	/bin/netstat	-a
+diff -Nru netkit-base-0.17/inetd/Makefile netkit-base/inetd/Makefile
+--- netkit-base-0.17/inetd/Makefile	2000-07-22 22:14:21.000000000 +0200
++++ netkit-base/inetd/Makefile	2001-02-11 03:30:33.000000000 +0100
+@@ -3,7 +3,12 @@
+ include ../MCONFIG
+ include ../MRULES
+ 
+-OBJS=inetd.o servtab.o builtins.o sig.o daemon.o setproctitle.o mysleep.o
++OBJS=inetd.o servtab.o builtins.o sig.o setproctitle.o doalloc.o mysleep.o
++ifeq ($(HAVE_DAEMON), 1)
++CFLAGS+=-DHAVE_DAEMON
++else
++OBJS+=daemon.o
++endif
+ 
+ inetd: $(OBJS)
+ 	$(CC) $(LDFLAGS) $^ $(LIBS) -o $@
+@@ -16,7 +21,9 @@
+ 	$(CC) $(CFLAGS) -MM *.c > depend.mk
+ 
+ install: inetd
++	install -d $(INSTALLROOT)$(SBINDIR)
+ 	install -s -m$(DAEMONMODE) inetd $(INSTALLROOT)$(SBINDIR)
++	install -d $(INSTALLROOT)$(MANDIR)/man8
+ 	install -m$(MANMODE) inetd.8 $(INSTALLROOT)$(MANDIR)/man8
+ 
+ clean:
+diff -Nru netkit-base-0.17/inetd/builtins.c netkit-base/inetd/builtins.c
+--- netkit-base-0.17/inetd/builtins.c	2000-07-22 22:13:07.000000000 +0200
++++ netkit-base/inetd/builtins.c	2001-01-29 03:03:20.000000000 +0100
+@@ -1,3 +1,34 @@
++/* $USAGI: builtins.c,v 1.11 2001/01/29 02:03:20 yoshfuji Exp $ */
++
++/*
++ * Copyright (C) 2001 USAGI/WIDE Project.
++ * All rights reserved.
++ * 
++ * Redistribution and use in source and binary forms, with or without
++ * modification, are permitted provided that the following conditions
++ * are met:
++ * 1. Redistributions of source code must retain the above copyright
++ *    notice, this list of conditions and the following disclaimer.
++ * 2. Redistributions in binary form must reproduce the above copyright
++ *    notice, this list of conditions and the following disclaimer in the
++ *    documentation and/or other materials provided with the distribution.
++ * 3. Neither the name of the project nor the names of its contributors
++ *    may be used to endorse or promote products derived from this software
++ *    without specific prior written permission.
++ * 
++ * THIS SOFTWARE IS PROVIDED BY THE PROJECT AND CONTRIBUTORS ``AS IS'' AND
++ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
++ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
++ * ARE DISCLAIMED.  IN NO EVENT SHALL THE PROJECT OR CONTRIBUTORS BE LIABLE
++ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
++ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
++ * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
++ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
++ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
++ * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
++ * SUCH DAMAGE.
++ */
++
+ /*
+  * Internet services provided internally by inetd:
+  */
+@@ -13,6 +44,12 @@
+ #include <stdlib.h>
+ #include <unistd.h>
+ 
++#ifdef INET6
++#include <netinet/ip6.h>
++#include <netdb.h>
++#endif
++#include <syslog.h>
++
+ #include "servtab.h"
+ #include "builtins.h"
+ #include "setproctitle.h"
+@@ -23,22 +60,68 @@
+ char builtins_rcsid[] = 
+   "$Id: builtins.c,v 1.5 2000/07/22 20:13:07 dholland Exp $";
+ 
++
++unsigned short int
++sockaddr_port(struct sockaddr *sa, socklen_t salen)
++{
++#ifdef INET6
++	char sbuf[NI_MAXSERV];
++#endif
++	unsigned short int port = 0; 
++
++#ifdef INET6
++	if (getnameinfo(sa, salen, NULL, 0, sbuf, sizeof(sbuf),
++			NI_NUMERICSERV) == 0)
++		port = atoi(sbuf);
++	else
++#endif
++	        switch (sa->sa_family) {
++		case AF_INET:
++			port = ntohs(((struct sockaddr_in *)sa)->sin_port);
++			break;
++#ifdef INET6
++		case AF_INET6:
++			port = ntohs(((struct sockaddr_in6 *)sa)->sin6_port);
++			break;
++#endif
++		default: 
++			/* everything went wrong :-P */
++			syslog(LOG_ERR, "cannot find port number: %m");
++			exit(1);
++		}
++	return port;
++}                                                                                                             
++
++
+ static void
+ do_setproctitle(char *a, int s)
+ {
+-	struct sockaddr_in sn;
+-	socklen_t size = sizeof(sn);
+-
+-	if (getpeername(s, (struct sockaddr *)&sn, &size) == 0) {
+-		setproctitle("-%s [%s]", a, inet_ntoa(sn.sin_addr));
+-	}
+-	else {
++#ifdef INET6
++	struct sockaddr_storage sa;
++#else
++	struct sockaddr sa;
++#endif
++	socklen_t size = sizeof(sa);
++	
++	if (getpeername(s, (struct sockaddr *)&sa, &size) == 0) {
++#ifdef INET6
++		char buf[INET6_ADDRSTRLEN+1];
++
++		if(getnameinfo((struct sockaddr *)&sa, size, buf, sizeof(buf), 
++			       NULL, 0, NI_NUMERICHOST) == 0) {
++			setproctitle("-%s [%s]", a, buf);
++		} else {
++			setproctitle("-%s", a); 
++		}			
++#else
++		setproctitle("-%s [%s]", a, inet_ntoa(((struct sockaddr_in *)&sa)->sin_addr));
++#endif
++	} else {
+ 		setproctitle("-%s", a); 
+ 	}
+ }
+ 
+ 
+-
+ /* Echo service -- echo data back */
+ /* ARGSUSED */
+ void
+@@ -61,10 +144,12 @@
+ {
+ 	char buffer[BUFSIZE];
+ 	int i, port;
+-/* 	size_t size; */
++#ifdef INET6
++	struct sockaddr_storage sa;
++#else
++	struct sockaddr sa;
++#endif
+ 	socklen_t size;
+-/*	struct sockaddr sa; */
+-	struct sockaddr_in sa;
+ 
+ 	(void)sep;
+ 
+@@ -73,10 +158,11 @@
+ 		     (struct sockaddr *)&sa, &size);
+ 	if (i < 0)
+ 		return;
+-	port = sa.sin_port;
+-	if (ntohs(port) < MINUDPSRCPORT) 
++
++	port = sockaddr_port((struct sockaddr *)&sa, size);
++	if (port < MINUDPSRCPORT) 
+ 		return;
+-	(void) sendto(s, buffer, i, 0, (struct sockaddr *)&sa, sizeof(sa));
++	(void) sendto(s, buffer, i, 0, (struct sockaddr *)&sa, size);
+ }
+ 
+ /* Discard service -- ignore data */
+@@ -159,7 +245,11 @@
+ chargen_dg(int s, struct servtab *sep)
+ {
+ /*	struct sockaddr sa; */
+-	struct sockaddr_in sa;
++#ifdef INET6
++	struct sockaddr_storage sa;
++#else
++	struct sockaddr sa;
++#endif
+ 	static char *rs;
+ 	size_t len;
+ 	socklen_t size;
+@@ -178,8 +268,8 @@
+ 		     (struct sockaddr *)&sa, &size) < 0)
+ 		return;
+ 
+-	port = sa.sin_port;
+-	if (ntohs(port)<MINUDPSRCPORT)
++	port = sockaddr_port((struct sockaddr *)&sa, size);
++	if (port < MINUDPSRCPORT)
+ 		return;
+ 
+ 	if ((len = endring - rs) >= LINESIZ)
+@@ -193,7 +283,7 @@
+ 	text[LINESIZ] = '\r';
+ 	text[LINESIZ + 1] = '\n';
+ 	(void) sendto(s, text, sizeof(text), 0, 
+-		      (struct sockaddr *)&sa, sizeof(sa));
++		      (struct sockaddr *)&sa, size);
+ }
+ 
+ /*
+@@ -236,7 +326,11 @@
+ {
+ 	unsigned long result;
+ /*	struct sockaddr sa; */
+-	struct sockaddr_in sa;
++#ifdef INET6
++	struct sockaddr_storage sa;
++#else
++	struct sockaddr sa;
++#endif
+ /*	size_t size; */
+ 	socklen_t size;
+ 	int port;
+@@ -246,12 +340,13 @@
+ 	if (recvfrom(s, (char *)&result, sizeof(result), 0, 
+ 		     (struct sockaddr *)&sa, &size) < 0)
+ 		return;
+-	port = sa.sin_port;
+-	if (ntohs(port) < MINUDPSRCPORT)
++
++	port = sockaddr_port((struct sockaddr *)&sa, size);
++	if (port < MINUDPSRCPORT)
+ 		return;
+ 	result = machtime();
+ 	(void) sendto(s, (char *) &result, sizeof(result), 0, 
+-		      (struct sockaddr *)&sa, sizeof(sa));
++		      (struct sockaddr *)&sa, size);
+ }
+ 
+ /* Return human-readable time of day */
+@@ -274,8 +369,11 @@
+ {
+ 	char buffer[256];
+ 	time_t clocc;
+-	struct sockaddr_in sa;
+-/*	size_t size; */
++#ifdef INET6
++	struct sockaddr_storage sa;
++#else
++	struct sockaddr sa;
++#endif
+ 	socklen_t size;
+ 	int port;
+ 
+@@ -286,10 +384,11 @@
+ 	if (recvfrom(s, buffer, sizeof(buffer), 0, 
+ 		     (struct sockaddr *)&sa, &size) < 0)
+ 		return;
+-	port = sa.sin_port;
+-	if (ntohs(port) < MINUDPSRCPORT)
++
++	port = sockaddr_port((struct sockaddr *)&sa, size);
++	if (port < MINUDPSRCPORT)
+ 		return;
+ 	snprintf(buffer, sizeof(buffer), "%.24s\r\n", ctime(&clocc));
+ 	sendto(s, buffer, strlen(buffer), 0, 
+-	       (struct sockaddr *)&sa, sizeof(sa));
++	       (struct sockaddr *)&sa, size);
+ }
+diff -Nru netkit-base-0.17/inetd/builtins.h netkit-base/inetd/builtins.h
+--- netkit-base-0.17/inetd/builtins.h	1999-08-23 04:30:24.000000000 +0200
++++ netkit-base/inetd/builtins.h	2001-01-27 14:14:00.000000000 +0100
+@@ -8,3 +8,4 @@
+ void machtime_dg(int, struct servtab *);
+ void daytime_dg(int, struct servtab *);
+ void chargen_dg(int, struct servtab *);
++unsigned short int sockaddr_port(struct sockaddr *sa, socklen_t salen);
+diff -Nru netkit-base-0.17/inetd/depend.mk netkit-base/inetd/depend.mk
+--- netkit-base-0.17/inetd/depend.mk	1999-08-23 04:30:24.000000000 +0200
++++ netkit-base/inetd/depend.mk	2001-01-29 02:48:42.000000000 +0100
+@@ -1,7 +1,10 @@
+ builtins.o: builtins.c servtab.h builtins.h setproctitle.h
+ daemon.o: daemon.c daemon.h
++doalloc.o: doalloc.c mysleep.h inetd.h
++inet6d.o: inet6d.c setproctitle.h mysleep.h pathnames.h
+ inetd.o: inetd.c ../version.h pathnames.h inetd.h servtab.h sig.h \
+- daemon.h setproctitle.h
+-servtab.o: servtab.c inetd.h servtab.h builtins.h sig.h
++ daemon.h setproctitle.h builtins.h mysleep.h
++mysleep.o: mysleep.c mysleep.h
++servtab.o: servtab.c inetd.h servtab.h builtins.h sig.h mysleep.h
+ setproctitle.o: setproctitle.c setproctitle.h inetd.h
+ sig.o: sig.c sig.h
+diff -Nru netkit-base-0.17/inetd/doalloc.c netkit-base/inetd/doalloc.c
+--- netkit-base-0.17/inetd/doalloc.c	1970-01-01 01:00:00.000000000 +0100
++++ netkit-base/inetd/doalloc.c	2001-01-28 02:31:14.000000000 +0100
+@@ -0,0 +1,90 @@
++/* $USAGI: doalloc.c,v 1.3 2001/01/28 01:31:14 yoshfuji Exp $ */
++
++/*
++ * Copyright (c) 1983, 1991 The Regents of the University of California.
++ * All rights reserved.
++ *
++ * Redistribution and use in source and binary forms, with or without
++ * modification, are permitted provided that the following conditions
++ * are met:
++ * 1. Redistributions of source code must retain the above copyright
++ *    notice, this list of conditions and the following disclaimer.
++ * 2. Redistributions in binary form must reproduce the above copyright
++ *    notice, this list of conditions and the following disclaimer in the
++ *    documentation and/or other materials provided with the distribution.
++ * 3. All advertising materials mentioning features or use of this software
++ *    must display the following acknowledgement:
++ *	This product includes software developed by the University of
++ *	California, Berkeley and its contributors.
++ * 4. Neither the name of the University nor the names of its contributors
++ *    may be used to endorse or promote products derived from this software
++ *    without specific prior written permission.
++ *
++ * THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
++ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
++ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
++ * ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
++ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
++ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
++ * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
++ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
++ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
++ * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
++ * SUCH DAMAGE.
++ */
++
++#include <sys/types.h>
++#include <sys/time.h>
++#include <sys/socket.h>
++#include <netinet/in.h>
++#include <sys/un.h>
++#include <netdb.h>
++#include <syslog.h>
++#include <signal.h>
++#include <unistd.h>
++#include <stdlib.h>
++#include <stdio.h>
++#include "mysleep.h"
++#include "inetd.h"
++
++/********* exit-resistant malloc ************************/
++
++/*
++ * On many systems, including presently Linux, this is bloat because
++ * malloc never returns null - if the system runs out of swap, it 
++ * panics or randomly starts killing processes or does other weird 
++ * stuff. However, it doesn't hurt to be prepared. This is the only
++ * place inetd can actually exit due to failure, now.
++ */
++
++void *
++domalloc(size_t len)
++{
++	static int retries[] = { 2, 10, 60, 600, -1 };
++	void *p;
++	int try = 0;
++
++	while (retries[try]>0) {
++		p = malloc(len);
++		if (p != NULL) {
++		    	return p;
++		}
++	
++		syslog(LOG_ERR, "Out of memory - retrying in %d seconds.",
++		       retries[try]);
++		mysleep(retries[try]);
++		try++;
++	}
++	/* Should this be LOG_EMERG? */
++	syslog(LOG_ALERT, "Out of memory - GIVING UP!");
++	exit(100);
++	return NULL;  /* unreachable */
++}
++
++char *
++dostrdup(const char *cp)
++{
++	char *x = domalloc(strlen(cp)+1);
++	strcpy(x, cp);
++	return x;
++}
+diff -Nru netkit-base-0.17/inetd/inetd.8 netkit-base/inetd/inetd.8
+--- netkit-base-0.17/inetd/inetd.8	2000-07-31 01:56:58.000000000 +0200
++++ netkit-base/inetd/inetd.8	2001-01-29 06:23:38.000000000 +0100
+@@ -1,3 +1,30 @@
++.\" Copyright (C) 2001 USAGI/WIDE Project.
++.\" All rights reserved.
++.\"
++.\" Redistribution and use in source and binary forms, with or without
++.\" modification, are permitted provided that the following conditions
++.\" are met:
++.\" 1. Redistributions of source code must retain the above copyright
++.\"    notice, this list of conditions and the following disclaimer.
++.\" 2. Redistributions in binary form must reproduce the above copyright
++.\"    notice, this list of conditions and the following disclaimer in the
++.\"    documentation and/or other materials provided with the distribution.
++.\" 3. Neither the name of the project nor the names of its contributors
++.\"    may be used to endorse or promote products derived from this software
++.\"    without specific prior written permission.
++.\"
++.\" THIS SOFTWARE IS PROVIDED BY THE PROJECT AND CONTRIBUTORS ``AS IS'' AND
++.\" ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
++.\" IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
++.\" ARE DISCLAIMED.  IN NO EVENT SHALL THE PROJECT OR CONTRIBUTORS BE LIABLE
++.\" FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
++.\" DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
++.\" OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
++.\" HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
++.\" LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
++.\" OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
++.\" SUCH DAMAGE.
++.\"
+ .\" Copyright (c) 1985, 1991 The Regents of the University of California.
+ .\" All rights reserved.
+ .\"
+@@ -183,7 +210,27 @@
+ Examples might be
+ .Dq tcp
+ or
+-.Dq udp .
++.Dq udp ,
++both of which imply IPv4 for backward compatibility.
++The names
++.Dq tcp4
++and
++.Dq udp4
++specify IPv4 only.
++The names
++.Dq tcp6
++and
++.Dq udp6
++specify IPv6 only;
++inetd will reject / ignore packets from ipv4 clients.
++The names
++.Dq tcp46
++and
++.Dq udp46
++specify that the entry accepts both IPv4 and IPv6 connections
++via a wildcard
++.Dv PF_INET6
++socket.
+ Rpc based services are specified with the 
+ .Dq rpc/tcp
+ or 
+@@ -315,3 +362,7 @@
+ based services is modelled after that
+ provided by
+ .Em SunOS 4.1 .
++.Em IPv6
++support was developed by USAGI Project,
++based on Mauro Tortonesi <mauro@ferrara.linux.it>'s patch.
++
+diff -Nru netkit-base-0.17/inetd/inetd.c netkit-base/inetd/inetd.c
+--- netkit-base-0.17/inetd/inetd.c	2000-07-25 01:48:34.000000000 +0200
++++ netkit-base/inetd/inetd.c	2001-02-11 03:30:33.000000000 +0100
+@@ -1,3 +1,34 @@
++/* $USAGI: inetd.c,v 1.14 2001/02/11 02:30:33 yoshfuji Exp $ */
++
++/*
++ * Copyright (C) 2001 USAGI/WIDE Project.
++ * All rights reserved.
++ * 
++ * Redistribution and use in source and binary forms, with or without
++ * modification, are permitted provided that the following conditions
++ * are met:
++ * 1. Redistributions of source code must retain the above copyright
++ *    notice, this list of conditions and the following disclaimer.
++ * 2. Redistributions in binary form must reproduce the above copyright
++ *    notice, this list of conditions and the following disclaimer in the
++ *    documentation and/or other materials provided with the distribution.
++ * 3. Neither the name of the project nor the names of its contributors
++ *    may be used to endorse or promote products derived from this software
++ *    without specific prior written permission.
++ * 
++ * THIS SOFTWARE IS PROVIDED BY THE PROJECT AND CONTRIBUTORS ``AS IS'' AND
++ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
++ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
++ * ARE DISCLAIMED.  IN NO EVENT SHALL THE PROJECT OR CONTRIBUTORS BE LIABLE
++ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
++ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
++ * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
++ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
++ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
++ * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
++ * SUCH DAMAGE.
++ */
++
+ /*
+  * Copyright (c) 1983, 1991 The Regents of the University of California.
+  * All rights reserved.
+@@ -41,7 +72,11 @@
+ char rcsid[] = 
+   "$Id: inetd.c,v 1.38 2000/07/24 23:48:34 dholland Exp $";
+ 
++#ifdef _USAGI
++#include "version.h"
++#else
+ #include "../version.h"
++#endif
+ 
+ /*
+  * Inetd - Internet super-server
+@@ -137,7 +172,17 @@
+ #include <getopt.h>
+ #include <stdlib.h>
+ #include <unistd.h>
++#ifndef HAVE_DAEMON
++#include "daemon.h"
++#endif
++#ifdef MULOG
++#include <signal.h>
++#endif
+ 
++#ifdef INET6
++#include <netinet/ip6.h>
++#endif
++ 
+ #ifndef __linux__
+ #ifndef RLIMIT_NOFILE
+ #define RLIMIT_NOFILE	RLIMIT_OFILE
+@@ -148,8 +193,8 @@
+ #include "inetd.h"
+ #include "servtab.h"
+ #include "sig.h"
+-#include "daemon.h"
+ #include "setproctitle.h"
++#include "builtins.h"
+ #include "mysleep.h"
+ 
+ #ifdef RPC   /* must come after inetd.h, which defines RPC */
+@@ -176,6 +221,12 @@
+ 
+ static void attempt_to_restart(void);
+ 
++#ifdef MULOG
++static void dolog(struct servtab *, int);
++char *rfc931_name(struct sockaddr *, int);
++static void timeout(int);
++#endif
++
+ struct servtab *servtab;                     /* service table */
+ const char *configfile = _PATH_INETDCONF;    /* config file path */
+ int debug = 0;                               /* debug flag */
+@@ -189,7 +240,7 @@
+ static int		options;
+ static int		timingout;
+ 
+-static long rlim_ofile_cur = DEFAULT_FILE_LIMIT;
++static unsigned long rlim_ofile_cur = DEFAULT_FILE_LIMIT;
+ 
+ #ifdef RLIMIT_NOFILE
+ struct rlimit	rlim_ofile;
+@@ -457,6 +508,13 @@
+ {
+ 	char buf[50];
+ 	int ctrl, dofork;
++#ifdef INET6
++	struct sockaddr_storage sa;
++#else
++	struct sockaddr sa;
++#endif
++	socklen_t salen = sizeof(&sa);
++	int nowait = 0;
+ 
+ 	if (debug) {
+ 		fprintf(stderr, "launching: %s\n", sep->se_service);
+@@ -465,9 +523,26 @@
+ 	if (!sep->se_wait && sep->se_socktype == SOCK_STREAM) {
+ 		/* Do nonblocking accept, just in case */
+ 		fcntl(sep->se_fd, F_SETFL, O_NDELAY);
+-		ctrl = accept(sep->se_fd, NULL, NULL);
++		ctrl = accept(sep->se_fd, (struct sockaddr *)&sa, &salen);
+ 		fcntl(sep->se_fd, F_SETFL, 0);
++#ifdef INET6
++		nowait = 1;
++#endif
++	} else {
++		ctrl = sep->se_fd;
++	}
++#ifdef INET6
++	if (sep->se_sockopt_ipv6_only &&
++	    ((struct sockaddr *)&sa)->sa_family == AF_INET6 &&
++	    IN6_IS_ADDR_V4MAPPED(&((struct sockaddr_in6 *)&sa)->sin6_addr)) {
++		syslog(LOG_WARNING, "packet arrived via ipv4 mapped address; ignored.");
++		if (nowait)
++			close(ctrl);
++		return;
++	}
++#endif
+ 
++	if (nowait) {
+ 		if (debug) {
+ 			fprintf(stderr, "accept: new socket %d\n", ctrl);
+ 		}
+@@ -485,9 +560,6 @@
+ 			return;
+ 		}
+ 	} 
+-	else {
+-		ctrl = sep->se_fd;
+-	}
+ 
+ 	dofork = (sep->se_bi == NULL || sep->se_bi->bi_fork);
+ 	if (dofork) {
+@@ -844,6 +916,9 @@
+ 			(void)unlink(sep->se_service);
+ 			break;
+ 		case AF_INET:
++#ifdef INET6
++		case AF_INET6:
++#endif
+ 			if (sep->se_wait == 1 && isrpcservice(sep))
+ 				unregister_rpc(sep);
+ 			break;
+@@ -886,6 +961,13 @@
+ 		syslog(LOG_ERR, "setsockopt (SO_DEBUG): %m");
+ 	if (turnon(sep->se_fd, SO_REUSEADDR) < 0)
+ 		syslog(LOG_ERR, "setsockopt (SO_REUSEADDR): %m");
++#ifdef INET6
++#ifdef IPV6_V6ONLY 
++	if (sep->se_sockopt_ipv6_only == 1 && 
++	    setsockopt(sep->se_fd, IPPROTO_IPV6, IPV6_V6ONLY, (char *)&on, sizeof (on)) <0)
++		syslog(LOG_ERR, "setsockopt (IPPROTO_IPV6, IPV6_V6ONLY): %m");
++#endif
++#endif
+ #undef turnon
+ 	if (bind(sep->se_fd, &sep->se_ctrladdr, sep->se_ctrladdr_size) < 0) {
+ 		syslog(LOG_ERR, "%s: bind: %m", service_name(sep),
+@@ -898,6 +980,10 @@
+ 		}
+ 		return;
+ 	}
++#ifdef INET6
++	if (debug)	
++		fprintf(stderr, "bound to af: %i\n", sep->se_family);
++#endif
+ 	if (sep->se_socktype == SOCK_STREAM)
+ 		listen(sep->se_fd, global_queuelen);
+ 
+@@ -916,7 +1002,7 @@
+ 	nsock++;
+ 	if (sep->se_fd > maxsock) {
+ 		maxsock = sep->se_fd;
+-		if (maxsock > rlim_ofile_cur - FD_MARGIN)
++		if ((unsigned int)maxsock + FD_MARGIN > rlim_ofile_cur)
+ 			bump_nofile();
+ 	}
+ }
+@@ -927,8 +1013,12 @@
+ #ifdef RPC
+ /*	size_t m; */
+ 	socklen_t m;
+-	int i;
++	int i, port;
++#ifdef INET6
++	struct sockaddr_storage sn;
++#else
+ 	struct sockaddr_in sn;
++#endif
+ 	struct protoent *pp;
+ 
+ 	if ((pp = getprotobyname(sep->se_proto+4)) == NULL) {
+@@ -943,16 +1033,18 @@
+ 		return;
+ 	}
+ 
++	port = sockaddr_port((struct sockaddr *)&sn, m);
++
+ 	for (i = sep->se_rpcversl; i <= sep->se_rpcversh; i++) {
+ 		if (debug)
+ 			fprintf(stderr, "pmap_set: %u %u %u %u\n",
+ 				sep->se_rpcprog, i, 
+-				pp->p_proto, ntohs(sn.sin_port));
++				pp->p_proto, port);
+ 		(void)pmap_unset(sep->se_rpcprog, i);
+-		if (!pmap_set(sep->se_rpcprog, i, pp->p_proto, ntohs(sn.sin_port)))
++		if (!pmap_set(sep->se_rpcprog, i, pp->p_proto, port))
+ 			syslog(LOG_ERR, "pmap_set: %u %u %u %u: %m",
+ 			       sep->se_rpcprog, i, 
+-			       pp->p_proto, ntohs(sn.sin_port));
++			       pp->p_proto, port);
+ 	}
+ #endif /* RPC */
+ }
+@@ -1048,45 +1140,75 @@
+ 
+ 
+ #ifdef MULOG
++static
++void
+ dolog(sep, ctrl)
+ 	struct servtab *sep;
+ 	int		ctrl;
+ {
++#ifdef INET6
++	struct sockaddr_storage	sa;
++	char			host[NI_MAXHOST];
++#else
+ 	struct sockaddr		sa;
+ 	struct sockaddr_in	*sin = (struct sockaddr_in *)&sa;
+-	int			len = sizeof(sa);
+ 	struct hostent		*hp;
+-	char			*host, *dp, buf[BUFSIZ], *rfc931_name();
++	char			*host;
++#endif
++	socklen_t		len = sizeof(sa);
++	char			buf[BUFSIZ];
+ 	int			connected = 1;
+ 
+-	if (sep->se_family != AF_INET)
++	if (sep->se_family != AF_INET
++#ifdef INET6
++	    && sep->se_family != AF_INET6
++#endif
++	    )
+ 		return;
+ 
+-	if (getpeername(ctrl, &sa, &len) < 0) {
++	if (getpeername(ctrl, (struct sockaddr *)&sa, &len) < 0) {
+ 		if (errno != ENOTCONN) {
+ 			syslog(LOG_ERR, "getpeername: %m");
+ 			return;
+ 		}
+-		if (recvfrom(ctrl, buf, sizeof(buf), MSG_PEEK, &sa, &len) < 0) {
++		if (recvfrom(ctrl, buf, sizeof(buf), MSG_PEEK, 
++			     (struct sockaddr *)&sa, &len) < 0) {
+ 			syslog(LOG_ERR, "recvfrom: %m");
+ 			return;
+ 		}
+ 		connected = 0;
+ 	}
+-	if (sa.sa_family != AF_INET) {
+-		syslog(LOG_ERR, "unexpected address family %u", sa.sa_family);
++	if (((struct sockaddr *)&sa)->sa_family != AF_INET
++#ifdef INET6
++	    && ((struct sockaddr *)&sa)->sa_family != AF_INET6
++#endif
++	    ) {
++		syslog(LOG_ERR, "unexpected address family %u", 
++			((struct sockaddr *)&sa)->sa_family);
+ 		return;
+ 	}
+ 
++#ifdef INET6
++	if (getnameinfo((struct sockaddr *)&sa, len,
++			host, sizeof(host), NULL, 0, 0)) {
++		syslog(LOG_ERR, "cannot do getnameinfo: family %u",
++			((struct sockaddr *)&sa)->sa_family);
++		return;
++	}
++#else
+ 	hp = gethostbyaddr((char *) &sin->sin_addr.s_addr,
+ 				sizeof (sin->sin_addr.s_addr), AF_INET);
+ 
+ 	host = hp?hp->h_name:inet_ntoa(sin->sin_addr);
++#endif
+ 
+ 	switch (sep->se_log & ~MULOG_RFC931) {
+ 	case 0:
+ 		return;
+ 	case 1:
++	    {
++#if 0		/* XXX where is curdom? */
++		char *dp;
+ 		if (curdom == NULL || *curdom == '\0')
+ 			break;
+ 		dp = host + strlen(host) - strlen(curdom);
+@@ -1097,7 +1219,9 @@
+ 					host, curdom);
+ 		if (strcasecmp(dp, curdom) == 0)
+ 			return;
++#endif
+ 		break;
++	    }
+ 	case 2:
+ 	default:
+ 		break;
+@@ -1107,7 +1231,7 @@
+ 
+ 	if (connected && (sep->se_log & MULOG_RFC931))
+ 		syslog(LOG_INFO, "%s@%s wants %s",
+-				rfc931_name(sin, ctrl), host, sep->se_service);
++				rfc931_name((struct sockaddr *)&sa, ctrl), host, sep->se_service);
+ 	else
+ 		syslog(LOG_INFO, "%s wants %s",
+ 				host, sep->se_service);
+@@ -1139,11 +1263,17 @@
+ /* rfc931_name - return remote user name */
+ 
+ char *
+-rfc931_name(struct sockaddr_in *there, int ctrl)
++rfc931_name(struct sockaddr *there, int ctrl)
+ {
+ 	/* "there" is remote link information */
+-	struct sockaddr_in here;	/* local link information */
+-	struct sockaddr_in sin;		/* for talking to RFC931 daemon */
++#ifdef INET6
++	struct sockaddr_storage here;	/* local link information */
++	struct sockaddr_storage sa;	/* for talking to RFC931 daemon */
++#else
++	struct sockaddr here;	/* local link information */
++	struct sockaddr sa;	/* for talking to RFC931 daemon */
++#endif
++	unsigned int	there_port, here_port;
+ 	int		length;
+ 	int		s;
+ 	unsigned	remote;
+@@ -1152,7 +1282,7 @@
+ 	char		buf[256];
+ 	char		*cp;
+ 	char		*result = "USER_UNKNOWN";
+-	int		len;
++	size_t		len;
+ 
+ 	/* Find out local port number of our stdin. */
+ 
+@@ -1161,33 +1291,70 @@
+ 		syslog(LOG_ERR, "getsockname: %m");
+ 		return (result);
+ 	}
+-	/* Set up timer so we won't get stuck. */
+ 
+-	if ((s = socket(AF_INET, SOCK_STREAM, 0)) == -1) {
++	memcpy(&sa, &here, sizeof(sa));
++	switch(((struct sockaddr *) &here)->sa_family) {
++	case AF_INET:
++		((struct sockaddr_in *)&sa)->sin_port = htons(0);
++		break;
++#ifdef INET6
++	case AF_INET6:
++		((struct sockaddr_in6 *)&sa)->sin6_port = htons(0);
++		break;
++#endif
++	default:
++		syslog(LOG_ERR, "getsockname: unsupported family %d",
++			((struct sockaddr *) &here)->sa_family);
++		return (result);
++	}
++
++	s = socket(((struct sockaddr*)&here)->sa_family, SOCK_STREAM, 0);
++	if (s == -1) {
+ 		syslog(LOG_ERR, "socket: %m");
+ 		return (result);
+ 	}
+ 
+-	sin = here;
+-	sin.sin_port = htons(0);
+-	if (bind(s, (struct sockaddr *) &sin, sizeof(sin)) == -1) {
++	if (bind(s, (struct sockaddr *) &sa, length) == -1) {
+ 		syslog(LOG_ERR, "bind: %m");
+ 		close(s);
+ 		return (result);
+ 	}
+ 
++	/* Set up timer so we won't get stuck. */
++
+ 	signal(SIGALRM, timeout);
+-	if (sigsetjmp(timebuf)) {
++	if (sigsetjmp(timebuf, 0)) {
+ 		close(s);			/* not: fclose(fp) */
+ 		return (result);
+ 	}
+ 	alarm(TIMEOUT);
+ 
++	/* ports */
++	there_port = ntohs(((struct sockaddr_in *)there)->sin_port);
++	here_port = ntohs(((struct sockaddr_in *)&here)->sin_port);
++
+ 	/* Connect to the RFC931 daemon. */
+ 
+-	sin = *there;
+-	sin.sin_port = htons(RFC931_PORT);
+-	if (connect(s, (struct sockaddr *) &sin, sizeof(sin)) == -1) {
++	length = SA_LEN((struct sockaddr *)there);
++	memcpy(&sa, there, length);
++	switch(((struct sockaddr *) there)->sa_family) {
++	case AF_INET:
++		((struct sockaddr_in *)&sa)->sin_port = htons(RFC931_PORT);
++		break;
++#ifdef INET6
++	case AF_INET6:
++		((struct sockaddr_in6 *)&sa)->sin6_port = htons(RFC931_PORT);
++		break;
++#endif
++	default:
++		syslog(LOG_ERR, "unsupported remote family %u",
++			((struct sockaddr *) there)->sa_family);
++		close(s);
++		alarm(0);
++		return result;
++	}
++
++	if (connect(s, (struct sockaddr *) &sa, length) == -1) {
+ 		close(s);
+ 		alarm(0);
+ 		return (result);
+@@ -1195,7 +1362,7 @@
+ 
+ 	/* Query the RFC 931 server. Would 13-byte writes ever be broken up? */
+ 	snprintf(buf, sizeof(buf), "%u,%u\r\n", 
+-		 ntohs(there->sin_port), ntohs(here.sin_port));
++		 there_port, here_port);
+ 
+ 
+ 	for (len = 0, cp = buf; len < strlen(buf); ) {
+@@ -1224,11 +1391,11 @@
+ 	*cp = '\0';
+ 
+ 	if (sscanf(buf, "%u , %u : USERID :%*[^:]:%255s", &remote, &local, user) == 3
+-		&& ntohs(there->sin_port) == remote
+-		&& ntohs(here.sin_port) == local) {
++		&& there_port == remote
++		&& here_port == local) {
+ 
+ 		/* Strip trailing carriage return. */
+-		if (cp = strchr(user, '\r'))
++		if ((cp = strchr(user, '\r')) != NULL)
+ 			*cp = 0;
+ 		result = user;
+ 	}
+diff -Nru netkit-base-0.17/inetd/pathnames.h netkit-base/inetd/pathnames.h
+--- netkit-base-0.17/inetd/pathnames.h	2000-07-23 01:00:05.000000000 +0200
++++ netkit-base/inetd/pathnames.h	2001-04-03 22:33:59.000000000 +0200
+@@ -36,6 +36,14 @@
+ 
+ #include <paths.h>
+ 
++#ifndef _PATH_INETDCONF 
+ #define	_PATH_INETDCONF	"/etc/inetd.conf"
++#endif
++
++#ifndef _PATH_INETDPID
+ #define _PATH_INETDPID	"/var/run/inetd.pid"
++#endif
++
++#ifndef _PATH_INETD
+ #define _PATH_INETD     "/usr/sbin/inetd"
++#endif
+diff -Nru netkit-base-0.17/inetd/servtab.c netkit-base/inetd/servtab.c
+--- netkit-base-0.17/inetd/servtab.c	2000-07-22 22:20:50.000000000 +0200
++++ netkit-base/inetd/servtab.c	2001-01-29 19:38:19.000000000 +0100
+@@ -1,3 +1,34 @@
++/* $USAGI: servtab.c,v 1.10 2001/01/29 18:38:19 yoshfuji Exp $ */
++
++/*
++ * Copyright (C) 2001 USAGI/WIDE Project.
++ * All rights reserved.
++ * 
++ * Redistribution and use in source and binary forms, with or without
++ * modification, are permitted provided that the following conditions
++ * are met:
++ * 1. Redistributions of source code must retain the above copyright
++ *    notice, this list of conditions and the following disclaimer.
++ * 2. Redistributions in binary form must reproduce the above copyright
++ *    notice, this list of conditions and the following disclaimer in the
++ *    documentation and/or other materials provided with the distribution.
++ * 3. Neither the name of the project nor the names of its contributors
++ *    may be used to endorse or promote products derived from this software
++ *    without specific prior written permission.
++ * 
++ * THIS SOFTWARE IS PROVIDED BY THE PROJECT AND CONTRIBUTORS ``AS IS'' AND
++ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
++ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
++ * ARE DISCLAIMED.  IN NO EVENT SHALL THE PROJECT OR CONTRIBUTORS BE LIABLE
++ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
++ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
++ * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
++ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
++ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
++ * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
++ * SUCH DAMAGE.
++ */
++
+ /*
+  * Copyright (c) 1983, 1991 The Regents of the University of California.
+  * All rights reserved.
+@@ -42,6 +73,9 @@
+ #include <unistd.h>
+ #include <stdlib.h>
+ #include <stdio.h>
++#ifdef MULOG
++#include <ctype.h>
++#endif
+ 
+ #include "inetd.h"
+ #include "servtab.h"
+@@ -49,6 +83,10 @@
+ #include "sig.h"
+ #include "mysleep.h"
+ 
++#ifdef INET6
++#include <netinet/ip6.h>
++#endif
++
+ char servtab_rcsid[] = 
+   "$Id: servtab.c,v 1.6 2000/07/22 20:20:50 dholland Exp $";
+ 
+@@ -104,6 +142,7 @@
+ {
+ 	struct servtab *sep;
+ 	for (sep = servtab; sep; sep = sep->se_next) {
++		if (sep->se_family != cp->se_family) continue;
+ 		if (strcmp(sep->se_service, cp->se_service)) continue;
+ 		if (strcmp(sep->se_proto, cp->se_proto)) continue;
+ 
+@@ -123,8 +162,21 @@
+ 		if (sep->se_address==NULL || cp->se_address==NULL) continue;
+ 
+ 		/* Don't bother to compare the hostnames, just the IPs */
+-		if (sep->se_ctrladdr_in.sin_addr.s_addr ==
+-		    cp->se_ctrladdr_in.sin_addr.s_addr) return sep;
++		switch(sep->se_family) {
++#ifdef INET6
++		case AF_INET6:
++			if (memcmp(&sep->se_ctrladdr_in6.sin6_addr, 
++		    	       &cp->se_ctrladdr_in6.sin6_addr, 
++			       sizeof(struct in6_addr)) == 0) return sep;
++			break;
++#endif
++		case AF_INET:
++			if (sep->se_ctrladdr_in.sin_addr.s_addr ==
++		            cp->se_ctrladdr_in.sin_addr.s_addr) return sep;
++			break;
++		default:
++			/*XXX*/
++		}
+ 	}
+ 	return NULL;
+ }
+@@ -144,49 +196,6 @@
+ 	return rv;
+ }
+ 
+-/********* exit-resistant malloc ************************/
+-
+-/*
+- * On many systems, including presently Linux, this is bloat because
+- * malloc never returns null - if the system runs out of swap, it 
+- * panics or randomly starts killing processes or does other weird 
+- * stuff. However, it doesn't hurt to be prepared. This is the only
+- * place inetd can actually exit due to failure, now.
+- */
+-
+-void *
+-domalloc(size_t len)
+-{
+-	static int retries[] = { 2, 10, 60, 600, -1 };
+-	void *p;
+-	int try = 0;
+-
+-	while (retries[try]>0) {
+-		p = malloc(len);
+-		if (p != NULL) {
+-		    	return p;
+-		}
+-	
+-		syslog(LOG_ERR, "Out of memory - retrying in %d seconds.",
+-		       retries[try]);
+-		mysleep(retries[try]);
+-		try++;
+-	}
+-	/* Should this be LOG_EMERG? */
+-	syslog(LOG_ALERT, "Out of memory - GIVING UP!");
+-	exit(100);
+-	return NULL;  /* unreachable */
+-}
+-
+-char *
+-dostrdup(const char *cp)
+-{
+-	char *x = domalloc(strlen(cp)+1);
+-	strcpy(x, cp);
+-	return x;
+-}
+-
+-
+ /********* config parser ********************************/
+ 
+ static void loadconfigent(struct servtab *cp);
+@@ -194,203 +203,6 @@
+ static FILE *fconfig = NULL;
+ 
+ 
+-#if 0 /* old version */
+-static struct servtab serv;
+-static char line[256];
+-
+-static
+-char *
+-nextline(FILE *fd)
+-{
+-	char *cp;
+-
+-	if (fgets(line, sizeof (line), fd) == NULL)
+-		return ((char *)0);
+-	cp = strchr(line, '\n');
+-	if (cp)
+-		*cp = '\0';
+-	return (line);
+-}
+-
+-static 
+-char *
+-skip(char **cpp)
+-{
+-	register char *cp = *cpp;
+-	char *start;
+-
+-	if (*cpp == NULL)
+-		return ((char *)0);
+-
+-again:
+-	while (*cp == ' ' || *cp == '\t')
+-		cp++;
+-	if (*cp == '\0') {
+-		int c;
+-
+-		c = getc(fconfig);
+-		(void) ungetc(c, fconfig);
+-		if (c == ' ' || c == '\t')
+-			if ((cp = nextline(fconfig))!=NULL)
+-				goto again;
+-		*cpp = NULL;
+-		return NULL;
+-	}
+-	start = cp;
+-	while (*cp && *cp != ' ' && *cp != '\t')
+-		cp++;
+-	if (*cp != '\0')
+-		*cp++ = '\0';
+-	*cpp = cp;
+-	return (start);
+-}
+-
+-static
+-struct servtab *
+-getconfigent(void)
+-{
+-	register struct servtab *sep = &serv;
+-	int argc;
+-	char *cp, *arg;
+-
+-more:
+-	while ((cp = nextline(fconfig)) && *cp == '#')
+-		;
+-
+-	if (cp == NULL) {
+-		return NULL;
+-	}
+-
+-	memset(sep, 0, sizeof(*sep));
+-	sep->se_service = dostrdup(skip(&cp));
+-	arg = skip(&cp);
+-	if (arg == NULL)
+-		goto more;
+-
+-	if (strcmp(arg, "stream") == 0)
+-		sep->se_socktype = SOCK_STREAM;
+-	else if (strcmp(arg, "dgram") == 0)
+-		sep->se_socktype = SOCK_DGRAM;
+-	else if (strcmp(arg, "rdm") == 0)
+-		sep->se_socktype = SOCK_RDM;
+-	else if (strcmp(arg, "seqpacket") == 0)
+-		sep->se_socktype = SOCK_SEQPACKET;
+-	else if (strcmp(arg, "raw") == 0)
+-		sep->se_socktype = SOCK_RAW;
+-	else
+-		sep->se_socktype = -1;
+-
+-	sep->se_proto = dostrdup(skip(&cp));
+-	if (strcmp(sep->se_proto, "unix") == 0) {
+-		sep->se_family = AF_UNIX;
+-	} else {
+-		sep->se_family = AF_INET;
+-		if (strncmp(sep->se_proto, "rpc/", 4) == 0) {
+-#ifdef RPC
+-			char *cp1, *ccp;
+-			cp1 = index(sep->se_service, '/');
+-			if (cp1 == NULL) {
+-				syslog(LOG_ERR, "%s: no rpc version",
+-				    sep->se_service);
+-				goto more;
+-			}
+-			*cp1++ = '\0';
+-			sep->se_rpcversl =
+-				sep->se_rpcversh = strtol(cp1, &ccp, 0);
+-			if (ccp == cp1) {
+-		badafterall:
+-				syslog(LOG_ERR, "%s/%s: bad rpc version",
+-				    sep->se_service, cp1);
+-				goto more;
+-			}
+-			if (*ccp == '-') {
+-				cp1 = ccp + 1;
+-				sep->se_rpcversh = strtol(cp1, &ccp, 0); 
+-				if (ccp == cp1)
+-					goto badafterall;
+-			}
+-#else
+-			syslog(LOG_ERR, "%s: rpc services not supported",
+-			    sep->se_service);
+-			goto more;
+-#endif /* RPC */
+-		}
+-	}
+-	arg = skip(&cp);
+-	if (arg == NULL)
+-		goto more;
+-	{
+-		char	*s = index(arg, '.');
+-		if (s) {
+-			*s++ = '\0';
+-			sep->se_max = atoi(s);
+-		} else
+-			sep->se_max = TOOMANY;
+-	}
+-	sep->se_wait = strcmp(arg, "wait") == 0;
+-	sep->se_user = dostrdup(skip(&cp));
+-	sep->se_group = strchr(sep->se_user, '.');
+-	if (sep->se_group) {
+-		*sep->se_group++ = '\0';
+-	}
+-	sep->se_server = dostrdup(skip(&cp));
+-	if (strcmp(sep->se_server, "internal") == 0) {
+-		register struct biltin *bi;
+-
+-		for (bi = biltins; bi->bi_service; bi++)
+-			if (bi->bi_socktype == sep->se_socktype &&
+-			    strcmp(bi->bi_service, sep->se_service) == 0)
+-				break;
+-		if (bi->bi_service == 0) {
+-			syslog(LOG_ERR, "internal service %s unknown\n",
+-				sep->se_service);
+-			goto more;
+-		}
+-		sep->se_bi = bi;
+-		sep->se_wait = bi->bi_wait;
+-	} else
+-		sep->se_bi = NULL;
+-	argc = 0;
+-	for (arg = skip(&cp); cp; arg = skip(&cp)) {
+-#if MULOG
+-		char *colon, *rindex();
+-
+-		if (argc == 0 && (colon = rindex(arg, ':'))) {
+-			while (arg < colon) {
+-				int	x;
+-				char	*ccp;
+-
+-				switch (*arg++) {
+-				case 'l':
+-					x = 1;
+-					if (isdigit(*arg)) {
+-						x = strtol(arg, &ccp, 0);
+-						if (ccp == arg)
+-							break;
+-						arg = ccp;
+-					}
+-					sep->se_log &= ~MULOG_RFC931;
+-					sep->se_log |= x;
+-					break;
+-				case 'a':
+-					sep->se_log |= MULOG_RFC931;
+-					break;
+-				default:
+-					break;
+-				}
+-			}
+-			arg = colon + 1;
+-		}
+-#endif
+-		if (argc < MAXARGV)
+-			sep->se_argv[argc++] = dostrdup(arg);
+-	}
+-	while (argc <= MAXARGV)
+-		sep->se_argv[argc++] = NULL;
+-	return (sep);
+-}
+-#else /* new version begins here */
+-
+ struct wordmap {
+ 	const char *word;
+ 	int val;
+@@ -434,8 +246,18 @@
+ const char *
+ assemble_entry(struct servtab *sep, int nfields, char **fields)
+ {
++	char *proto;
++	int use_family = PF_UNSPEC;
++#ifdef INET6
++	int use_v6only = 0;
++	struct sockaddr_storage service_home;
++	struct addrinfo hints, *res0, *res;
++	char *serv = "discard";	/* discard(dummy) */
++	int err;
++#else
+ 	struct in_addr service_home;
+ 	struct hostent *hp;
++#endif
+ 	char *s, *t;
+ 	int i;
+ 
+@@ -444,33 +266,138 @@
+ 	}
+ 
+ 	memset(sep, 0, sizeof(*sep));
++	memset(&service_home, 0, sizeof(service_home));
++
++	proto = fields[2];
++	if (!strcmp(fields[2], "unix")) {
++		use_family = PF_UNIX;
++	} else {
++		char *p = strchr(proto, '/');
++		if (p)
++			proto = p + 1;
++
++		if (strncmp(proto, "udp", 3) == 0 || 
++		    strncmp(proto, "tcp", 3) == 0) {
++			int len = strlen(proto);
++
++			switch(len) {
++			case 3:
++				use_family = PF_INET;
++				break;
++			case 4:
++				if (*(proto + 3) == '4')
++					use_family = PF_INET;
++#ifdef INET6
++				else if (*(proto + 3) == '6') {
++					use_family = PF_INET6;
++					use_v6only = 1;
++				}
++#endif
++				else
++					return "Invalid / unsupported protocol";
++				break;
++			case 5:
++#ifdef INET6
++				if (strcmp(proto + 3, "46") == 0)
++					use_family = PF_INET6;
++				else
++#endif
++					return "Invalid / unsupported protocol";
++				break;				
++			default:
++				return "Invalid / unsupported protocol";
++			}
+ 
++			/* now we shall set the protocol name back to the 
++			   standard value. */
++			*(proto + 3) = '\0';
++		}
++	}
++	
+ 	s = strchr(fields[0], '@');
+ 	if (s) {
+ 		*s++ = 0;
+ 		sep->se_address = s;
+-		hp = gethostbyname(s);
+-		if (hp==NULL) return "Service hostname/address not found";
+-		memcpy(&service_home, hp->h_addr, sizeof(service_home));
+-	}
+-	else {
+-		service_home.s_addr = INADDR_ANY;
+-	}
+-	sep->se_service = fields[0];
+-	sep->se_socktype = map_word(socket_types, fields[1]);
+-	free(fields[1]);
+ 
+-	sep->se_proto = fields[2];
+-	if (!strcmp(sep->se_proto, "unix")) {
+-		sep->se_family = AF_UNIX;
+-		if (sep->se_address!=NULL) {
++		if (use_family == PF_UNIX) {
+ 			return "@host given for unix socket";
+ 		}
+ 	}
+-	else {
+-		sep->se_family = AF_INET;
++
++#ifdef INET6
++	memset(&hints, 0, sizeof(hints));
++	hints.ai_family = use_family;
++	hints.ai_flags = AI_PASSIVE;
++
++	err = getaddrinfo(s, s ? NULL : serv, &hints, &res0);
++	if (err)
++		return gai_strerror(err);
++
++	for (res=res0; res; res=res->ai_next){
++		switch(res->ai_family){
++		case PF_INET:
++			((struct sockaddr_in*)res->ai_addr)->sin_port = 0;
++			break;
++		case PF_INET6:
++			((struct sockaddr_in6*)res->ai_addr)->sin6_port = 0;
++			break;
++		case PF_UNIX:
++			((struct sockaddr_un*)res->ai_addr)->sun_path[0] = 0;
++			break;
++		default:
++			/*XXX*/
++			break;
++		}
++	}
++
++	if (res0==NULL)
++		return "Service hostname/address not found";
++
++	if ((size_t)res0->ai_addrlen > sizeof(sep->se_ctrladdr_storage)) {
++		freeaddrinfo(res0);
++		return "sockaddr got from getaddrinfo() was too large";
++	}
++
++	memcpy(&service_home, res0->ai_addr, res0->ai_addrlen);
++	sep->se_ctrladdr_storage = service_home;
++	sep->se_ctrladdr_size = res0->ai_addrlen;
++	if (use_v6only)
++		sep->se_sockopt_ipv6_only = 1;
++
++	freeaddrinfo(res0);
++#else
++	switch (use_family) {
++	case PF_INET:
++		if (s) {
++			hp = gethostbyname(s);
++			if (hp==NULL)
++				return "Service hostname/address not found";
++			memcpy(&service_home, hp->h_addr, sizeof(service_home));
++		}
++		else
++			service_home.s_addr = INADDR_ANY;
++		sep->se_ctrladdr_size = sizeof(struct sockaddr_in);
++		sep->se_ctrladdr_in.sin_family = PF_INET;
+ 		sep->se_ctrladdr_in.sin_addr = service_home;
++		break;
++	case PF_UNIX:
++		sep->se_ctrladdr_size = sizeof(struct sockaddr_un);
++		sep->se_ctrladdr_un.sun_family = PF_UNIX;
++		strncpy(sep->se_ctrladdr_un.sun_path, sep->se_service, 
++			sizeof(sep->se_ctrladdr_un.sun_path));
++		sep->se_ctrladdr_un.sun_path[sizeof(sep->se_ctrladdr_un.sun_path)-1] = '\0';
++		break;
++	default:
++		/*XXX*/
++	}
++#endif
++
++	sep->se_family = use_family;
++	sep->se_socktype = map_word(socket_types, fields[1]);
++	sep->se_proto = proto;
++	sep->se_service = fields[0];
+ 
++	if (strcmp(fields[2], "unix")) {
+ 		if (!strncmp(sep->se_proto, "rpc/", 4)) {
+ #ifdef RPC
+ 			s = strchr(sep->se_service, '/');
+@@ -501,7 +428,6 @@
+ 		sep->se_max = TOOMANY;
+ 	}
+ 	sep->se_wait = !strcmp(fields[3], "wait");
+-	free(fields[3]);
+ 
+ 	s = strchr(fields[4], '.');
+ 	if (s) {
+@@ -527,6 +453,35 @@
+ 
+ 	/* The rest are argv[]. */ 
+ 	for (i=6; i<nfields; i++) {
++#ifdef MULOG
++		char *arg = fields[i], *colon;
++		if (i == 6 && (colon = rindex(arg, ':'))) {
++			while (arg < colon) {
++				int	x;
++				char	*ccp;
++
++				switch (*arg++) {
++				case 'l':
++					x = 1;
++					if (isdigit(*arg)) {
++						x = strtol(arg, &ccp, 0);
++						if (ccp == arg)
++							break;
++						arg = ccp;
++					}
++					sep->se_log &= ~MULOG_RFC931;
++					sep->se_log |= x;
++					break;
++				case 'a':
++					sep->se_log |= MULOG_RFC931;
++					break;
++				default:
++					break;
++				}
++			}
++			memmove(fields[i], colon+1, strlen(colon+1)+1);
++		}
++#endif
+ 		sep->se_argv[i-6] = fields[i];
+ 	}
+ 
+@@ -535,6 +490,8 @@
+ 		sep->se_argv[0] = dostrdup(sep->se_server);
+ 	}
+ 
++	free(fields[1]);
++	free(fields[3]);
+ 	return NULL;
+ }
+ 
+@@ -604,6 +561,9 @@
+ 			if (errmsg) {
+ 				syslog(LOG_WARNING, "Bad config for %s: %s"
+ 				       " (skipped)", fields[0], errmsg);
++				/* fix memory leak */
++				while (nfields) 
++					free(fields[--nfields]);
+ 			}
+ 			else {
+ 				sendents(&assm);
+@@ -630,8 +590,6 @@
+ 	}
+ }
+ 
+-#endif
+-
+ /********* config loading ****************************************/
+ 
+ static int
+@@ -725,8 +683,13 @@
+ 	 * to key the table by port and protocol, not service name
+ 	 * and protocol.
+ 	 */
++#ifdef INET6
++	if ((cp->se_family==AF_INET || cp->se_family==AF_INET6) && 
++		!isrpcservice(cp)) {
++#else
+ 	if (cp->se_family==AF_INET && !isrpcservice(cp)) {
+-		u_short port = htons(atoi(cp->se_service));
++#endif
++		u_short port = atoi(cp->se_service);
+ 		
+ 		if (!port) {
+ 			struct servent *sp;
+@@ -830,8 +793,17 @@
+ 		setup(sep);
+ 		break;
+ 	case AF_INET:
+-		sep->se_ctrladdr_in.sin_family = AF_INET;
+-		sep->se_ctrladdr_size = sizeof sep->se_ctrladdr_in;
++#ifdef INET6
++	case AF_INET6:
++#endif
++		sep->se_family = sep->se_family;
++#ifdef INET6
++		sep->se_ctrladdr_size = sep->se_family == AF_INET ?
++					sizeof(struct sockaddr_in) :
++					sizeof(struct sockaddr_in6);
++#else
++		sep->se_ctrladdr_size = sizeof(struct sockaddr_in);
++#endif
+ 		if (isrpcservice(sep)) {
+ 			struct rpcent *rp;
+ 			
+@@ -852,7 +824,7 @@
+ 				register_rpc(sep);
+ 		} 
+ 		else {
+-			u_short port = htons(atoi(sep->se_service));
++			u_short port = atoi(sep->se_service);
+ 			
+ 			if (!port) {
+ 				struct servent *sp;
+@@ -864,10 +836,20 @@
+ 					       service_name(sep));
+ 					return;
+ 				}
+-				port = sp->s_port;
+-			}
+-			if (port != sep->se_ctrladdr_in.sin_port) {
+-				sep->se_ctrladdr_in.sin_port = port;
++				/* the s_port field of the struct servent 
++				 * returned by getservbyname is already in 
++				 * network byte order, so there is no need
++			 	 * to call htons on sp->s_port. */
++				port = ntohs(sp->s_port);
++			}
++			if (port != sockaddr_port(&(sep->se_ctrladdr),
++					          sep->se_ctrladdr_size)) {
++#ifdef INET6
++				if (sep->se_family == AF_INET6)
++					sep->se_ctrladdr_in6.sin6_port = htons(port);
++				else
++#endif
++					sep->se_ctrladdr_in.sin_port = htons(port);
+ 				if (sep->se_fd != -1) {
+ 					closeit(sep);
+ 				}
+@@ -891,13 +873,8 @@
+ 	}
+ 	for (sep = servtab; sep; sep = sep->se_next)
+ 		sep->se_checked = 0;
+-#if 0 /* old version */
+-	while ((cp = getconfigent())!=NULL) {
+-		loadconfigent(cp);
+-	}
+-#else
++
+ 	loadconfigfile(loadconfigent);
+-#endif
+ 
+ 	endconfig();
+ 	/*
+@@ -934,6 +911,9 @@
+ 		if (sep->se_fd == -1) {
+ 			switch (sep->se_family) {
+ 			case AF_UNIX:
++#ifdef INET6
++			case AF_INET6:
++#endif
+ 			case AF_INET:
+ 				setup(sep);
+ 				if (sep->se_fd != -1 && isrpcservice(sep))
+diff -Nru netkit-base-0.17/inetd/servtab.h netkit-base/inetd/servtab.h
+--- netkit-base-0.17/inetd/servtab.h	1999-08-23 09:22:30.000000000 +0200
++++ netkit-base/inetd/servtab.h	2001-01-28 02:31:14.000000000 +0100
+@@ -1,3 +1,5 @@
++/* $USAGI: servtab.h,v 1.6 2001/01/28 01:31:14 yoshfuji Exp $ */
++
+ #define	MAXARGV 20
+ 
+ struct servtab;
+@@ -31,6 +33,10 @@
+ 		struct	sockaddr se_un_ctrladdr;
+ 		struct	sockaddr_in se_un_ctrladdr_in;
+ 		struct	sockaddr_un se_un_ctrladdr_un;
++#ifdef INET6
++		struct sockaddr_in6 se_un_ctrladdr_in6;
++		struct sockaddr_storage se_un_ctrladdr_storage;
++#endif
+ 	} se_un;			/* bound address */
+ 	int	se_ctrladdr_size;
+ 	int	se_max;			/* max # of instances of this service */
+@@ -40,6 +46,9 @@
+ 	int	se_log;
+ #define MULOG_RFC931	0x40000000
+ #endif
++#ifdef INET6
++	int     se_sockopt_ipv6_only;
++#endif
+ 	struct	servtab *se_next;
+ };
+ 
+@@ -47,6 +56,10 @@
+ #define se_ctrladdr_in	se_un.se_un_ctrladdr_in
+ #define se_ctrladdr_un	se_un.se_un_ctrladdr_un
+ 
++#ifdef INET6
++#define se_ctrladdr_in6     se_un.se_un_ctrladdr_in6
++#define se_ctrladdr_storage se_un.se_un_ctrladdr_storage
++#endif
+ 
+ extern struct servtab *servtab;
+ 
+diff -Nru netkit-base-0.17/ping/Makefile netkit-base/ping/Makefile
+--- netkit-base-0.17/ping/Makefile	2000-02-04 10:38:37.000000000 +0100
++++ netkit-base/ping/Makefile	2001-01-27 06:57:08.000000000 +0100
+@@ -9,7 +9,9 @@
+ ping.o: ../version.h pingpack.h
+ 
+ install: ping
++	install -d $(INSTALLROOT)$(ROOTBINDIR)
+ 	install -s -o root -m$(SUIDMODE) ping $(INSTALLROOT)$(ROOTBINDIR)
++	install -d $(INSTALLROOT)$(MANDIR)/man8
+ 	install -m$(MANMODE) ping.8 $(INSTALLROOT)$(MANDIR)/man8
+ 
+ clean:

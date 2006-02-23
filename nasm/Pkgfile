@@ -1,0 +1,16 @@
+# Description: 80x86 assembler
+# URL:         http://nasm.sourceforge.net
+# Maintainer:  Per Lidén <per@fukt.bth.se>
+
+name=nasm
+version=0.98.39
+release=1
+source=(http://dl.sourceforge.net/$name/$name-$version.tar.bz2)
+
+build() {
+    cd $name-$version
+    ./configure --prefix=/usr
+    make
+    mkdir -p $PKG/usr/bin $PKG/usr/man/man1
+    make INSTALLROOT=$PKG install
+}

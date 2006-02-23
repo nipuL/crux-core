@@ -1,0 +1,32 @@
+# Description: A popular vi clone that features syntax highlighting
+# URL:         http://www.vim.org/
+# Maintainer:  Per Lidén <per@fukt.bth.se>
+# Depends on:  ncurses
+
+name=vim
+version=6.4
+release=1
+source=(ftp://ftp.vim.org/pub/vim/unix/$name-$version.tar.bz2)
+
+build () {
+    cd vim64
+    cd src
+    ./configure --prefix=/usr \
+		--with-vim-name=vim \
+		--with-x=no \
+		--enable-gui=no \
+		--disable-gpm \
+		--disable-nls
+    make VIMRTDIR=
+    make VIMRTDIR= DESTDIR=$PKG installvimbin installruntime installlinks
+    mv $PKG/usr/share/vim/vimrc_example.vim $PKG/usr/share/vim/vimrc
+    rm -rf $PKG/usr/man/man?/vimtutor* $PKG/usr/share/vim/tutor
+    ln -sf vim $PKG/usr/bin/vi
+    ln -sf vim $PKG/usr/bin/evim
+    ln -sf vim.1.gz $PKG/usr/man/man1/ex.1.gz
+    ln -sf vim.1.gz $PKG/usr/man/man1/vi.1.gz
+    ln -sf vim.1.gz $PKG/usr/man/man1/rvim.1.gz
+    ln -sf vim.1.gz $PKG/usr/man/man1/view.1.gz
+    ln -sf vim.1.gz $PKG/usr/man/man1/rview.1.gz
+    ln -sf vim.1.gz $PKG/usr/man/man1/gvim.1.gz
+}

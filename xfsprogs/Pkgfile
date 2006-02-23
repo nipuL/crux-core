@@ -1,0 +1,18 @@
+# Description: Filesystem utilities for XFS
+# URL:         http://oss.sgi.com/projects/xfs/
+# Maintainer:  Per Lidén <per@fukt.bth.se>
+# Depends on:  e2fsprogs
+
+name=xfsprogs
+version=2.7.11
+release=1
+source=(ftp://oss.sgi.com/projects/xfs/cmd_tars/$name-$version.src.tar.gz)
+
+build() {
+    cd $name-$version
+    DEBUG=-DNDEBUG ./configure --prefix=/usr
+    make
+    make prefix=$PKG/usr install
+    mv $PKG/usr/{bin,sbin,lib} $PKG
+    rm -rf $PKG/usr/share
+}

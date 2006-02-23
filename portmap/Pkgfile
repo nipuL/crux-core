@@ -1,0 +1,20 @@
+# Description: RPC connection manager
+# URL:         ftp://ftp.porcupine.org/pub/security/index.html
+# Maintainer:  Per Lidén <per@fukt.bth.se>
+
+name=portmap
+version=5beta
+release=4
+source=(ftp://ftp.porcupine.org/pub/security/${name}_$version.tar.gz \
+	${name}_$version.patch portmap)
+
+build() { 
+    cd ${name}_$version
+    patch -p1 < ../${name}_$version.patch
+    make
+    mkdir -p $PKG/sbin $PKG/etc/rc.d $PKG/usr/share/{man/man8,doc/portmap}
+    make BASEDIR=$PKG install
+    install -D -m 755 ../portmap $PKG/etc/rc.d/portmap
+    mv $PKG/usr/share/man $PKG/usr
+    rm -rf $PKG/usr/share
+}

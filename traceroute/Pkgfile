@@ -1,0 +1,20 @@
+# Description: A tool to trace the route of ip packets
+# URL:         ftp://ftp.ee.lbl.gov/
+# Maintainer:  Per Lidén <per@fukt.bth.se>
+
+name=traceroute
+version=1.4a12
+release=1
+source=(ftp://ftp.ee.lbl.gov/$name-$version.tar.gz)
+
+build() {
+    cd $name-$version
+    ./configure --prefix=/usr
+    make
+    mkdir -p $PKG/usr/sbin $PKG/usr/man/man8
+    make DESTDIR=$PKG install install-man
+    mv $PKG/usr/sbin $PKG/usr/bin
+    chown -R root.root $PKG
+    chmod -R +w $PKG
+    chmod +s $PKG/usr/bin/traceroute
+}

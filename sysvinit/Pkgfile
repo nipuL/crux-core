@@ -1,0 +1,20 @@
+# Description: The Linux System V Init
+# URL:         ftp://ftp.cistron.nl/pub/people/miquels/sysvinit/
+# Maintainer:  Per Lidén <per@fukt.bth.se>
+
+name=sysvinit
+version=2.86
+release=5
+source=(ftp://ftp.cistron.nl/pub/people/miquels/sysvinit/$name-$version.tar.gz \
+	$name-$version.patch)
+
+build() {
+    cd $name-$version
+    patch -p1 < ../$name-$version.patch
+    make -C src
+    make -C src ROOT=$PKG install
+    mkdir -p $PKG/var/log
+    touch $PKG/var/log/wtmp
+    touch $PKG/var/log/btmp
+    chmod 0600 $PKG/var/log/btmp
+}

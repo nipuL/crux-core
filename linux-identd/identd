@@ -1,0 +1,23 @@
+#!/bin/sh
+#
+# /etc/rc.d/identd: start/stop ident daemon
+#
+
+case $1 in
+start)
+	/usr/sbin/identd -d -l
+	;;
+stop)
+	killall -q /usr/sbin/identd
+	;;
+restart)
+	$0 stop
+	sleep 2
+	$0 start
+	;;
+*)
+	echo "usage: $0 [start|stop|restart]"
+	;;
+esac
+
+# End of file

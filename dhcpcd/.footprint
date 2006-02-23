@@ -1,0 +1,8 @@
+drwxr-xr-x	root/root	etc/
+drwxr-xr-x	root/root	etc/dhcpc/
+drwxr-xr-x	root/root	sbin/
+-rwxr-xr-x	root/root	sbin/dhcpcd
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/man/
+drwxr-xr-x	root/root	usr/man/man8/
+-rw-r--r--	root/root	usr/man/man8/dhcpcd.8.gz

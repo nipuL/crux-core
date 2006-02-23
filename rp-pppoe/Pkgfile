@@ -1,0 +1,17 @@
+# Description: PPP-over-Ethernet redirector for pppd
+# URL:         http://www.roaringpenguin.com/pppoe 
+# Maintainer:  Jürgen Daubert, juergen dot daubert at t-online dot de
+# Depends on:  ppp
+
+name=rp-pppoe
+version=3.7
+release=1
+source=(http://www.roaringpenguin.com/penguin/pppoe/$name-$version.tar.gz)
+
+build () {
+    cd $name-$version/src
+    ./configure --prefix=/usr
+    make
+    make RPM_INSTALL_ROOT=$PKG install
+    rm -r $PKG/{usr/share/,etc/ppp/plugins}
+}
