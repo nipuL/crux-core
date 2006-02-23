@@ -1,0 +1,51 @@
+
+README for udev
+
+
+The information formerly in this README is now available in the
+devfs_to_udev_README file located in this directory.
+
+This version of the udev port uses a modified gentoo start_udev
+script and a slightly modified gentoo udev.rules file. The reason
+for this is simply that I wish to spend less time maintaining
+them and the gentoo people are doing a great job there. The
+previous crux rules file is available in this directory as
+crux-udev.rules but isn't installed with the port.
+
+------------------------------------------------------------------
+*IMPORTANT* - I don't intend to support the devfs-style names
+forever. I've already removed the ide-devfs and scsi-devfs scripts
+from the udev port. You'll need to edit your fstab and such to
+reflect this if you use the devfs-style names. Eventally this
+will also affect logins as /etc/inittab and /etc/securetty use
+devfs-style vc/* notation, which needs to be changed to tty*. This
+release contains legacy vc/* symlinks but this will change in the
+future.
+------------------------------------------------------------------
+
+As a side note, I recommend a slightly different /etc/rc setup
+than the original README. The appropriate sections look like this:
+
+--------------------------------
+# Start udev
+/bin/mount -n -t proc none /proc
+/bin/mount -n -t sysfs none /sys
+/sbin/start_udev
+--------------------------------
+
+--------------------------------
+# Mount local filesystems
+/bin/mount -n -o remount,rw /
+/bin/umount /sys /proc
+/bin/rm -f /etc/mtab*
+/bin/mount -a -O no_netdev
+--------------------------------
+
+This depends on your system having lines for /sys and /proc in
+the fstab file, unlike the original README, but it cleans up
+mount/mtab info. For reference, I use the following lines in
+/etc/fstab:
+
+none /proc proc defaults 0 0
+none /sys sysfs defaults 0 0
+

@@ -1,0 +1,88 @@
+
+*** Use the README instead, this file is outdated. ***
+
+
+
+README for udev
+
+
+   TITLE: Replace devfs with udev
+   CRUX VERSION: 1.3+
+   AUTHOR: CRUX ML members
+   CATEGORY: filesystem
+   SYNOPSIS: What to do to get udev running
+
+   HINT:
+     * install hotplug and udev ports (and optionally coldplug)
+       (and their dependencies) from CLC
+
+     * Kernel config:
+          * disable devfs support
+          * enable hotplug support
+          * enable tmpfs support
+
+     * (optional) add coldplug to the SERVICES array in /etc/rc.conf
+
+     * make the following changes in /etc/rc & /etc/rc.single:
+
+       (remember that "-" means the line gets removed,
+       and "+" means the lines gets added.  ;-))
+
+          * /etc/rc diff:
+
+        - # Start device management daemon
+        - /sbin/devfsd /dev
+
+        + # Start udev
+        + /bin/mount -t sysfs none /sys
+        + /bin/mount -t proc none /proc
+        + /sbin/start_udev
+
+          *** NOTE ***
+          Han Boetes suggests this as a better way to mount the sysfs
+          and proc filesystems to avoid problems with improperly unmounted
+          filesystems being unfixable when their devices are missing due
+          to a failed udev start:
+
+          if ! /bin/mount -t sysfs none /sys; then
+             /bin/mount -n -t sysfs none /sys
+          fi
+          if ! /bin/mount -t proc none /proc; then
+             /bin/mount -n -t proc none /proc
+          fi
+          ************
+
+          * /etc/rc.single diff:
+
+        - # Start device management daemon
+        - /sbin/devfsd /dev
+
+        + # Start udev
+        + /bin/mount -t sysfs none /sys
+        + /bin/mount -t proc none /proc
+        + /sbin/start_udev
+
+          *** see NOTE above ***
+
+     * comment or remove the following fstab entries:
+
+        sysfs /sys sysfs defaults 0 0
+        proc /proc proc defaults 0 0
+
+     * add the additional fstab entries (if needed):
+       (these are in the default fstab, commented)
+
+        none /proc/bus/usb usbfs defaults 0 0
+        none /dev/pts devpts defaults 0 0
+
+     * reboot and cross fingers
+     _________________________________________________________________
+
+     If you want to allow users to access the sound and video devices
+     (nvidia, dri, etc.), add an 'audio' group and a 'video' group to
+     the system. CRUX's udev install sets the appropriate group
+     permissions, so just add the user to the 'audio' and 'video'
+     groups (and log out/back in).
+
+     _________________________________________________________________
+

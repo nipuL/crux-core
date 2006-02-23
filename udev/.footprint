@@ -1,0 +1,61 @@
+drwxr-xr-x	root/root	dev/
+drwxr-xr-x	root/root	etc/
+drwxr-xr-x	root/root	etc/dev.d/
+drwxr-xr-x	root/root	etc/dev.d/default/
+drwxr-xr-x	root/root	etc/dev.d/net/
+-rwxr-xr-x	root/root	etc/dev.d/net/hotplug.dev
+drwxr-xr-x	root/root	etc/hotplug.d/
+drwxr-xr-x	root/root	etc/hotplug.d/default/
+lrwxrwxrwx	root/root	etc/hotplug.d/default/10-udev.hotplug -> /sbin/udevsend
+-rw-r--r--	root/root	etc/scsi_id.config
+drwxr-xr-x	root/root	etc/udev/
+drwxr-xr-x	root/root	etc/udev/rules.d/
+-rw-r--r--	root/root	etc/udev/rules.d/50-udev.rules
+-rw-r--r--	root/root	etc/udev/udev.conf
+drwxr-xr-x	root/root	lib/
+drwxr-xr-x	root/root	lib/udev/
+-rwxr-xr-x	root/root	lib/udev/create_floppy_devices
+drwxr-xr-x	root/root	lib/udev/devices/
+crw-------	root/root	lib/udev/devices/console (5, 1)
+crw-rw-rw-	root/root	lib/udev/devices/null (1, 3)
+crw-rw-rw-	root/root	lib/udev/devices/zero (1, 5)
+-rwxr-xr-x	root/root	lib/udev/firmware_helper
+-rwxr-xr-x	root/root	lib/udev/raid-devfs.sh
+-rwxr-xr-x	root/root	lib/udev/udev_run_devd
+-rwxr-xr-x	root/root	lib/udev/udev_run_hotplugd
+drwxr-xr-x	root/root	sbin/
+-rwxr-xr-x	root/root	sbin/ata_id
+-rwxr-xr-x	root/root	sbin/cdrom_id
+-rwxr-xr-x	root/root	sbin/create_floppy_devices
+-rwxr-xr-x	root/root	sbin/firmware_helper
+-rwxr-xr-x	root/root	sbin/path_id
+-rwxr-xr-x	root/root	sbin/scsi_id
+-rwxr-xr-x	root/root	sbin/start_udev
+-rwxr-xr-x	root/root	sbin/udev
+-rwxr-xr-x	root/root	sbin/udevcontrol
+-rwxr-xr-x	root/root	sbin/udevd
+-rwxr-xr-x	root/root	sbin/udevsend
+-rwxr-xr-x	root/root	sbin/udevstart
+-rwxr-xr-x	root/root	sbin/usb_id
+-rwxr-xr-x	root/root	sbin/vol_id
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/bin/
+-rwxr-xr-x	root/root	usr/bin/udevinfo
+-rwxr-xr-x	root/root	usr/bin/udevtest
+drwxr-xr-x	root/root	usr/man/
+drwxr-xr-x	root/root	usr/man/man7/
+-rw-r--r--	root/root	usr/man/man7/udev.7.gz
+drwxr-xr-x	root/root	usr/man/man8/
+-rw-r--r--	root/root	usr/man/man8/ata_id.8.gz
+-rw-r--r--	root/root	usr/man/man8/cdrom_id.8.gz
+-rw-r--r--	root/root	usr/man/man8/scsi_id.8.gz
+lrwxrwxrwx	root/root	usr/man/man8/udevcontrol.8.gz -> udevd.8.gz
+-rw-r--r--	root/root	usr/man/man8/udevd.8.gz
+-rw-r--r--	root/root	usr/man/man8/udevinfo.8.gz
+-rw-r--r--	root/root	usr/man/man8/udevmonitor.8.gz
+-rw-r--r--	root/root	usr/man/man8/udevsend.8.gz
+-rw-r--r--	root/root	usr/man/man8/udevstart.8.gz
+-rw-r--r--	root/root	usr/man/man8/udevtest.8.gz
+-rw-r--r--	root/root	usr/man/man8/vol_id.8.gz
+drwxr-xr-x	root/root	usr/sbin/
+-rwxr-xr-x	root/root	usr/sbin/udevmonitor

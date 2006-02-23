@@ -1,0 +1,25 @@
+# Description: Linux PCI Utilities
+# URL:         http://atrey.karlin.mff.cuni.cz/~mj/pciutils.shtml
+# Packager:    Markus Ackermann, maol at symlink dot ch
+# Maintainer:  Jürgen Daubert, juergen dot daubert at t-online dot de
+
+name=pciutils
+version=2.2.1
+release=2
+source=(ftp://atrey.karlin.mff.cuni.cz/pub/linux/pci/$name-$version.tar.gz \
+        http://jue.li/crux/files/pci.ids-060221.gz)
+
+build() {
+    cd $name-$version
+    mkdir -p $PKG/usr/{lib,share,include/pci}
+    gunzip -c $SRC/pci.ids-060221.gz > $PKG/usr/share/pci.ids
+    sed -i "s/-O2/$CFLAGS/" Makefile
+    make PREFIX=/usr
+    make PREFIX=$PKG/usr install 
+    cd lib
+    ./configure
+    make
+    cp libpci.a $PKG/usr/lib
+    cp *.h $PKG/usr/include/pci
+    rm $PKG/usr/include/pci/i386-io-{h*,s*,w*}
+}
