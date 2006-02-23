@@ -5,14 +5,14 @@
 
 name=groff
 version=1.19.2
-release=4
+release=5
 source=(http://mirrors.sunsite.dk/gnu/$name/$name-$version.tar.gz \
         $name-$version-mm.patch)
 
 build() {
     cd $name-$version
     patch -p0 < ../$name-$version-mm.patch
-    ./configure --prefix=/usr
+    ./configure --prefix=/usr --without-x
     mkdir -p $PKG/usr
     make datasubdir=/usr/share/groff
     make prefix=$PKG/usr \
