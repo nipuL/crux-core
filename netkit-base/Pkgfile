@@ -4,16 +4,18 @@
 
 name=netkit-base
 version=0.17
-release=7
+release=8
 source=(ftp://ftp.uk.linux.org/pub/linux/Networking/netkit/$name-$version.tar.gz \
 	$name-$version-usagi-20030214.patch \
 	$name-$version-break.patch \
+	$name-$version-gcc4.patch \
 	inetd.conf inetd services protocols)
 
 build() {
     cd $name-$version
     patch -p1 < ../$name-$version-usagi-20030214.patch
     patch -p1 < ../$name-$version-break.patch
+    patch -p1 < ../$name-$version-gcc4.patch
     ./configure --prefix=/usr \
 		--installroot=$PKG \
 		--enable-ipv6
