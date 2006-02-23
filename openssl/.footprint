@@ -34,9 +34,12 @@ drwxr-xr-x	root/root	usr/include/openssl/
 -rw-r--r--	root/root	usr/include/openssl/dh.h
 -rw-r--r--	root/root	usr/include/openssl/dsa.h
 -rw-r--r--	root/root	usr/include/openssl/dso.h
+-rw-r--r--	root/root	usr/include/openssl/dtls1.h
 -rw-r--r--	root/root	usr/include/openssl/e_os2.h
 -rw-r--r--	root/root	usr/include/openssl/ebcdic.h
 -rw-r--r--	root/root	usr/include/openssl/ec.h
+-rw-r--r--	root/root	usr/include/openssl/ecdh.h
+-rw-r--r--	root/root	usr/include/openssl/ecdsa.h
 -rw-r--r--	root/root	usr/include/openssl/engine.h
 -rw-r--r--	root/root	usr/include/openssl/err.h
 -rw-r--r--	root/root	usr/include/openssl/evp.h
@@ -48,7 +51,6 @@ drwxr-xr-x	root/root	usr/include/openssl/
 -rw-r--r--	root/root	usr/include/openssl/md2.h
 -rw-r--r--	root/root	usr/include/openssl/md4.h
 -rw-r--r--	root/root	usr/include/openssl/md5.h
--rw-r--r--	root/root	usr/include/openssl/mdc2.h
 -rw-r--r--	root/root	usr/include/openssl/obj_mac.h
 -rw-r--r--	root/root	usr/include/openssl/objects.h
 -rw-r--r--	root/root	usr/include/openssl/ocsp.h
@@ -59,10 +61,11 @@ drwxr-xr-x	root/root	usr/include/openssl/
 -rw-r--r--	root/root	usr/include/openssl/pem2.h
 -rw-r--r--	root/root	usr/include/openssl/pkcs12.h
 -rw-r--r--	root/root	usr/include/openssl/pkcs7.h
+-rw-r--r--	root/root	usr/include/openssl/pq_compat.h
+-rw-r--r--	root/root	usr/include/openssl/pqueue.h
 -rw-r--r--	root/root	usr/include/openssl/rand.h
 -rw-r--r--	root/root	usr/include/openssl/rc2.h
 -rw-r--r--	root/root	usr/include/openssl/rc4.h
--rw-r--r--	root/root	usr/include/openssl/rc5.h
 -rw-r--r--	root/root	usr/include/openssl/ripemd.h
 -rw-r--r--	root/root	usr/include/openssl/rsa.h
 -rw-r--r--	root/root	usr/include/openssl/safestack.h
@@ -72,6 +75,7 @@ drwxr-xr-x	root/root	usr/include/openssl/
 -rw-r--r--	root/root	usr/include/openssl/ssl23.h
 -rw-r--r--	root/root	usr/include/openssl/ssl3.h
 -rw-r--r--	root/root	usr/include/openssl/stack.h
+-rw-r--r--	root/root	usr/include/openssl/store.h
 -rw-r--r--	root/root	usr/include/openssl/symhacks.h
 -rw-r--r--	root/root	usr/include/openssl/tls1.h
 -rw-r--r--	root/root	usr/include/openssl/tmdiff.h
@@ -82,15 +86,25 @@ drwxr-xr-x	root/root	usr/include/openssl/
 -rw-r--r--	root/root	usr/include/openssl/x509_vfy.h
 -rw-r--r--	root/root	usr/include/openssl/x509v3.h
 drwxr-xr-x	root/root	usr/lib/
+drwxr-xr-x	root/root	usr/lib/engines/
+-rwxr-xr-x	root/root	usr/lib/engines/lib4758cca.so
+-rwxr-xr-x	root/root	usr/lib/engines/libaep.so
+-rwxr-xr-x	root/root	usr/lib/engines/libatalla.so
+-rwxr-xr-x	root/root	usr/lib/engines/libchil.so
+-rwxr-xr-x	root/root	usr/lib/engines/libcswift.so
+-rwxr-xr-x	root/root	usr/lib/engines/libgmp.so
+-rwxr-xr-x	root/root	usr/lib/engines/libnuron.so
+-rwxr-xr-x	root/root	usr/lib/engines/libsureware.so
+-rwxr-xr-x	root/root	usr/lib/engines/libubsec.so
 -rw-r--r--	root/root	usr/lib/libcrypto.a
-lrwxrwxrwx	root/root	usr/lib/libcrypto.so -> libcrypto.so.0
-lrwxrwxrwx	root/root	usr/lib/libcrypto.so.0 -> libcrypto.so.0.9.7
--rwxr-xr-x	root/root	usr/lib/libcrypto.so.0.9.7
+lrwxrwxrwx	root/root	usr/lib/libcrypto.so -> libcrypto.so.0.9.8
+-rwxr-xr-x	root/root	usr/lib/libcrypto.so.0.9.8
 -rw-r--r--	root/root	usr/lib/libssl.a
-lrwxrwxrwx	root/root	usr/lib/libssl.so -> libssl.so.0
-lrwxrwxrwx	root/root	usr/lib/libssl.so.0 -> libssl.so.0.9.7
--rwxr-xr-x	root/root	usr/lib/libssl.so.0.9.7
+lrwxrwxrwx	root/root	usr/lib/libssl.so -> libssl.so.0.9.8
+-rwxr-xr-x	root/root	usr/lib/libssl.so.0.9.8
 drwxr-xr-x	root/root	usr/lib/pkgconfig/
+-rw-r--r--	root/root	usr/lib/pkgconfig/libcrypto.pc
+-rw-r--r--	root/root	usr/lib/pkgconfig/libssl.pc
 -rw-r--r--	root/root	usr/lib/pkgconfig/openssl.pc
 drwxr-xr-x	root/root	usr/man/
 drwxr-xr-x	root/root	usr/man/man1/
@@ -104,6 +118,8 @@ drwxr-xr-x	root/root	usr/man/man1/
 -rw-r--r--	root/root	usr/man/man1/dhparam.1ssl.gz
 -rw-r--r--	root/root	usr/man/man1/dsa.1ssl.gz
 -rw-r--r--	root/root	usr/man/man1/dsaparam.1ssl.gz
+-rw-r--r--	root/root	usr/man/man1/ec.1ssl.gz
+-rw-r--r--	root/root	usr/man/man1/ecparam.1ssl.gz
 -rw-r--r--	root/root	usr/man/man1/enc.1ssl.gz
 -rw-r--r--	root/root	usr/man/man1/errstr.1ssl.gz
 -rw-r--r--	root/root	usr/man/man1/gendsa.1ssl.gz
@@ -151,6 +167,8 @@ lrwxrwxrwx	root/root	usr/man/man3/ASN1_STRING_print_ex_fp.3ssl.gz -> ASN1_STRING
 lrwxrwxrwx	root/root	usr/man/man3/ASN1_STRING_set.3ssl.gz -> ASN1_STRING_length.3ssl.gz
 lrwxrwxrwx	root/root	usr/man/man3/ASN1_STRING_type.3ssl.gz -> ASN1_STRING_length.3ssl.gz
 lrwxrwxrwx	root/root	usr/man/man3/ASN1_STRING_type_new.3ssl.gz -> ASN1_STRING_new.3ssl.gz
+-rw-r--r--	root/root	usr/man/man3/ASN1_generate_nconf.3ssl.gz
+lrwxrwxrwx	root/root	usr/man/man3/ASN1_generate_v3.3ssl.gz -> ASN1_generate_nconf.3ssl.gz
 lrwxrwxrwx	root/root	usr/man/man3/BF_cbc_encrypt.3ssl.gz -> blowfish.3ssl.gz
 lrwxrwxrwx	root/root	usr/man/man3/BF_cfb64_encrypt.3ssl.gz -> blowfish.3ssl.gz
 lrwxrwxrwx	root/root	usr/man/man3/BF_decrypt.3ssl.gz -> blowfish.3ssl.gz
@@ -277,6 +295,18 @@ lrwxrwxrwx	root/root	usr/man/man3/BIO_vfree.3ssl.gz -> BIO_new.3ssl.gz
 lrwxrwxrwx	root/root	usr/man/man3/BIO_wpending.3ssl.gz -> BIO_ctrl.3ssl.gz
 lrwxrwxrwx	root/root	usr/man/man3/BIO_write.3ssl.gz -> BIO_read.3ssl.gz
 lrwxrwxrwx	root/root	usr/man/man3/BIO_write_filename.3ssl.gz -> BIO_s_file.3ssl.gz
+lrwxrwxrwx	root/root	usr/man/man3/BN_BLINDING_convert.3ssl.gz -> BN_BLINDING_new.3ssl.gz
+lrwxrwxrwx	root/root	usr/man/man3/BN_BLINDING_convert_ex.3ssl.gz -> BN_BLINDING_new.3ssl.gz
+lrwxrwxrwx	root/root	usr/man/man3/BN_BLINDING_create_param.3ssl.gz -> BN_BLINDING_new.3ssl.gz
+lrwxrwxrwx	root/root	usr/man/man3/BN_BLINDING_free.3ssl.gz -> BN_BLINDING_new.3ssl.gz
+lrwxrwxrwx	root/root	usr/man/man3/BN_BLINDING_get_flags.3ssl.gz -> BN_BLINDING_new.3ssl.gz
+lrwxrwxrwx	root/root	usr/man/man3/BN_BLINDING_get_thread_id.3ssl.gz -> BN_BLINDING_new.3ssl.gz
+lrwxrwxrwx	root/root	usr/man/man3/BN_BLINDING_invert.3ssl.gz -> BN_BLINDING_new.3ssl.gz
+lrwxrwxrwx	root/root	usr/man/man3/BN_BLINDING_invert_ex.3ssl.gz -> BN_BLINDING_new.3ssl.gz
+-rw-r--r--	root/root	usr/man/man3/BN_BLINDING_new.3ssl.gz
+lrwxrwxrwx	root/root	usr/man/man3/BN_BLINDING_set_flags.3ssl.gz -> BN_BLINDING_new.3ssl.gz
+lrwxrwxrwx	root/root	usr/man/man3/BN_BLINDING_set_thread_id.3ssl.gz -> BN_BLINDING_new.3ssl.gz
+lrwxrwxrwx	root/root	usr/man/man3/BN_BLINDING_update.3ssl.gz -> BN_BLINDING_new.3ssl.gz
 lrwxrwxrwx	root/root	usr/man/man3/BN_CTX_end.3ssl.gz -> BN_CTX_start.3ssl.gz
 lrwxrwxrwx	root/root	usr/man/man3/BN_CTX_free.3ssl.gz -> BN_CTX_new.3ssl.gz
 lrwxrwxrwx	root/root	usr/man/man3/BN_CTX_get.3ssl.gz -> BN_CTX_start.3ssl.gz
@@ -479,11 +509,13 @@ lrwxrwxrwx	root/root	usr/man/man3/ERR_peek_error_line_data.3ssl.gz -> ERR_get_er
 lrwxrwxrwx	root/root	usr/man/man3/ERR_peek_last_error.3ssl.gz -> ERR_get_error.3ssl.gz
 lrwxrwxrwx	root/root	usr/man/man3/ERR_peek_last_error_line.3ssl.gz -> ERR_get_error.3ssl.gz
 lrwxrwxrwx	root/root	usr/man/man3/ERR_peek_last_error_line_data.3ssl.gz -> ERR_get_error.3ssl.gz
+lrwxrwxrwx	root/root	usr/man/man3/ERR_pop_to_mark.3ssl.gz -> ERR_set_mark.3ssl.gz
 -rw-r--r--	root/root	usr/man/man3/ERR_print_errors.3ssl.gz
 lrwxrwxrwx	root/root	usr/man/man3/ERR_print_errors_fp.3ssl.gz -> ERR_print_errors.3ssl.gz
 -rw-r--r--	root/root	usr/man/man3/ERR_put_error.3ssl.gz
 lrwxrwxrwx	root/root	usr/man/man3/ERR_reason_error_string.3ssl.gz -> ERR_error_string.3ssl.gz
 -rw-r--r--	root/root	usr/man/man3/ERR_remove_state.3ssl.gz
+-rw-r--r--	root/root	usr/man/man3/ERR_set_mark.3ssl.gz
 -rw-r--r--	root/root	usr/man/man3/EVP_BytesToKey.3ssl.gz
 lrwxrwxrwx	root/root	usr/man/man3/EVP_CIPHER_CTX_block_size.3ssl.gz -> EVP_EncryptInit.3ssl.gz
 lrwxrwxrwx	root/root	usr/man/man3/EVP_CIPHER_CTX_cipher.3ssl.gz -> EVP_EncryptInit.3ssl.gz
@@ -619,8 +651,10 @@ lrwxrwxrwx	root/root	usr/man/man3/OBJ_obj2txt.3ssl.gz -> OBJ_nid2obj.3ssl.gz
 lrwxrwxrwx	root/root	usr/man/man3/OBJ_sn2nid.3ssl.gz -> OBJ_nid2obj.3ssl.gz
 lrwxrwxrwx	root/root	usr/man/man3/OBJ_txt2nid.3ssl.gz -> OBJ_nid2obj.3ssl.gz
 lrwxrwxrwx	root/root	usr/man/man3/OBJ_txt2obj.3ssl.gz -> OBJ_nid2obj.3ssl.gz
+-rw-r--r--	root/root	usr/man/man3/OPENSSL_Applink.3ssl.gz
 -rw-r--r--	root/root	usr/man/man3/OPENSSL_VERSION_NUMBER.3ssl.gz
 -rw-r--r--	root/root	usr/man/man3/OPENSSL_config.3ssl.gz
+-rw-r--r--	root/root	usr/man/man3/OPENSSL_ia32cap.3ssl.gz
 -rw-r--r--	root/root	usr/man/man3/OPENSSL_load_builtin_modules.3ssl.gz
 lrwxrwxrwx	root/root	usr/man/man3/OPENSSL_no_config.3ssl.gz -> OPENSSL_config.3ssl.gz
 -rw-r--r--	root/root	usr/man/man3/OpenSSL_add_all_algorithms.3ssl.gz
@@ -1017,6 +1051,7 @@ lrwxrwxrwx	root/root	usr/man/man3/des_read_pw.3ssl.gz -> ui_compat.3ssl.gz
 lrwxrwxrwx	root/root	usr/man/man3/des_read_pw_string.3ssl.gz -> ui_compat.3ssl.gz
 -rw-r--r--	root/root	usr/man/man3/dh.3ssl.gz
 -rw-r--r--	root/root	usr/man/man3/dsa.3ssl.gz
+-rw-r--r--	root/root	usr/man/man3/ecdsa.3ssl.gz
 -rw-r--r--	root/root	usr/man/man3/engine.3ssl.gz
 -rw-r--r--	root/root	usr/man/man3/err.3ssl.gz
 -rw-r--r--	root/root	usr/man/man3/evp.3ssl.gz
@@ -1075,8 +1110,10 @@ lrwxrwxrwx	root/root	usr/man/man3/lh_stats_bio.3ssl.gz -> lh_stats.3ssl.gz
 -rw-r--r--	root/root	usr/man/man3/threads.3ssl.gz
 -rw-r--r--	root/root	usr/man/man3/ui.3ssl.gz
 -rw-r--r--	root/root	usr/man/man3/ui_compat.3ssl.gz
+-rw-r--r--	root/root	usr/man/man3/x509.3ssl.gz
 drwxr-xr-x	root/root	usr/man/man5/
 -rw-r--r--	root/root	usr/man/man5/config.5ssl.gz
+-rw-r--r--	root/root	usr/man/man5/x509v3_config.5ssl.gz
 drwxr-xr-x	root/root	usr/man/man7/
 lrwxrwxrwx	root/root	usr/man/man7/Modes_of_DES.7ssl.gz -> des_modes.7ssl.gz
 -rw-r--r--	root/root	usr/man/man7/des_modes.7ssl.gz

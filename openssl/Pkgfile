@@ -3,7 +3,7 @@
 # Maintainer:  Per Lidén <per@fukt.bth.se>
 
 name=openssl
-version=0.9.7i
+version=0.9.8a
 release=1
 source=(http://www.openssl.org/source/$name-$version.tar.gz)
 
