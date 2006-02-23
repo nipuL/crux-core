@@ -3,17 +3,18 @@
 # Maintainer:  Per Lidén <per@fukt.bth.se>
 
 name=glibc
-version=2.3.5
+version=2.3.6
 release=1
 source=(http://mirrors.sunsite.dk/gnu/$name/$name-$version.tar.bz2 \
-	http://ep09.pld-linux.org/~mmazur/linux-libc-headers/linux-libc-headers-2.6.11.2.tar.bz2 \
-	$name-$version-execvp.patch hosts resolv.conf nsswitch.conf host.conf ld.so.conf)
+	http://ep09.pld-linux.org/~mmazur/linux-libc-headers/linux-libc-headers-2.6.12.0.tar.bz2 \
+	hosts resolv.conf nsswitch.conf host.conf ld.so.conf \
+        $name-$version-kernelheaders.patch kd.h)
 
 build() {
     mkdir -p $PKG/usr/include
-    cp -r linux-libc-headers-2.6.11.2/include/linux $PKG/usr/include/linux
-    cp -r linux-libc-headers-2.6.11.2/include/asm-i386 $PKG/usr/include/asm
-    patch -p0 < $name-$version-execvp.patch
+    cp -r linux-libc-headers-2.6.12.0/include/linux $PKG/usr/include/linux
+    cp -r linux-libc-headers-2.6.12.0/include/asm-i386 $PKG/usr/include/asm
+    patch -d $name-$version -p1 < $name-$version-kernelheaders.patch
     mkdir build
     cd build
     ../$name-$version/configure --prefix=/usr \
@@ -25,10 +26,12 @@ build() {
 				--disable-profile \
 				--without-gd
     make
-    make check
+    #make check
     make install_root=$PKG install
     make install_root=$PKG localedata/install-locales
     cp ../{hosts,resolv.conf,nsswitch.conf,host.conf,ld.so.conf} $PKG/etc
     ln -sf ../usr/share/zoneinfo/UTC $PKG/etc/localtime
     rm -rf $PKG/usr/share/locale
+
+    install -m 644 $SRC/kd.h $PKG/usr/include/sys/kd.h
 }
