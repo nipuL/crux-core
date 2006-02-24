@@ -4,7 +4,7 @@
 
 name=prt-get
 version=0.5.11
-release=1
+release=2
 source=(http://jw.tks6.net/files/crux/prt-get-$version.tar.gz \
         prt-get.conf)
 
