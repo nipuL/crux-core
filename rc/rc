@@ -51,7 +51,7 @@ fi
 : > /var/run/utmp
 /bin/rm -rf /forcefsck /fastboot /etc/nologin /etc/shutdownpid
 (cd /var/run && /usr/bin/find . -name "*.pid" -delete)
-(cd /var/lock && /usr/bin/find . ! -name . -delete)
+(cd /var/lock && /usr/bin/find . ! -type d -delete)
 (cd /tmp && /usr/bin/find . ! -name . -delete)
 /bin/mkdir -m 1777 /tmp/.ICE-unix
 
