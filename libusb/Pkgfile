@@ -3,16 +3,13 @@
 # Maintainer:  Jürgen Daubert, juergen dot daubert at t-online dot de
 
 name=libusb
-version=0.1.11
+version=0.1.12
 release=1
 source=(http://dl.sourceforge.net/sourceforge/$name/$name-$version.tar.gz)
 
 build () {
     cd $name-$version
-    ./configure --prefix=/usr \
-                --disable-nls \
-                --without-qt \
-                --disable-build-docs
+    ./configure --prefix=/usr 
     make
     make DESTDIR=$PKG install
 
