@@ -3,7 +3,7 @@
 # Maintainer:  Per Lidén <per@fukt.bth.se>
 
 name=coreutils
-version=5.93
+version=5.94
 release=1
 source=(http://mirrors.sunsite.dk/gnu/$name/$name-$version.tar.bz2 \
 	$name-$version-uname.patch)
