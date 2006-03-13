@@ -5,10 +5,10 @@ PRE-INSTALL
 	    
 POST-INSTALL
 
-	After installation you have to copy the grub boot imagefiles to 
+	After installation you need to copy the stage files to 
 	/boot/grub/:
 	
-	$ cp /usr/share/grub/i386-pc/* /boot/grub
+	# cp /usr/share/grub/i386-pc/* /boot/grub/
 	
 	(Of course, you can choose another location as described above but
 	this guide assumes that you use /boot/grub. Normally you need only 
@@ -18,23 +18,25 @@ POST-INSTALL
 
 	Now it's time to create your own "boot menu":
 
-	$ # Copy sample file
-	$ cp /boot/grub/menu.lst.sample /boot/grub/menu.lst
-	$ # Modify it for your system 
-	$ vi /boot/grub/menu.lst
+	# # Copy sample file
+	# cp /boot/grub/menu.lst.sample /boot/grub/menu.lst
+	# # Modify it for your system 
+	# vi /boot/grub/menu.lst
 	
 	For more information about setting up your own grub boot menu file:
 	http://www.gnu.org/manual/grub-0.92/html_mono/grub.html#Configuration
 	
 	Last but not least - install/enable the bootmanager:
-	$ # Run grub
-	$ grub
-	grub> install (hd0,0)/boot/grub/stage1 d (hd0) (hd0,0)/boot/grub/stage2
-	[wordwrap] p (hd0,0)/boot/grub/menu.lst
+	# # Run grub
+	# grub
+	grub> root (hdX,Y)
+	grub> setup (hdX)
 	grub> quit
 	
 	Please correct the path & device names according your configuration.
-	See also http://www.gnu.org/software/grub/manual/grub.html#Installation
+	Also see http://www.gnu.org/software/grub/manual/grub.html#Installation.
+	In the example above, X and Y need to be replaced with your hard drive
+	and grub partition.
 	
 	That's all. Good luck ;)	
 
@@ -45,4 +47,5 @@ PRECAUTION
 	boot disk first :)
 	This is a heavy patched version of grub - Use it on your own risk !
 	
-Daniel Mueller  <danm@gmx.li> 
+Matt Housh	<jaeger@crux.nu>
+
