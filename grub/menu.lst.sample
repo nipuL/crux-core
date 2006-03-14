@@ -32,10 +32,10 @@ default 0
 
 ## Default menu entries
 
-title CRUX GNU/Linux
+title CRUX
 kernel (hd0,0)/boot/vmlinuz root=/dev/hda1
 
-title CRUX GNU/Linux (old)
+title CRUX
 kernel (hd0,0)/boot/vmlinuz.old root=/dev/hda1 
 
 ### Special cases
