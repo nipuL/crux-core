@@ -4,10 +4,15 @@
 
 name=gcc
 version=4.0.3
-release=1
-source=(ftp://sources.redhat.com/pub/gcc/releases/$name-$version/$name-$version.tar.bz2)
-
+release=2
+source=(ftp://sources.redhat.com/pub/gcc/releases/$name-$version/$name-$version.tar.bz2 \
+        $name-$version-latentbug-addrefvars.patch)
+	
 build() {
+    cd $name-$version
+    patch -p1 < $SRC/$name-$version-latentbug-addrefvars.patch
+    cd ..
+    
     mkdir build
     cd build
     ../$name-$version/configure --prefix=/usr \
@@ -19,9 +24,11 @@ build() {
 				--enable-shared \
 				--disable-nls \
                                 --with-x=no
+    
     make bootstrap
-    make check | tee ~/gcc-${version}_make_test_resul
+    make check
     make DESTDIR=$PKG install
+    
     mkdir $PKG/lib
     ln -sf ../usr/bin/cpp $PKG/lib/cpp
     ln -sf gcc $PKG/usr/bin/cc
