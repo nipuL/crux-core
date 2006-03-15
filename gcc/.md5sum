@@ -1,2 +1,3 @@
 31e541f9ac2c8613bc92b91db453f0a9  gcc-4.0.3-latentbug-addrefvars.patch
+36fb6ec15a5f2a6572da0b02a3cf9d66  gcc-4.0.3-nocheck-fixincludes.patch
 6ff1af12c53cbb3f79b27f2d6a9a3d50  gcc-4.0.3.tar.bz2

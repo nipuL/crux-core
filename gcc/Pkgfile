@@ -6,13 +6,13 @@ name=gcc
 version=4.0.3
 release=2
 source=(ftp://sources.redhat.com/pub/gcc/releases/$name-$version/$name-$version.tar.bz2 \
-        $name-$version-latentbug-addrefvars.patch)
+        $name-$version-latentbug-addrefvars.patch \
+        $name-$version-nocheck-fixincludes.patch)
 	
 build() {
-    cd $name-$version
-    patch -p1 < $SRC/$name-$version-latentbug-addrefvars.patch
-    cd ..
-    
+    patch -d $name-$version -p1 < $SRC/$name-$version-latentbug-addrefvars.patch
+    patch -d $name-$version -p1 < $SRC/$name-$version-nocheck-fixincludes.patch
+
     mkdir build
     cd build
     ../$name-$version/configure --prefix=/usr \

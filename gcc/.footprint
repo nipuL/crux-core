@@ -280,6 +280,7 @@ drwxr-xr-x	root/root	usr/lib/gcc/i686-pc-linux-gnu/4.0.3/include/
 -rw-r--r--	root/root	usr/lib/gcc/i686-pc-linux-gnu/4.0.3/include/limits.h
 drwxr-xr-x	root/root	usr/lib/gcc/i686-pc-linux-gnu/4.0.3/include/linux/
 -rw-r--r--	root/root	usr/lib/gcc/i686-pc-linux-gnu/4.0.3/include/linux/a.out.h
+-rw-r--r--	root/root	usr/lib/gcc/i686-pc-linux-gnu/4.0.3/include/linux/flat.h
 -rw-r--r--	root/root	usr/lib/gcc/i686-pc-linux-gnu/4.0.3/include/mm3dnow.h
 -rw-r--r--	root/root	usr/lib/gcc/i686-pc-linux-gnu/4.0.3/include/mm_malloc.h
 -rw-r--r--	root/root	usr/lib/gcc/i686-pc-linux-gnu/4.0.3/include/mmintrin.h
