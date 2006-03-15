@@ -3,7 +3,7 @@
 # Maintainer:  Per Lidén <per@fukt.bth.se>
 
 name=gcc
-version=4.0.2
+version=4.0.3
 release=1
 source=(ftp://sources.redhat.com/pub/gcc/releases/$name-$version/$name-$version.tar.bz2)
 
