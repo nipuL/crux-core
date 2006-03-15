@@ -5,7 +5,7 @@
 name=flex
 version=2.5.31
 release=2
-source=(http://dl.sourceforge.net/lex/$name-$version.tar.bz2 \
+source=(http://dl.sourceforge.net/sourceforge/flex/$name-$version.tar.bz2 \
 	$name-$version.patch)
 
 build() {
