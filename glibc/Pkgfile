@@ -4,17 +4,16 @@
 
 name=glibc
 version=2.3.6
-release=1
+release=2
 source=(http://mirrors.sunsite.dk/gnu/$name/$name-$version.tar.bz2 \
-	http://ep09.pld-linux.org/~mmazur/linux-libc-headers/linux-libc-headers-2.6.12.0.tar.bz2 \
-	hosts resolv.conf nsswitch.conf host.conf ld.so.conf \
-        $name-$version-kernelheaders.patch kd.h)
+	http://crux.nu/files/dist/kernel-headers-2.6.14-1.tar.bz2 \
+	hosts resolv.conf nsswitch.conf host.conf ld.so.conf)
 
 build() {
     mkdir -p $PKG/usr/include
-    cp -r linux-libc-headers-2.6.12.0/include/linux $PKG/usr/include/linux
-    cp -r linux-libc-headers-2.6.12.0/include/asm-i386 $PKG/usr/include/asm
-    patch -d $name-$version -p1 < $name-$version-kernelheaders.patch
+    cp -r kernel-headers/{linux,asm-generic} $PKG/usr/include
+    cp -r kernel-headers/asm-i386 $PKG/usr/include/asm
+
     mkdir build
     cd build
     ../$name-$version/configure --prefix=/usr \
@@ -32,6 +31,4 @@ build() {
     cp ../{hosts,resolv.conf,nsswitch.conf,host.conf,ld.so.conf} $PKG/etc
     ln -sf ../usr/share/zoneinfo/UTC $PKG/etc/localtime
     rm -rf $PKG/usr/share/locale
-
-    install -m 644 $SRC/kd.h $PKG/usr/include/sys/kd.h
 }
