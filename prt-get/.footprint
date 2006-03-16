@@ -14,4 +14,3 @@ drwxr-xr-x	root/root	var/
 drwxr-xr-x	root/root	var/lib/
 drwxr-xr-x	root/root	var/lib/pkg/
 -rw-r--r--	root/root	var/lib/pkg/prt-get.aliases
--rw-r--r--	root/root	var/lib/pkg/prt-get.deplist
