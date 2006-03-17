@@ -4,7 +4,7 @@
 # Depends on: hotplug
 
 name=udev
-version=085
+version=087
 release=1
 source=(ftp://ftp.kernel.org/pub/linux/utils/kernel/hotplug/$name-$version.tar.bz2 \
 	udev.rules start_udev)
@@ -26,7 +26,6 @@ build() {
 	install -m 0644 udev{send,start}.8 $PKG/usr/man/man8/
 	install -m 0644 $SRC/udev.rules \
 		$PKG/etc/udev/rules.d/50-udev.rules
-	install extras/raid-devfs.sh $PKG/lib/udev/
 	install -D -m 0755 $SRC/start_udev $PKG/sbin/start_udev
 	install extras/path_id extras/floppy/create_floppy_devices \
 		extras/firmware/firmware_helper $PKG/sbin/

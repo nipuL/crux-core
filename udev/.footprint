@@ -20,7 +20,6 @@ crw-------	root/root	lib/udev/devices/console (5, 1)
 crw-rw-rw-	root/root	lib/udev/devices/null (1, 3)
 crw-rw-rw-	root/root	lib/udev/devices/zero (1, 5)
 -rwxr-xr-x	root/root	lib/udev/firmware_helper
--rwxr-xr-x	root/root	lib/udev/raid-devfs.sh
 -rwxr-xr-x	root/root	lib/udev/udev_run_devd
 -rwxr-xr-x	root/root	lib/udev/udev_run_hotplugd
 drwxr-xr-x	root/root	sbin/
