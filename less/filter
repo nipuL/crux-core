@@ -16,7 +16,6 @@ filter() {
 	*.[zZ]|*.gz) gzip -dc "$1" ;;
 	*.bz2) bzip2 -dc "$1" ;;
 	*.zip) zipinfo "$1" ;;
-	*.rpm) dd ibs=`/usr/lib/rpm2targz/rpmoffset < "$1"` skip=1 if="$1" | gzip -dc | cpio -tv ;;
 	*.cpio) cpio -itv < "$1" ;;
     esac
 }
