@@ -1,6 +1,6 @@
 # Description: A system for managing library compile/link flags
 # URL:         http://pkgconfig.freedesktop.org/wiki/
-# Maintainer:  Per Lidén <per@fukt.bth.se>
+# Maintainer:  Tilman Sauerbeck, tilman at code-monkey dot de
 
 name=pkg-config
 version=0.20
