@@ -3,7 +3,7 @@
 # Maintainer:  Per Lidén <per@fukt.bth.se>
 
 name=sendmail
-version=8.13.5
+version=8.13.6
 release=1
 source=(http://www.sendmail.org/ftp/$name.$version.tar.gz \
 	aliases sendmail sendmail.mk sendmail.mc site.config.m4)
