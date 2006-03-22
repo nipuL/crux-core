@@ -1,3 +1,4 @@
 d52af1b47b7a382bff9d0be6865f05ea  login.defs
 be8f69c2701118093af3d7f3bc02af16  pwck
-903f55cf05bbe082617d3337743792fb  shadow-4.0.14.tar.bz2
+29b6b4f6083d841ea01f68b6f1a9137c  shadow-4.0.15-nochgpasswd.diff
+a0452fa989f8ba45023cc5a08136568e  shadow-4.0.15.tar.bz2

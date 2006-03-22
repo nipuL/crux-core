@@ -1,0 +1,64 @@
+--- Makefile.orig	2006-03-23 00:28:27.083554080 +0100
++++ Makefile	2006-03-23 00:29:04.600850584 +0100
+@@ -40,7 +40,7 @@
+ ubin_PROGRAMS = faillog$(EXEEXT) lastlog$(EXEEXT) chage$(EXEEXT) \
+ 	chfn$(EXEEXT) chsh$(EXEEXT) expiry$(EXEEXT) gpasswd$(EXEEXT) \
+ 	newgrp$(EXEEXT) passwd$(EXEEXT)
+-usbin_PROGRAMS = chgpasswd$(EXEEXT) chpasswd$(EXEEXT) \
++usbin_PROGRAMS = chpasswd$(EXEEXT) \
+ 	groupadd$(EXEEXT) groupdel$(EXEEXT) groupmod$(EXEEXT) \
+ 	grpck$(EXEEXT) grpconv$(EXEEXT) grpunconv$(EXEEXT) \
+ 	logoutd$(EXEEXT) newusers$(EXEEXT) nologin$(EXEEXT) \
+@@ -76,10 +76,6 @@
+ chfn_OBJECTS = chfn.$(OBJEXT)
+ chfn_DEPENDENCIES = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_2) \
+ 	$(am__DEPENDENCIES_2)
+-chgpasswd_SOURCES = chgpasswd.c
+-chgpasswd_OBJECTS = chgpasswd.$(OBJEXT)
+-chgpasswd_DEPENDENCIES = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_2) \
+-	$(am__DEPENDENCIES_2)
+ chpasswd_SOURCES = chpasswd.c
+ chpasswd_OBJECTS = chpasswd.$(OBJEXT)
+ chpasswd_DEPENDENCIES = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_2) \
+@@ -206,13 +202,13 @@
+ CCLD = $(CC)
+ LINK = $(LIBTOOL) --tag=CC --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
+ 	$(AM_LDFLAGS) $(LDFLAGS) -o $@
+-SOURCES = chage.c chfn.c chgpasswd.c chpasswd.c chsh.c expiry.c \
++SOURCES = chage.c chfn.c chpasswd.c chsh.c expiry.c \
+ 	faillog.c gpasswd.c groupadd.c groupdel.c groupmod.c groups.c \
+ 	grpck.c grpconv.c grpunconv.c id.c lastlog.c $(login_SOURCES) \
+ 	logoutd.c newgrp.c newusers.c nologin.c passwd.c pwck.c \
+ 	pwconv.c pwunconv.c $(su_SOURCES) sulogin.c useradd.c \
+ 	userdel.c usermod.c vipw.c
+-DIST_SOURCES = chage.c chfn.c chgpasswd.c chpasswd.c chsh.c expiry.c \
++DIST_SOURCES = chage.c chfn.c chpasswd.c chsh.c expiry.c \
+ 	faillog.c gpasswd.c groupadd.c groupdel.c groupmod.c groups.c \
+ 	grpck.c grpconv.c grpunconv.c id.c lastlog.c $(login_SOURCES) \
+ 	logoutd.c newgrp.c newusers.c nologin.c passwd.c pwck.c \
+@@ -366,7 +362,6 @@
+ AM_CPPFLAGS = -DLOCALEDIR=\"$(datadir)/locale\"
+ chage_LDADD = $(LDADD) $(LIBPAM) $(LIBAUDIT) $(LIBSELINUX)
+ chfn_LDADD = $(LDADD) $(LIBPAM) $(LIBSELINUX)
+-chgpasswd_LDADD = $(LDADD) $(LIBPAM) $(LIBSELINUX)
+ chsh_LDADD = $(LDADD) $(LIBPAM) $(LIBSELINUX)
+ chpasswd_LDADD = $(LDADD) $(LIBPAM) $(LIBSELINUX)
+ gpasswd_LDADD = $(LDADD) $(LIBAUDIT) $(LIBSELINUX)
+@@ -527,9 +522,6 @@
+ chfn$(EXEEXT): $(chfn_OBJECTS) $(chfn_DEPENDENCIES) 
+ 	@rm -f chfn$(EXEEXT)
+ 	$(LINK) $(chfn_LDFLAGS) $(chfn_OBJECTS) $(chfn_LDADD) $(LIBS)
+-chgpasswd$(EXEEXT): $(chgpasswd_OBJECTS) $(chgpasswd_DEPENDENCIES) 
+-	@rm -f chgpasswd$(EXEEXT)
+-	$(LINK) $(chgpasswd_LDFLAGS) $(chgpasswd_OBJECTS) $(chgpasswd_LDADD) $(LIBS)
+ chpasswd$(EXEEXT): $(chpasswd_OBJECTS) $(chpasswd_DEPENDENCIES) 
+ 	@rm -f chpasswd$(EXEEXT)
+ 	$(LINK) $(chpasswd_LDFLAGS) $(chpasswd_OBJECTS) $(chpasswd_LDADD) $(LIBS)
+@@ -626,7 +618,6 @@
+ 
+ include ./$(DEPDIR)/chage.Po
+ include ./$(DEPDIR)/chfn.Po
+-include ./$(DEPDIR)/chgpasswd.Po
+ include ./$(DEPDIR)/chpasswd.Po
+ include ./$(DEPDIR)/chsh.Po
+ include ./$(DEPDIR)/expiry.Po
