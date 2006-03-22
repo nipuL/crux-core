@@ -47,6 +47,7 @@ drwxr-xr-x	root/root	usr/man/man8/
 -rw-r--r--	root/root	usr/man/man8/groupmod.8.gz
 -rw-r--r--	root/root	usr/man/man8/grpck.8.gz
 -rw-r--r--	root/root	usr/man/man8/lastlog.8.gz
+-rw-r--r--	root/root	usr/man/man8/nologin.8.gz
 -rw-r--r--	root/root	usr/man/man8/pwck.8.gz
 -rw-r--r--	root/root	usr/man/man8/useradd.8.gz
 -rw-r--r--	root/root	usr/man/man8/userdel.8.gz
