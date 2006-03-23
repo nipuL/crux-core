@@ -55,6 +55,7 @@ drwxr-xr-x	root/root	usr/man/man8/
 -rw-r--r--	root/root	usr/man/man8/vigr.8.gz
 -rw-r--r--	root/root	usr/man/man8/vipw.8.gz
 drwxr-xr-x	root/root	usr/sbin/
+-rwxr-xr-x	root/root	usr/sbin/chgpasswd
 -rwxr-xr-x	root/root	usr/sbin/groupadd
 -rwxr-xr-x	root/root	usr/sbin/groupdel
 -rwxr-xr-x	root/root	usr/sbin/groupmod

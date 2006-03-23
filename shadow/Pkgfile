@@ -6,17 +6,18 @@ name=shadow
 version=4.0.15
 release=1
 source=(ftp://ftp.pld.org.pl/software/shadow/$name-$version.tar.bz2 \
-	pwck login.defs shadow-4.0.15-nochgpasswd.diff)
+	pwck login.defs shadow-4.0.15-noshadowgrp.diff)
 
 build() {
     cd $name-$version
+    patch -p1 < $SRC/shadow-4.0.15-noshadowgrp.diff
+
     ./configure --prefix=/usr \
 		--mandir=/usr/man \
 		--disable-shared \
                 --disable-shadowgrp \
 		--disable-nls \
                 --without-selinux
-    patch src/Makefile $SRC/shadow-4.0.15-nochgpasswd.diff
     make
     make DESTDIR=$PKG install
     mkdir -p $PKG/etc/cron/daily $PKG/var/log
