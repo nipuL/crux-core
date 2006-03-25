@@ -4,11 +4,13 @@
 
 name=kbd
 version=1.12
-release=1
-source=(ftp://ftp.win.tue.nl/pub/linux-local/utils/kbd/$name-$version.tar.gz)
+release=2
+source=(ftp://ftp.win.tue.nl/pub/linux-local/utils/kbd/$name-$version.tar.gz \
+        kbd-1.12-alias.patch)
 
 build() {
     cd $name-$version
+    patch -p1 < $SRC/kbd-1.12-alias.patch
     ./configure --prefix=/usr \
 		--mandir=/usr/man \
 		--datadir=/usr/share/kbd \
