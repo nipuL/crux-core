@@ -4,13 +4,14 @@
 
 name=shadow
 version=4.0.15
-release=1
+release=2
 source=(ftp://ftp.pld.org.pl/software/shadow/$name-$version.tar.bz2 \
-	pwck login.defs shadow-4.0.15-noshadowgrp.diff)
+	pwck login.defs shadow-4.0.15-noshadowgrp.diff useradd-4.0.15.diff)
 
 build() {
     cd $name-$version
     patch -p1 < $SRC/shadow-4.0.15-noshadowgrp.diff
+    patch -p0 < $SRC/useradd-4.0.15.diff
 
     ./configure --prefix=/usr \
 		--mandir=/usr/man \
