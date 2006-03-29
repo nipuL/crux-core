@@ -4,10 +4,12 @@
 
 name=pkgutils
 version=5.20
-release=1
-source=(http://www.fukt.bth.se/~per/pkgutils/$name-$version.tar.gz)
+release=2
+source=(http://www.fukt.bth.se/~per/pkgutils/$name-$version.tar.gz \
+	$name-largefiles.patch)
 
 build () {
-    cd $name-$version
-    make DESTDIR=$PKG install
+	cd $name-$version
+	patch -p0 -i $SRC/$name-largefiles.patch
+	make DESTDIR=$PKG install
 }
