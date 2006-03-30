@@ -4,7 +4,7 @@
 
 name=filesystem
 version=2.2
-release=1
+release=2
 source=(issue motd shells group passwd shadow securetty fstab mime.types)
 
 build() {
@@ -45,7 +45,6 @@ build() {
     ln -s spool/mail $PKG/var/mail
     mkdir $PKG/home
 
-    chown ftp.ftp $PKG/var/ftp
     chmod 1777 $PKG/var/spool/mail
     chmod 1777 $PKG/tmp
     chmod 1777 $PKG/var/lock

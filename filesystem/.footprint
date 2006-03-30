@@ -45,7 +45,7 @@ lrwxrwxrwx	root/root	usr/var -> ../var
 drwxr-xr-x	root/root	var/
 drwxr-xr-x	root/root	var/cache/
 drwxr-xr-x	root/root	var/empty/
-drwxr-xr-x	ftp/ftp	var/ftp/
+drwxr-xr-x	root/root	var/ftp/
 drwxr-xr-x	root/root	var/lib/
 drwxr-xr-x	root/root	var/lib/pkg/
 drwxrwxrwt	root/root	var/lock/
