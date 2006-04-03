@@ -1,10 +1,11 @@
 # Description: File type identification utility
 # URL:         ftp://ftp.fu-berlin.de/unix/tools/file/
-# Maintainer:  Per Lidén <per@fukt.bth.se>
+# Maintainer:  Jukka Heino, jukka at karsikkopuu dot net
+# Packager:    Per Lidén, per at fukt dot bth dot se
 # Depends on:  zlib
 
 name=file
-version=4.16
+version=4.17
 release=1
 source=(ftp://ftp.astron.com/pub/file/$name-$version.tar.gz)
 
