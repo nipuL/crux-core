@@ -1,10 +1,11 @@
 # Description: The Linux manpages collection
 # URL:         http://www.win.tue.nl/~aeb/linux/man/
-# Maintainer:  Per Lidén <per@fukt.bth.se>
+# Maintainer:  Jukka Heino, jukka at karsikkopuu dot net
+# Packager:    Per Lidén, per at fukt dot bth dot se
 # Depends on:  man
 
 name=man-pages
-version=2.22
+version=2.28
 release=1
 source=(ftp://ftp.win.tue.nl/pub/linux-local/manpages/$name-$version.tar.gz)
 

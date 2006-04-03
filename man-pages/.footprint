@@ -32,6 +32,8 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/close.2.gz
 -rw-r--r--	root/root	usr/man/man2/connect.2.gz
 -rw-r--r--	root/root	usr/man/man2/creat.2.gz
+-rw-r--r--	root/root	usr/man/man2/create_module.2.gz
+-rw-r--r--	root/root	usr/man/man2/delete_module.2.gz
 -rw-r--r--	root/root	usr/man/man2/dup.2.gz
 -rw-r--r--	root/root	usr/man/man2/dup2.2.gz
 -rw-r--r--	root/root	usr/man/man2/epoll_create.2.gz
@@ -58,6 +60,8 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/fsync.2.gz
 -rw-r--r--	root/root	usr/man/man2/ftruncate.2.gz
 -rw-r--r--	root/root	usr/man/man2/futex.2.gz
+-rw-r--r--	root/root	usr/man/man2/get_kernel_syms.2.gz
+-rw-r--r--	root/root	usr/man/man2/get_mempolicy.2.gz
 -rw-r--r--	root/root	usr/man/man2/get_thread_area.2.gz
 -rw-r--r--	root/root	usr/man/man2/getcontext.2.gz
 -rw-r--r--	root/root	usr/man/man2/getdents.2.gz
@@ -93,8 +97,12 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/idle.2.gz
 -rw-r--r--	root/root	usr/man/man2/inb.2.gz
 -rw-r--r--	root/root	usr/man/man2/inb_p.2.gz
+-rw-r--r--	root/root	usr/man/man2/init_module.2.gz
 -rw-r--r--	root/root	usr/man/man2/inl.2.gz
 -rw-r--r--	root/root	usr/man/man2/inl_p.2.gz
+-rw-r--r--	root/root	usr/man/man2/inotify_add_watch.2.gz
+-rw-r--r--	root/root	usr/man/man2/inotify_init.2.gz
+-rw-r--r--	root/root	usr/man/man2/inotify_rm_watch.2.gz
 -rw-r--r--	root/root	usr/man/man2/insb.2.gz
 -rw-r--r--	root/root	usr/man/man2/insl.2.gz
 -rw-r--r--	root/root	usr/man/man2/insw.2.gz
@@ -127,6 +135,7 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/lsetxattr.2.gz
 -rw-r--r--	root/root	usr/man/man2/lstat.2.gz
 -rw-r--r--	root/root	usr/man/man2/madvise.2.gz
+-rw-r--r--	root/root	usr/man/man2/mbind.2.gz
 -rw-r--r--	root/root	usr/man/man2/mincore.2.gz
 -rw-r--r--	root/root	usr/man/man2/mkdir.2.gz
 -rw-r--r--	root/root	usr/man/man2/mknod.2.gz
@@ -158,6 +167,7 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/oldstat.2.gz
 -rw-r--r--	root/root	usr/man/man2/olduname.2.gz
 -rw-r--r--	root/root	usr/man/man2/open.2.gz
+-rw-r--r--	root/root	usr/man/man2/openat.2.gz
 -rw-r--r--	root/root	usr/man/man2/outb.2.gz
 -rw-r--r--	root/root	usr/man/man2/outb_p.2.gz
 -rw-r--r--	root/root	usr/man/man2/outl.2.gz
@@ -177,6 +187,7 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/pivot_root.2.gz
 -rw-r--r--	root/root	usr/man/man2/poll.2.gz
 -rw-r--r--	root/root	usr/man/man2/posix_fadvise.2.gz
+-rw-r--r--	root/root	usr/man/man2/ppoll.2.gz
 -rw-r--r--	root/root	usr/man/man2/prctl.2.gz
 -rw-r--r--	root/root	usr/man/man2/pread.2.gz
 -rw-r--r--	root/root	usr/man/man2/prof.2.gz
@@ -184,6 +195,7 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/ptrace.2.gz
 -rw-r--r--	root/root	usr/man/man2/putpmsg.2.gz
 -rw-r--r--	root/root	usr/man/man2/pwrite.2.gz
+-rw-r--r--	root/root	usr/man/man2/query_module.2.gz
 -rw-r--r--	root/root	usr/man/man2/quotactl.2.gz
 -rw-r--r--	root/root	usr/man/man2/read.2.gz
 -rw-r--r--	root/root	usr/man/man2/readahead.2.gz
@@ -222,6 +234,7 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/sendfile.2.gz
 -rw-r--r--	root/root	usr/man/man2/sendmsg.2.gz
 -rw-r--r--	root/root	usr/man/man2/sendto.2.gz
+-rw-r--r--	root/root	usr/man/man2/set_mempolicy.2.gz
 -rw-r--r--	root/root	usr/man/man2/set_thread_area.2.gz
 -rw-r--r--	root/root	usr/man/man2/set_tid_address.2.gz
 -rw-r--r--	root/root	usr/man/man2/setcontext.2.gz
@@ -297,6 +310,7 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/undocumented.2.gz
 -rw-r--r--	root/root	usr/man/man2/unimplemented.2.gz
 -rw-r--r--	root/root	usr/man/man2/unlink.2.gz
+-rw-r--r--	root/root	usr/man/man2/unshare.2.gz
 -rw-r--r--	root/root	usr/man/man2/uselib.2.gz
 -rw-r--r--	root/root	usr/man/man2/ustat.2.gz
 -rw-r--r--	root/root	usr/man/man2/utime.2.gz
@@ -668,6 +682,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/fesetround.3.gz
 -rw-r--r--	root/root	usr/man/man3/fetestexcept.3.gz
 -rw-r--r--	root/root	usr/man/man3/feupdateenv.3.gz
+-rw-r--r--	root/root	usr/man/man3/fexecve.3.gz
 -rw-r--r--	root/root	usr/man/man3/fflush.3.gz
 -rw-r--r--	root/root	usr/man/man3/fflush_unlocked.3.gz
 -rw-r--r--	root/root	usr/man/man3/ffs.3.gz
@@ -752,6 +767,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/fts_set.3.gz
 -rw-r--r--	root/root	usr/man/man3/ftw.3.gz
 -rw-r--r--	root/root	usr/man/man3/funlockfile.3.gz
+-rw-r--r--	root/root	usr/man/man3/futimes.3.gz
 -rw-r--r--	root/root	usr/man/man3/fwide.3.gz
 -rw-r--r--	root/root	usr/man/man3/fwprintf.3.gz
 -rw-r--r--	root/root	usr/man/man3/fwrite.3.gz
@@ -1049,6 +1065,13 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/modff.3.gz
 -rw-r--r--	root/root	usr/man/man3/modfl.3.gz
 -rw-r--r--	root/root	usr/man/man3/mpool.3.gz
+-rw-r--r--	root/root	usr/man/man3/mq_close.3.gz
+-rw-r--r--	root/root	usr/man/man3/mq_getattr.3.gz
+-rw-r--r--	root/root	usr/man/man3/mq_notify.3.gz
+-rw-r--r--	root/root	usr/man/man3/mq_open.3.gz
+-rw-r--r--	root/root	usr/man/man3/mq_receive.3.gz
+-rw-r--r--	root/root	usr/man/man3/mq_send.3.gz
+-rw-r--r--	root/root	usr/man/man3/mq_unlink.3.gz
 -rw-r--r--	root/root	usr/man/man3/mrand48.3.gz
 -rw-r--r--	root/root	usr/man/man3/mrand48_r.3.gz
 -rw-r--r--	root/root	usr/man/man3/mtrace.3.gz
@@ -1087,6 +1110,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/pmap_set.3.gz
 -rw-r--r--	root/root	usr/man/man3/pmap_unset.3.gz
 -rw-r--r--	root/root	usr/man/man3/popen.3.gz
+-rw-r--r--	root/root	usr/man/man3/posix_fallocate.3.gz
 -rw-r--r--	root/root	usr/man/man3/posix_memalign.3.gz
 -rw-r--r--	root/root	usr/man/man3/posix_openpt.3.gz
 -rw-r--r--	root/root	usr/man/man3/pow.3.gz
@@ -1184,6 +1208,14 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/seed48.3.gz
 -rw-r--r--	root/root	usr/man/man3/seed48_r.3.gz
 -rw-r--r--	root/root	usr/man/man3/seekdir.3.gz
+-rw-r--r--	root/root	usr/man/man3/sem_close.3.gz
+-rw-r--r--	root/root	usr/man/man3/sem_destroy.3.gz
+-rw-r--r--	root/root	usr/man/man3/sem_getvalue.3.gz
+-rw-r--r--	root/root	usr/man/man3/sem_init.3.gz
+-rw-r--r--	root/root	usr/man/man3/sem_open.3.gz
+-rw-r--r--	root/root	usr/man/man3/sem_post.3.gz
+-rw-r--r--	root/root	usr/man/man3/sem_unlink.3.gz
+-rw-r--r--	root/root	usr/man/man3/sem_wait.3.gz
 -rw-r--r--	root/root	usr/man/man3/setaliasent.3.gz
 -rw-r--r--	root/root	usr/man/man3/setbuf.3.gz
 -rw-r--r--	root/root	usr/man/man3/setbuffer.3.gz
@@ -1213,6 +1245,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/sgetspent.3.gz
 -rw-r--r--	root/root	usr/man/man3/sgetspent_r.3.gz
 -rw-r--r--	root/root	usr/man/man3/shm_open.3.gz
+-rw-r--r--	root/root	usr/man/man3/shm_unlink.3.gz
 -rw-r--r--	root/root	usr/man/man3/sigaddset.3.gz
 -rw-r--r--	root/root	usr/man/man3/sigblock.3.gz
 -rw-r--r--	root/root	usr/man/man3/sigdelset.3.gz
@@ -1542,6 +1575,7 @@ drwxr-xr-x	root/root	usr/man/man4/
 -rw-r--r--	root/root	usr/man/man4/pts.4.gz
 -rw-r--r--	root/root	usr/man/man4/ram.4.gz
 -rw-r--r--	root/root	usr/man/man4/random.4.gz
+-rw-r--r--	root/root	usr/man/man4/rtc.4.gz
 -rw-r--r--	root/root	usr/man/man4/sd.4.gz
 -rw-r--r--	root/root	usr/man/man4/sk98lin.4.gz
 -rw-r--r--	root/root	usr/man/man4/st.4.gz
@@ -1602,6 +1636,7 @@ drwxr-xr-x	root/root	usr/man/man7/
 -rw-r--r--	root/root	usr/man/man7/glob.7.gz
 -rw-r--r--	root/root	usr/man/man7/hier.7.gz
 -rw-r--r--	root/root	usr/man/man7/icmp.7.gz
+-rw-r--r--	root/root	usr/man/man7/inotify.7.gz
 -rw-r--r--	root/root	usr/man/man7/intro.7.gz
 -rw-r--r--	root/root	usr/man/man7/ip.7.gz
 -rw-r--r--	root/root	usr/man/man7/ipv6.7.gz
@@ -1634,6 +1669,7 @@ drwxr-xr-x	root/root	usr/man/man7/
 -rw-r--r--	root/root	usr/man/man7/man.7.gz
 -rw-r--r--	root/root	usr/man/man7/mdoc.7.gz
 -rw-r--r--	root/root	usr/man/man7/mdoc.samples.7.gz
+-rw-r--r--	root/root	usr/man/man7/mq_overview.7.gz
 -rw-r--r--	root/root	usr/man/man7/netdevice.7.gz
 -rw-r--r--	root/root	usr/man/man7/netlink.7.gz
 -rw-r--r--	root/root	usr/man/man7/operator.7.gz
@@ -1645,6 +1681,7 @@ drwxr-xr-x	root/root	usr/man/man7/
 -rw-r--r--	root/root	usr/man/man7/raw.7.gz
 -rw-r--r--	root/root	usr/man/man7/regex.7.gz
 -rw-r--r--	root/root	usr/man/man7/rtnetlink.7.gz
+-rw-r--r--	root/root	usr/man/man7/sem_overview.7.gz
 -rw-r--r--	root/root	usr/man/man7/signal.7.gz
 -rw-r--r--	root/root	usr/man/man7/socket.7.gz
 -rw-r--r--	root/root	usr/man/man7/suffixes.7.gz
