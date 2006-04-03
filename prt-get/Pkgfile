@@ -4,9 +4,10 @@
 
 name=prt-get
 version=0.5.11
-release=3
+release=4
 source=(http://jw.tks6.net/files/crux/prt-get-$version.tar.gz \
-        prt-get.conf prt-get-0.5.11-deptree-alias.diff)
+	prt-get.conf prt-get.aliases \
+	prt-get-0.5.11-deptree-alias.diff)
 
 build() {
     cd ${name}-${version}
@@ -16,5 +17,8 @@ build() {
     make DESTDIR=$PKG install
 
     install -m 644 $SRC/prt-get.conf $PKG/etc/
+
+    # hacks
+    install -m 644 $SRC/prt-get.aliases $PKG/var/lib/pkg/prt-get.aliases
     rm -r $PKG/var/lib/pkg/prt-get.deplist
 }
