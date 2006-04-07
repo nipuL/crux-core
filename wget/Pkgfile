@@ -2,6 +2,7 @@
 # URL:         http://www.gnu.org/software/wget/
 # Maintainer:  Jukka Heino, jukka at karsikkopuu dot net
 # Packager:    Per Lidén, per at fukt dot bth dot se
+# Depends on:  openssl
 
 name=wget
 version=1.10.2
