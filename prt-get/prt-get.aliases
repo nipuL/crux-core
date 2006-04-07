@@ -1,5 +1,5 @@
 j2sdk: j2re
-lesstif: openmotif
+openmotif: lesstif
 postfix: sendmail
 exim: sendmail
 qmail: sendmail
