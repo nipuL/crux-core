@@ -1,6 +1,6 @@
 # Description: A system for managing library compile/link flags
-# URL:         http://pkgconfig.freedesktop.org/wiki/
-# Maintainer:  Tilman Sauerbeck, tilman at code-monkey dot de
+# URL: http://pkgconfig.freedesktop.org/wiki/
+# Maintainer: Tilman Sauerbeck, tilman at crux dot nu
 
 name=pkg-config
 version=0.20
@@ -8,8 +8,8 @@ release=1
 source=(http://$name.freedesktop.org/releases/$name-$version.tar.gz)
 
 build() {
-    cd $name-$version
-    ./configure --prefix=/usr
-    make
-    make DESTDIR=$PKG install
+	cd $name-$version
+	./configure --prefix=/usr
+	make
+	make DESTDIR=$PKG install
 }
