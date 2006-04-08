@@ -23,3 +23,18 @@
          const Package* p = m_repo->getPackage( *it );
          if (p) {
              if  (p->dependencies().length() > 0) {
+Index: pkgdb.cpp
+===================================================================
+--- prt-get-0.5.11/src/pkgdb.cpp	(revision 1137)
++++ prt-get-0.5.11/src/pkgdb.cpp	(working copy)
+@@ -68,6 +68,10 @@
+                 *aliasOrignalName = provider;
+             }
+         }
++    } else {
++        if (isAlias) {
++            *isAlias = false;
++        }
+     }
+ 
+     return installed;
