@@ -1,0 +1,74 @@
+2006-04-07  Mike Frysinger  <vapier@gentoo.org>
+
+	* src/useradd.c: Actually utilize the nflg by adding an -n option for the
+	user and by setting to USERGROUPS_ENAB from login.defs.  Also fix the logic
+	for when the user group actually needs to be added.
+
+--- src/useradd.c
++++ src/useradd.c
+@@ -114,7 +114,7 @@ static int do_grp_update = 0;	/* group f
+ static char *Prog;
+ 
+ static int
+- bflg = 0,			/* new default root of home directory */
++    bflg = 0,			/* new default root of home directory */
+     cflg = 0,			/* comment (GECOS) field for new account */
+     dflg = 0,			/* home directory for new account */
+     Dflg = 0,			/* set/show new user default values */
+@@ -253,6 +253,11 @@ static void get_defaults (void)
+ 	const struct group *grp;
+ 
+ 	/*
++	 * Pull relevant settings from login.defs first.
++	 */
++	nflg = getdef_bool ("USERGROUPS_ENAB");
++   printf("nflg: %d\n", nflg);
++	/*
+ 	 * Open the defaults file for reading.
+ 	 */
+ 
+@@ -628,6 +633,8 @@ static void usage (void)
+ 			   "  -K, --key KEY=VALUE		overrides /etc/login.defs defaults\n"
+ 			   "  -m, --create-home		create home directory for the new user\n"
+ 			   "				account\n"
++			   "  -n, --user-group		create a new group with the same name as the\n"
++			   "				new user\n"
+ 			   "  -o, --non-unique		allow create user with duplicate\n"
+ 			   "				(non-unique) UID\n"
+ 			   "  -p, --password PASSWORD	use encrypted password for the new user\n"
+@@ -1009,6 +1016,7 @@ static void process_flags (int argc, cha
+ 			{"skel", required_argument, NULL, 'k'},
+ 			{"key", required_argument, NULL, 'K'},
+ 			{"create-home", no_argument, NULL, 'm'},
++			{"user-group", no_argument, NULL, 'n'},
+ 			{"non-unique", no_argument, NULL, 'o'},
+ 			{"password", required_argument, NULL, 'p'},
+ 			{"shell", required_argument, NULL, 's'},
+@@ -1016,7 +1024,7 @@ static void process_flags (int argc, cha
+ 			{NULL, 0, NULL, '\0'}
+ 		};
+ 		while ((c =
+-			getopt_long (argc, argv, "b:c:d:De:f:g:G:k:K:mMop:s:u:",
++			getopt_long (argc, argv, "b:c:d:De:f:g:G:k:K:mMnop:s:u:",
+ 				     long_options, NULL)) != -1) {
+ 			switch (c) {
+ 			case 'b':
+@@ -1156,6 +1164,9 @@ static void process_flags (int argc, cha
+ 			case 'm':
+ 				mflg++;
+ 				break;
++			case 'n':
++				nflg++;
++				break;
+ 			case 'o':
+ 				oflg++;
+ 				break;
+@@ -1767,7 +1778,7 @@ int main (int argc, char **argv)
+ 
+ 	/* do we have to add a group for that user? This is why we need to
+ 	 * open the group files in the open_files() function  --gafton */
+-	if (!(nflg || gflg)) {
++	if (nflg && !gflg) {
+ 		find_new_gid ();
+ 		grp_add ();
+ 	}

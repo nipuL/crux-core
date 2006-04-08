@@ -1,24 +1,29 @@
 # Description: Shadow password file utilities
 # URL:         http://shadow.pld.org.pl/
-# Maintainer:  Per Lidén <per@fukt.bth.se>
+# Packager:    Per Lidén, per at fukt dot bth dot se
+# Maintainer:  Johannes Winkelmann, jw at crux dot nu
 
 name=shadow
 version=4.0.15
-release=2
+release=3
 source=(ftp://ftp.pld.org.pl/software/shadow/$name-$version.tar.bz2 \
-	pwck login.defs shadow-4.0.15-noshadowgrp.diff useradd-4.0.15.diff)
+	pwck login.defs \
+	shadow-4.0.15-noshadowgrp.diff \
+	shadow-fix-useradd-usergroups.patch\
+	shadow-4.0.15-nflg-conflict.diff)
 
 build() {
     cd $name-$version
     patch -p1 < $SRC/shadow-4.0.15-noshadowgrp.diff
-    patch -p0 < $SRC/useradd-4.0.15.diff
+    patch src/useradd.c $SRC/shadow-fix-useradd-usergroups.patch
+    patch src/useradd.c $SRC/shadow-4.0.15-nflg-conflict.diff 
 
     ./configure --prefix=/usr \
 		--mandir=/usr/man \
 		--disable-shared \
-                --disable-shadowgrp \
+        --disable-shadowgrp \
 		--disable-nls \
-                --without-selinux
+        --without-selinux
     make
     make DESTDIR=$PKG install
     mkdir -p $PKG/etc/cron/daily $PKG/var/log

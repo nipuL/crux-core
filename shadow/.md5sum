@@ -1,5 +1,6 @@
-d52af1b47b7a382bff9d0be6865f05ea  login.defs
+2b8c303d972cf6fb2a4545dd17262f27  login.defs
 be8f69c2701118093af3d7f3bc02af16  pwck
+9e2f566e29068dc98e42ea94ac788200  shadow-4.0.15-nflg-conflict.diff
 01bab2b152b8f2ae0056a467fa365797  shadow-4.0.15-noshadowgrp.diff
 a0452fa989f8ba45023cc5a08136568e  shadow-4.0.15.tar.bz2
-ed61f849a595731bf795010a4f3cea16  useradd-4.0.15.diff
+ca5630fc50fdf84daecde18149f321ec  shadow-fix-useradd-usergroups.patch

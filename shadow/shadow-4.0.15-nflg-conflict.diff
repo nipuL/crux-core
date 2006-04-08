@@ -1,0 +1,28 @@
+--- useradd.c.orig	2006-04-08 10:47:03.016040384 +0200
++++ useradd.c	2006-04-08 11:17:09.218455880 +0200
+@@ -1214,6 +1214,16 @@
+ 		usage ();
+ 
+ 	/*
++	 * Using -g and -n doesn't make sense
++	 */
++	if (nflg && gflg) {
++		fprintf(stderr,
++			_("%s: options -n and -g conflict and can't be used together\n"),
++			Prog);
++		exit (E_BAD_ARG);
++	}
++
++	/*
+ 	 * Either -D or username is required. Defaults can be set with -D
+ 	 * for the -b, -e, -f, -g, -s options only.
+ 	 */
+@@ -1778,7 +1788,7 @@
+ 
+ 	/* do we have to add a group for that user? This is why we need to
+ 	 * open the group files in the open_files() function  --gafton */
+-	if (nflg && !gflg) {
++	if (nflg) {
+ 		find_new_gid ();
+ 		grp_add ();
+ 	}
