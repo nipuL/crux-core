@@ -1,12 +1,116 @@
-diff -ru bzip2-1.0.3/Makefile bzip2-1.0.3-new/Makefile
---- bzip2-1.0.3/Makefile	2005-02-17 12:28:24.000000000 +0100
-+++ bzip2-1.0.3-new/Makefile	2005-07-20 02:45:04.000000000 +0200
+diff -aur bzip2-1.0.3.orig/Makefile bzip2-1.0.3/Makefile
+--- bzip2-1.0.3.orig/Makefile	2005-02-17 12:28:24.000000000 +0100
++++ bzip2-1.0.3/Makefile	2006-04-06 18:23:10.000000000 +0200
 @@ -8,7 +8,7 @@
  LDFLAGS=
  
  BIGFILES=-D_FILE_OFFSET_BITS=64
 -CFLAGS=-Wall -Winline -O -g $(BIGFILES)
-+CFLAGS+=-Wall -Winline -O -g $(BIGFILES)
++CFLAGS+=-Wall -Winline $(BIGFILES)
  
  # Where you want it installed when you do 'make install'
  PREFIX=/usr
+@@ -57,43 +57,36 @@
+ 	@cat words3
+ 
+ install: bzip2 bzip2recover
+-	if ( test ! -d $(PREFIX)/bin ) ; then mkdir -p $(PREFIX)/bin ; fi
+-	if ( test ! -d $(PREFIX)/lib ) ; then mkdir -p $(PREFIX)/lib ; fi
+-	if ( test ! -d $(PREFIX)/man ) ; then mkdir -p $(PREFIX)/man ; fi
+-	if ( test ! -d $(PREFIX)/man/man1 ) ; then mkdir -p $(PREFIX)/man/man1 ; fi
+-	if ( test ! -d $(PREFIX)/include ) ; then mkdir -p $(PREFIX)/include ; fi
+-	cp -f bzip2 $(PREFIX)/bin/bzip2
+-	cp -f bzip2 $(PREFIX)/bin/bunzip2
+-	cp -f bzip2 $(PREFIX)/bin/bzcat
+-	cp -f bzip2recover $(PREFIX)/bin/bzip2recover
+-	chmod a+x $(PREFIX)/bin/bzip2
+-	chmod a+x $(PREFIX)/bin/bunzip2
+-	chmod a+x $(PREFIX)/bin/bzcat
+-	chmod a+x $(PREFIX)/bin/bzip2recover
+-	cp -f bzip2.1 $(PREFIX)/man/man1
+-	chmod a+r $(PREFIX)/man/man1/bzip2.1
+-	cp -f bzlib.h $(PREFIX)/include
+-	chmod a+r $(PREFIX)/include/bzlib.h
+-	cp -f libbz2.a $(PREFIX)/lib
+-	chmod a+r $(PREFIX)/lib/libbz2.a
+-	cp -f bzgrep $(PREFIX)/bin/bzgrep
+-	ln $(PREFIX)/bin/bzgrep $(PREFIX)/bin/bzegrep
+-	ln $(PREFIX)/bin/bzgrep $(PREFIX)/bin/bzfgrep
+-	chmod a+x $(PREFIX)/bin/bzgrep
+-	cp -f bzmore $(PREFIX)/bin/bzmore
+-	ln $(PREFIX)/bin/bzmore $(PREFIX)/bin/bzless
+-	chmod a+x $(PREFIX)/bin/bzmore
+-	cp -f bzdiff $(PREFIX)/bin/bzdiff
+-	ln $(PREFIX)/bin/bzdiff $(PREFIX)/bin/bzcmp
+-	chmod a+x $(PREFIX)/bin/bzdiff
+-	cp -f bzgrep.1 bzmore.1 bzdiff.1 $(PREFIX)/man/man1
+-	chmod a+r $(PREFIX)/man/man1/bzgrep.1
+-	chmod a+r $(PREFIX)/man/man1/bzmore.1
+-	chmod a+r $(PREFIX)/man/man1/bzdiff.1
+-	echo ".so man1/bzgrep.1" > $(PREFIX)/man/man1/bzegrep.1
+-	echo ".so man1/bzgrep.1" > $(PREFIX)/man/man1/bzfgrep.1
+-	echo ".so man1/bzmore.1" > $(PREFIX)/man/man1/bzless.1
+-	echo ".so man1/bzdiff.1" > $(PREFIX)/man/man1/bzcmp.1
++	install -d $(PREFIX)/bin \
++	           $(PREFIX)/lib \
++	           $(PREFIX)/man/man1 \
++	           $(PREFIX)/include
++	install -m 755 bzip2 \
++	               bzip2recover \
++	               bzgrep \
++	               bzmore \
++	               bzdiff \
++	               $(PREFIX)/bin
++	install -m 644 bzlib.h $(PREFIX)/include
++	install -m 644 libbz2.a $(PREFIX)/lib
++	ln -sf bzip2 $(PREFIX)/bin/bunzip2
++	ln -sf bzip2 $(PREFIX)/bin/bzcat
++	ln -sf bzgrep $(PREFIX)/bin/bzegrep
++	ln -sf bzgrep $(PREFIX)/bin/bzfgrep
++	ln -sf bzmore $(PREFIX)/bin/bzless
++	ln -sf bzdiff $(PREFIX)/bin/bzcmp
++	install -m 644 bzip2.1 \
++	               bzgrep.1 \
++	               bzmore.1 \
++	               bzdiff.1 \
++	               $(PREFIX)/man/man1
++	ln -sf bzgrep.1 $(PREFIX)/man/man1/bzegrep.1
++	ln -sf bzgrep.1 $(PREFIX)/man/man1/bzfgrep.1
++	ln -sf bzmore.1 $(PREFIX)/man/man1/bzless.1
++	ln -sf bzdiff.1 $(PREFIX)/man/man1/bzcmp.1
++	ln -sf bzip2.1 $(PREFIX)/man/man1/bunzip2.1
++	ln -sf bzip2.1 $(PREFIX)/man/man1/bzcat.1
++	ln -sf bzip2.1 $(PREFIX)/man/man1/bzip2recover.1
+ 
+ clean: 
+ 	rm -f *.o libbz2.a bzip2 bzip2recover \
+diff -aur bzip2-1.0.3.orig/Makefile-libbz2_so bzip2-1.0.3/Makefile-libbz2_so
+--- bzip2-1.0.3.orig/Makefile-libbz2_so	2004-10-17 19:32:13.000000000 +0200
++++ bzip2-1.0.3/Makefile-libbz2_so	2006-04-06 18:10:21.000000000 +0200
+@@ -9,7 +9,7 @@
+ SHELL=/bin/sh
+ CC=gcc
+ BIGFILES=-D_FILE_OFFSET_BITS=64
+-CFLAGS=-fpic -fPIC -Wall -Winline -O -g
++CFLAGS+=-fpic -fPIC -Wall -Winline
+ 
+ OBJS= blocksort.o  \
+       huffman.o    \
+@@ -22,11 +22,14 @@
+ all: $(OBJS)
+ 	$(CC) -shared -Wl,-soname -Wl,libbz2.so.1.0 -o libbz2.so.1.0.3 $(OBJS)
+ 	$(CC) $(CFLAGS) -o bzip2-shared bzip2.c libbz2.so.1.0.3
+-	rm -f libbz2.so.1.0
+-	ln -s libbz2.so.1.0.3 libbz2.so.1.0
++
++install:
++	install -d $(PREFIX)/lib
++	install -m 755 libbz2.so.1.0.3 $(PREFIX)/lib
++	ln -sf libbz2.so.1.0.3 $(PREFIX)/lib/libbz2.so.1.0
+ 
+ clean: 
+-	rm -f $(OBJS) bzip2.o libbz2.so.1.0.3 libbz2.so.1.0 bzip2-shared
++	rm -f $(OBJS) bzip2.o libbz2.so.1.0.3 bzip2-shared
+ 
+ blocksort.o: blocksort.c
+ 	$(CC) $(CFLAGS) -c blocksort.c
