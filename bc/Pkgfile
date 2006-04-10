@@ -5,13 +5,15 @@
 
 name=bc
 version=1.06
-release=2
+release=3
 source=(http://mirrors.sunsite.dk/gnu/$name/$name-$version.tar.gz \
-	$name-$version-compile_fixes.patch)
+        $name-$version-compile_fixes.patch $name-$version-fixes-1.patch)
 
 build() { 
     cd $name-$version
     patch -p1 < ../$name-$version-compile_fixes.patch
+    patch -p1 < ../$name-$version-fixes-1.patch
+    
     ./configure --prefix=/usr --with-readline
     make
     make DESTDIR=$PKG install
