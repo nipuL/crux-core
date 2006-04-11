@@ -138,7 +138,9 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/mbind.2.gz
 -rw-r--r--	root/root	usr/man/man2/mincore.2.gz
 -rw-r--r--	root/root	usr/man/man2/mkdir.2.gz
+-rw-r--r--	root/root	usr/man/man2/mkdirat.2.gz
 -rw-r--r--	root/root	usr/man/man2/mknod.2.gz
+-rw-r--r--	root/root	usr/man/man2/mknodat.2.gz
 -rw-r--r--	root/root	usr/man/man2/mlock.2.gz
 -rw-r--r--	root/root	usr/man/man2/mlockall.2.gz
 -rw-r--r--	root/root	usr/man/man2/mmap.2.gz
@@ -1057,6 +1059,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/memset.3.gz
 -rw-r--r--	root/root	usr/man/man3/mkdtemp.3.gz
 -rw-r--r--	root/root	usr/man/man3/mkfifo.3.gz
+-rw-r--r--	root/root	usr/man/man3/mkfifoat.3.gz
 -rw-r--r--	root/root	usr/man/man3/mkstemp.3.gz
 -rw-r--r--	root/root	usr/man/man3/mktemp.3.gz
 -rw-r--r--	root/root	usr/man/man3/mktime.3.gz
@@ -1591,6 +1594,7 @@ drwxr-xr-x	root/root	usr/man/man5/
 -rw-r--r--	root/root	usr/man/man5/acct.5.gz
 -rw-r--r--	root/root	usr/man/man5/charmap.5.gz
 -rw-r--r--	root/root	usr/man/man5/complex.5.gz
+-rw-r--r--	root/root	usr/man/man5/core.5.gz
 -rw-r--r--	root/root	usr/man/man5/dir_colors.5.gz
 -rw-r--r--	root/root	usr/man/man5/elf.5.gz
 -rw-r--r--	root/root	usr/man/man5/environ.5.gz
