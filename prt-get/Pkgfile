@@ -3,22 +3,17 @@
 # Maintainer:  Johannes Winkelmann, jw at tks6 dot net
 
 name=prt-get
-version=0.5.11
-release=5
+version=5.12
+release=1
 source=(http://jw.tks6.net/files/crux/prt-get-$version.tar.gz \
-	prt-get.conf prt-get.aliases \
-	prt-get-0.5.11-deptree-alias.diff)
+	prt-get.conf prt-get.aliases)
 
 build() {
     cd ${name}-${version}
-    patch -p1 < $SRC/prt-get-0.5.11-deptree-alias.diff
     ./configure --prefix=/usr
     make
     make DESTDIR=$PKG install
 
     install -m 644 $SRC/prt-get.conf $PKG/etc/
-
-    # hacks
-    install -m 644 $SRC/prt-get.aliases $PKG/var/lib/pkg/prt-get.aliases
-    rm -r $PKG/var/lib/pkg/prt-get.deplist
+    install -D -m 644 $SRC/prt-get.aliases $PKG/var/lib/pkg/prt-get.aliases
 }
