@@ -15,14 +15,13 @@
      cflg = 0,			/* comment (GECOS) field for new account */
      dflg = 0,			/* home directory for new account */
      Dflg = 0,			/* set/show new user default values */
-@@ -253,6 +253,11 @@ static void get_defaults (void)
+@@ -253,6 +253,10 @@ static void get_defaults (void)
  	const struct group *grp;
  
  	/*
 +	 * Pull relevant settings from login.defs first.
 +	 */
 +	nflg = getdef_bool ("USERGROUPS_ENAB");
-+   printf("nflg: %d\n", nflg);
 +	/*
  	 * Open the defaults file for reading.
  	 */
