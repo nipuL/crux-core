@@ -1,6 +1,6 @@
 # Description: File type identification utility
 # URL:         ftp://ftp.fu-berlin.de/unix/tools/file/
-# Maintainer:  Jukka Heino, jukka at karsikkopuu dot net
+# Maintainer:  Jukka Heino, jukka dot heino at gmail dot com
 # Packager:    Per Lidén, per at fukt dot bth dot se
 # Depends on:  zlib
 
