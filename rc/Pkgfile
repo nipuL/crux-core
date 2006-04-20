@@ -1,6 +1,6 @@
 # Description: BSD-like init-scripts
 # URL:         http://crux.nu
-# Maintainer:  Per Lidén <per@fukt.bth.se>
+# Maintainer:  Per Lidén, core-ports at crux dot nu
 
 name=rc
 version=2.17

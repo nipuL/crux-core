@@ -1,6 +1,6 @@
 # Description: Ext2 Filesystem Utilities
 # URL:         http://e2fsprogs.sourceforge.net/
-# Maintainer:  Per Lidén <per@fukt.bth.se>
+# Maintainer:  Per Lidén, core-ports at crux dot nu
 
 name=e2fsprogs
 version=1.38

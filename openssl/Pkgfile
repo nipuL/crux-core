@@ -1,6 +1,6 @@
 # Description: Secure Sockets Layer and Transport Layer Security tools
 # URL:         http://www.openssl.org/
-# Maintainer:  Per Lidén <per@fukt.bth.se>
+# Maintainer:  Per Lidén, core-ports at crux dot nu
 
 name=openssl
 version=0.9.8a

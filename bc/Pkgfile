@@ -1,6 +1,6 @@
 # Description: An arbitrary precision calculator language
 # URL:         http://www.gnu.org/software/bc/bc.html
-# Maintainer:  Per Lidén <per@fukt.bth.se>
+# Maintainer:  Per Lidén, core-ports at crux dot nu
 # Depends on:  ncurses, readline
 
 name=bc

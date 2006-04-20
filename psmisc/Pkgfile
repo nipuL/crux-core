@@ -1,6 +1,6 @@
 # Description: Small utilities that use the /proc filesystem
 # URL:         http://psmisc.sourceforge.net/
-# Maintainer:  Per Lidén <per@fukt.bth.se>
+# Maintainer:  Per Lidén, core-ports at crux dot nu
 # Depends on:  ncurses
 
 name=psmisc

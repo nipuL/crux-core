@@ -1,6 +1,6 @@
 # Description: GNU database library for C
 # URL:         http://www.gnu.org/software/gdbm/gdbm.html
-# Maintainer:  Per Lidén <per@fukt.bth.se>
+# Maintainer:  Per Lidén, core-ports at crux dot nu
 
 name=gdbm
 version=1.8.3

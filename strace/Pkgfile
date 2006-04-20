@@ -1,6 +1,6 @@
 # Description: System call tracing utility (like trace, truss, etc)
 # URL:         http://www.liacs.nl/~wichert/strace/
-# Maintainer:  Per Lidén <per@fukt.bth.se>
+# Maintainer:  Per Lidén, core-ports at crux dot nu
 
 name=strace
 version=4.5.14

@@ -1,6 +1,6 @@
 # Description: A compression/decompression Library
 # URL:         http://www.zlib.net/
-# Maintainer:  Per Lidén <per@fukt.bth.se>
+# Maintainer:  Per Lidén, core-ports at crux dot nu
 
 name=zlib
 version=1.2.3

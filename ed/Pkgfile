@@ -1,6 +1,6 @@
 # Description: An 8-bit clean, POSIX-compliant line editor
 # URL:         http://www.gnu.org/software/ed/ed.html
-# Maintainer:  Per Lidén <per@fukt.bth.se>
+# Maintainer:  Per Lidén, core-ports at crux dot nu
 
 name=ed
 version=0.2

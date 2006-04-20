@@ -1,6 +1,6 @@
 # Description: Filesystem utilities for ReiserFS
 # URL:         http://www.namesys.com/
-# Maintainer:  Per Lidén <per@fukt.bth.se>
+# Maintainer:  Per Lidén, core-ports at crux dot nu
 # Depends on:  e2fsprogs
 
 name=reiserfsprogs

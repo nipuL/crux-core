@@ -1,6 +1,6 @@
 # Description: A standard Unix macro processor with extensions
 # URL:         http://www.seindal.dk/rene/gnu/
-# Maintainer:  Per Lidén <per@fukt.bth.se>
+# Maintainer:  Per Lidén, core-ports at crux dot nu
 
 name=m4
 version=1.4.4

@@ -1,6 +1,6 @@
 # Description: Lets users edit command lines as they are typed in
 # URL:         http://cnswww.cns.cwru.edu/php/chet/readline/rltop.html
-# Maintainer:  Per Lidén <per@fukt.bth.se>
+# Maintainer:  Per Lidén, core-ports at crux dot nu
 
 name=readline
 version=5.1

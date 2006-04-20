@@ -1,6 +1,6 @@
 # Description: A daemon which implements the PPP protocol for internetworking over dialup lines
 # URL:         http://www.samba.org/ppp/
-# Maintainer:  Per Lidén <per@fukt.bth.se>
+# Maintainer:  Per Lidén, core-ports at crux dot nu
 # Depends on:  zlib, openssl
 
 name=ppp

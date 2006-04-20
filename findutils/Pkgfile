@@ -1,6 +1,6 @@
 # Description: Basic directory searching utilities
 # URL:         http://www.gnu.org/software/findutils/
-# Maintainer:  Per Lidén <per@fukt.bth.se>
+# Maintainer:  Per Lidén, core-ports at crux dot nu
 
 name=findutils
 version=4.2.27

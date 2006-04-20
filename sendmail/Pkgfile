@@ -1,6 +1,6 @@
 # Description: Mail Transfer Agent
 # URL:         http://sendmail.org/
-# Maintainer:  Per Lidén <per@fukt.bth.se>
+# Maintainer:  Per Lidén, core-ports at crux dot nu
 
 name=sendmail
 version=8.13.6

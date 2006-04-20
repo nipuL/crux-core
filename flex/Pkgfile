@@ -1,6 +1,6 @@
 # Description: Fast Lexical Analyzer Generator
 # URL:         http://lex.sourceforge.net/
-# Maintainer:  Per Lidén <per@fukt.bth.se>
+# Maintainer:  Per Lidén, core-ports at crux dot nu
 
 name=flex
 version=2.5.31

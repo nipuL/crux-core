@@ -1,6 +1,6 @@
 # Description: The GNU internationalization library
 # URL:         http://www.gnu.org/software/gettext/
-# Maintainer:  Per Lidén <per@fukt.bth.se>
+# Maintainer:  Per Lidén, core-ports at crux dot nu
 
 name=gettext
 version=0.14.5

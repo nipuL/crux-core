@@ -1,6 +1,6 @@
 # Description: The C library used in the GNU system
 # URL:         http://www.gnu.org/software/libc/
-# Maintainer:  Per Lidén <per@fukt.bth.se>
+# Maintainer:  Per Lidén, core-ports at crux dot nu
 
 name=glibc
 version=2.3.6

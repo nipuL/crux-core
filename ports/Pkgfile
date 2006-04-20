@@ -1,6 +1,6 @@
 # Description: CRUX ports system tools
 # URL:         http://crux.nu
-# Maintainer:  Per Lidén <per@fukt.bth.se>
+# Maintainer:  Per Lidén, core-ports at crux dot nu
 
 name=ports
 version=1.5

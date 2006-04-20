@@ -1,6 +1,6 @@
 # Description: Keytable files and keyboard utilities
 # URL:         ftp://ftp.win.tue.nl/pub/linux-local/utils/kbd/
-# Maintainer:  Per Lidén <per@fukt.bth.se>
+# Maintainer:  Per Lidén, core-ports at crux dot nu
 
 name=kbd
 version=1.12

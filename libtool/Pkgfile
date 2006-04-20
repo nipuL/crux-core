@@ -1,6 +1,6 @@
 # Description: A generic library support script
 # URL:         http://www.gnu.org/software/libtool/
-# Maintainer:  Per Lidén <per@fukt.bth.se>
+# Maintainer:  Per Lidén, core-ports at crux dot nu
 
 name=libtool
 version=1.5.22

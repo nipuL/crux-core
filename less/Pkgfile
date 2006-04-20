@@ -1,6 +1,6 @@
 # Description: A terminal based program for viewing text files
 # URL:         http://www.greenwoodsoftware.com/less/
-# Maintainer:  Per Lidén <per@fukt.bth.se>
+# Maintainer:  Per Lidén, core-ports at crux dot nu
 # Depends on:  ncurses
 
 name=less

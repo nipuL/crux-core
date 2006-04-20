@@ -1,6 +1,6 @@
 # Description: Sed - streams editor
 # URL:         http://www.gnu.org/software/sed//sed.html
-# Maintainer:  Per Lidén <per@fukt.bth.se>
+# Maintainer:  Per Lidén, core-ports at crux dot nu
 
 name=sed
 version=4.1.5

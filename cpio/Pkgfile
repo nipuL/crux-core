@@ -1,6 +1,6 @@
 # Description: A tool to copy files into or out of a cpio or tar archive
 # URL:         http://www.gnu.org/software/cpio/
-# Maintainer:  Per Lidén <per@fukt.bth.se>
+# Maintainer:  Per Lidén, core-ports at crux dot nu
 
 name=cpio
 version=2.6

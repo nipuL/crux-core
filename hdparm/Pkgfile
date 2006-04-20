@@ -1,6 +1,6 @@
 # Description: A shell utility for manipulating Linux IDE drive/driver parameters
 # URL:         http://sourceforge.net/projects/hdparm/
-# Maintainer:  Per Lidén <per@fukt.bth.se>
+# Maintainer:  Per Lidén, core-ports at crux dot nu
 
 name=hdparm
 version=6.3

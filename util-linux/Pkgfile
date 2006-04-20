@@ -1,6 +1,6 @@
 # Description: Miscellaneous system utilities
 # URL:         http://freshmeat.net/projects/util-linux/
-# Maintainer:  Per Lidén <per@fukt.bth.se>
+# Maintainer:  Per Lidén, core-ports at crux dot nu
 # Depends on:  e2fsprogs, ncurses, zlib
 
 name=util-linux

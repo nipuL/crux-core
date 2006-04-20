@@ -1,6 +1,6 @@
 # Description: Compression and file packaging/archive utility
 # URL:         http://www.info-zip.org/Zip.html
-# Maintainer:  Per Lidén <per@fukt.bth.se>
+# Maintainer:  Per Lidén, core-ports at crux dot nu
 
 name=zip
 version=2.31

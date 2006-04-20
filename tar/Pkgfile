@@ -1,6 +1,6 @@
 # Description: GNU tar
 # URL:         http://www.gnu.org/software/tar/tar.html
-# Maintainer:  Per Lidén <per@fukt.bth.se>
+# Maintainer:  Per Lidén, core-ports at crux dot nu
 
 name=tar
 version=1.15.1

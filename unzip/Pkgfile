@@ -1,6 +1,6 @@
 # Description: Decompress utility for zipfiles
 # URL:         http://www.info-zip.org/
-# Maintainer:  Per Lidén <per@fukt.bth.se>
+# Maintainer:  Per Lidén, core-ports at crux dot nu
 
 name=unzip
 version=5.52

@@ -1,6 +1,6 @@
 # Description: Network utilities
 # URL:         http://www.tazenda.demon.co.uk/phil/net-tools/
-# Maintainer:  Per Lidén <per@fukt.bth.se>
+# Maintainer:  Per Lidén, core-ports at crux dot nu
 
 name=net-tools
 version=1.60

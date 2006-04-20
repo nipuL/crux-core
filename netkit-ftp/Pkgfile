@@ -1,6 +1,6 @@
 # Description: An FTP client
 # URL:         ftp://ftp.uk.linux.org/pub/linux/Networking/netkit
-# Maintainer:  Per Lidén <per@fukt.bth.se>
+# Maintainer:  Per Lidén, core-ports at crux dot nu
 # Depends on:  ncurses, readline
 
 name=netkit-ftp

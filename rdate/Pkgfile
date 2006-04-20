@@ -1,6 +1,6 @@
 # Description: Retrieves the date and time from another machine on your network (RFC 868)
 # URL:         ftp://people.redhat.com/sopwith/
-# Maintainer:  Per Lidén <per@fukt.bth.se>
+# Maintainer:  Per Lidén, core-ports at crux dot nu
 
 name=rdate
 version=1.4

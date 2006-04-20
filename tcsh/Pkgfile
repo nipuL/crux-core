@@ -1,6 +1,6 @@
 # Description: Enhanced version of the Berkeley C shell (csh)
 # URL:         http://www.tcsh.org
-# Maintainer:  Per Lidén <per@fukt.bth.se>
+# Maintainer:  Per Lidén, core-ports at crux dot nu
 # Depends on:  ncurses
 
 name=tcsh

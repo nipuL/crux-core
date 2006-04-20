@@ -1,6 +1,6 @@
 # Description: Kernel module utilities
 # URL:         http://www.kernel.org/pub/linux/kernel/people/rusty/modules
-# Maintainer:  Per Lidén <per@fukt.bth.se>
+# Maintainer:  Per Lidén, core-ports at crux dot nu
 
 name=module-init-tools
 version=3.2.2

@@ -1,6 +1,6 @@
 # Description: A popular vi clone that features syntax highlighting
 # URL:         http://www.vim.org/
-# Maintainer:  Per Lidén <per@fukt.bth.se>
+# Maintainer:  Per Lidén, core-ports at crux dot nu
 # Depends on:  ncurses
 
 name=vim
