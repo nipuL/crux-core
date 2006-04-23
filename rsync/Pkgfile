@@ -4,7 +4,7 @@
 # Depends on:  openssh
 
 name=rsync
-version=2.6.7
+version=2.6.8
 release=1
 source=(http://samba.org/ftp/$name/$name-$version.tar.gz \
         rsyncd.conf rsyncd rsync.driver)
