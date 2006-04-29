@@ -5,6 +5,7 @@
 
 use warnings;
 use strict;
+use File::Basename;
 
 my $host = '';
 my $collection = '';
@@ -74,7 +75,7 @@ while (<PIPE>)
 close(PIPE);
 error("Running rsync failed") unless $? == 0;
 
-print "Updating collection $collection\n";
+print "Updating collection " . basename($destination) . "\n";
 
 # now really run rsync
 open(PIPE, 'rsync -crz --log-format "%o %n" ' . $host . "::$collection $destination|") or error("Couldn't open pipe to rsync");
