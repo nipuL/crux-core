@@ -124,6 +124,7 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/lchown.2.gz
 -rw-r--r--	root/root	usr/man/man2/lgetxattr.2.gz
 -rw-r--r--	root/root	usr/man/man2/link.2.gz
+-rw-r--r--	root/root	usr/man/man2/linkat.2.gz
 -rw-r--r--	root/root	usr/man/man2/listen.2.gz
 -rw-r--r--	root/root	usr/man/man2/listxattr.2.gz
 -rw-r--r--	root/root	usr/man/man2/llistxattr.2.gz
@@ -211,6 +212,7 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/remap_file_pages.2.gz
 -rw-r--r--	root/root	usr/man/man2/removexattr.2.gz
 -rw-r--r--	root/root	usr/man/man2/rename.2.gz
+-rw-r--r--	root/root	usr/man/man2/renameat.2.gz
 -rw-r--r--	root/root	usr/man/man2/rmdir.2.gz
 -rw-r--r--	root/root	usr/man/man2/rt_sigreturn.2.gz
 -rw-r--r--	root/root	usr/man/man2/rt_sigsuspend.2.gz
@@ -293,6 +295,7 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/swapoff.2.gz
 -rw-r--r--	root/root	usr/man/man2/swapon.2.gz
 -rw-r--r--	root/root	usr/man/man2/symlink.2.gz
+-rw-r--r--	root/root	usr/man/man2/symlinkat.2.gz
 -rw-r--r--	root/root	usr/man/man2/sync.2.gz
 -rw-r--r--	root/root	usr/man/man2/syscall.2.gz
 -rw-r--r--	root/root	usr/man/man2/syscalls.2.gz
@@ -312,6 +315,7 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/undocumented.2.gz
 -rw-r--r--	root/root	usr/man/man2/unimplemented.2.gz
 -rw-r--r--	root/root	usr/man/man2/unlink.2.gz
+-rw-r--r--	root/root	usr/man/man2/unlinkat.2.gz
 -rw-r--r--	root/root	usr/man/man2/unshare.2.gz
 -rw-r--r--	root/root	usr/man/man2/uselib.2.gz
 -rw-r--r--	root/root	usr/man/man2/ustat.2.gz
