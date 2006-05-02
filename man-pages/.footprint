@@ -55,6 +55,7 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/fremovexattr.2.gz
 -rw-r--r--	root/root	usr/man/man2/fsetxattr.2.gz
 -rw-r--r--	root/root	usr/man/man2/fstat.2.gz
+-rw-r--r--	root/root	usr/man/man2/fstatat.2.gz
 -rw-r--r--	root/root	usr/man/man2/fstatfs.2.gz
 -rw-r--r--	root/root	usr/man/man2/fstatvfs.2.gz
 -rw-r--r--	root/root	usr/man/man2/fsync.2.gz
@@ -367,6 +368,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/acosl.3.gz
 -rw-r--r--	root/root	usr/man/man3/addmntent.3.gz
 -rw-r--r--	root/root	usr/man/man3/addseverity.3.gz
+-rw-r--r--	root/root	usr/man/man3/adjtime.3.gz
 -rw-r--r--	root/root	usr/man/man3/aio_cancel.3.gz
 -rw-r--r--	root/root	usr/man/man3/aio_error.3.gz
 -rw-r--r--	root/root	usr/man/man3/aio_fsync.3.gz
@@ -631,6 +633,11 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/erfl.3.gz
 -rw-r--r--	root/root	usr/man/man3/err.3.gz
 -rw-r--r--	root/root	usr/man/man3/errno.3.gz
+-rw-r--r--	root/root	usr/man/man3/error.3.gz
+-rw-r--r--	root/root	usr/man/man3/error_at_line.3.gz
+-rw-r--r--	root/root	usr/man/man3/error_message_count.3.gz
+-rw-r--r--	root/root	usr/man/man3/error_on_per_line.3.gz
+-rw-r--r--	root/root	usr/man/man3/error_print_progname.3.gz
 -rw-r--r--	root/root	usr/man/man3/errx.3.gz
 -rw-r--r--	root/root	usr/man/man3/ether_aton.3.gz
 -rw-r--r--	root/root	usr/man/man3/ether_aton_r.3.gz
@@ -1128,6 +1135,8 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/powl.3.gz
 -rw-r--r--	root/root	usr/man/man3/printf.3.gz
 -rw-r--r--	root/root	usr/man/man3/profil.3.gz
+-rw-r--r--	root/root	usr/man/man3/program_invocation_name.3.gz
+-rw-r--r--	root/root	usr/man/man3/program_invocation_short_name.3.gz
 -rw-r--r--	root/root	usr/man/man3/psignal.3.gz
 -rw-r--r--	root/root	usr/man/man3/ptsname.3.gz
 -rw-r--r--	root/root	usr/man/man3/ptsname_r.3.gz
@@ -1288,6 +1297,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/sinl.3.gz
 -rw-r--r--	root/root	usr/man/man3/sleep.3.gz
 -rw-r--r--	root/root	usr/man/man3/snprintf.3.gz
+-rw-r--r--	root/root	usr/man/man3/sockatmark.3.gz
 -rw-r--r--	root/root	usr/man/man3/sprintf.3.gz
 -rw-r--r--	root/root	usr/man/man3/sqrt.3.gz
 -rw-r--r--	root/root	usr/man/man3/sqrtf.3.gz
@@ -1640,7 +1650,13 @@ drwxr-xr-x	root/root	usr/man/man7/
 -rw-r--r--	root/root	usr/man/man7/bootparam.7.gz
 -rw-r--r--	root/root	usr/man/man7/capabilities.7.gz
 -rw-r--r--	root/root	usr/man/man7/charsets.7.gz
+-rw-r--r--	root/root	usr/man/man7/complex.7.gz
 -rw-r--r--	root/root	usr/man/man7/ddp.7.gz
+-rw-r--r--	root/root	usr/man/man7/environ.7.gz
+-rw-r--r--	root/root	usr/man/man7/epoll.7.gz
+-rw-r--r--	root/root	usr/man/man7/fifo.7.gz
+-rw-r--r--	root/root	usr/man/man7/ftm.7.gz
+-rw-r--r--	root/root	usr/man/man7/futex.7.gz
 -rw-r--r--	root/root	usr/man/man7/glob.7.gz
 -rw-r--r--	root/root	usr/man/man7/hier.7.gz
 -rw-r--r--	root/root	usr/man/man7/icmp.7.gz
@@ -1693,7 +1709,9 @@ drwxr-xr-x	root/root	usr/man/man7/
 -rw-r--r--	root/root	usr/man/man7/signal.7.gz
 -rw-r--r--	root/root	usr/man/man7/socket.7.gz
 -rw-r--r--	root/root	usr/man/man7/suffixes.7.gz
+-rw-r--r--	root/root	usr/man/man7/svipc.7.gz
 -rw-r--r--	root/root	usr/man/man7/tcp.7.gz
+-rw-r--r--	root/root	usr/man/man7/time.7.gz
 -rw-r--r--	root/root	usr/man/man7/udp.7.gz
 -rw-r--r--	root/root	usr/man/man7/unicode.7.gz
 -rw-r--r--	root/root	usr/man/man7/units.7.gz
