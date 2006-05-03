@@ -4,7 +4,7 @@
 # Depends on: hotplug
 
 name=udev
-version=087
+version=091
 release=1
 source=(ftp://ftp.kernel.org/pub/linux/utils/kernel/hotplug/$name-$version.tar.bz2 \
 	udev.rules start_udev)
@@ -14,7 +14,7 @@ build() {
 	sed -i -e 's/$(OPTIMIZATION)//' Makefile
 	make \
 		USE_KLIBC=false \
-		USE_LOG=false \
+		USE_LOG=true \
 		DEBUG=false \
 		EXTRAS="extras/scsi_id extras/volume_id extras/ata_id extras/run_directory extras/usb_id extras/floppy extras/cdrom_id extras/firmware" \
 		udevdir="/dev" \
@@ -27,8 +27,9 @@ build() {
 	install -m 0644 $SRC/udev.rules \
 		$PKG/etc/udev/rules.d/50-udev.rules
 	install -D -m 0755 $SRC/start_udev $PKG/sbin/start_udev
-	install extras/path_id extras/floppy/create_floppy_devices \
+	install extras/path_id/path_id extras/floppy/create_floppy_devices \
 		extras/firmware/firmware_helper $PKG/sbin/
+	mv $PKG/lib/udev/*_id $PKG/sbin/
 	mkdir -p $PKG/etc/hotplug.d/default
 	ln -s /sbin/udevsend $PKG/etc/hotplug.d/default/10-udev.hotplug
 	mkdir -p $PKG/etc/dev.d/{default,net}

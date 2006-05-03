@@ -13,6 +13,8 @@ drwxr-xr-x	root/root	etc/udev/rules.d/
 -rw-r--r--	root/root	etc/udev/rules.d/50-udev.rules
 -rw-r--r--	root/root	etc/udev/udev.conf
 drwxr-xr-x	root/root	lib/
+lrwxrwxrwx	root/root	lib/libvolume_id.so.0 -> libvolume_id.so.0.62.0
+-rwxr-xr-x	root/root	lib/libvolume_id.so.0.62.0
 drwxr-xr-x	root/root	lib/udev/
 -rwxr-xr-x	root/root	lib/udev/create_floppy_devices
 drwxr-xr-x	root/root	lib/udev/devices/
@@ -34,13 +36,22 @@ drwxr-xr-x	root/root	sbin/
 -rwxr-xr-x	root/root	sbin/udevcontrol
 -rwxr-xr-x	root/root	sbin/udevd
 -rwxr-xr-x	root/root	sbin/udevsend
+-rwxr-xr-x	root/root	sbin/udevsettle
 -rwxr-xr-x	root/root	sbin/udevstart
+-rwxr-xr-x	root/root	sbin/udevtrigger
 -rwxr-xr-x	root/root	sbin/usb_id
 -rwxr-xr-x	root/root	sbin/vol_id
 drwxr-xr-x	root/root	usr/
 drwxr-xr-x	root/root	usr/bin/
 -rwxr-xr-x	root/root	usr/bin/udevinfo
 -rwxr-xr-x	root/root	usr/bin/udevtest
+drwxr-xr-x	root/root	usr/include/
+-rw-r--r--	root/root	usr/include/libvolume_id.h
+drwxr-xr-x	root/root	usr/lib/
+-rwxr-xr-x	root/root	usr/lib/libvolume_id.a
+lrwxrwxrwx	root/root	usr/lib/libvolume_id.so -> /lib/libvolume_id.so.0.62.0
+drwxr-xr-x	root/root	usr/lib/pkgconfig/
+-rw-r--r--	root/root	usr/lib/pkgconfig/libvolume_id.pc
 drwxr-xr-x	root/root	usr/man/
 drwxr-xr-x	root/root	usr/man/man7/
 -rw-r--r--	root/root	usr/man/man7/udev.7.gz
@@ -53,8 +64,10 @@ lrwxrwxrwx	root/root	usr/man/man8/udevcontrol.8.gz -> udevd.8.gz
 -rw-r--r--	root/root	usr/man/man8/udevinfo.8.gz
 -rw-r--r--	root/root	usr/man/man8/udevmonitor.8.gz
 -rw-r--r--	root/root	usr/man/man8/udevsend.8.gz
+-rw-r--r--	root/root	usr/man/man8/udevsettle.8.gz
 -rw-r--r--	root/root	usr/man/man8/udevstart.8.gz
 -rw-r--r--	root/root	usr/man/man8/udevtest.8.gz
+-rw-r--r--	root/root	usr/man/man8/udevtrigger.8.gz
 -rw-r--r--	root/root	usr/man/man8/vol_id.8.gz
 drwxr-xr-x	root/root	usr/sbin/
 -rwxr-xr-x	root/root	usr/sbin/udevmonitor
