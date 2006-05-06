@@ -3,7 +3,7 @@
 # Maintainer:  Per Lidén, core-ports at crux dot nu
 
 name=openssl
-version=0.9.8a
+version=0.9.8b
 release=1
 source=(http://www.openssl.org/source/$name-$version.tar.gz \
 	mksslcert.sh)
