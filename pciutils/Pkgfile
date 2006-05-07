@@ -1,21 +1,23 @@
-# Description: Linux PCI Utilities
+# Description: Library and utilities to access the PCI bus configuration registers
 # URL:         http://atrey.karlin.mff.cuni.cz/~mj/pciutils.shtml
 # Packager:    Markus Ackermann, maol at symlink dot ch
 # Maintainer:  Jürgen Daubert, juergen dot daubert at t-online dot de
 
 name=pciutils
-version=2.2.1
-release=2
+version=2.2.3
+release=1
 source=(ftp://atrey.karlin.mff.cuni.cz/pub/linux/pci/$name-$version.tar.gz \
-        http://jue.li/crux/files/pci.ids-060221.gz)
+        http://jue.li/crux/files/pci.ids-060505.gz)
 
 build() {
-    cd $name-$version
     mkdir -p $PKG/usr/{lib,share,include/pci}
-    gunzip -c $SRC/pci.ids-060221.gz > $PKG/usr/share/pci.ids
+    gunzip -c $SRC/pci.ids-060505.gz > $PKG/usr/share/pci.ids
+
+    cd $name-$version
     sed -i "s/-O2/$CFLAGS/" Makefile
     make PREFIX=/usr
     make PREFIX=$PKG/usr install 
+
     cd lib
     ./configure
     make
