@@ -6,7 +6,7 @@
 
 name=vim
 version=7.0
-release=1
+release=2
 source=(ftp://ftp.vim.org/pub/vim/unix/vim-$version.tar.bz2)
 
 build () {
@@ -21,7 +21,7 @@ build () {
     make VIMRTDIR=
     make VIMRTDIR= DESTDIR=$PKG installvimbin installruntime installlinks
     mv $PKG/usr/share/vim/vimrc_example.vim $PKG/usr/share/vim/vimrc
-    rm -rf $PKG/usr/man/man?/vimtutor* $PKG/usr/share/vim/tutor
+    rm -rf $PKG/usr/man/man?/vimtutor* $PKG/usr/share/vim/tutor $PKG/usr/share/vim/macros
     ln -sf vim $PKG/usr/bin/vi
     ln -sf vim $PKG/usr/bin/evim
     ln -sf vim.1.gz $PKG/usr/man/man1/ex.1.gz
