@@ -1,15 +1,16 @@
 # Description: A popular vi clone that features syntax highlighting
 # URL:         http://www.vim.org/
-# Maintainer:  Per Lidén, core-ports at crux dot nu
+# Packager:    Per Lidén <per@fukt.bth.se>
+# Maintainer:  CRUX core developers, core-ports at crux dot nu
 # Depends on:  ncurses
 
 name=vim
-version=6.4
+version=7.0
 release=1
-source=(ftp://ftp.vim.org/pub/vim/unix/$name-$version.tar.bz2)
+source=(ftp://ftp.vim.org/pub/vim/unix/vim-$version.tar.bz2)
 
 build () {
-    cd vim64
+    cd $name${version/\./}
     cd src
     ./configure --prefix=/usr \
 		--with-vim-name=vim \
