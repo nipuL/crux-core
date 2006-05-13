@@ -1,0 +1,15 @@
+--- src/extract.c.orig	2005-12-25 23:41:40.820662032 +0100
++++ src/extract.c	2005-12-25 23:42:56.056224488 +0100
+@@ -112,8 +112,10 @@ void
+ extr_init (void)
+ {
+   we_are_root = geteuid () == 0;
+-  same_permissions_option += we_are_root;
+-  same_owner_option += we_are_root;
++
++  /* Don't keep permissions by default if we are root. */
++  /* same_permissions_option += we_are_root; */
++  /* same_owner_option += we_are_root; */
+ 
+   /* Save 'root device' to avoid purging mount points.
+      FIXME: Should the same be done after handling -C option ? */

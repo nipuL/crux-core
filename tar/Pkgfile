@@ -4,13 +4,14 @@
 
 name=tar
 version=1.15.1
-release=2
+release=3
 source=(http://mirrors.sunsite.dk/gnu/$name/$name-$version.tar.bz2 \
-	$name-$version-sparse.patch tar.1)
+	$name-$version-sparse.patch $name-$version-rootp.patch tar.1)
 
 build() {
     cd $name-$version
     patch -p1 < ../$name-$version-sparse.patch
+    patch -p0 < ../$name-$version-rootp.patch
     ./configure --prefix= \
 		--libexec=/usr/lib/tar \
 		--disable-nls
