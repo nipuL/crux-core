@@ -1,13 +1,18 @@
-Description: Fix for not allowing a malicious cpio file to extract to an arbitrary directory.
+Description: Fix for not allowing a malicious cpio file to extract to an arbitrary directory. Added missing checks for setlocale() and lstat(). The latter fixes a symlink handling problem.
 Origin: http://lwn.net/Articles/143418/
 	http://www.xs4all.nl/~hanb/software/crux/han/cpio/cpio.patch
+	http://www.linuxfromscratch.org/blfs/view/6.1/general/cpio.html
 Upstream status: Unknown (2005-07-21)
 
-diff -Nru cpio-2.6/configure.ac cpio-2.6-new/configure.ac
---- cpio-2.6/configure.ac	2004-12-20 11:46:30.000000000 +0100
-+++ cpio-2.6-new/configure.ac	2005-07-21 16:07:42.000000000 +0200
-@@ -95,7 +95,7 @@
- AC_CHECK_FUNCS(lchown endpwent endgrent)
+diff -aur cpio-2.6.orig/configure.ac cpio-2.6/configure.ac
+--- cpio-2.6.orig/configure.ac	2004-12-20 11:46:30.000000000 +0100
++++ cpio-2.6/configure.ac	2006-05-20 20:13:46.832935750 +0200
+@@ -92,10 +92,10 @@
+   AC_CONFIG_LINKS(src/fnmatch.h:headers/fnmatch.h)
+ fi
+ 
+-AC_CHECK_FUNCS(lchown endpwent endgrent)
++AC_CHECK_FUNCS(setlocale lstat lchown endpwent endgrent)
  AC_FUNC_VPRINTF
  AC_FUNC_ALLOCA
 -AC_CHECK_LIB(nsl, gethostname, [LIBS="$LIBS -lnsl"])

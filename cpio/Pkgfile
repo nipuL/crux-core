@@ -11,6 +11,7 @@ source=(http://mirrors.sunsite.dk/gnu/$name/$name-$version.tar.bz2 \
 build() {
     cd $name-$version
     patch -p1 < ../$name-$version.patch
+    autoreconf --install --force
     ./configure --prefix=/usr
     make
     make DESTDIR=$PKG install
