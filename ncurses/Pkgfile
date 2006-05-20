@@ -4,22 +4,36 @@
 
 name=ncurses
 version=5.5
-release=1
+release=2
 source=(http://mirrors.sunsite.dk/gnu/$name/$name-$version.tar.gz)
 
 build() {
     cd $name-$version
-    ./configure --with-install-prefix=$PKG \
-		--prefix=/usr \
-		--with-normal \
-		--with-shared \
-		--without-debug \
-		--without-ada
+
+    local OPTIONS="\
+--with-install-prefix=$PKG \
+--prefix=/usr \
+--with-normal \
+--with-shared \
+--without-debug \
+--without-ada
+"
+
+    ./configure $OPTIONS
     make
     make install
+    make distclean
+
+    ./configure $OPTIONS --enable-widec
+    make
+    make install
+
     mkdir $PKG/lib
-    mv $PKG/usr/lib/libncurses.so.* $PKG/lib
-    ln -sf libncurses.so $PKG/usr/lib/libcurses.so
-    ln -sf ../../lib/libncurses.so.5 $PKG/usr/lib/libncurses.so
-    ln -sf ../../lib/libncurses.so.5 $PKG/usr/lib/libncurses.so.5
+
+    for i in w ''; do \
+        mv $PKG/usr/lib/libncurses$i.so.* $PKG/lib && \
+        ln -sf libncurses$i.so $PKG/usr/lib/libcurses$i.so && \
+        ln -sf ../../lib/libncurses$i.so.5 $PKG/usr/lib/libncurses$i.so && \
+        ln -sf ../../lib/libncurses$i.so.5 $PKG/usr/lib/libncurses$i.so.5 \
+    ; done
 }

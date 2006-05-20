@@ -1,6 +1,8 @@
 drwxr-xr-x	root/root	lib/
 lrwxrwxrwx	root/root	lib/libncurses.so.5 -> libncurses.so.5.5
 -rw-r--r--	root/root	lib/libncurses.so.5.5
+lrwxrwxrwx	root/root	lib/libncursesw.so.5 -> libncursesw.so.5.5
+-rw-r--r--	root/root	lib/libncursesw.so.5.5
 drwxr-xr-x	root/root	usr/
 drwxr-xr-x	root/root	usr/bin/
 lrwxrwxrwx	root/root	usr/bin/captoinfo -> tic
@@ -34,22 +36,39 @@ lrwxrwxrwx	root/root	usr/include/ncurses.h -> curses.h
 drwxr-xr-x	root/root	usr/lib/
 lrwxrwxrwx	root/root	usr/lib/libcurses.a -> libncurses.a
 lrwxrwxrwx	root/root	usr/lib/libcurses.so -> libncurses.so
+lrwxrwxrwx	root/root	usr/lib/libcursesw.so -> libncursesw.so
 -rw-r--r--	root/root	usr/lib/libform.a
 lrwxrwxrwx	root/root	usr/lib/libform.so -> libform.so.5
 lrwxrwxrwx	root/root	usr/lib/libform.so.5 -> libform.so.5.5
 -rw-r--r--	root/root	usr/lib/libform.so.5.5
+-rw-r--r--	root/root	usr/lib/libformw.a
+lrwxrwxrwx	root/root	usr/lib/libformw.so -> libformw.so.5
+lrwxrwxrwx	root/root	usr/lib/libformw.so.5 -> libformw.so.5.5
+-rw-r--r--	root/root	usr/lib/libformw.so.5.5
 -rw-r--r--	root/root	usr/lib/libmenu.a
 lrwxrwxrwx	root/root	usr/lib/libmenu.so -> libmenu.so.5
 lrwxrwxrwx	root/root	usr/lib/libmenu.so.5 -> libmenu.so.5.5
 -rw-r--r--	root/root	usr/lib/libmenu.so.5.5
+-rw-r--r--	root/root	usr/lib/libmenuw.a
+lrwxrwxrwx	root/root	usr/lib/libmenuw.so -> libmenuw.so.5
+lrwxrwxrwx	root/root	usr/lib/libmenuw.so.5 -> libmenuw.so.5.5
+-rw-r--r--	root/root	usr/lib/libmenuw.so.5.5
 -rwxr-xr-x	root/root	usr/lib/libncurses++.a
+-rwxr-xr-x	root/root	usr/lib/libncurses++w.a
 -rw-r--r--	root/root	usr/lib/libncurses.a
 lrwxrwxrwx	root/root	usr/lib/libncurses.so -> ../../lib/libncurses.so.5
 lrwxrwxrwx	root/root	usr/lib/libncurses.so.5 -> ../../lib/libncurses.so.5
+-rw-r--r--	root/root	usr/lib/libncursesw.a
+lrwxrwxrwx	root/root	usr/lib/libncursesw.so -> ../../lib/libncursesw.so.5
+lrwxrwxrwx	root/root	usr/lib/libncursesw.so.5 -> ../../lib/libncursesw.so.5
 -rw-r--r--	root/root	usr/lib/libpanel.a
 lrwxrwxrwx	root/root	usr/lib/libpanel.so -> libpanel.so.5
 lrwxrwxrwx	root/root	usr/lib/libpanel.so.5 -> libpanel.so.5.5
 -rw-r--r--	root/root	usr/lib/libpanel.so.5.5
+-rw-r--r--	root/root	usr/lib/libpanelw.a
+lrwxrwxrwx	root/root	usr/lib/libpanelw.so -> libpanelw.so.5
+lrwxrwxrwx	root/root	usr/lib/libpanelw.so.5 -> libpanelw.so.5.5
+-rw-r--r--	root/root	usr/lib/libpanelw.so.5.5
 lrwxrwxrwx	root/root	usr/lib/terminfo -> ../share/terminfo
 drwxr-xr-x	root/root	usr/man/
 drwxr-xr-x	root/root	usr/man/man1/
