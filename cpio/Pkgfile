@@ -4,14 +4,13 @@
 
 name=cpio
 version=2.6
-release=3
+release=4
 source=(http://mirrors.sunsite.dk/gnu/$name/$name-$version.tar.bz2 \
 	$name-$version.patch)
 
 build() {
     cd $name-$version
     patch -p1 < ../$name-$version.patch
-    autoreconf --install --force
     ./configure --prefix=/usr
     make
     make DESTDIR=$PKG install
