@@ -4,19 +4,17 @@
 # Depends on:  ncurses
 
 name=bash
-version=3.0
-release=2
-source=(http://mirrors.sunsite.dk/gnu/$name/$name-$version.tar.gz \
-	$name-$version-001-016.patch \
-	$name-$version-doc.patch \
-	$name-$version-wcontinued.patch \
+version=3.1.17
+release=1
+source=(http://mirrors.sunsite.dk/gnu/$name/$name-3.1.tar.gz \
+        bash-3.1-001-017.patch \
+	$name-3.1-doc.patch \
 	profile)
 
 build() {
-    cd $name-$version
-    patch -p1 < ../$name-$version-001-016.patch
-    patch -p1 < ../$name-$version-doc.patch
-    patch -p1 < ../$name-$version-wcontinued.patch
+    cd $name-3.1
+    patch -p1 < ../$name-3.1-001-017.patch
+    patch -p1 < ../$name-3.1-doc.patch
     ./configure --prefix=/usr \
 		--exec-prefix= \
 		--disable-nls
