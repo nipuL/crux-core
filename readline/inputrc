@@ -13,8 +13,8 @@ set convert-meta off
 "\e[5~": beginning-of-history
 "\e[6~": end-of-history
 
-"\M-p": history-search-backward
-"\M-n": history-search-forward
+"\ep": history-search-backward
+"\en": history-search-forward
 
 $if term=xterm
 "\e[7~": beginning-of-line
