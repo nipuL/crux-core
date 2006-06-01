@@ -155,6 +155,7 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/mount.2.gz
 -rw-r--r--	root/root	usr/man/man2/mprotect.2.gz
 -rw-r--r--	root/root	usr/man/man2/mpx.2.gz
+-rw-r--r--	root/root	usr/man/man2/mq_getsetattr.2.gz
 -rw-r--r--	root/root	usr/man/man2/mremap.2.gz
 -rw-r--r--	root/root	usr/man/man2/msgctl.2.gz
 -rw-r--r--	root/root	usr/man/man2/msgget.2.gz
@@ -342,6 +343,14 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/CMSG_FIRSTHDR.3.gz
 -rw-r--r--	root/root	usr/man/man3/CMSG_NXTHDR.3.gz
 -rw-r--r--	root/root	usr/man/man3/CMSG_SPACE.3.gz
+-rw-r--r--	root/root	usr/man/man3/CPU_CLR.3.gz
+-rw-r--r--	root/root	usr/man/man3/CPU_ISSET.3.gz
+-rw-r--r--	root/root	usr/man/man3/CPU_SET.3.gz
+-rw-r--r--	root/root	usr/man/man3/CPU_ZERO.3.gz
+-rw-r--r--	root/root	usr/man/man3/FD_CLR.3.gz
+-rw-r--r--	root/root	usr/man/man3/FD_ISSET.3.gz
+-rw-r--r--	root/root	usr/man/man3/FD_SET.3.gz
+-rw-r--r--	root/root	usr/man/man3/FD_ZERO.3.gz
 -rw-r--r--	root/root	usr/man/man3/HUGE_VAL.3.gz
 -rw-r--r--	root/root	usr/man/man3/HUGE_VALF.3.gz
 -rw-r--r--	root/root	usr/man/man3/HUGE_VALL.3.gz
@@ -1089,6 +1098,9 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/mq_open.3.gz
 -rw-r--r--	root/root	usr/man/man3/mq_receive.3.gz
 -rw-r--r--	root/root	usr/man/man3/mq_send.3.gz
+-rw-r--r--	root/root	usr/man/man3/mq_setattr.3.gz
+-rw-r--r--	root/root	usr/man/man3/mq_timedreceive.3.gz
+-rw-r--r--	root/root	usr/man/man3/mq_timedsend.3.gz
 -rw-r--r--	root/root	usr/man/man3/mq_unlink.3.gz
 -rw-r--r--	root/root	usr/man/man3/mrand48.3.gz
 -rw-r--r--	root/root	usr/man/man3/mrand48_r.3.gz
@@ -1210,6 +1222,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/roundf.3.gz
 -rw-r--r--	root/root	usr/man/man3/roundl.3.gz
 -rw-r--r--	root/root	usr/man/man3/rpc.3.gz
+-rw-r--r--	root/root	usr/man/man3/rpmatch.3.gz
 -rw-r--r--	root/root	usr/man/man3/rresvport.3.gz
 -rw-r--r--	root/root	usr/man/man3/rtime.3.gz
 -rw-r--r--	root/root	usr/man/man3/rtnetlink.3.gz
@@ -1267,6 +1280,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/shm_open.3.gz
 -rw-r--r--	root/root	usr/man/man3/shm_unlink.3.gz
 -rw-r--r--	root/root	usr/man/man3/sigaddset.3.gz
+-rw-r--r--	root/root	usr/man/man3/sigandset.3.gz
 -rw-r--r--	root/root	usr/man/man3/sigblock.3.gz
 -rw-r--r--	root/root	usr/man/man3/sigdelset.3.gz
 -rw-r--r--	root/root	usr/man/man3/sigemptyset.3.gz
@@ -1275,6 +1289,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/sighold.3.gz
 -rw-r--r--	root/root	usr/man/man3/sigignore.3.gz
 -rw-r--r--	root/root	usr/man/man3/siginterrupt.3.gz
+-rw-r--r--	root/root	usr/man/man3/sigisemptyset.3.gz
 -rw-r--r--	root/root	usr/man/man3/sigismember.3.gz
 -rw-r--r--	root/root	usr/man/man3/siglongjmp.3.gz
 -rw-r--r--	root/root	usr/man/man3/sigmask.3.gz
@@ -1283,6 +1298,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/significand.3.gz
 -rw-r--r--	root/root	usr/man/man3/significandf.3.gz
 -rw-r--r--	root/root	usr/man/man3/significandl.3.gz
+-rw-r--r--	root/root	usr/man/man3/sigorset.3.gz
 -rw-r--r--	root/root	usr/man/man3/sigpause.3.gz
 -rw-r--r--	root/root	usr/man/man3/sigrelse.3.gz
 -rw-r--r--	root/root	usr/man/man3/sigset.3.gz
@@ -1324,6 +1340,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/strcasestr.3.gz
 -rw-r--r--	root/root	usr/man/man3/strcat.3.gz
 -rw-r--r--	root/root	usr/man/man3/strchr.3.gz
+-rw-r--r--	root/root	usr/man/man3/strchrnul.3.gz
 -rw-r--r--	root/root	usr/man/man3/strcmp.3.gz
 -rw-r--r--	root/root	usr/man/man3/strcoll.3.gz
 -rw-r--r--	root/root	usr/man/man3/strcpy.3.gz
@@ -1658,8 +1675,8 @@ drwxr-xr-x	root/root	usr/man/man7/
 -rw-r--r--	root/root	usr/man/man7/ddp.7.gz
 -rw-r--r--	root/root	usr/man/man7/environ.7.gz
 -rw-r--r--	root/root	usr/man/man7/epoll.7.gz
+-rw-r--r--	root/root	usr/man/man7/feature_test_macros.7.gz
 -rw-r--r--	root/root	usr/man/man7/fifo.7.gz
--rw-r--r--	root/root	usr/man/man7/ftm.7.gz
 -rw-r--r--	root/root	usr/man/man7/futex.7.gz
 -rw-r--r--	root/root	usr/man/man7/glob.7.gz
 -rw-r--r--	root/root	usr/man/man7/hier.7.gz
