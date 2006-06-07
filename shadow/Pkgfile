@@ -4,24 +4,23 @@
 # Maintainer:  Johannes Winkelmann, jw at crux dot nu
 
 name=shadow
-version=4.0.15
-release=5
+version=4.0.16
+release=1
 source=(ftp://ftp.pld.org.pl/software/shadow/$name-$version.tar.bz2 \
         pwck login.defs \
-        shadow-4.0.15-noshadowgrp.diff \
         shadow-fix-useradd-usergroups.patch\
         shadow-4.0.15-nflg-conflict.diff \
         useradd-usergroup.diff)
 
 build() {
     cd $name-$version
-    patch -p1 < $SRC/shadow-4.0.15-noshadowgrp.diff
     patch src/useradd.c $SRC/shadow-fix-useradd-usergroups.patch
     patch src/useradd.c $SRC/shadow-4.0.15-nflg-conflict.diff 
     patch src/useradd.c $SRC/useradd-usergroup.diff
 
     ./configure --prefix=/usr \
                 --mandir=/usr/man \
+                --sysconfdir=/etc \
                 --disable-shared \
                 --disable-shadowgrp \
                 --disable-nls \
@@ -41,5 +40,6 @@ build() {
 	   $PKG/usr/man/man8/{chpasswd.8,grpconv.8,grpunconv.8,logoutd.8} \
 	   $PKG/usr/man/man8/{mkpasswd.8,newusers.8,pwconv.8,pwunconv.8} \
 	   $PKG/usr/man/{man3,cs,de,es,fi,tr,fr,hu,id,it,ja,ko,pl,pt_BR,ru,zh_CN,zh_TW} \
-	   $PKG/lib
+	   $PKG/lib \
+           $PKG/etc/{login.access,limits,default}
 }
