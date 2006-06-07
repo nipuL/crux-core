@@ -4,10 +4,6 @@ drwxr-xr-x	root/root	etc/
 drwxr-xr-x	root/root	etc/cron/
 drwxr-xr-x	root/root	etc/cron/daily/
 -rwxr-xr-x	root/root	etc/cron/daily/pwck
-drwxr-xr-x	root/root	etc/default/
--rw-r--r--	root/root	etc/default/useradd
--rw-r--r--	root/root	etc/limits
--rw-r--r--	root/root	etc/login.access
 -rw-r--r--	root/root	etc/login.defs
 drwxr-xr-x	root/root	usr/
 drwxr-xr-x	root/root	usr/bin/
