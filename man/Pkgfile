@@ -3,7 +3,7 @@
 # Maintainer:  Per Lidén, core-ports at crux dot nu
 
 name=man
-version=1.6c
+version=1.6d
 release=1
 source=(http://primates.ximian.com/~flucifredi/man/$name-$version.tar.gz \
 	makewhatis $name-$version.patch)

@@ -1,0 +1,14 @@
+diff -Nru man-1.6d.orig/src/man.c man-1.6d/src/man.c
+--- man-1.6d.orig/src/man.c	2006-06-17 10:33:32.000000000 +0200
++++ man-1.6d/src/man.c	2006-06-17 10:33:51.000000000 +0200
+@@ -576,7 +576,9 @@
+ 		*  .ev 1; .lt ...; .ev helps for my version of groff.
+ 		* The LL assignment is needed by the mandoc macros.
+ 		*/
+-	       sprintf(eos(bufh), "echo \".ll %d.%di\"; ", ll/10, ll%10);
++              /* use the LL register instead of .ll to keep up with
++               * changes in the groff-1.18 series */
++              sprintf(eos(bufh), "echo \".nr LL %d.%di\"; ", ll/10, ll%10);
+ 	       sprintf(eos(bufh), "echo \".nr LL %d.%di\"; ", ll/10, ll%10);
+ #if 0
+ 	       sprintf(eos(bufh), "echo \".lt %d.%di\"; ", ll/10, ll%10);
