@@ -123,6 +123,8 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/ioctl_list.2.gz
 -rw-r--r--	root/root	usr/man/man2/ioperm.2.gz
 -rw-r--r--	root/root	usr/man/man2/iopl.2.gz
+-rw-r--r--	root/root	usr/man/man2/ioprio_get.2.gz
+-rw-r--r--	root/root	usr/man/man2/ioprio_set.2.gz
 -rw-r--r--	root/root	usr/man/man2/ipc.2.gz
 -rw-r--r--	root/root	usr/man/man2/kill.2.gz
 -rw-r--r--	root/root	usr/man/man2/killpg.2.gz
@@ -1125,6 +1127,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/nrand48_r.3.gz
 -rw-r--r--	root/root	usr/man/man3/ntohl.3.gz
 -rw-r--r--	root/root	usr/man/man3/ntohs.3.gz
+-rw-r--r--	root/root	usr/man/man3/offsetof.3.gz
 -rw-r--r--	root/root	usr/man/man3/on_exit.3.gz
 -rw-r--r--	root/root	usr/man/man3/open_memstream.3.gz
 -rw-r--r--	root/root	usr/man/man3/opendir.3.gz
