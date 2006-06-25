@@ -4,7 +4,7 @@
 # Depends on:  ncurses
 
 name=procps
-version=3.2.6
+version=3.2.7
 release=1
 source=(http://procps.sourceforge.net/$name-$version.tar.gz \
 	sysctl.conf)
