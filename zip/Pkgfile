@@ -3,9 +3,9 @@
 # Maintainer:  Per Lidén, core-ports at crux dot nu
 
 name=zip
-version=2.31
-release=2
-source=(ftp://ftp.info-zip.org/pub/infozip/src/${name}231.tar.gz)
+version=2.32
+release=1
+source=(ftp://ftp.info-zip.org/pub/infozip/src/${name}232.tar.gz)
 
 build() {
     cd $name-$version
