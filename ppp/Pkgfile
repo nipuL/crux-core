@@ -4,18 +4,19 @@
 # Depends on:  zlib, openssl
 
 name=ppp
-version=2.4.3
+version=2.4.4
 release=1
 source=(ftp://ftp.samba.org/pub/ppp/$name-$version.tar.gz \
-	$name-$version-nofilter.patch \
-	$name-$version-makefile.patch)
+	$name-nofilter.patch \
+        $name-makefile.patch)
 
 build () {
     cd $name-$version
-    patch -p1 < ../$name-$version-nofilter.patch
-    patch -p1 < ../$name-$version-makefile.patch
-    ./configure --prefix=$PKG
+    patch -p1 < $SRC/$name-nofilter.patch
+    patch -p1 < $SRC/$name-makefile.patch
+    ./configure --prefix=/usr --sysconfdir=/etc
     make
-    make install
+    make INSTROOT=$PKG install install-etcppp
+    mv $PKG/usr/{share/man,man} && rm -r $PKG/usr/share
     chmod +w -R $PKG
 }
