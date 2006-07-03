@@ -26,12 +26,14 @@ drwxr-xr-x	root/root	usr/man/man1/
 drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/curl_easy_cleanup.3.gz
 -rw-r--r--	root/root	usr/man/man3/curl_easy_duphandle.3.gz
+-rw-r--r--	root/root	usr/man/man3/curl_easy_escape.3.gz
 -rw-r--r--	root/root	usr/man/man3/curl_easy_getinfo.3.gz
 -rw-r--r--	root/root	usr/man/man3/curl_easy_init.3.gz
 -rw-r--r--	root/root	usr/man/man3/curl_easy_perform.3.gz
 -rw-r--r--	root/root	usr/man/man3/curl_easy_reset.3.gz
 -rw-r--r--	root/root	usr/man/man3/curl_easy_setopt.3.gz
 -rw-r--r--	root/root	usr/man/man3/curl_easy_strerror.3.gz
+-rw-r--r--	root/root	usr/man/man3/curl_easy_unescape.3.gz
 -rw-r--r--	root/root	usr/man/man3/curl_escape.3.gz
 -rw-r--r--	root/root	usr/man/man3/curl_formadd.3.gz
 -rw-r--r--	root/root	usr/man/man3/curl_formfree.3.gz
@@ -49,7 +51,10 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/curl_multi_init.3.gz
 -rw-r--r--	root/root	usr/man/man3/curl_multi_perform.3.gz
 -rw-r--r--	root/root	usr/man/man3/curl_multi_remove_handle.3.gz
+-rw-r--r--	root/root	usr/man/man3/curl_multi_setopt.3.gz
+-rw-r--r--	root/root	usr/man/man3/curl_multi_socket.3.gz
 -rw-r--r--	root/root	usr/man/man3/curl_multi_strerror.3.gz
+-rw-r--r--	root/root	usr/man/man3/curl_multi_timeout.3.gz
 -rw-r--r--	root/root	usr/man/man3/curl_share_cleanup.3.gz
 -rw-r--r--	root/root	usr/man/man3/curl_share_init.3.gz
 -rw-r--r--	root/root	usr/man/man3/curl_share_setopt.3.gz
