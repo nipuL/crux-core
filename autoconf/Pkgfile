@@ -3,14 +3,14 @@
 # Maintainer:  Per Lidén, core-ports at crux dot nu
 
 name=autoconf
-version=2.59
+version=2.60
 release=1
-source=(http://mirrors.sunsite.dk/gnu/$name/$name-$version.tar.bz2)
+source=(ftp://ftp.gnu.org/gnu/$name/$name-$version.tar.bz2)
 
 build () {
     cd $name-$version
-    ./configure --prefix=/usr
+    ./configure --prefix=/usr --mandir=$PKG/usr/man
     make
     make prefix=$PKG/usr install
-    rm -rf $PKG/usr/info $PKG/usr/share/emacs
+    rm -rf $PKG/usr/share/info $PKG/usr/share/emacs
 }
