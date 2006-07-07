@@ -4,13 +4,15 @@
 
 name=autoconf
 version=2.60
-release=1
-source=(ftp://ftp.gnu.org/gnu/$name/$name-$version.tar.bz2)
+release=2
+source=(ftp://ftp.gnu.org/gnu/$name/$name-$version.tar.bz2 \
+	$name-$version-mandir.patch)
 
 build () {
-    cd $name-$version
-    ./configure --prefix=/usr --mandir=$PKG/usr/man
-    make
-    make prefix=$PKG/usr install
-    rm -rf $PKG/usr/share/info $PKG/usr/share/emacs
+	cd $name-$version
+	patch -i $SRC/$name-$version-mandir.patch lib/autoconf/general.m4
+	./configure --prefix=/usr --mandir=$PKG/usr/man
+	make
+	make prefix=$PKG/usr install
+	rm -rf $PKG/usr/share/info $PKG/usr/share/emacs
 }
