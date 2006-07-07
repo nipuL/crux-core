@@ -6,7 +6,7 @@
 
 name=grub
 version=0.95
-release=4
+release=5
 source=(ftp://alpha.gnu.org/gnu/grub/$name-$version.tar.gz \
 	http://crux.nu/files/grub/$version/$name-$version-patches.tar.gz \
 	http://crux.nu/files/grub/$version/crux02.xpm.gz \
@@ -62,13 +62,14 @@ build () {
 	autoreconf --install --force
 
 	./configure --prefix=/usr \
+		--mandir=/usr/man \
 		--sbindir=/sbin \
 		--disable-nls \
 		--disable-auto-linux-mem-opt 
 		
 	make
 	make DESTDIR=$PKG install
-	rm -rf $PKG/usr/info
+	rm -rf $PKG/usr/share/info
 
 	mkdir -p $PKG/boot/grub
 	install -m 644 $SRC/{crux*,menu.lst.sample} $PKG/boot/grub/
