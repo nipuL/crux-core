@@ -24,6 +24,7 @@ lrwxrwxrwx	root/root	usr/man/man8/rpc.mountd.8.gz -> mountd.8.gz
 lrwxrwxrwx	root/root	usr/man/man8/rpc.nfsd.8.gz -> nfsd.8.gz
 lrwxrwxrwx	root/root	usr/man/man8/rpc.rquotad.8.gz -> rquotad.8.gz
 lrwxrwxrwx	root/root	usr/man/man8/rpc.statd.8.gz -> statd.8.gz
+-rw-r--r--	root/root	usr/man/man8/rpcdebug.8.gz
 -rw-r--r--	root/root	usr/man/man8/rquotad.8.gz
 -rw-r--r--	root/root	usr/man/man8/showmount.8.gz
 -rw-r--r--	root/root	usr/man/man8/statd.8.gz
@@ -39,6 +40,7 @@ drwxr-xr-x	root/root	usr/sbin/
 -rwxr-xr-x	root/root	usr/sbin/rpc.nfsd
 -rwxr-xr-x	root/root	usr/sbin/rpc.rquotad
 -rwxr-xr-x	root/root	usr/sbin/rpc.statd
+-rwxr-xr-x	root/root	usr/sbin/rpcdebug
 -rwxr-xr-x	root/root	usr/sbin/showmount
 drwxr-xr-x	root/root	var/
 drwxr-xr-x	root/root	var/lib/

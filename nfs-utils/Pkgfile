@@ -3,23 +3,22 @@
 # Maintainer:  Per Lidén, core-ports at crux dot nu
 
 name=nfs-utils
-version=1.0.7
-release=3
+version=1.0.9
+release=1
 source=(http://dl.sourceforge.net/nfs/$name-$version.tar.gz \
-        $name-$version-gcc4.patch \
 	exports nfs nfsserver)
 
 build () {
     cd $name-$version
-    patch -p1 < ../$name-$version-gcc4.patch
     ./configure --prefix=/usr \
+		--mandir=/usr/man \
 		--enable-nfsv3 \
 		--disable-nfsv4 \
 		--disable-gss \
 		--with-statedir=/var/lib/nfs \
 		--sysconfdir=/etc
     make
-    make install_prefix=$PKG install
+    make DESTDIR=$PKG install
     install -D -m 755 ../nfs $PKG/etc/rc.d/nfs
     install -D -m 755 ../nfsserver $PKG/etc/rc.d/nfsserver
     install -D -m 644 ../exports $PKG/etc/exports
