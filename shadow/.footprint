@@ -5,6 +5,8 @@ drwxr-xr-x	root/root	etc/cron/
 drwxr-xr-x	root/root	etc/cron/daily/
 -rwxr-xr-x	root/root	etc/cron/daily/pwck
 -rw-r--r--	root/root	etc/login.defs
+drwxr-xr-x	root/root	sbin/
+-rwxr-xr-x	root/root	sbin/nologin
 drwxr-xr-x	root/root	usr/
 drwxr-xr-x	root/root	usr/bin/
 -rwsr-xr-x	root/root	usr/bin/chage
@@ -61,7 +63,6 @@ drwxr-xr-x	root/root	usr/sbin/
 -rwxr-xr-x	root/root	usr/sbin/groupdel
 -rwxr-xr-x	root/root	usr/sbin/groupmod
 -rwxr-xr-x	root/root	usr/sbin/grpck
--rwxr-xr-x	root/root	usr/sbin/nologin
 -rwxr-xr-x	root/root	usr/sbin/pwck
 -rwxr-xr-x	root/root	usr/sbin/useradd
 -rwxr-xr-x	root/root	usr/sbin/userdel

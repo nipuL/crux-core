@@ -4,7 +4,7 @@
 # Maintainer:  Johannes Winkelmann, jw at crux dot nu
 
 name=shadow
-version=4.0.16
+version=4.0.17
 release=1
 source=(ftp://ftp.pld.org.pl/software/shadow/$name-$version.tar.bz2 \
         pwck login.defs \
