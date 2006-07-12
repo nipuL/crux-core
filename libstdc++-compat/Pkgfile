@@ -1,7 +1,6 @@
 # Description: Compatibility libraries
 # URL:         ftp://sunsite.cnlab-switch.ch/mirror/fedora/linux/core/3/x86_64/os/Fedora/RPMS
 # Maintainer:  Per Lidén, core-ports at crux dot nu
-# Depends on:  rpm2targz
 
 name=libstdc++-compat
 version=3.1
