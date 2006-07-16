@@ -6,7 +6,7 @@
 
 name=vim
 version=7.0
-release=2
+release=3
 source=(ftp://ftp.vim.org/pub/vim/unix/vim-$version.tar.bz2)
 
 build () {
@@ -16,6 +16,7 @@ build () {
 		--with-vim-name=vim \
 		--with-x=no \
 		--enable-gui=no \
+		--enable-multibyte \
 		--disable-gpm \
 		--disable-nls
     make VIMRTDIR=
