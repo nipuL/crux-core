@@ -305,6 +305,7 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/symlink.2.gz
 -rw-r--r--	root/root	usr/man/man2/symlinkat.2.gz
 -rw-r--r--	root/root	usr/man/man2/sync.2.gz
+-rw-r--r--	root/root	usr/man/man2/sync_file_range.2.gz
 -rw-r--r--	root/root	usr/man/man2/syscall.2.gz
 -rw-r--r--	root/root	usr/man/man2/syscalls.2.gz
 -rw-r--r--	root/root	usr/man/man2/sysctl.2.gz
