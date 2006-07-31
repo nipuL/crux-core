@@ -3,14 +3,14 @@
 # Maintainer:  Per Lidén, core-ports at crux dot nu
 
 name=coreutils
-version=5.94
+version=5.97
 release=1
-source=(http://mirrors.sunsite.dk/gnu/$name/$name-$version.tar.bz2 \
-	$name-$version-uname.patch)
+source=(http://ftp.gnu.org/pub/gnu/$name/$name-$version.tar.bz2 \
+	$name-uname.patch)
 
 build() {
     cd $name-$version
-    patch -p1 < ../$name-$version-uname.patch
+    patch -p1 < ../$name-uname.patch
     DEFAULT_POSIX2_VERSION=199209 \
     ./configure --prefix=/usr \
 		--mandir=/usr/man \
