@@ -1,0 +1,21 @@
+--- shadow-4.0.18.1/src/useradd.c.orig	2006-08-04 08:22:46.000000000 +0200
++++ shadow-4.0.18.1/src/useradd.c	2006-08-04 08:39:49.000000000 +0200
+@@ -203,13 +203,17 @@
+ 	long gid;
+ 	char *errptr;
+ 
++	struct group* grp = getgrnam(grname);
++	if (grp)
++		return grp;
++
+ 	gid = strtol (grname, &errptr, 10);
+ 	if (*errptr || errno == ERANGE || gid < 0) {
+ 		fprintf (stderr,
+ 			 _("%s: invalid numeric argument '%s'\n"), Prog, grname);
+ 		exit (E_BAD_ARG);
+ 	}
+-	return getgrnam (grname);
++	return getgrgid(gid);
+ }
+ 
+ static long get_number (const char *numstr)
