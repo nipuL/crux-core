@@ -4,13 +4,17 @@
 
 name=readline
 version=5.1
-release=2
+release=3
 source=(http://mirrors.sunsite.dk/gnu/$name/$name-$version.tar.gz \
-	$name-$version-001.patch inputrc)
+        http://ftp.gnu.org/gnu/readline/readline-5.1-patches/readline51-00{1..4}
+        inputrc)
 
 build() {
     cd $name-$version
-    patch -p0 < ../$name-$version-001.patch
+
+    for p in {1..4}; do
+        patch -p0 < $SRC/readline51-00$p
+    done
     ./configure --prefix=/usr
     make
     make DESTDIR=$PKG install
