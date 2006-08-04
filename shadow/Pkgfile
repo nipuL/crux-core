@@ -5,18 +5,20 @@
 
 name=shadow
 version=4.0.18.1
-release=1
-source=(ftp://ftp.pld.org.pl/software/shadow/$name-$version.tar.bz2 \
-        pwck login.defs \
-        shadow-fix-useradd-usergroups.patch\
-        shadow-4.0.15-nflg-conflict.diff \
-        useradd-usergroup.diff)
+release=2
+source=(ftp://ftp.pld.org.pl/software/shadow/$name-$version.tar.bz2
+        pwck login.defs
+        shadow-fix-useradd-usergroups.patch
+        shadow-4.0.15-nflg-conflict.diff
+        useradd-usergroup.diff 
+        shadow-4.0.18.1-useradd.diff)
 
 build() {
     cd $name-$version
     patch src/useradd.c $SRC/shadow-fix-useradd-usergroups.patch
     patch src/useradd.c $SRC/shadow-4.0.15-nflg-conflict.diff 
     patch src/useradd.c $SRC/useradd-usergroup.diff
+    patch src/useradd.c $SRC/shadow-4.0.18.1-useradd.diff
 
     ./configure --prefix=/usr \
                 --mandir=/usr/man \
