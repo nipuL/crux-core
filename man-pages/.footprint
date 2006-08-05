@@ -212,6 +212,7 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/readahead.2.gz
 -rw-r--r--	root/root	usr/man/man2/readdir.2.gz
 -rw-r--r--	root/root	usr/man/man2/readlink.2.gz
+-rw-r--r--	root/root	usr/man/man2/readlinkat.2.gz
 -rw-r--r--	root/root	usr/man/man2/readv.2.gz
 -rw-r--r--	root/root	usr/man/man2/reboot.2.gz
 -rw-r--r--	root/root	usr/man/man2/recv.2.gz
@@ -1733,6 +1734,7 @@ drwxr-xr-x	root/root	usr/man/man7/
 -rw-r--r--	root/root	usr/man/man7/sem_overview.7.gz
 -rw-r--r--	root/root	usr/man/man7/signal.7.gz
 -rw-r--r--	root/root	usr/man/man7/socket.7.gz
+-rw-r--r--	root/root	usr/man/man7/standards.7.gz
 -rw-r--r--	root/root	usr/man/man7/suffixes.7.gz
 -rw-r--r--	root/root	usr/man/man7/svipc.7.gz
 -rw-r--r--	root/root	usr/man/man7/tcp.7.gz
