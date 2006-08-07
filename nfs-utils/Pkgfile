@@ -3,7 +3,7 @@
 # Maintainer:  Per Lidén, core-ports at crux dot nu
 
 name=nfs-utils
-version=1.0.9
+version=1.0.10
 release=1
 source=(http://dl.sourceforge.net/nfs/$name-$version.tar.gz \
 	exports nfs nfsserver)
