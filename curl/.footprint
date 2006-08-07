@@ -37,6 +37,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/curl_escape.3.gz
 -rw-r--r--	root/root	usr/man/man3/curl_formadd.3.gz
 -rw-r--r--	root/root	usr/man/man3/curl_formfree.3.gz
+-rw-r--r--	root/root	usr/man/man3/curl_formget.3.gz
 -rw-r--r--	root/root	usr/man/man3/curl_free.3.gz
 -rw-r--r--	root/root	usr/man/man3/curl_getdate.3.gz
 -rw-r--r--	root/root	usr/man/man3/curl_getenv.3.gz
@@ -45,6 +46,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/curl_global_init_mem.3.gz
 -rw-r--r--	root/root	usr/man/man3/curl_mprintf.3.gz
 -rw-r--r--	root/root	usr/man/man3/curl_multi_add_handle.3.gz
+-rw-r--r--	root/root	usr/man/man3/curl_multi_assign.3.gz
 -rw-r--r--	root/root	usr/man/man3/curl_multi_cleanup.3.gz
 -rw-r--r--	root/root	usr/man/man3/curl_multi_fdset.3.gz
 -rw-r--r--	root/root	usr/man/man3/curl_multi_info_read.3.gz
