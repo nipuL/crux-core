@@ -4,7 +4,7 @@
 
 name=udev
 version=096
-release=1
+release=2
 source=(ftp://ftp.kernel.org/pub/linux/utils/kernel/hotplug/$name-$version.tar.bz2
 	http://crux.nu/files/udev-config-20060715.tar.bz2
 	start_udev cdrom.rules cdsymlinks)
