@@ -3,7 +3,7 @@
 # Maintainer:  Per Lidén, core-ports at crux dot nu
 
 name=sendmail
-version=8.13.7
+version=8.13.8
 release=1
 source=(http://www.sendmail.org/ftp/$name.$version.tar.gz \
 	aliases sendmail sendmail.mk sendmail.mc site.config.m4)
