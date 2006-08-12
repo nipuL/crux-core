@@ -1,29 +1,20 @@
-diff -Nru lilo-22.7.2.orig/Makefile lilo-22.7.2/Makefile
---- lilo-22.7.2.orig/Makefile	2006-07-08 11:59:25.735532000 +0200
-+++ lilo-22.7.2/Makefile	2006-07-08 12:01:54.420824250 +0200
-@@ -64,7 +64,7 @@
+--- Makefile.orig	2006-08-12 11:27:22.726223250 +0200
++++ Makefile	2006-08-12 11:28:32.070557000 +0200
+@@ -65,7 +65,7 @@
  #   XL_SECS=n	  Support for extra large (non-standard) floppies.
  
  CONFIG=-DBDATA -DDSECS=3 -DEVMS -DIGNORECASE -DLVM -DNOKEYBOARD -DONE_SHOT \
 -   -DPASS160 -DREISERFS -DREWRITE_TABLE -DSOLO_CHAIN -DVERSION -DVIRTUAL \
 +   -DPASS160 -DREISERFS -DREWRITE_TABLE -DSOLO_CHAIN -DVIRTUAL \
-    -DATARAID -DMDPRAID
+    -DMDPRAID
  
- # set the compiler optimization level
-@@ -154,7 +154,7 @@
+ # set the following if you wish LILO.COM to be installed
+@@ -162,7 +162,7 @@
  #
  # everything needed to run, just short of installation
  #
 -all:	lilo bootsect.b diag1.img # OBSOLETE:  $(BOOTS) edit dparam.com activate
-+all:	lilo bootsect.b # diag1.img # OBSOLETE:  $(BOOTS) edit dparam.com activate
++all:	lilo bootsect.b # diag1.img OBSOLETE:  $(BOOTS) edit dparam.com activate
  	if [ -x /usr/bin/bcc -o -x /usr/local/bin/bcc ]; then \
  		make diagnostic; \
  		make dosexe; fi
-@@ -180,7 +180,6 @@
- #
- test:	test.img
- test.img:
--	./checkit
- 	echo Tested >test.img	
- #
- # make the bootable diagnostic floppies
