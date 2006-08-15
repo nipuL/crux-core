@@ -16,7 +16,6 @@ build() {
     touch *.5 *.8
     make
     make DESTDIR=$PKG mandir=/usr/man install
-    install -D -m 644 modprobe.devfs $PKG/etc/modprobe.devfs
     install -D -m 644 ../modprobe.conf $PKG/etc/modprobe.conf
     rm -f $PKG/sbin/generate-modprobe.conf
 }
