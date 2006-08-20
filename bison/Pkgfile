@@ -3,9 +3,9 @@
 # Maintainer:  Per Lidén, core-ports at crux dot nu
 
 name=bison
-version=2.1
+version=2.3
 release=1
-source=(http://mirrors.sunsite.dk/gnu/$name/$name-$version.tar.gz)
+source=(ftp://ftp.gnu.org/gnu/$name/$name-$version.tar.bz2)
 
 build() {
     cd $name-$version
