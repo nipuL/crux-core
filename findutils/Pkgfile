@@ -3,18 +3,18 @@
 # Maintainer:  Per Lidén, core-ports at crux dot nu
 
 name=findutils
-version=4.2.27
+version=4.2.28
 release=1
 source=(http://ftp.gnu.org/pub/gnu/$name/$name-$version.tar.gz)
 
 build() {
     cd $name-$version
     ./configure --prefix=/usr \
-		--disable-nls
+		--disable-nls --mandir=/usr/man
     make
     make DESTDIR=$PKG install
     rm -rf $PKG/usr/bin/{updatedb,locate} \
 	   $PKG/usr/man/man1/{updatedb.1,locate.1} \
 	   $PKG/usr/man/man5 $PKG/usr/libexec \
-	   $PKG/usr/info $PKG/usr/var
+	   $PKG/usr/share $PKG/usr/var
 }
