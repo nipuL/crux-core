@@ -36,5 +36,5 @@ build() {
 	install -m 0755 $SRC/cdsymlinks $PKG/lib/udev/
 	install -m 0755 $SRC/dvb_helper $PKG/lib/udev/
 	cat $SRC/cdrom.rules >> $PKG/etc/udev/rules.d/81-cdrom.rules
-	cat $SRC/crux.rules >> $PKG/etc/udev/rules.d/26-crux.rules
+	cp $SRC/crux.rules $PKG/etc/udev/rules.d/26-crux.rules
 }
