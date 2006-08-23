@@ -1,5 +1,7 @@
 c0da74341672681c9bd924439ea4e84d  cdrom.rules
 6c4a8bd7aef573838305e212ffb9bc6a  cdsymlinks
+ef01d7356869dc070029b8de9b6d4f7d  crux.rules
+7818c207e95af667657782ba9884a404  dvb_helper
 40ab559668ab739473fa9f4a45ba28da  start_udev
 f4effef7807ce1dc91ab581686ef197b  udev-096.tar.bz2
 6ef52d52f45ca91daea3cfa840d1083b  udev-config-20060715.tar.bz2

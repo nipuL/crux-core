@@ -5,6 +5,7 @@ drwxr-xr-x	root/root	etc/udev/
 drwxr-xr-x	root/root	etc/udev/rules.d/
 -rw-r--r--	root/root	etc/udev/rules.d/05-udev-early.rules
 -rw-r--r--	root/root	etc/udev/rules.d/25-lfs.rules
+-rw-r--r--	root/root	etc/udev/rules.d/26-crux.rules
 -rw-r--r--	root/root	etc/udev/rules.d/26-modprobe.rules
 -rw-r--r--	root/root	etc/udev/rules.d/27-firmware.rules
 -rw-r--r--	root/root	etc/udev/rules.d/60-persistent-storage.rules
@@ -30,6 +31,7 @@ lrwxrwxrwx	root/root	lib/udev/devices/stderr -> /proc/self/fd/2
 lrwxrwxrwx	root/root	lib/udev/devices/stdin -> /proc/self/fd/0
 lrwxrwxrwx	root/root	lib/udev/devices/stdout -> /proc/self/fd/1
 crw-rw-rw-	root/root	lib/udev/devices/zero (1, 5)
+-rwxr-xr-x	root/root	lib/udev/dvb_helper
 -rwxr-xr-x	root/root	lib/udev/edd_id
 -rwxr-xr-x	root/root	lib/udev/firmware.sh
 -rwxr-xr-x	root/root	lib/udev/path_id

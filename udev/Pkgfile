@@ -4,10 +4,10 @@
 
 name=udev
 version=096
-release=2
+release=3
 source=(ftp://ftp.kernel.org/pub/linux/utils/kernel/hotplug/$name-$version.tar.bz2
 	http://crux.nu/files/udev-config-20060715.tar.bz2
-	start_udev cdrom.rules cdsymlinks)
+	start_udev cdrom.rules cdsymlinks crux.rules dvb_helper)
 
 build() {
 	cd udev-$version
@@ -34,5 +34,7 @@ build() {
 	cp $SRC/udev-config-20060715/*.rules $PKG/etc/udev/rules.d/
 	install -m 0755 $SRC/start_udev $PKG/sbin
 	install -m 0755 $SRC/cdsymlinks $PKG/lib/udev/
+	install -m 0755 $SRC/dvb_helper $PKG/lib/udev/
 	cat $SRC/cdrom.rules >> $PKG/etc/udev/rules.d/81-cdrom.rules
+	cat $SRC/crux.rules >> $PKG/etc/udev/rules.d/26-crux.rules
 }
