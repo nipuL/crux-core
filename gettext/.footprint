@@ -20,6 +20,7 @@ drwxr-xr-x	root/root	usr/bin/
 -rwxr-xr-x	root/root	usr/bin/msgunfmt
 -rwxr-xr-x	root/root	usr/bin/msguniq
 -rwxr-xr-x	root/root	usr/bin/ngettext
+-rwxr-xr-x	root/root	usr/bin/recode-sr-latin
 -rwxr-xr-x	root/root	usr/bin/xgettext
 drwxr-xr-x	root/root	usr/include/
 -rw-r--r--	root/root	usr/include/autosprintf.h
@@ -35,17 +36,17 @@ drwxr-xr-x	root/root	usr/lib/gettext/
 lrwxrwxrwx	root/root	usr/lib/libasprintf.so -> libasprintf.so.0.0.0
 lrwxrwxrwx	root/root	usr/lib/libasprintf.so.0 -> libasprintf.so.0.0.0
 -rwxr-xr-x	root/root	usr/lib/libasprintf.so.0.0.0
--rwxr-xr-x	root/root	usr/lib/libgettextlib-0.14.5.so
+-rwxr-xr-x	root/root	usr/lib/libgettextlib-0.15.so
 -rwxr-xr-x	root/root	usr/lib/libgettextlib.la
-lrwxrwxrwx	root/root	usr/lib/libgettextlib.so -> libgettextlib-0.14.5.so
+lrwxrwxrwx	root/root	usr/lib/libgettextlib.so -> libgettextlib-0.15.so
 -rw-r--r--	root/root	usr/lib/libgettextpo.a
 -rwxr-xr-x	root/root	usr/lib/libgettextpo.la
-lrwxrwxrwx	root/root	usr/lib/libgettextpo.so -> libgettextpo.so.0.1.0
-lrwxrwxrwx	root/root	usr/lib/libgettextpo.so.0 -> libgettextpo.so.0.1.0
--rwxr-xr-x	root/root	usr/lib/libgettextpo.so.0.1.0
--rwxr-xr-x	root/root	usr/lib/libgettextsrc-0.14.5.so
+lrwxrwxrwx	root/root	usr/lib/libgettextpo.so -> libgettextpo.so.0.2.0
+lrwxrwxrwx	root/root	usr/lib/libgettextpo.so.0 -> libgettextpo.so.0.2.0
+-rwxr-xr-x	root/root	usr/lib/libgettextpo.so.0.2.0
+-rwxr-xr-x	root/root	usr/lib/libgettextsrc-0.15.so
 -rwxr-xr-x	root/root	usr/lib/libgettextsrc.la
-lrwxrwxrwx	root/root	usr/lib/libgettextsrc.so -> libgettextsrc-0.14.5.so
+lrwxrwxrwx	root/root	usr/lib/libgettextsrc.so -> libgettextsrc-0.15.so
 -rw-r--r--	root/root	usr/lib/preloadable_libintl.so
 drwxr-xr-x	root/root	usr/man/
 drwxr-xr-x	root/root	usr/man/man1/
@@ -88,14 +89,14 @@ drwxr-xr-x	root/root	usr/share/aclocal/
 -rw-r--r--	root/root	usr/share/aclocal/iconv.m4
 -rw-r--r--	root/root	usr/share/aclocal/intdiv0.m4
 -rw-r--r--	root/root	usr/share/aclocal/intmax.m4
+-rw-r--r--	root/root	usr/share/aclocal/inttypes-h.m4
 -rw-r--r--	root/root	usr/share/aclocal/inttypes-pri.m4
--rw-r--r--	root/root	usr/share/aclocal/inttypes.m4
 -rw-r--r--	root/root	usr/share/aclocal/inttypes_h.m4
--rw-r--r--	root/root	usr/share/aclocal/isc-posix.m4
 -rw-r--r--	root/root	usr/share/aclocal/lcmessage.m4
 -rw-r--r--	root/root	usr/share/aclocal/lib-ld.m4
 -rw-r--r--	root/root	usr/share/aclocal/lib-link.m4
 -rw-r--r--	root/root	usr/share/aclocal/lib-prefix.m4
+-rw-r--r--	root/root	usr/share/aclocal/lock.m4
 -rw-r--r--	root/root	usr/share/aclocal/longdouble.m4
 -rw-r--r--	root/root	usr/share/aclocal/longlong.m4
 -rw-r--r--	root/root	usr/share/aclocal/nls.m4
@@ -107,6 +108,7 @@ drwxr-xr-x	root/root	usr/share/aclocal/
 -rw-r--r--	root/root	usr/share/aclocal/stdint_h.m4
 -rw-r--r--	root/root	usr/share/aclocal/uintmax_t.m4
 -rw-r--r--	root/root	usr/share/aclocal/ulonglong.m4
+-rw-r--r--	root/root	usr/share/aclocal/visibility.m4
 -rw-r--r--	root/root	usr/share/aclocal/wchar_t.m4
 -rw-r--r--	root/root	usr/share/aclocal/wint_t.m4
 -rw-r--r--	root/root	usr/share/aclocal/xsize.m4
@@ -116,9 +118,6 @@ drwxr-xr-x	root/root	usr/share/gettext/
 -rwxr-xr-x	root/root	usr/share/gettext/config.rpath
 -rw-r--r--	root/root	usr/share/gettext/gettext.h
 drwxr-xr-x	root/root	usr/share/gettext/intl/
--rw-r--r--	root/root	usr/share/gettext/intl/COPYING.LIB-2.0
--rw-r--r--	root/root	usr/share/gettext/intl/COPYING.LIB-2.1
--rw-r--r--	root/root	usr/share/gettext/intl/ChangeLog
 -rw-r--r--	root/root	usr/share/gettext/intl/Makefile.in
 -rw-r--r--	root/root	usr/share/gettext/intl/VERSION
 -rw-r--r--	root/root	usr/share/gettext/intl/bindtextdom.c
@@ -130,12 +129,15 @@ drwxr-xr-x	root/root	usr/share/gettext/intl/
 -rw-r--r--	root/root	usr/share/gettext/intl/dngettext.c
 -rw-r--r--	root/root	usr/share/gettext/intl/eval-plural.h
 -rw-r--r--	root/root	usr/share/gettext/intl/explodename.c
+-rw-r--r--	root/root	usr/share/gettext/intl/export.h
 -rw-r--r--	root/root	usr/share/gettext/intl/finddomain.c
 -rw-r--r--	root/root	usr/share/gettext/intl/gettext.c
 -rw-r--r--	root/root	usr/share/gettext/intl/gettextP.h
 -rw-r--r--	root/root	usr/share/gettext/intl/gmo.h
+-rw-r--r--	root/root	usr/share/gettext/intl/hash-string.c
 -rw-r--r--	root/root	usr/share/gettext/intl/hash-string.h
 -rw-r--r--	root/root	usr/share/gettext/intl/intl-compat.c
+-rw-r--r--	root/root	usr/share/gettext/intl/intl-exports.c
 -rw-r--r--	root/root	usr/share/gettext/intl/l10nflist.c
 -rw-r--r--	root/root	usr/share/gettext/intl/langprefs.c
 -rw-r--r--	root/root	usr/share/gettext/intl/libgnuintl.h.in
@@ -146,6 +148,8 @@ drwxr-xr-x	root/root	usr/share/gettext/intl/
 -rw-r--r--	root/root	usr/share/gettext/intl/locale.alias
 -rw-r--r--	root/root	usr/share/gettext/intl/localealias.c
 -rw-r--r--	root/root	usr/share/gettext/intl/localename.c
+-rw-r--r--	root/root	usr/share/gettext/intl/lock.c
+-rw-r--r--	root/root	usr/share/gettext/intl/lock.h
 -rw-r--r--	root/root	usr/share/gettext/intl/log.c
 -rw-r--r--	root/root	usr/share/gettext/intl/ngettext.c
 -rw-r--r--	root/root	usr/share/gettext/intl/os2compat.c
@@ -168,9 +172,10 @@ drwxr-xr-x	root/root	usr/share/gettext/intl/
 -rw-r--r--	root/root	usr/share/gettext/intl/vasnprintf.c
 -rw-r--r--	root/root	usr/share/gettext/intl/vasnprintf.h
 -rw-r--r--	root/root	usr/share/gettext/intl/vasnwprintf.h
+-rw-r--r--	root/root	usr/share/gettext/intl/version.c
 -rw-r--r--	root/root	usr/share/gettext/intl/wprintf-parse.h
 -rw-r--r--	root/root	usr/share/gettext/intl/xsize.h
--rwxr-xr-x	root/root	usr/share/gettext/mkinstalldirs
+-rw-r--r--	root/root	usr/share/gettext/javaversion.class
 -rw-r--r--	root/root	usr/share/gettext/msgunfmt.tcl
 drwxr-xr-x	root/root	usr/share/gettext/po/
 -rw-r--r--	root/root	usr/share/gettext/po/Makefile.in.in

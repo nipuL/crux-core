@@ -3,7 +3,7 @@
 # Maintainer:  Per Lidén, core-ports at crux dot nu
 
 name=gettext
-version=0.14.5
+version=0.15
 release=1
 source=(http://mirrors.sunsite.dk/gnu/$name/$name-$version.tar.gz)
 
@@ -15,5 +15,6 @@ build() {
 		--disable-nls
     make
     make DESTDIR=$PKG install
-    rm -rf $PKG/usr/info $PKG/usr/share/{doc,emacs,gettext/*.jar}
+    rm -rf $PKG/usr/info $PKG/usr/share/{info,doc,emacs,gettext/*.jar}
+    rm $PKG/usr/share/gettext/intl/{COPYING*,ChangeLog}
 }
