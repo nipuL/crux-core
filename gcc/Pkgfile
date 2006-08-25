@@ -5,7 +5,7 @@
 name=gcc
 version=4.0.3
 release=2
-source=(ftp://sources.redhat.com/pub/gcc/releases/$name-$version/$name-$version.tar.bz2 \
+source=(ftp://sources.redhat.com/pub/gcc/releases/$name-$version/$name-{core,g++,objc}-$version.tar.bz2 \
         $name-$version-latentbug-addrefvars.patch \
         $name-$version-nocheck-fixincludes.patch \
         $name-$version-version.patch \
