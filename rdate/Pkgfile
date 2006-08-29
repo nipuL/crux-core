@@ -5,7 +5,7 @@
 name=rdate
 version=1.4
 release=1
-source=(ftp://people.redhat.com/sopwith/$name-$version.tar.gz rdate)
+source=(http://ftp.osuosl.org/pub/nslu2/sources/$name-$version.tar.gz rdate)
 
 build() {
     cd $name-$version
