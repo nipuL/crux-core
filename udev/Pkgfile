@@ -4,9 +4,9 @@
 
 name=udev
 version=096
-release=3
+release=4
 source=(ftp://ftp.kernel.org/pub/linux/utils/kernel/hotplug/$name-$version.tar.bz2
-	http://crux.nu/files/udev-config-20060715.tar.bz2
+	http://crux.nu/files/udev-rules-1814.tar.gz
 	start_udev cdrom.rules cdsymlinks crux.rules dvb_helper)
 
 build() {
@@ -31,7 +31,7 @@ build() {
 	ln -s /proc/self/fd/1 $PKG/lib/udev/devices/stdout
 	ln -s /proc/self/fd/2 $PKG/lib/udev/devices/stderr
 	ln -s /proc/kcore $PKG/lib/udev/devices/core
-	cp $SRC/udev-config-20060715/*.rules $PKG/etc/udev/rules.d/
+	cp $SRC/udev-rules-1814/*.rules $PKG/etc/udev/rules.d/
 	install -m 0755 $SRC/start_udev $PKG/sbin
 	install -m 0755 $SRC/cdsymlinks $PKG/lib/udev/
 	install -m 0755 $SRC/dvb_helper $PKG/lib/udev/
