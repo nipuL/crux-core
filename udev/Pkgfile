@@ -10,9 +10,7 @@ source=(ftp://ftp.kernel.org/pub/linux/utils/kernel/hotplug/$name-$version.tar.b
 	start_udev cdrom.rules cdsymlinks crux.rules dvb_helper)
 
 build() {
-	cd udev-$version
-	make all install \
-		EXTRAS="extras/ata_id \
+	local extras="extras/ata_id \
 			extras/cdrom_id \
 			extras/edd_id \
 			extras/firmware \
@@ -20,8 +18,11 @@ build() {
 			extras/path_id \
 			extras/scsi_id \
 			extras/usb_id \
-			extras/volume_id" \
-		DESTDIR=$PKG mandir="/usr/man"
+			extras/volume_id"
+
+	cd udev-$version
+        make EXTRAS="$extras"
+        make install DESTDIR=$PKG mandir="/usr/man" EXTRAS="$extras"
 	mkdir -p $PKG/lib/{firmware,udev/devices/{pts,shm}}
 	mknod -m 600 $PKG/lib/udev/devices/console c 5 1
 	mknod -m 666 $PKG/lib/udev/devices/null c 1 3
