@@ -6,10 +6,11 @@ name=openssl
 version=0.9.8c
 release=1
 source=(http://www.openssl.org/source/$name-$version.tar.gz \
-	mksslcert.sh)
+	mksslcert.sh openssl-0.9.8b-parallel-build.patch)
 
 build() {
     cd $name-$version
+    patch -p1 < $SRC/openssl-0.9.8b-parallel-build.patch
     ./config --prefix=/usr --openssldir=/etc/ssl shared
     make
     make INSTALL_PREFIX=$PKG MANDIR=/usr/man MANSUFFIX=ssl install
