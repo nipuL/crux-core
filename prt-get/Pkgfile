@@ -1,11 +1,11 @@
 # Description: A utility to simplify ports searching/installing
-# URL:         http://jw.tks6.net/files/crux/prt-get_quickstart.html
-# Maintainer:  Johannes Winkelmann, jw at tks6 dot net
+# URL:         http://jw.smts.ch/files/crux/prt-get_quickstart.html
+# Maintainer:  Johannes Winkelmann, jw at smts dot ch
 
 name=prt-get
-version=5.12
+version=5.13
 release=1
-source=(http://jw.tks6.net/files/crux/prt-get-$version.tar.gz \
+source=(http://jw.smts.ch/files/crux/prt-get-$version.tar.gz \
 	prt-get.conf prt-get.aliases)
 
 build() {
