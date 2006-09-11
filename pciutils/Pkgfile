@@ -2,26 +2,24 @@
 # URL:         http://atrey.karlin.mff.cuni.cz/~mj/pciutils.shtml
 # Packager:    Markus Ackermann, maol at symlink dot ch
 # Maintainer:  Jürgen Daubert, juergen dot daubert at t-online dot de
+# Depends on:  zlib
 
 name=pciutils
-version=2.2.3
+version=2.2.4
 release=1
 source=(http://www.kernel.org/pub/software/utils/$name/$name-$version.tar.gz \
-        http://jue.li/crux/files/pci.ids-060505.gz)
+        http://jue.li/crux/files/pci.ids-060909.gz)
 
 build() {
     mkdir -p $PKG/usr/{lib,share,include/pci}
-    gunzip -c $SRC/pci.ids-060505.gz > $PKG/usr/share/pci.ids
+    cp $SRC/pci.ids-060909.gz $PKG/usr/share/pci.ids.gz
 
     cd $name-$version
     sed -i "s/-O2/$CFLAGS/" Makefile
     make PREFIX=/usr
     make PREFIX=$PKG/usr install 
 
-    cd lib
-    ./configure
-    make
-    cp libpci.a $PKG/usr/lib
-    cp *.h $PKG/usr/include/pci
+    cp lib/libpci.a $PKG/usr/lib
+    cp lib/*.h $PKG/usr/include/pci
     rm $PKG/usr/include/pci/i386-io-{h*,s*,w*}
 }
