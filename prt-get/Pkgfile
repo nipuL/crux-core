@@ -3,14 +3,16 @@
 # Maintainer:  Johannes Winkelmann, jw at smts dot ch
 
 name=prt-get
-version=5.13
+version=5.14
 release=1
 source=(http://jw.smts.ch/files/crux/prt-get-$version.tar.gz \
 	prt-get.conf prt-get.aliases)
 
 build() {
     cd ${name}-${version}
-    ./configure --prefix=/usr
+    ./configure \
+        --prefix=/usr \
+        --mandir=/usr/man
     make
     make DESTDIR=$PKG install
 
