@@ -1,6 +1,6 @@
 # Description: Linux USB/PCI Hotplug scripts
 # URL: http://linux-hotplug.sourceforge.net/
-# Maintainer: Matt Housh <jaeger at morpheus dot net>
+# Maintainer: Matt Housh, jaeger at morpheus dot net
 # Depends on: pciutils, usbutils
 
 name=hotplug
