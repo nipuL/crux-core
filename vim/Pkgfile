@@ -6,11 +6,17 @@
 
 name=vim
 version=7.0
-release=3
-source=(ftp://ftp.vim.org/pub/vim/unix/vim-$version.tar.bz2)
+release=4
+source=(ftp://ftp.vim.org/pub/vim/unix/vim-$version.tar.bz2 \
+        http://jue.li/crux/files/$name-7.0.001-109.tar.gz)
 
 build () {
     cd $name${version/\./}
+
+    for p in $SRC/$name-7.0.001-109/*; do
+       patch -p0 -i $p
+    done
+
     cd src
     ./configure --prefix=/usr \
 		--with-vim-name=vim \
@@ -21,8 +27,10 @@ build () {
 		--disable-nls
     make VIMRTDIR=
     make VIMRTDIR= DESTDIR=$PKG installvimbin installruntime installlinks
+
     mv $PKG/usr/share/vim/vimrc_example.vim $PKG/usr/share/vim/vimrc
     rm -rf $PKG/usr/man/man?/vimtutor* $PKG/usr/share/vim/tutor $PKG/usr/share/vim/macros
+    rm $PKG/usr/share/vim/*/README.txt    
     ln -sf vim $PKG/usr/bin/vi
     ln -sf vim $PKG/usr/bin/evim
     ln -sf vim.1.gz $PKG/usr/man/man1/ex.1.gz

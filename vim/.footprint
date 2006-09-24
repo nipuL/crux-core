@@ -22,7 +22,6 @@ lrwxrwxrwx	root/root	usr/man/man1/view.1.gz -> vim.1.gz
 drwxr-xr-x	root/root	usr/share/
 drwxr-xr-x	root/root	usr/share/vim/
 drwxr-xr-x	root/root	usr/share/vim/autoload/
--rw-r--r--	root/root	usr/share/vim/autoload/README.txt
 -rw-r--r--	root/root	usr/share/vim/autoload/ccomplete.vim
 -rw-r--r--	root/root	usr/share/vim/autoload/csscomplete.vim
 -rw-r--r--	root/root	usr/share/vim/autoload/gzip.vim
@@ -57,7 +56,6 @@ drwxr-xr-x	root/root	usr/share/vim/autoload/xml/
 -rw-r--r--	root/root	usr/share/vim/autoload/zip.vim
 -rw-r--r--	root/root	usr/share/vim/bugreport.vim
 drwxr-xr-x	root/root	usr/share/vim/colors/
--rw-r--r--	root/root	usr/share/vim/colors/README.txt
 -rw-r--r--	root/root	usr/share/vim/colors/blue.vim
 -rw-r--r--	root/root	usr/share/vim/colors/darkblue.vim
 -rw-r--r--	root/root	usr/share/vim/colors/default.vim
@@ -76,7 +74,6 @@ drwxr-xr-x	root/root	usr/share/vim/colors/
 -rw-r--r--	root/root	usr/share/vim/colors/torte.vim
 -rw-r--r--	root/root	usr/share/vim/colors/zellner.vim
 drwxr-xr-x	root/root	usr/share/vim/compiler/
--rw-r--r--	root/root	usr/share/vim/compiler/README.txt
 -rw-r--r--	root/root	usr/share/vim/compiler/ant.vim
 -rw-r--r--	root/root	usr/share/vim/compiler/bcc.vim
 -rw-r--r--	root/root	usr/share/vim/compiler/bdf.vim
@@ -257,7 +254,6 @@ drwxr-xr-x	root/root	usr/share/vim/doc/
 -rw-r--r--	root/root	usr/share/vim/ftplugin.vim
 drwxr-xr-x	root/root	usr/share/vim/ftplugin/
 -rw-r--r--	root/root	usr/share/vim/ftplugin/AppendMatchGroup.vim
--rw-r--r--	root/root	usr/share/vim/ftplugin/README.txt
 -rw-r--r--	root/root	usr/share/vim/ftplugin/a2ps.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/aap.vim
 -rw-r--r--	root/root	usr/share/vim/ftplugin/abaqus.vim
@@ -404,7 +400,6 @@ drwxr-xr-x	root/root	usr/share/vim/ftplugin/
 -rw-r--r--	root/root	usr/share/vim/indent.vim
 drwxr-xr-x	root/root	usr/share/vim/indent/
 -rw-r--r--	root/root	usr/share/vim/indent/GenericIndent.vim
--rw-r--r--	root/root	usr/share/vim/indent/README.txt
 -rw-r--r--	root/root	usr/share/vim/indent/aap.vim
 -rw-r--r--	root/root	usr/share/vim/indent/ada.vim
 -rw-r--r--	root/root	usr/share/vim/indent/ant.vim
@@ -482,7 +477,6 @@ drwxr-xr-x	root/root	usr/share/vim/indent/
 -rw-r--r--	root/root	usr/share/vim/mswin.vim
 -rw-r--r--	root/root	usr/share/vim/optwin.vim
 drwxr-xr-x	root/root	usr/share/vim/plugin/
--rw-r--r--	root/root	usr/share/vim/plugin/README.txt
 -rw-r--r--	root/root	usr/share/vim/plugin/getscript.vim
 -rw-r--r--	root/root	usr/share/vim/plugin/gzip.vim
 -rw-r--r--	root/root	usr/share/vim/plugin/matchparen.vim
@@ -541,7 +535,6 @@ drwxr-xr-x	root/root	usr/share/vim/spell/
 -rw-r--r--	root/root	usr/share/vim/synmenu.vim
 drwxr-xr-x	root/root	usr/share/vim/syntax/
 -rw-r--r--	root/root	usr/share/vim/syntax/2html.vim
--rw-r--r--	root/root	usr/share/vim/syntax/README.txt
 -rw-r--r--	root/root	usr/share/vim/syntax/a2ps.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/a65.vim
 -rw-r--r--	root/root	usr/share/vim/syntax/aap.vim
