@@ -4,7 +4,7 @@
 
 name=libtool
 version=1.5.22
-release=1
+release=2
 source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz \
 	libtool.1 libtoolize.1)
 
@@ -13,9 +13,8 @@ build() {
     ./configure --prefix=/usr
     make
     make DESTDIR=$PKG install
-    rm -fr $PKG/usr/info 
     mkdir -p $PKG/usr/man/man1
-    cp ../libtool.1 ../libtoolize.1 $PKG/usr/man/man1
-    chown -R root.root $PKG
-    rm -rf $PKG/usr/share/info
+    cp $SRC/libtool.1 $SRC/libtoolize.1 $PKG/usr/man/man1
+    rm -rf $PKG/usr/{info,share/info}
+    rm $PKG/usr/share/libtool/libltdl/README
 }
