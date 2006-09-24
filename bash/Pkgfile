@@ -6,7 +6,7 @@
 name=bash
 version=3.1.17
 release=1
-source=(http://mirrors.sunsite.dk/gnu/$name/$name-3.1.tar.gz \
+source=(http://ftp.gnu.org/gnu/$name/$name-3.1.tar.gz \
         bash-3.1-001-017.patch \
 	$name-3.1-doc.patch \
 	profile)

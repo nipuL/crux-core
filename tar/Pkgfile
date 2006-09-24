@@ -5,7 +5,7 @@
 name=tar
 version=1.15.1
 release=3
-source=(http://mirrors.sunsite.dk/gnu/$name/$name-$version.tar.bz2 \
+source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.bz2 \
 	$name-$version-sparse.patch $name-$version-rootp.patch tar.1)
 
 build() {

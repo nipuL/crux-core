@@ -5,7 +5,7 @@
 name=ed
 version=0.2
 release=2
-source=(http://mirrors.sunsite.dk/gnu/$name/$name-$version.tar.gz $name-$version.patch)
+source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz $name-$version.patch)
 
 build() {
     cd $name-$version

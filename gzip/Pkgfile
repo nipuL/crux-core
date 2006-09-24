@@ -5,7 +5,7 @@
 name=gzip
 version=1.2.4b
 release=1
-source=(http://mirrors.sunsite.dk/gnu/$name/$name-1.2.4a.tar.gz \
+source=(http://ftp.gnu.org/gnu/$name/$name-1.2.4a.tar.gz \
 	http://www.gzip.org/$name-$version.patch)
 
 build() {

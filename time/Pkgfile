@@ -5,7 +5,7 @@
 name=time
 version=1.7
 release=1
-source=(http://mirrors.sunsite.dk/gnu/$name/$name-$version.tar.gz $name.1)
+source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz $name.1)
 
 build() {
     cd $name-$version
