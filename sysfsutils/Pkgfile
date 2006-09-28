@@ -1,6 +1,6 @@
 # Description: System Utilities Based on Sysfs
 # URL: http://linux-diag.sourceforge.net/Sysfsutils.html
-# Maintainer: Jukka Heino, jukka dot heino at gmail dot com
+# Maintainer:  Per Lidén, core-ports at crux dot nu
 # Packager: Daniel Mueller, daniel at danm dot de
 
 name=sysfsutils
