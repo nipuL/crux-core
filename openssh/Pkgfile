@@ -4,7 +4,7 @@
 # Depends on:  openssl, zlib
 
 name=openssh
-version=4.3p2
+version=4.4p1
 release=1
 source=(ftp://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/$name-$version.tar.gz sshd)
 
@@ -14,6 +14,7 @@ build() {
 		--libexecdir=/usr/lib/ssh \
 		--sysconfdir=/etc/ssh \
 		--with-mantype=man \
+		--mandir=/usr/man \
 		--with-tcp-wrappers \
 		--with-md5-passwords \
 		--with-privsep-user=nobody \
