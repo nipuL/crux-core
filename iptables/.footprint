@@ -11,9 +11,10 @@ drwxr-xr-x	root/root	usr/lib/iptables/
 -rwxr-xr-x	root/root	usr/lib/iptables/libip6t_REJECT.so
 -rwxr-xr-x	root/root	usr/lib/iptables/libip6t_TRACE.so
 -rwxr-xr-x	root/root	usr/lib/iptables/libip6t_connmark.so
+-rwxr-xr-x	root/root	usr/lib/iptables/libip6t_esp.so
 -rwxr-xr-x	root/root	usr/lib/iptables/libip6t_eui64.so
 -rwxr-xr-x	root/root	usr/lib/iptables/libip6t_hl.so
--rwxr-xr-x	root/root	usr/lib/iptables/libip6t_icmpv6.so
+-rwxr-xr-x	root/root	usr/lib/iptables/libip6t_icmp6.so
 -rwxr-xr-x	root/root	usr/lib/iptables/libip6t_length.so
 -rwxr-xr-x	root/root	usr/lib/iptables/libip6t_limit.so
 -rwxr-xr-x	root/root	usr/lib/iptables/libip6t_mac.so
@@ -51,6 +52,7 @@ drwxr-xr-x	root/root	usr/lib/iptables/
 -rwxr-xr-x	root/root	usr/lib/iptables/libipt_addrtype.so
 -rwxr-xr-x	root/root	usr/lib/iptables/libipt_ah.so
 -rwxr-xr-x	root/root	usr/lib/iptables/libipt_comment.so
+-rwxr-xr-x	root/root	usr/lib/iptables/libipt_connbytes.so
 -rwxr-xr-x	root/root	usr/lib/iptables/libipt_connlimit.so
 -rwxr-xr-x	root/root	usr/lib/iptables/libipt_connmark.so
 -rwxr-xr-x	root/root	usr/lib/iptables/libipt_conntrack.so
@@ -85,7 +87,6 @@ drwxr-xr-x	root/root	usr/lib/iptables/
 -rwxr-xr-x	root/root	usr/lib/iptables/libipt_udp.so
 -rwxr-xr-x	root/root	usr/lib/iptables/libipt_unclean.so
 -rw-r--r--	root/root	usr/lib/libipq.a
--rw-r--r--	root/root	usr/lib/libiptc.a
 drwxr-xr-x	root/root	usr/man/
 drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/ipq_create_handle.3.gz
