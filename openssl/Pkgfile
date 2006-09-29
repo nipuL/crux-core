@@ -3,7 +3,7 @@
 # Maintainer:  Per Lidén, core-ports at crux dot nu
 
 name=openssl
-version=0.9.8c
+version=0.9.8d
 release=1
 source=(http://www.openssl.org/source/$name-$version.tar.gz \
 	mksslcert.sh openssl-0.9.8b-parallel-build.patch)
