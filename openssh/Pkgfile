@@ -6,7 +6,7 @@
 name=openssh
 version=4.4p1
 release=1
-source=(ftp://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/$name-$version.tar.gz sshd)
+source=(http://openssh.linux-mirror.org/portable/$name-$version.tar.gz sshd)
 
 build() {
     cd $name-$version
