@@ -5,8 +5,8 @@
 name=db
 version=4.4.20
 release=2
-source=(ftp://ftp.sleepycat.com/releases/$name-$version.tar.gz \
-        http://www.sleepycat.com/update/4.4.20/patch.4.4.20.{1,2,3,4})
+source=(http://download.oracle.com/berkeley-db/$name-$version.tar.gz \
+	http://www.oracle.com/technology/products/berkeley-db/db/update/4.4.20/patch.4.4.20.{1,2,3,4})
 
 build() {
     cd $name-$version
