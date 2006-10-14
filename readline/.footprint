@@ -14,12 +14,12 @@ drwxr-xr-x	root/root	usr/include/readline/
 drwxr-xr-x	root/root	usr/lib/
 -rw-r--r--	root/root	usr/lib/libhistory.a
 lrwxrwxrwx	root/root	usr/lib/libhistory.so -> libhistory.so.5
-lrwxrwxrwx	root/root	usr/lib/libhistory.so.5 -> libhistory.so.5.1
--rw-r--r--	root/root	usr/lib/libhistory.so.5.1
+lrwxrwxrwx	root/root	usr/lib/libhistory.so.5 -> libhistory.so.5.2
+-r-xr-xr-x	root/root	usr/lib/libhistory.so.5.2
 -rw-r--r--	root/root	usr/lib/libreadline.a
 lrwxrwxrwx	root/root	usr/lib/libreadline.so -> libreadline.so.5
-lrwxrwxrwx	root/root	usr/lib/libreadline.so.5 -> libreadline.so.5.1
--rw-r--r--	root/root	usr/lib/libreadline.so.5.1
+lrwxrwxrwx	root/root	usr/lib/libreadline.so.5 -> libreadline.so.5.2
+-r-xr-xr-x	root/root	usr/lib/libreadline.so.5.2
 drwxr-xr-x	root/root	usr/man/
 drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/history.3.gz

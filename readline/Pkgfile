@@ -3,21 +3,16 @@
 # Maintainer:  Per Lidén, core-ports at crux dot nu
 
 name=readline
-version=5.1
-release=3
+version=5.2
+release=1
 source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz \
-        http://ftp.gnu.org/gnu/readline/readline-5.1-patches/readline51-00{1..4}
         inputrc)
 
 build() {
     cd $name-$version
-
-    for p in {1..4}; do
-        patch -p0 < $SRC/readline51-00$p
-    done
     ./configure --prefix=/usr
     make
     make DESTDIR=$PKG install
-    install -D -m 644 ../inputrc $PKG/etc/inputrc
+    install -D -m 644 $SRC/inputrc $PKG/etc/inputrc
     rm -rf $PKG/usr/info
 }
