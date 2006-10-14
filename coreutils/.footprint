@@ -26,6 +26,7 @@ drwxr-xr-x	root/root	bin/
 drwxr-xr-x	root/root	usr/
 drwxr-xr-x	root/root	usr/bin/
 -rwxr-xr-x	root/root	usr/bin/[
+-rwxr-xr-x	root/root	usr/bin/base64
 -rwxr-xr-x	root/root	usr/bin/basename
 -rwxr-xr-x	root/root	usr/bin/chroot
 -rwxr-xr-x	root/root	usr/bin/cksum
@@ -64,7 +65,12 @@ drwxr-xr-x	root/root	usr/bin/
 -rwxr-xr-x	root/root	usr/bin/ptx
 -rwxr-xr-x	root/root	usr/bin/seq
 -rwxr-xr-x	root/root	usr/bin/sha1sum
+-rwxr-xr-x	root/root	usr/bin/sha224sum
+-rwxr-xr-x	root/root	usr/bin/sha256sum
+-rwxr-xr-x	root/root	usr/bin/sha384sum
+-rwxr-xr-x	root/root	usr/bin/sha512sum
 -rwxr-xr-x	root/root	usr/bin/shred
+-rwxr-xr-x	root/root	usr/bin/shuf
 -rwxr-xr-x	root/root	usr/bin/sleep
 -rwxr-xr-x	root/root	usr/bin/sort
 -rwxr-xr-x	root/root	usr/bin/split
@@ -88,6 +94,7 @@ drwxr-xr-x	root/root	usr/bin/
 -rwxr-xr-x	root/root	usr/bin/yes
 drwxr-xr-x	root/root	usr/man/
 drwxr-xr-x	root/root	usr/man/man1/
+-rw-r--r--	root/root	usr/man/man1/base64.1.gz
 -rw-r--r--	root/root	usr/man/man1/basename.1.gz
 -rw-r--r--	root/root	usr/man/man1/cat.1.gz
 -rw-r--r--	root/root	usr/man/man1/chgrp.1.gz
@@ -145,7 +152,12 @@ drwxr-xr-x	root/root	usr/man/man1/
 -rw-r--r--	root/root	usr/man/man1/rmdir.1.gz
 -rw-r--r--	root/root	usr/man/man1/seq.1.gz
 -rw-r--r--	root/root	usr/man/man1/sha1sum.1.gz
+-rw-r--r--	root/root	usr/man/man1/sha224sum.1.gz
+-rw-r--r--	root/root	usr/man/man1/sha256sum.1.gz
+-rw-r--r--	root/root	usr/man/man1/sha384sum.1.gz
+-rw-r--r--	root/root	usr/man/man1/sha512sum.1.gz
 -rw-r--r--	root/root	usr/man/man1/shred.1.gz
+-rw-r--r--	root/root	usr/man/man1/shuf.1.gz
 -rw-r--r--	root/root	usr/man/man1/sleep.1.gz
 -rw-r--r--	root/root	usr/man/man1/sort.1.gz
 -rw-r--r--	root/root	usr/man/man1/split.1.gz
