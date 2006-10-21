@@ -1,0 +1,16 @@
+# Description: Show full path of commands
+# URL:         http://www.xs4all.nl/~carlo17/which/
+# Maintainer:  Per Lidén, core-ports at crux dot nu
+
+name=which
+version=2.16
+release=1
+source=(http://www.xs4all.nl/~carlo17/which/$name-$version.tar.gz)
+
+build() {
+    cd $name-$version
+    ./configure --prefix=/usr
+    make
+    make DESTDIR=$PKG install
+    rm -rf $PKG/usr/info
+}

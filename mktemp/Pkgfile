@@ -1,0 +1,15 @@
+# Description: A simple utility to safely create temporary files
+# URL:         http://www.mktemp.org/mktemp/
+# Maintainer:  Per Lidén, core-ports at crux dot nu
+
+name=mktemp
+version=1.5
+release=1
+source=(ftp://ftp.mktemp.org/pub/mktemp/$name-$version.tar.gz)
+
+build() {
+    cd $name-$version
+    ./configure --prefix=/usr
+    make
+    make prefix=$PKG/usr install
+}

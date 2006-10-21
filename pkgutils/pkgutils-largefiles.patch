@@ -1,0 +1,12 @@
+--- Makefile.orig	2006-03-08 13:40:45.919863744 -0600
++++ Makefile	2006-03-08 13:41:08.730396016 -0600
+@@ -29,7 +29,8 @@
+ 
+ CXXFLAGS += -DNDEBUG
+ CXXFLAGS += -O2 -Wall -pedantic -D_GNU_SOURCE -DVERSION=\"$(VERSION)\" \
+-	    -Ilibtar-$(LIBTAR_VERSION)/lib -Ilibtar-$(LIBTAR_VERSION)/listhash
++	    -Ilibtar-$(LIBTAR_VERSION)/lib -Ilibtar-$(LIBTAR_VERSION)/listhash \
++	    -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64
+ 
+ LDFLAGS += -static -Llibtar-$(LIBTAR_VERSION)/lib -ltar -lz
+ 

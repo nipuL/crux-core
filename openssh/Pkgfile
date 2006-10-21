@@ -1,0 +1,26 @@
+# Description: Secure SHell server and client tools
+# URL:         http://www.openssh.org/
+# Maintainer:  Per Lidén, core-ports at crux dot nu
+# Depends on:  openssl, zlib
+
+name=openssh
+version=4.4p1
+release=1
+source=(http://openssh.linux-mirror.org/portable/$name-$version.tar.gz sshd)
+
+build() {
+    cd $name-$version
+    ./configure --prefix=/usr \
+		--libexecdir=/usr/lib/ssh \
+		--sysconfdir=/etc/ssh \
+		--with-mantype=man \
+		--mandir=/usr/man \
+		--with-tcp-wrappers \
+		--with-md5-passwords \
+		--with-privsep-user=nobody \
+		--with-privsep-path=/var/empty
+    make
+    make DESTDIR=$PKG install
+    install -D -m 755 ../sshd $PKG/etc/rc.d/sshd
+    rm -rf $PKG/usr/share $PKG/var
+}

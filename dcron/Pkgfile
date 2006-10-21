@@ -1,0 +1,23 @@
+# Description: Multi-user cron daemon
+# URL:         http://freshmeat.net/projects/dcron/
+# Maintainer:  Per Lidén, core-ports at crux dot nu
+
+name=dcron
+version=2.3.3
+release=10
+source=(http://www.ibiblio.org/pub/linux/system/daemons/cron/$name-$version.tar.gz \
+	crontab runjobs crond $name-$version.patch)
+
+build() {
+    cd $name-$version
+    patch -p1 < ../$name-$version.patch
+    make
+    make DESTDIR=$PKG install
+    mkdir -p $PKG/var/{spool,log} $PKG/etc/cron/{daily,weekly,monthly}
+    install -D -m 600 ../crontab $PKG/var/spool/cron/crontabs/root
+    install -D -m 755 ../crond $PKG/etc/rc.d/crond
+    install -D -m 755 ../runjobs $PKG/usr/sbin/runjobs
+    chmod 0700 $PKG/var/spool/cron/crontabs
+    ln -s ../var/spool/cron/crontabs/root $PKG/etc/crontab
+    touch $PKG/var/log/cron
+}

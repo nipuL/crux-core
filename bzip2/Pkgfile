@@ -1,0 +1,21 @@
+# Description: Very high-quality data compression program
+# URL: http://www.bzip.org/
+# Maintainer: Tilman Sauerbeck, tilman at crux dot nu
+
+name=bzip2
+version=1.0.3
+release=2
+source=(http://www.bzip.org/$version/$name-$version.tar.gz \
+        $name-$version.patch)
+
+build() {
+	cd $name-$version
+
+	patch -Np1 -i $SRC/$name-$version.patch
+
+	make
+	make PREFIX=$PKG/usr install
+
+	make -f Makefile-libbz2_so
+	make -f Makefile-libbz2_so PREFIX=$PKG/usr install
+}

@@ -1,0 +1,23 @@
+# Description: Library giving userland programs access to USB devices
+# URL:         http://libusb.sourceforge.net/
+# Maintainer:  Jürgen Daubert, juergen dot daubert at t-online dot de
+
+name=libusb
+version=0.1.12
+release=1
+source=(http://dl.sourceforge.net/sourceforge/$name/$name-$version.tar.gz)
+
+build () {
+    cd $name-$version
+    ./configure --prefix=/usr 
+    make
+    make DESTDIR=$PKG install
+
+    mkdir $PKG/lib
+    local file libfiles=$PKG/usr/lib/lib*-*.so.*.*.*
+    for file in $libfiles; do
+       mv $file $PKG/lib/
+       ln -sf ../../lib/${file##*/} $PKG/usr/lib/${file##*/}
+    done
+    /sbin/ldconfig -nN $PKG/lib
+}

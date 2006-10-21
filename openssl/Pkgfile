@@ -1,0 +1,20 @@
+# Description: Secure Sockets Layer and Transport Layer Security tools
+# URL:         http://www.openssl.org/
+# Maintainer:  Per Lidén, core-ports at crux dot nu
+
+name=openssl
+version=0.9.8d
+release=1
+source=(http://www.openssl.org/source/$name-$version.tar.gz \
+	mksslcert.sh openssl-0.9.8b-parallel-build.patch)
+
+build() {
+    cd $name-$version
+    patch -p1 < $SRC/openssl-0.9.8b-parallel-build.patch
+    ./config --prefix=/usr --openssldir=/etc/ssl shared
+    make
+    make INSTALL_PREFIX=$PKG MANDIR=/usr/man MANSUFFIX=ssl install
+    find $PKG -name "*fips*" -exec rm -f {} \;
+    chmod -R +w $PKG
+    install -D -m 755 ../mksslcert.sh $PKG/usr/bin/mksslcert
+}

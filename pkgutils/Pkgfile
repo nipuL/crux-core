@@ -1,0 +1,15 @@
+# Description: A set of utilities to manage software packages 
+# URL:         http://www.fukt.bsnet.se/~per/pkgutils/
+# Maintainer:  Per Lidén, core-ports at crux dot nu
+
+name=pkgutils
+version=5.20
+release=2
+source=(http://www.fukt.bsnet.se/~per/pkgutils/$name-$version.tar.gz \
+	$name-largefiles.patch)
+
+build () {
+	cd $name-$version
+	patch -p0 -i $SRC/$name-largefiles.patch
+	make DESTDIR=$PKG install
+}

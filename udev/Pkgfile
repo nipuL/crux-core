@@ -1,0 +1,41 @@
+# Description: Userspace device management daemon
+# URL: http://www.kernel.org/pub/linux/utils/kernel/hotplug/udev.html
+# Maintainer: Matt Housh, jaeger at morpheus dot net
+
+name=udev
+version=096
+release=4
+source=(ftp://ftp.kernel.org/pub/linux/utils/kernel/hotplug/$name-$version.tar.bz2
+	http://crux.nu/files/udev-rules-1814.tar.gz
+	start_udev cdrom.rules cdsymlinks crux.rules dvb_helper)
+
+build() {
+	local extras="extras/ata_id \
+			extras/cdrom_id \
+			extras/edd_id \
+			extras/firmware \
+			extras/floppy \
+			extras/path_id \
+			extras/scsi_id \
+			extras/usb_id \
+			extras/volume_id"
+
+	cd udev-$version
+        make EXTRAS="$extras"
+        make install DESTDIR=$PKG mandir="/usr/man" EXTRAS="$extras"
+	mkdir -p $PKG/lib/{firmware,udev/devices/{pts,shm}}
+	mknod -m 600 $PKG/lib/udev/devices/console c 5 1
+	mknod -m 666 $PKG/lib/udev/devices/null c 1 3
+	mknod -m 666 $PKG/lib/udev/devices/zero c 1 5
+	ln -s /proc/self/fd $PKG/lib/udev/devices/fd
+	ln -s /proc/self/fd/0 $PKG/lib/udev/devices/stdin
+	ln -s /proc/self/fd/1 $PKG/lib/udev/devices/stdout
+	ln -s /proc/self/fd/2 $PKG/lib/udev/devices/stderr
+	ln -s /proc/kcore $PKG/lib/udev/devices/core
+	cp $SRC/udev-rules-1814/*.rules $PKG/etc/udev/rules.d/
+	install -m 0755 $SRC/start_udev $PKG/sbin
+	install -m 0755 $SRC/cdsymlinks $PKG/lib/udev/
+	install -m 0755 $SRC/dvb_helper $PKG/lib/udev/
+	cat $SRC/cdrom.rules >> $PKG/etc/udev/rules.d/81-cdrom.rules
+	cp $SRC/crux.rules $PKG/etc/udev/rules.d/26-crux.rules
+}

@@ -1,0 +1,22 @@
+# Description: A daemon which implements the PPP protocol for internetworking over dialup lines
+# URL:         http://www.samba.org/ppp/
+# Maintainer:  Per Lidén, core-ports at crux dot nu
+# Depends on:  zlib, openssl
+
+name=ppp
+version=2.4.4
+release=1
+source=(ftp://ftp.samba.org/pub/ppp/$name-$version.tar.gz \
+	$name-nofilter.patch \
+        $name-makefile.patch)
+
+build () {
+    cd $name-$version
+    patch -p1 < $SRC/$name-nofilter.patch
+    patch -p1 < $SRC/$name-makefile.patch
+    ./configure --prefix=/usr --sysconfdir=/etc
+    make
+    make INSTROOT=$PKG install install-etcppp
+    mv $PKG/usr/{share/man,man} && rm -r $PKG/usr/share
+    chmod +w -R $PKG
+}

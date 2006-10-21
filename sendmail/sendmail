@@ -1,0 +1,31 @@
+#!/bin/sh
+#
+# /etc/rc.d/sendmail: start/stop sendmail daemon
+#
+
+case $1 in
+start)
+	if [ ! -s /etc/mail/aliases.db ]; then
+		/usr/bin/newaliases > /dev/null
+	fi
+	/usr/sbin/sendmail -bd -q20m
+	;;
+stop)
+	if [ -f /var/run/sendmail.pid ]; then
+		kill `head -1 /var/run/sendmail.pid`
+		rm -f /var/run/sendmail.pid
+	else
+		killall -q /usr/sbin/sendmail
+	fi
+	;;
+restart)
+	$0 stop
+	sleep 2
+	$0 start
+	;;
+*)
+	echo "usage: $0 [start|stop|restart]"
+	;;
+esac
+
+# End of file

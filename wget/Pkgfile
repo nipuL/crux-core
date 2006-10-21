@@ -1,0 +1,23 @@
+# Description: A network utility for downloading content from the Web
+# URL:         http://www.gnu.org/software/wget/
+# Maintainer:  Per Lidén, core-ports at crux dot nu
+# Packager:    Per Lidén, per at fukt dot bth dot se
+# Depends on:  openssl
+
+name=wget
+version=1.10.2
+release=2
+source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz \
+	wgetrc)
+
+build() {
+    cd $name-$version
+    ./configure --prefix=/usr \
+		--sysconfdir=/etc \
+		--disable-debug \
+		--disable-nls
+    make
+    make prefix=$PKG/usr install.bin install.man
+    install -D -m 644 ../wgetrc $PKG/etc/wgetrc
+}
+

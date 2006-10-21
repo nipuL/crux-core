@@ -1,0 +1,19 @@
+# Description: A tool for automatically generating Makefiles
+# URL:         http://www.gnu.org/software/automake/
+# Maintainer:  Per Lidén, core-ports at crux dot nu
+# Depends on:  gawk, perl, autoconf
+
+name=automake
+version=1.9.6
+release=1
+source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.bz2)
+
+build () {
+    cd $name-$version
+    ./configure --prefix=/usr
+    make
+    make prefix=$PKG/usr install
+    rm -rf $PKG/usr/bin/{automake-*,aclocal-*} \
+	   $PKG/usr/share/info \
+	   $PKG/usr/share/automake-*/texinfo.tex
+}

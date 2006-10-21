@@ -1,0 +1,16 @@
+# Description: pciutils-like utilities for USB
+# URL: http://libusb.sourceforge.net/
+# Maintainer: Matt Housh, jaeger at morpheus dot net
+# Depends on: libusb
+
+name=usbutils
+version=0.70
+release=1
+source=(http://dl.sourceforge.net/sourceforge/linux-usb/$name-$version.tar.gz)
+
+build() {
+	cd $name-$version
+	./configure --prefix=/usr
+	make
+	make DESTDIR=$PKG install
+}

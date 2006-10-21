@@ -1,0 +1,15 @@
+drwxr-xr-x	root/root	bin/
+-rwsr-xr-x	root/root	bin/ping
+drwxr-xr-x	root/root	etc/
+-rw-r--r--	root/root	etc/inetd.conf
+-rw-r--r--	root/root	etc/protocols
+drwxr-xr-x	root/root	etc/rc.d/
+-rwxr-xr-x	root/root	etc/rc.d/inetd
+-rw-r--r--	root/root	etc/services
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/man/
+drwxr-xr-x	root/root	usr/man/man8/
+-rw-r--r--	root/root	usr/man/man8/inetd.8.gz
+-rw-r--r--	root/root	usr/man/man8/ping.8.gz
+drwxr-xr-x	root/root	usr/sbin/
+-rwxr-xr-x	root/root	usr/sbin/inetd

@@ -1,0 +1,21 @@
+# Description: A tool to copy files into or out of a cpio or tar archive
+# URL:         http://www.gnu.org/software/cpio/
+# Maintainer:  Per Lidén, core-ports at crux dot nu
+
+name=cpio
+version=2.6
+release=4
+source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.bz2 \
+	$name-$version.patch)
+
+build() {
+    cd $name-$version
+    patch -p1 < ../$name-$version.patch
+    ./configure --prefix=/usr \
+		--mandir=/usr/man
+    make
+    make DESTDIR=$PKG install
+    rm -rf $PKG/usr/{share,info,libexec} \
+	   $PKG/usr/bin/mt \
+	   $PKG/usr/man/man1/mt.1
+}

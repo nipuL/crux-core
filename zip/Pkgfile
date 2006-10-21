@@ -1,0 +1,17 @@
+# Description: Compression and file packaging/archive utility
+# URL:         http://www.info-zip.org/Zip.html
+# Maintainer:  Per Lidén, core-ports at crux dot nu
+
+name=zip
+version=2.32
+release=1
+source=(ftp://ftp.info-zip.org/pub/infozip/src/${name}232.tar.gz)
+
+build() {
+    cd $name-$version
+    make -f unix/Makefile LOCAL_ZIP="$CFLAGS" prefix=/usr generic
+    make -f unix/Makefile INSTALL=install prefix=$PKG/usr install
+    ln -sf zip.1.gz $PKG/usr/man/man1/zipcloak.1.gz
+    ln -sf zip.1.gz $PKG/usr/man/man1/zipnote.1.gz
+    ln -sf zip.1.gz $PKG/usr/man/man1/zipsplit.1.gz
+}

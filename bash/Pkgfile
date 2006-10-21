@@ -1,0 +1,27 @@
+# Description: An sh-compatible command language interpreter.
+# URL:         http://cnswww.cns.cwru.edu/~chet/bash/bashtop.html
+# Maintainer:  Per Lidén, core-ports at crux dot nu
+# Depends on:  ncurses
+
+name=bash
+version=3.1.17
+release=1
+source=(http://ftp.gnu.org/gnu/$name/$name-3.1.tar.gz \
+        bash-3.1-001-017.patch \
+	$name-3.1-doc.patch \
+	profile)
+
+build() {
+    cd $name-3.1
+    patch -p1 < ../$name-3.1-001-017.patch
+    patch -p1 < ../$name-3.1-doc.patch
+    ./configure --prefix=/usr \
+		--exec-prefix= \
+		--disable-nls
+    make
+    make DESTDIR=$PKG install
+    rm -rf $PKG/usr/info $PKG/bin/bashbug $PKG/usr/man/man1/bashbug.1
+    install -D -m 644 ../profile $PKG/etc/profile
+    ln -sf bash $PKG/bin/sh
+    ln -sf bash.1 $PKG/usr/man/man1/sh.1
+}

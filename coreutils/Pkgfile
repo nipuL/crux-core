@@ -1,0 +1,30 @@
+# Description: A collection of core GNU utilities
+# URL:         http://www.gnu.org/software/coreutils/
+# Maintainer:  Per Lidén, core-ports at crux dot nu
+
+name=coreutils
+version=6.3
+release=1
+source=(http://ftp.gnu.org/pub/gnu/$name/$name-$version.tar.bz2 \
+	$name-uname.patch)
+
+build() {
+    cd $name-$version
+    patch -p1 < ../$name-uname.patch
+    DEFAULT_POSIX2_VERSION=199209 \
+    ./configure --prefix=/usr \
+		--mandir=/usr/man \
+		--disable-nls \
+		--disable-assert
+    make
+    make DESTDIR=$PKG install 
+    mkdir $PKG/bin
+    mv $PKG/usr/bin/{cat,chgrp,chmod,chown,cp,date,dd,df,echo,false,ln,ls,mkdir} $PKG/bin
+    mv $PKG/usr/bin/{mknod,mv,pwd,readlink,rm,rmdir,stty,sync,touch,true,uname} $PKG/bin
+    rm $PKG/usr/bin/hostname $PKG/usr/man/man1/hostname.1  # conflicts with net-tools
+    rm $PKG/usr/bin/uptime $PKG/usr/man/man1/uptime.1      # conflicts with procps
+    rm $PKG/usr/bin/su $PKG/usr/man/man1/su.1              # conflicts with shadow
+    rm $PKG/usr/bin/groups $PKG/usr/man/man1/groups.1      # conflicts with shadow
+    rm $PKG/usr/bin/kill $PKG/usr/man/man1/kill.1          # conflicts with util-linux
+    rm -rf $PKG/usr/share $PKG/usr/lib
+}

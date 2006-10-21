@@ -1,0 +1,22 @@
+# Description: Miscellaneous system utilities
+# URL:         http://freshmeat.net/projects/util-linux/
+# Maintainer:  Per Lidén, core-ports at crux dot nu
+# Depends on:  e2fsprogs, ncurses, zlib
+
+name=util-linux
+version=2.12r
+release=1
+source=(http://www.kernel.org/pub/linux/utils/util-linux/$name-$version.tar.gz \
+	$name-$version.patch)
+
+build() {
+    cd $name-$version
+    patch -p1 < ../$name-$version.patch
+    ./configure
+    make
+    make DESTDIR=$PKG install
+    touch $PKG/etc/adjtime
+    rm -rf $PKG/usr/{share,man/man6,share/misc/getopt}
+    rm $PKG/sbin/{mkfs.bfs,mkfs.minix,fsck.minix,elvtune}
+    rm $PKG/usr/man/man8/{fsck.minix,mkfs.bfs,mkfs.minix,sln,elvtune}.8
+}

@@ -1,0 +1,17 @@
+# Description: System Utilities Based on Sysfs
+# URL: http://linux-diag.sourceforge.net/Sysfsutils.html
+# Maintainer:  Per Lidén, core-ports at crux dot nu
+# Packager: Daniel Mueller, daniel at danm dot de
+
+name=sysfsutils
+version=2.1.0
+release=1
+source=(http://dl.sourceforge.net/sourceforge/linux-diag/$name-$version.tar.gz)
+
+build() {
+    cd $name-$version
+    ./configure --prefix=/usr
+    make
+    make DESTDIR=$PKG install
+    rm -f $PKG/usr/bin/dlist_test
+}

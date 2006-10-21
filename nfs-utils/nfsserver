@@ -1,0 +1,27 @@
+#!/bin/sh
+#
+# /etc/rc.d/nfsserver: start/stop nfs server
+#
+
+case $1 in
+start)
+	/usr/sbin/exportfs -r
+	/usr/sbin/rpc.nfsd 8
+	/usr/sbin/rpc.mountd
+	;;
+stop)
+	killall -q /usr/sbin/rpc.mountd
+	killall -q -2 nfsd
+	/usr/sbin/exportfs -au
+	;;
+restart)
+	$0 stop
+	sleep 2
+	$0 start
+	;;
+*)
+	echo "usage: $0 [start|stop|restart]"
+	;;
+esac
+
+# End of file

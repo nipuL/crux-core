@@ -1,0 +1,15 @@
+# Description: GNU patch
+# URL:         http://www.gnu.org/software/patch/patch.html
+# Maintainer:  Per Lidén, core-ports at crux dot nu
+
+name=patch
+version=2.5.4
+release=1
+source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
+
+build() {
+    cd $name-$version
+    ./configure --prefix=/usr
+    make
+    make prefix=$PKG/usr install
+}

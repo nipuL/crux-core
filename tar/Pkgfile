@@ -1,0 +1,22 @@
+# Description: GNU tar
+# URL:         http://www.gnu.org/software/tar/tar.html
+# Maintainer:  Per Lidén, core-ports at crux dot nu
+
+name=tar
+version=1.15.1
+release=3
+source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.bz2 \
+	$name-$version-sparse.patch $name-$version-rootp.patch tar.1)
+
+build() {
+    cd $name-$version
+    patch -p1 < ../$name-$version-sparse.patch
+    patch -p0 < ../$name-$version-rootp.patch
+    ./configure --prefix= \
+		--libexec=/usr/lib/tar \
+		--disable-nls
+    make
+    make DESTDIR=$PKG install
+    rm -rf $PKG/{sbin,info}
+    install -D -m 644 ../tar.1 $PKG/usr/man/man1/tar.1
+}

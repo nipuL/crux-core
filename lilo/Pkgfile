@@ -1,0 +1,20 @@
+# Description: LInux boot LOader
+# URL:         http://tldp.org/HOWTO/LILO.html
+# Maintainer:  Per Lidén, core-ports at crux dot nu
+
+name=lilo
+version=22.7.3
+release=1
+source=(http://home.san.rr.com/johninsd/pub/linux/lilo/$name-$version.src.tar.gz \
+	$name-$version.patch lilo.conf)
+
+build() {
+    cd $name-$version
+    patch -p0 < ../$name-$version.patch
+    sed -i 's|\./checkit||g' Makefile
+    make all
+    make ROOT=$PKG install
+    install -m 644 ../lilo.conf $PKG/etc
+    rm -rf $PKG/sbin/mkrescue \
+	   $PKG/usr/man/man8/mkrescue.8
+}

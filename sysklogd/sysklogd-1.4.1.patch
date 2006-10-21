@@ -1,0 +1,586 @@
+diff -Nru sysklogd-1.4.1/Makefile sysklogd-1.4.1-new/Makefile
+--- sysklogd-1.4.1/Makefile	1998-10-12 22:25:15.000000000 +0200
++++ sysklogd-1.4.1-new/Makefile	2004-09-21 23:00:34.656626400 +0200
+@@ -3,13 +3,13 @@
+ CC= gcc
+ #CFLAGS= -g -DSYSV -Wall
+ #LDFLAGS= -g
+-CFLAGS= $(RPM_OPT_FLAGS) -O3 -DSYSV -fomit-frame-pointer -Wall -fno-strength-reduce
+-LDFLAGS= -s
++CFLAGS= $(RPM_OPT_FLAGS) -DSYSV -D_GNU_SOURCE -Wall
++LDFLAGS=
+ 
+ # Look where your install program is.
+ INSTALL = /usr/bin/install
+-BINDIR = /usr/sbin
+-MANDIR = /usr/man
++BINDIR = $(TOPDIR)/sbin
++MANDIR = $(TOPDIR)/usr/man
+ 
+ # There is one report that under an all ELF system there may be a need to
+ # explicilty link with libresolv.a.  If linking syslogd fails you may wish
+@@ -106,17 +106,51 @@
+ 	${CC} ${CFLAGS} -DTEST -o ksym_test.o -c ksym.c
+ 
+ clean:
+-	rm -f *.o *.log *~ *.orig
++	rm -f *.o *.log *~ *.orig sysklogd-*.tar.gz syslogd klogd
+ 
+ clobber: clean
+ 	rm -f syslogd klogd ksym syslog_tst oops_test TAGS tsyslogd tklogd
+ 
+ install_exec: syslogd klogd
+-	${INSTALL} -m 500 -s syslogd ${BINDIR}/syslogd
+-	${INSTALL} -m 500 -s klogd ${BINDIR}/klogd
++	${INSTALL} -m 500 syslogd ${BINDIR}/syslogd
++	${INSTALL} -m 500 klogd ${BINDIR}/klogd
+ 
+ install_man:
+-	${INSTALL} -o ${MAN_OWNER} -g ${MAN_OWNER} -m 644 sysklogd.8 ${MANDIR}/man8/sysklogd.8
+-	${INSTALL} -o ${MAN_OWNER} -g ${MAN_OWNER} -m 644 syslogd.8 ${MANDIR}/man8/syslogd.8
+-	${INSTALL} -o ${MAN_OWNER} -g ${MAN_OWNER} -m 644 syslog.conf.5 ${MANDIR}/man5/syslog.conf.5
+-	${INSTALL} -o ${MAN_OWNER} -g ${MAN_OWNER} -m 644 klogd.8 ${MANDIR}/man8/klogd.8
++	${INSTALL} -m 644 sysklogd.8 ${MANDIR}/man8/sysklogd.8
++	${INSTALL} -m 644 syslogd.8 ${MANDIR}/man8/syslogd.8
++	${INSTALL} -m 644 syslog.conf.5 ${MANDIR}/man5/syslog.conf.5
++	${INSTALL} -m 644 klogd.8 ${MANDIR}/man8/klogd.8
++
++
++## Red Hat specific additions
++
++VER1 = $(shell awk '/VERSION/ { print $$3 }' version.h | sed 's|"||g')
++VER2 = $(shell awk '/PATCHLEVEL/ { print $$3 }' version.h | sed 's|"||g')
++VERSION = $(VER1).$(VER2)
++RELEASE = $(shell awk '/Release:/ { print $$2 }' sysklogd.spec.in)
++CVSTAG = sysklogd-$(subst .,_,$(VERSION))-$(subst .,-,$(RELEASE))
++
++changelog:
++	rcs2log | sed "s|@.*redhat\.com|@redhat.com|" | sed "s|@@|@|" | \
++	sed "s|/mnt/devel/CVS/sysklogd/||g" > redhat/changenew
++	mv redhat/ChangeLog redhat/ChangeLog.old
++	cat redhat/changenew redhat/ChangeLog.old > redhat/ChangeLog
++	rm -f redhat/changenew
++
++tag-archive:
++	@cvs -Q tag -F $(CVSTAG)
++	
++create-archive:
++	@rm -rf /tmp/sysklogd
++	@cd /tmp ; cvs -Q -d $(CVSROOT) export -r$(CVSTAG) sysklogd || echo "Um... export aborted."
++	@sed 's/VERSIONSUBST/$(VERSION)/' < /tmp/sysklogd/sysklogd.spec.in > /tmp/sysklogd/sysklogd.spec
++	@rm /tmp/sysklogd/sysklogd.spec.in
++	@mv /tmp/sysklogd /tmp/sysklogd-$(VERSION)rh
++	@cd /tmp ; tar -czSpf sysklogd-$(VERSION)rh.tar.gz sysklogd-$(VERSION)rh
++	@rm -rf /tmp/sysklogd-$(VERSION)rh
++	@cp /tmp/sysklogd-$(VERSION)rh.tar.gz .
++	@rm -f /tmp/sysklogd-$(VERSION)rh.tar.gz
++	@echo ""
++	@echo "The final archive is in sysklogd-$(VERSION)rh.tar.gz"
++
++archive: clean tag-archive create-archive
+diff -Nru sysklogd-1.4.1/klogd.c sysklogd-1.4.1-new/klogd.c
+--- sysklogd-1.4.1/klogd.c	2001-03-11 20:40:10.000000000 +0100
++++ sysklogd-1.4.1-new/klogd.c	2004-09-21 23:00:13.203887712 +0200
+@@ -275,6 +275,10 @@
+ #define ksyslog klogctl
+ #endif
+ 
++#ifndef _PATH_KLOG
++#define _PATH_KLOG  "/proc/kmsg"
++#endif
++
+ #define LOG_BUFFER_SIZE 4096
+ #define LOG_LINE_LENGTH 1000
+ 
+@@ -291,7 +295,7 @@
+ 		terminate = 0,
+ 		caught_TSTP = 0,
+ 		reload_symbols = 0,
+-		console_log_level = -1;
++		console_log_level = 6;
+ 
+ static int	use_syscall = 0,
+ 		one_shot = 0,
+@@ -509,8 +513,7 @@
+ 
+ 
+ 	/* Set level of kernel console messaging.. */
+-	if ( (console_log_level != -1)
+-	&& (ksyslog(8, NULL, console_log_level) < 0) && \
++	if ( (ksyslog(8, NULL, console_log_level) < 0) && \
+ 	     (errno == EINVAL) )
+ 	{
+ 		/*
+@@ -887,8 +890,7 @@
+                value  = strtoul(sym_start+1, (char **) 0, 16);
+                *(line-1) = '>';  /* put back delim */
+ 
+-               symbol = LookupSymbol(value, &sym);
+-               if ( !symbol_lookup || symbol == (char *) 0 )
++               if ( !symbol_lookup || (symbol = LookupSymbol(value, &sym)) == (char *)0 )
+                {
+                   parse_state = PARSING_TEXT;
+                   break;
+@@ -938,7 +940,7 @@
+ 	 * messages into this fresh buffer.
+ 	 */
+ 	memset(log_buffer, '\0', sizeof(log_buffer));
+-	if ( (rdcnt = ksyslog(2, log_buffer, sizeof(log_buffer))) < 0 )
++	if ( (rdcnt = ksyslog(2, log_buffer, sizeof(log_buffer)-1)) < 0 )
+ 	{
+ 		if ( errno == EINTR )
+ 			return;
+@@ -1143,8 +1145,11 @@
+ 	if ( one_shot )
+ 	{
+ 		if (symbol_lookup) {
+-			InitKsyms(symfile);
+-			InitMsyms();
++			symbol_lookup  = (InitKsyms(symfile) == 1);
++			symbol_lookup |= InitMsyms();
++			if (symbol_lookup == 0) {
++				Syslog(LOG_WARNING, "cannot find any symbols, turning off symbol lookups\n");
++			}
+ 		}
+ 		if ( (logsrc = GetKernelLogSrc()) == kernel )
+ 			LogKernelLine();
+@@ -1159,8 +1164,11 @@
+ #endif
+ 	logsrc = GetKernelLogSrc();
+ 	if (symbol_lookup) {
+-		InitKsyms(symfile);
+-		InitMsyms();
++		symbol_lookup  = (InitKsyms(symfile) == 1);
++		symbol_lookup |= InitMsyms();
++		if (symbol_lookup == 0) {
++			Syslog(LOG_WARNING, "cannot find any symbols, turning off symbol lookups\n");
++		}
+ 	}
+ 
+         /* The main loop. */
+diff -Nru sysklogd-1.4.1/ksym.c sysklogd-1.4.1-new/ksym.c
+--- sysklogd-1.4.1/ksym.c	2000-09-12 23:53:31.000000000 +0200
++++ sysklogd-1.4.1-new/ksym.c	2004-09-21 23:00:13.204887560 +0200
+@@ -112,6 +112,7 @@
+ #include <stdlib.h>
+ #include <malloc.h>
+ #include <sys/utsname.h>
++#include <ctype.h>
+ #include "klogd.h"
+ #include "ksyms.h"
+ 
+@@ -344,6 +345,7 @@
+ 		if ( (sym_file = fopen(symfile, "r")) != (FILE *) 0 ) {
+ 			if (CheckMapVersion(symfile) == 1)
+ 				file = symfile;
++			fclose(sym_file);
+ 		}
+ 		if (sym_file == (FILE *) 0 || file == (char *) 0) {
+ 			sprintf (symfile, "%s", *mf);
+@@ -352,6 +354,7 @@
+ 			if ( (sym_file = fopen(symfile, "r")) != (FILE *) 0 ) {
+ 				if (CheckMapVersion(symfile) == 1)
+ 					file = symfile;
++				fclose(sym_file);
+ 			}
+ 		}
+ 
+diff -Nru sysklogd-1.4.1/ksym_mod.c sysklogd-1.4.1-new/ksym_mod.c
+--- sysklogd-1.4.1/ksym_mod.c	2000-09-12 23:15:28.000000000 +0200
++++ sysklogd-1.4.1-new/ksym_mod.c	2004-09-21 23:00:13.205887408 +0200
+@@ -93,7 +93,7 @@
+ #include <linux/time.h>
+ #include <linux/module.h>
+ #else /* __GLIBC__ */
+-#include <linux/module.h>
++#include "module.h"
+ extern __off64_t lseek64 __P ((int __fd, __off64_t __offset, int __whence));
+ extern int get_kernel_syms __P ((struct kernel_sym *__table));
+ #endif /* __GLIBC__ */
+diff -Nru sysklogd-1.4.1/module.h sysklogd-1.4.1-new/module.h
+--- sysklogd-1.4.1/module.h	1970-01-01 01:00:00.000000000 +0100
++++ sysklogd-1.4.1-new/module.h	2004-09-21 23:00:13.205887408 +0200
+@@ -0,0 +1,62 @@
++
++/* Module definitions for klogd's module support */
++struct kernel_sym
++{
++	        unsigned long value;
++	        char name[60];
++};
++
++struct module_symbol
++{
++	unsigned long value;
++	const char *name;
++};
++
++struct module_ref
++{
++	struct module *dep;     /* "parent" pointer */
++	struct module *ref;     /* "child" pointer */
++	struct module_ref *next_ref;
++};
++
++struct module_info
++{
++	unsigned long addr;
++	unsigned long size;
++	unsigned long flags;
++	long usecount;
++};
++
++
++typedef struct { volatile int counter; } atomic_t;
++
++struct module
++{
++	unsigned long size_of_struct;   /* == sizeof(module) */
++	struct module *next;
++	const char *name;
++	unsigned long size;
++	
++	union
++	{
++		atomic_t usecount;
++		long pad;
++        } uc;                           /* Needs to keep its size - so says rth */
++	
++	unsigned long flags;            /* AUTOCLEAN et al */
++	
++	unsigned nsyms;
++	unsigned ndeps;
++	
++	struct module_symbol *syms;
++	struct module_ref *deps;
++	struct module_ref *refs;
++	int (*init)(void);
++	void (*cleanup)(void);
++	const struct exception_table_entry *ex_table_start;
++	const struct exception_table_entry *ex_table_end;
++#ifdef __alpha__
++	unsigned long gp;
++#endif
++};
++	
+diff -Nru sysklogd-1.4.1/sysklogd.8 sysklogd-1.4.1-new/sysklogd.8
+--- sysklogd-1.4.1/sysklogd.8	2001-03-11 20:35:51.000000000 +0100
++++ sysklogd-1.4.1-new/sysklogd.8	2004-09-21 23:00:13.206887256 +0200
+@@ -30,6 +30,7 @@
+ .I domainlist
+ ]
+ .RB [ " \-v " ]
++.RB [ " \-x " ]
+ .LP
+ .SH DESCRIPTION
+ .B Sysklogd
+@@ -152,6 +153,11 @@
+ .TP
+ .B "\-v"
+ Print version and exit.
++.TP
++.B "\-x"
++Disable name lookups when receiving remote messages.
++This avoids deadlocks when the nameserver is running on
++the same machine that runs the syslog daemon.
+ .LP
+ .SH SIGNALS
+ .B Syslogd
+diff -Nru sysklogd-1.4.1/syslog_tst.c sysklogd-1.4.1-new/syslog_tst.c
+--- sysklogd-1.4.1/syslog_tst.c	1997-06-02 19:21:41.000000000 +0200
++++ sysklogd-1.4.1-new/syslog_tst.c	2004-09-21 23:00:13.206887256 +0200
+@@ -42,7 +42,7 @@
+ 					if ( (nl = strrchr(bufr, '\n')) != \
+ 					    (char *) 0)
+ 						*nl = '\0';
+-					syslog(LOG_INFO, bufr);
++					syslog(LOG_INFO, "%s", bufr);
+ 					logged += strlen(bufr);
+ 					if ( logged > 1024 )
+ 					{
+@@ -54,7 +54,7 @@
+ 		}
+ 		else
+ 			while (argc-- > 1)
+-				syslog(LOG_INFO, argv++[1]);
++				syslog(LOG_INFO, "%s", argv++[1]);
+ 	}
+ 	else
+ 	{
+diff -Nru sysklogd-1.4.1/syslogd.c sysklogd-1.4.1-new/syslogd.c
+--- sysklogd-1.4.1/syslogd.c	2001-03-11 20:40:10.000000000 +0100
++++ sysklogd-1.4.1-new/syslogd.c	2004-09-21 23:00:13.209886800 +0200
+@@ -637,8 +637,8 @@
+  * in seconds after previous message is logged.  After each flush,
+  * we move to the next interval until we reach the largest.
+  */
+-int	repeatinterval[] = { 30, 60 };	/* # of secs before flush */
+-#define	MAXREPEAT ((sizeof(repeatinterval) / sizeof(repeatinterval[0])) - 1)
++time_t	repeatinterval[] = { 30, 60 };	/* # of secs before flush */
++#define	MAXREPEAT ((int) ((sizeof(repeatinterval) / sizeof(repeatinterval[0])) - 1))
+ #define	REPEATTIME(f)	((f)->f_time + repeatinterval[(f)->f_repeatcount])
+ #define	BACKOFF(f)	{ if (++(f)->f_repeatcount > MAXREPEAT) \
+ 				 (f)->f_repeatcount = MAXREPEAT; \
+@@ -730,6 +730,7 @@
+ int	MarkInterval = 20 * 60;	/* interval between marks in seconds */
+ int	MarkSeq = 0;		/* mark sequence number */
+ int	NoFork = 0; 		/* don't fork - don't run in daemon mode */
++int     DisableDNS = 0;		/* don't look up IP addresses of incoming messages */
+ int	AcceptRemote = 0;	/* receive messages that come via UDP */
+ char	**StripDomains = NULL;	/* these domains may be stripped before writing logs */
+ char	**LocalHosts = NULL;	/* these hosts are logged with their hostname */
+@@ -743,7 +744,7 @@
+ char **crunch_list(char *list);
+ int usage(void);
+ void untty(void);
+-void printchopped(const char *hname, char *msg, int len, int fd);
++void printchopped(const char *hname, char *msg, size_t len, int fd);
+ void printline(const char *hname, char *msg);
+ void printsys(char *msg);
+ void logmsg(int pri, char *msg, const char *from, int flags);
+@@ -786,7 +787,7 @@
+ 	int len, num_fds;
+ #else /* __GLIBC__ */
+ #ifndef TESTING
+-	size_t len;
++	socklen_t len;
+ #endif
+ 	int num_fds;
+ #endif /* __GLIBC__ */
+@@ -829,7 +830,7 @@
+ 		funix[i]  = -1;
+ 	}
+ 
+-	while ((ch = getopt(argc, argv, "a:dhf:l:m:np:rs:v")) != EOF)
++	while ((ch = getopt(argc, argv, "a:dhf:l:m:np:rs:vx")) != EOF)
+ 		switch((char)ch) {
+ 		case 'a':
+ 			if (nfunix < MAXFUNIX)
+@@ -877,6 +878,9 @@
+ 		case 'v':
+ 			printf("syslogd %s.%s\n", VERSION, PATCHLEVEL);
+ 			exit (0);
++		case 'x':
++			DisableDNS = 1;
++			break;
+ 		case '?':
+ 		default:
+ 			usage();
+@@ -890,11 +894,11 @@
+ 		dprintf("Checking pidfile.\n");
+ 		if (!check_pid(PidFile))
+ 		{
++			signal (SIGTERM, doexit);
+ 			if (fork()) {
+ 				/*
+ 				 * Parent process
+ 				 */
+-				signal (SIGTERM, doexit);
+ 				sleep(300);
+ 				/*
+ 				 * Not reached unless something major went wrong.  5
+@@ -906,6 +910,7 @@
+ 				 */
+ 				exit(1);
+ 			}
++			signal (SIGTERM, SIG_DFL);
+ 			num_fds = getdtablesize();
+ 			for (i= 0; i < num_fds; i++)
+ 				(void) close(i);
+@@ -1074,9 +1079,9 @@
+ 				  (fd_set *) NULL, (struct timeval *) NULL);
+ 		if ( restart )
+ 		{
++			restart = 0;
+ 			dprintf("\nReceived SIGHUP, reloading syslogd.\n");
+ 			init();
+-			restart = 0;
+ 			continue;
+ 		}
+ 		if (nfds == 0) {
+@@ -1145,8 +1150,7 @@
+ 				dprintf("INET socket error: %d = %s.\n", \
+ 					errno, strerror(errno));
+ 				logerror("recvfrom inet");
+-				/* should be harmless now that we set
+-				 * BSDCOMPAT on the socket */
++				/* should be harmless */
+ 				sleep(10);
+ 			}
+ 		}
+@@ -1174,7 +1178,7 @@
+ 
+ int usage()
+ {
+-	fprintf(stderr, "usage: syslogd [-drvh] [-l hostlist] [-m markinterval] [-n] [-p path]\n" \
++	fprintf(stderr, "usage: syslogd [-drvxh] [-l hostlist] [-m markinterval] [-n] [-p path]\n" \
+ 		" [-s domainlist] [-f conffile]\n");
+ 	exit(1);
+ }
+@@ -1232,15 +1236,6 @@
+ 		close(fd);
+ 		return -1;
+ 	}
+-	/* We need to enable BSD compatibility. Otherwise an attacker
+-	 * could flood our log files by sending us tons of ICMP errors.
+-	 */
+-	if (setsockopt(fd, SOL_SOCKET, SO_BSDCOMPAT, \
+-			(char *) &on, sizeof(on)) < 0) {
+-		logerror("setsockopt(BSDCOMPAT), suspending inet");
+-		close(fd);
+-		return -1;
+-	}
+ 	if (bind(fd, (struct sockaddr *) &sin, sizeof(sin)) < 0) {
+ 		logerror("bind, suspending inet");
+ 		close(fd);
+@@ -1254,30 +1249,26 @@
+ crunch_list(list)
+ 	char *list;
+ {
+-	int count, i;
++	int i, m, n;
+ 	char *p, *q;
+ 	char **result = NULL;
+ 
+ 	p = list;
+ 	
+ 	/* strip off trailing delimiters */
+-	while (p[strlen(p)-1] == LIST_DELIMITER) {
+-		count--;
++	while (*p && p[strlen(p)-1] == LIST_DELIMITER)
+ 		p[strlen(p)-1] = '\0';
+-	}
+ 	/* cut off leading delimiters */
+-	while (p[0] == LIST_DELIMITER) {
+-		count--;
++	while (p[0] == LIST_DELIMITER)
+ 		p++; 
+-	}
+ 	
+-	/* count delimiters to calculate elements */
+-	for (count=i=0; p[i]; i++)
+-		if (p[i] == LIST_DELIMITER) count++;
++	/* count delimiters to calculate the number of elements */
++	for (n = i = 0; p[i]; i++)
++		if (p[i] == LIST_DELIMITER) n++;
+ 	
+-	if ((result = (char **)malloc(sizeof(char *) * count+2)) == NULL) {
++	if ((result = (char **)malloc(sizeof(char *) * (n + 2))) == NULL) {
+ 		printf ("Sorry, can't get enough memory, exiting.\n");
+-		exit(0);
++		exit(1);
+ 	}
+ 	
+ 	/*
+@@ -1285,30 +1276,28 @@
+ 	 * characters are different from any delimiters,
+ 	 * so we don't have to care about this.
+ 	 */
+-	count = 0;
+-	while ((q=strchr(p, LIST_DELIMITER))) {
+-		result[count] = (char *) malloc((q - p + 1) * sizeof(char));
+-		if (result[count] == NULL) {
++	m = 0;
++	while ((q = strchr(p, LIST_DELIMITER)) && m < n) {
++		result[m] = (char *) malloc((q - p + 1) * sizeof(char));
++		if (result[m] == NULL) {
+ 			printf ("Sorry, can't get enough memory, exiting.\n");
+-			exit(0);
++			exit(1);
+ 		}
+-		strncpy(result[count], p, q - p);
+-		result[count][q - p] = '\0';
++		memcpy(result[m], p, q - p);
++		result[m][q - p] = '\0';
+ 		p = q; p++;
+-		count++;
++		m++;
+ 	}
+-	if ((result[count] = \
+-	     (char *)malloc(sizeof(char) * strlen(p) + 1)) == NULL) {
++	if ((result[m] = strdup(p)) == NULL) {
+ 		printf ("Sorry, can't get enough memory, exiting.\n");
+-		exit(0);
++		exit(1);
+ 	}
+-	strcpy(result[count],p);
+-	result[++count] = NULL;
++	result[++m] = NULL;
+ 
+ #if 0
+-	count=0;
+-	while (result[count])
+-		dprintf ("#%d: %s\n", count, StripDomains[count++]);
++	m = 0;
++	while (result[m])
++		dprintf ("#%d: %s\n", m, result[m++]);
+ #endif
+ 	return result;
+ }
+@@ -1346,7 +1335,7 @@
+ void printchopped(hname, msg, len, fd)
+ 	const char *hname;
+ 	char *msg;
+-	int len;
++        size_t len;
+ 	int fd;
+ {
+ 	auto int ptlngth;
+@@ -1446,6 +1435,7 @@
+ 	while ((c = *p++) && q < &line[sizeof(line) - 4]) {
+ 		if (c == '\n')
+ 			*q++ = ' ';
++#if 0
+ 		else if (c < 040) {
+ 			*q++ = '^';
+ 			*q++ = c ^ 0100;
+@@ -1454,7 +1444,9 @@
+ 			*q++ = '0' + ((c & 0300) >> 6);
+ 			*q++ = '0' + ((c & 0070) >> 3);
+ 			*q++ = '0' + (c & 0007);
+-		} else
++		}
++#endif
++		else
+ 			*q++ = c;
+ 	}
+ 	*q = '\0';
+@@ -1839,7 +1831,7 @@
+ #else
+ 				&& e == EBADF) {
+ #endif
+-				f->f_file = open(f->f_un.f_fname, O_WRONLY|O_APPEND|O_NOCTTY);
++				f->f_file = open(f->f_un.f_fname, O_WRONLY|O_APPEND|O_NOCTTY|O_LARGEFILE);
+ 				if (f->f_file < 0) {
+ 					f->f_type = F_UNUSED;
+ 					logerror(f->f_un.f_fname);
+@@ -1929,7 +1921,7 @@
+ 			/* is this slot used? */
+ 			if (ut.ut_name[0] == '\0')
+ 				continue;
+-			if (ut.ut_type == LOGIN_PROCESS)
++			if (ut.ut_type != USER_PROCESS)
+ 			        continue;
+ 			if (!(strcmp (ut.ut_name,"LOGIN"))) /* paranoia */
+ 			        continue;
+@@ -2013,7 +2005,10 @@
+ 		dprintf("Malformed from address.\n");
+ 		return ("???");
+ 	}
+-	hp = gethostbyaddr((char *) &f->sin_addr, sizeof(struct in_addr), \
++	if (DisableDNS)
++	  hp = 0;
++	else
++	  hp = gethostbyaddr((char *) &f->sin_addr, sizeof(struct in_addr), \
+ 			   f->sin_family);
+ 	if (hp == 0) {
+ 		dprintf("Host name for your address (%s) unknown.\n",
+@@ -2640,7 +2635,7 @@
+ 			f->f_file = open(++p, O_RDWR|O_NONBLOCK);
+ 			f->f_type = F_PIPE;
+ 	        } else {
+-			f->f_file = open(p, O_WRONLY|O_APPEND|O_CREAT|O_NOCTTY,
++			f->f_file = open(p, O_WRONLY|O_APPEND|O_CREAT|O_NOCTTY|O_LARGEFILE,
+ 					 0644);
+ 			f->f_type = F_FILE;
+ 		}

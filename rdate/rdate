@@ -1,0 +1,8 @@
+#!/bin/sh
+#
+# /etc/cron/daily/rdate: synchronize system clock
+#
+
+#/usr/bin/rdate -s <server>
+
+# End of file

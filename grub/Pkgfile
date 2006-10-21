@@ -1,0 +1,76 @@
+# Description: GNU GRUB (GRand Unified Bootloader)
+# URL: http://www.gnu.org/software/grub/
+# Packager: Daniel Müller, daniel at danm dot de
+# Maintainer: Matt Housh, jaeger at morpheus dot net
+# Depends on: ncurses, gettext
+
+name=grub
+version=0.95
+release=5
+source=(ftp://alpha.gnu.org/gnu/grub/$name-$version.tar.gz \
+	http://crux.nu/files/grub/$version/$name-$version-patches.tar.gz \
+	http://crux.nu/files/grub/$version/crux02.xpm.gz \
+	http://crux.nu/files/grub/$version/crux03.xpm.gz \
+	menu.lst.sample)
+
+build () {
+	cd $name-$version
+
+	# Apply Fedora Linux patches
+	PATCH_LIST=(
+		0.90-symlinkmenulst
+		0.90-install.in
+		0.94-installcopyonly
+		0.94-addsyncs
+		0.95-endedit
+		0.90-append
+		0.93-once
+		0.95-graphics
+		0.91-splashimagehelp
+		0.93-graphics-bootterm
+		0.95-hiddenmenu-tweak
+		0.95-ext2-sparse
+		0.93-special-device-names
+		0.94-initrdmax
+		0.94-i2o
+		0.95-staticcurses
+		0.95-moreraid
+		0.95-odirect
+		0.95-geometry-26kernel
+		0.95-md
+		0.95-md-rework
+		0.95-xpmjunk
+		0.95-splash-error-term
+		0.95-nxstack
+		0.95-mdadm-path
+		0.95-md-mbr
+		0.95-gcc4
+		0.95-nonmbr
+	)
+
+	for PATCH in ${PATCH_LIST[@]}
+	do
+		patch -p1 -i $SRC/$name-patches/$name-$PATCH.patch
+	done
+
+	# http://lists.gnu.org/archive/html/bug-grub/2005-04/msg00031.html
+	patch -p0 -i $SRC/$name-patches/$name-$version-xfs-writable-strings.patch
+
+	unset CXXFLAGS 
+	export CFLAGS="-Os" 
+    
+	autoreconf --install --force
+
+	./configure --prefix=/usr \
+		--mandir=/usr/man \
+		--sbindir=/sbin \
+		--disable-nls \
+		--disable-auto-linux-mem-opt 
+		
+	make
+	make DESTDIR=$PKG install
+	rm -rf $PKG/usr/share/info
+
+	mkdir -p $PKG/boot/grub
+	install -m 644 $SRC/{crux*,menu.lst.sample} $PKG/boot/grub/
+}

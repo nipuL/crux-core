@@ -1,0 +1,4 @@
+# CRUX udev rules
+
+# DVB handling
+KERNEL=="dvb*", PROGRAM="/lib/udev/dvb_helper %k", NAME="%c"
