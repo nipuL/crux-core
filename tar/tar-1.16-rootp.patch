@@ -1,0 +1,14 @@
+Don't keep permissions by default if we are root.
+
+diff -aur tar-1.16.orig/src/extract.c tar-1.16/src/extract.c
+--- tar-1.16.orig/src/extract.c	2006-06-24 18:56:56.000000000 +0200
++++ tar-1.16/src/extract.c	2006-10-22 18:53:38.706626788 +0200
+@@ -112,8 +112,6 @@
+ extr_init (void)
+ {
+   we_are_root = geteuid () == 0;
+-  same_permissions_option += we_are_root;
+-  same_owner_option += we_are_root;
+ 
+   /* Option -p clears the kernel umask, so it does not affect proper
+      restoration of file permissions.  New intermediate directories will
