@@ -1,3 +1,3 @@
 host=crux.nu
-collection=crux-contrib
+collection=ports/crux-2.2/contrib/
 destination=/usr/ports/contrib
