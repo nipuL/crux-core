@@ -4,14 +4,16 @@
 # Depends on:  openssh
 
 name=rsync
-version=2.6.8
+version=2.6.9
 release=1
 source=(http://samba.org/ftp/$name/$name-$version.tar.gz \
         rsyncd.conf rsyncd rsync.driver)
 
 build () {
     cd $name-$version
-    ./configure --prefix=/usr --with-rsh=ssh
+    ./configure --prefix=/usr \
+                --mandir=/usr/man \
+                --with-rsh=ssh
     make
     make DESTDIR=$PKG install
     
