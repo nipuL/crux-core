@@ -3,16 +3,21 @@
 # Maintainer:  Per Lidén, core-ports at crux dot nu
 
 name=ed
-version=0.2
-release=2
-source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz $name-$version.patch)
+version=0.3
+release=1
+source=(ftp://ftp.gnu.org/gnu/$name/$name-$version.tar.bz2)
 
 build() {
     cd $name-$version
-    patch -p1 < ../$name-$version.patch
-    ./configure --prefix=/usr
+
+    # ed wants to use hard links for the binary and man pages,
+    # but pkgmk cannot compress hard linked man pages yet.
+    # as a temporary workaround, i'm making it use symlinks instead.
+    sed -i -e 's/ln /ln -s /' Makefile.in
+
+    ./configure --prefix=/usr --mandir=/usr/man
     make
-    make prefix=$PKG/usr install
+    make DESTDIR=$PKG install install-man
     mv $PKG/usr/bin $PKG
-    rm -rf $PKG/usr/info
+    rm -rf $PKG/usr/share
 }
