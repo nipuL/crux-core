@@ -3,7 +3,7 @@
 # Maintainer:  Per Lidén, core-ports at crux dot nu
 
 name=bin86
-version=0.16.0
+version=0.16.17
 release=1
 source=(http://homepage.ntlworld.com/robert.debath/dev86/$name-$version.tar.gz)
 

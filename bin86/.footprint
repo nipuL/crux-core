@@ -1,7 +1,6 @@
 drwxr-xr-x	root/root	usr/
 drwxr-xr-x	root/root	usr/bin/
 -rwxr-xr-x	root/root	usr/bin/as86
--rwxr-xr-x	root/root	usr/bin/as86_encap
 -rwxr-xr-x	root/root	usr/bin/ld86
 lrwxrwxrwx	root/root	usr/bin/nm86 -> objdump86
 -rwxr-xr-x	root/root	usr/bin/objdump86
@@ -9,5 +8,4 @@ lrwxrwxrwx	root/root	usr/bin/size86 -> objdump86
 drwxr-xr-x	root/root	usr/man/
 drwxr-xr-x	root/root	usr/man/man1/
 -rw-r--r--	root/root	usr/man/man1/as86.1.gz
-lrwxrwxrwx	root/root	usr/man/man1/as86_encap.1.gz -> as86.1.gz
 -rw-r--r--	root/root	usr/man/man1/ld86.1.gz
