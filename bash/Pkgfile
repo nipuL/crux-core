@@ -4,17 +4,17 @@
 # Depends on:  ncurses
 
 name=bash
-version=3.1.17
+version=3.2.5
 release=1
-source=(http://ftp.gnu.org/gnu/$name/$name-3.1.tar.gz \
-        bash-3.1-001-017.patch \
-	$name-3.1-doc.patch \
+source=(http://ftp.gnu.org/gnu/$name/$name-3.2.tar.gz \
+        $name-3.2-001-005.patch \
+	$name-3.2-doc.patch \
 	profile)
 
 build() {
-    cd $name-3.1
-    patch -p1 < ../$name-3.1-001-017.patch
-    patch -p1 < ../$name-3.1-doc.patch
+    cd $name-3.2
+    patch -p0 < $SRC/$name-3.2-001-005.patch
+    patch -p1 < $SRC/$name-3.2-doc.patch
     ./configure --prefix=/usr \
 		--exec-prefix= \
 		--disable-nls
