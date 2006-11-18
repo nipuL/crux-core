@@ -1,16 +1,17 @@
 # Description: Berkeley DB
-# URL:         http://www.sleepycat.com/products/db.shtml
+# URL:         http://www.oracle.com/technology/products/berkeley-db/
 # Maintainer:  Per Lidén, core-ports at crux dot nu
 
 name=db
-version=4.4.20
-release=2
+version=4.5.20
+release=1
 source=(http://download.oracle.com/berkeley-db/$name-$version.tar.gz \
-	http://www.oracle.com/technology/products/berkeley-db/db/update/4.4.20/patch.4.4.20.{1,2,3,4})
+        db-4.5.20.1.patch db-4.5.20.2.patch)
 
 build() {
     cd $name-$version
-    cat $SRC/patch.4.4.20.{1,2,3,4} | patch -p0 
+    patch -p1 -i $SRC/db-4.5.20.1.patch
+    patch -p1 -i $SRC/db-4.5.20.2.patch    
     cd build_unix
     LDFLAGS="-lpthread" \
     ../dist/configure --prefix=/usr \
