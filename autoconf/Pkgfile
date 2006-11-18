@@ -3,8 +3,8 @@
 # Maintainer:  Per Lidén, core-ports at crux dot nu
 
 name=autoconf
-version=2.60
-release=3
+version=2.61
+release=1
 source=(ftp://ftp.gnu.org/gnu/$name/$name-$version.tar.bz2)
 
 build () {

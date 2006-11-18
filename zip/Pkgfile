@@ -5,7 +5,7 @@
 name=zip
 version=2.32
 release=1
-source=(ftp://ftp.info-zip.org/pub/infozip/src/${name}232.tar.gz)
+source=(http://mirror.switch.ch/ftp/mirror/infozip/src/${name}232.tar.gz)
 
 build() {
     cd $name-$version

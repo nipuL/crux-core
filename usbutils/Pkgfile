@@ -4,7 +4,7 @@
 # Depends on: libusb
 
 name=usbutils
-version=0.70
+version=0.72
 release=1
 source=(http://dl.sourceforge.net/sourceforge/linux-usb/$name-$version.tar.gz)
 
