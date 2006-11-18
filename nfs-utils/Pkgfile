@@ -6,10 +6,12 @@ name=nfs-utils
 version=1.0.10
 release=1
 source=(http://dl.sourceforge.net/nfs/$name-$version.tar.gz \
+        $name-$version-uts-release.patch \
 	exports nfs nfsserver)
 
 build () {
     cd $name-$version
+    patch -p0 -i $SRC/$name-$version-uts-release.patch
     ./configure --prefix=/usr \
 		--mandir=/usr/man \
 		--enable-nfsv3 \
