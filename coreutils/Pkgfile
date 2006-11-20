@@ -12,6 +12,7 @@ build() {
     cd $name-$version
     patch -p1 < ../$name-uname.patch
     DEFAULT_POSIX2_VERSION=199209 \
+    ac_cv_func_openat=no \
     ./configure --prefix=/usr \
 		--mandir=/usr/man \
 		--disable-nls \
