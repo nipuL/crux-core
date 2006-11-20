@@ -1,5 +1,4 @@
 drwxr-xr-x	root/root	bin/
--rwxr-xr-x	root/root	bin/arch
 -rwxr-xr-x	root/root	bin/dmesg
 -rwxr-xr-x	root/root	bin/kill
 -rwxr-xr-x	root/root	bin/more
@@ -7,7 +6,6 @@ drwxr-xr-x	root/root	bin/
 -rwsr-xr-x	root/root	bin/umount
 drwxr-xr-x	root/root	etc/
 -rw-r--r--	root/root	etc/adjtime (EMPTY)
--rw-r--r--	root/root	etc/fdprm
 drwxr-xr-x	root/root	sbin/
 -rwxr-xr-x	root/root	sbin/agetty
 -rwxr-xr-x	root/root	sbin/blockdev
@@ -28,6 +26,7 @@ drwxr-xr-x	root/root	usr/
 drwxr-xr-x	root/root	usr/bin/
 -rwxr-xr-x	root/root	usr/bin/cal
 -rwxr-xr-x	root/root	usr/bin/chkdupexe
+-rwxr-xr-x	root/root	usr/bin/chrt
 -rwxr-xr-x	root/root	usr/bin/col
 -rwxr-xr-x	root/root	usr/bin/colcrt
 -rwxr-xr-x	root/root	usr/bin/colrm
@@ -38,6 +37,7 @@ drwxr-xr-x	root/root	usr/bin/
 -rwxr-xr-x	root/root	usr/bin/flock
 -rwxr-xr-x	root/root	usr/bin/getopt
 -rwxr-xr-x	root/root	usr/bin/hexdump
+-rwxr-xr-x	root/root	usr/bin/ionice
 -rwxr-xr-x	root/root	usr/bin/ipcrm
 -rwxr-xr-x	root/root	usr/bin/ipcs
 -rwxr-xr-x	root/root	usr/bin/isosize
@@ -52,18 +52,20 @@ drwxr-xr-x	root/root	usr/bin/
 -rwxr-xr-x	root/root	usr/bin/renice
 -rwxr-xr-x	root/root	usr/bin/rev
 -rwxr-xr-x	root/root	usr/bin/script
--rwxr-xr-x	root/root	usr/bin/setfdprm
+-rwxr-xr-x	root/root	usr/bin/scriptreplay
 -rwxr-xr-x	root/root	usr/bin/setsid
 -rwxr-xr-x	root/root	usr/bin/setterm
 -rwxr-xr-x	root/root	usr/bin/tailf
+-rwxr-xr-x	root/root	usr/bin/taskset
 -rwxr-xr-x	root/root	usr/bin/ul
+-rwxr-sr-x	root/tty	usr/bin/wall
 -rwxr-xr-x	root/root	usr/bin/whereis
 -rwxr-sr-x	root/tty	usr/bin/write
 drwxr-xr-x	root/root	usr/man/
 drwxr-xr-x	root/root	usr/man/man1/
--rw-r--r--	root/root	usr/man/man1/arch.1.gz
 -rw-r--r--	root/root	usr/man/man1/cal.1.gz
 -rw-r--r--	root/root	usr/man/man1/chkdupexe.1.gz
+-rw-r--r--	root/root	usr/man/man1/chrt.1.gz
 -rw-r--r--	root/root	usr/man/man1/col.1.gz
 -rw-r--r--	root/root	usr/man/man1/colcrt.1.gz
 -rw-r--r--	root/root	usr/man/man1/colrm.1.gz
@@ -72,6 +74,7 @@ drwxr-xr-x	root/root	usr/man/man1/
 -rw-r--r--	root/root	usr/man/man1/flock.1.gz
 -rw-r--r--	root/root	usr/man/man1/getopt.1.gz
 -rw-r--r--	root/root	usr/man/man1/hexdump.1.gz
+-rw-r--r--	root/root	usr/man/man1/ionice.1.gz
 -rw-r--r--	root/root	usr/man/man1/kill.1.gz
 -rw-r--r--	root/root	usr/man/man1/line.1.gz
 -rw-r--r--	root/root	usr/man/man1/logger.1.gz
@@ -86,7 +89,9 @@ drwxr-xr-x	root/root	usr/man/man1/
 -rw-r--r--	root/root	usr/man/man1/script.1.gz
 -rw-r--r--	root/root	usr/man/man1/setterm.1.gz
 -rw-r--r--	root/root	usr/man/man1/tailf.1.gz
+-rw-r--r--	root/root	usr/man/man1/taskset.1.gz
 -rw-r--r--	root/root	usr/man/man1/ul.1.gz
+-rw-r--r--	root/root	usr/man/man1/wall.1.gz
 -rw-r--r--	root/root	usr/man/man1/whereis.1.gz
 -rw-r--r--	root/root	usr/man/man1/write.1.gz
 drwxr-xr-x	root/root	usr/man/man5/
@@ -115,7 +120,6 @@ drwxr-xr-x	root/root	usr/man/man8/
 -rw-r--r--	root/root	usr/man/man8/rdev.8.gz
 -rw-r--r--	root/root	usr/man/man8/renice.8.gz
 -rw-r--r--	root/root	usr/man/man8/rootflags.8.gz
--rw-r--r--	root/root	usr/man/man8/setfdprm.8.gz
 -rw-r--r--	root/root	usr/man/man8/setsid.8.gz
 -rw-r--r--	root/root	usr/man/man8/sfdisk.8.gz
 -rw-r--r--	root/root	usr/man/man8/swapoff.8.gz

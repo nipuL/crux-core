@@ -1,0 +1,10 @@
+--- util-linux-2.13-pre7/include/nls.h.orig	2005-07-29 00:51:05.000000000 +0200
++++ util-linux-2.13-pre7/include/nls.h	2006-10-02 13:20:20.000000000 +0200
+@@ -1,5 +1,7 @@
+ int main(int argc, char *argv[]);
+ 
++#include <locale.h>
++
+ #ifndef LOCALEDIR
+ #define LOCALEDIR "/usr/share/locale"
+ #endif
