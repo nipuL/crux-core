@@ -1,14 +1,18 @@
 # Description: System call tracing utility (like trace, truss, etc)
 # URL:         http://www.liacs.nl/~wichert/strace/
-# Maintainer:  Per Lidén, core-ports at crux dot nu
+# Maintainer:  Johannes Winkelmann, jw at smts dot ch
 
 name=strace
 version=4.5.14
 release=1
-source=(http://dl.sourceforge.net/$name/$name-$version.tar.bz2)
+source=(http://dl.sourceforge.net/$name/$name-$version.tar.bz2
+        strace-4.5.14-kernel-headers.2.6.18.diff
+	strace-4.5.14-glibc25.diff)
 
 build() {
     cd $name-$version
+    patch -p0 -i $SRC/strace-4.5.14-glibc25.diff
+    patch -p0 -i $SRC/strace-4.5.14-kernel-headers.2.6.18.diff
     ./configure --prefix=/usr
     make
     make DESTDIR=$PKG install
