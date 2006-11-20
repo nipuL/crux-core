@@ -1,18 +1,19 @@
 # Description: The C library used in the GNU system
 # URL:         http://www.gnu.org/software/libc/
-# Maintainer:  Per Lidén, core-ports at crux dot nu
+# Maintainer:  Johannes Winkelmann, jw at smts dot ch
 
 name=glibc
-version=2.3.6
-release=2
-source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.bz2 \
-	http://crux.nu/files/dist/kernel-headers-2.6.14-1.tar.bz2 \
+version=2.5
+release=1
+source=(http://ftp.gnu.org/gnu/glibc/glibc-$version.tar.gz
+        http://crux.nu/files/dist/kernel-headers-2.6.18.tar.bz2
 	hosts resolv.conf nsswitch.conf host.conf ld.so.conf)
 
 build() {
-    mkdir -p $PKG/usr/include
-    cp -r kernel-headers/{linux,asm-generic} $PKG/usr/include
-    cp -r kernel-headers/asm-i386 $PKG/usr/include/asm
+    # install build kernel headers
+    mkdir $PKG/usr/
+    cp -r kernel-headers-2.6.18/include $PKG/usr
+    chown root:root $PKG/usr
 
     mkdir build
     cd build
