@@ -1,7 +1,5 @@
-3e39f8fe9e3a36813f4c2370cd457de5  gcc-4.0.3-fixinc.patch
-31e541f9ac2c8613bc92b91db453f0a9  gcc-4.0.3-latentbug-addrefvars.patch
-36fb6ec15a5f2a6572da0b02a3cf9d66  gcc-4.0.3-nocheck-fixincludes.patch
-e35acd0ee75799f0a82b6e9c7e330073  gcc-4.0.3-version.patch
-347231730fb44b609b69226c3e432d80  gcc-core-4.0.3.tar.bz2
-0ed89562540b392c87ef2bd140be5d58  gcc-g++-4.0.3.tar.bz2
-5c074296b473e219c992fe78d2a3a093  gcc-objc-4.0.3.tar.bz2
+30e33e6ecedfc346f48240589414aa92  gcc-4.1.1-fixinc.patch
+36fb6ec15a5f2a6572da0b02a3cf9d66  gcc-4.1.1-nocheck-fixincludes.patch
+a1b189c98aa7d7f164036bbe89b9b2a2  gcc-core-4.1.1.tar.bz2
+70c786bf8ca042e880a87fecb9e4dfcd  gcc-g++-4.1.1.tar.bz2
+4aa85388de4d4fa2cf2368ce94596dee  gcc-objc-4.1.1.tar.bz2
