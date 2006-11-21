@@ -5,7 +5,7 @@
 
 name=util-linux
 version=2.13-pre7
-release=1
+release=2
 source=(http://www.kernel.org/pub/linux/utils/util-linux/testing/$name-$version.tar.gz \
 	$name-$version-nls.patch)
 
@@ -27,5 +27,7 @@ build() {
 
     rm -rf $PKG/usr/{share,man/man6,share/misc/getopt}
     rm $PKG/sbin/{mkfs.bfs,mkfs.minix,fsck.minix}
+    rm $PKG/usr/bin/wall
+    rm $PKG/usr/man/man1/wall.1
     rm $PKG/usr/man/man8/{fsck.minix,mkfs.bfs,mkfs.minix}.8
 }
