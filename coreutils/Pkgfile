@@ -4,13 +4,16 @@
 
 name=coreutils
 version=6.5
-release=1
+release=2
 source=(http://ftp.gnu.org/pub/gnu/$name/$name-$version.tar.bz2 \
-	$name-uname.patch)
+	$name-uname.patch $name-$version-idcache.patch)
 
 build() {
     cd $name-$version
-    patch -p1 < ../$name-uname.patch
+    
+    patch -p1 < $SRC/$name-uname.patch
+    patch -d lib -p0 < $SRC/$name-$version-idcache.patch
+    
     DEFAULT_POSIX2_VERSION=199209 \
     ./configure --prefix=/usr \
 		--mandir=/usr/man \
@@ -18,6 +21,7 @@ build() {
 		--disable-assert
     make
     make DESTDIR=$PKG install 
+    
     mkdir $PKG/bin
     mv $PKG/usr/bin/{cat,chgrp,chmod,chown,cp,date,dd,df,echo,false,ln,ls,mkdir} $PKG/bin
     mv $PKG/usr/bin/{mknod,mv,pwd,readlink,rm,rmdir,stty,sync,touch,true,uname} $PKG/bin
