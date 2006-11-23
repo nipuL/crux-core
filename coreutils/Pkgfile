@@ -3,23 +3,22 @@
 # Maintainer:  Per Lidén, core-ports at crux dot nu
 
 name=coreutils
-version=6.5
-release=2
+version=6.6
+release=1
 source=(http://ftp.gnu.org/pub/gnu/$name/$name-$version.tar.bz2 \
-	$name-uname.patch $name-$version-idcache.patch)
+        $name-uname.patch)
 
 build() {
     cd $name-$version
     
     patch -p1 < $SRC/$name-uname.patch
-    patch -d lib -p0 < $SRC/$name-$version-idcache.patch
     
     DEFAULT_POSIX2_VERSION=199209 \
     ac_cv_func_openat=no \
     ./configure --prefix=/usr \
-		--mandir=/usr/man \
-		--disable-nls \
-		--disable-assert
+                --mandir=/usr/man \
+                --disable-nls \
+                --disable-assert
     make
     make DESTDIR=$PKG install 
     
