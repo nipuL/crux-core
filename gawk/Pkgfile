@@ -4,11 +4,14 @@
 
 name=gawk
 version=3.1.5
-release=2
-source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
+release=3
+source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz \
+        $name-$version-io.patch)
 
 build() {
     cd $name-$version
+
+    patch -p0 -i $SRC/$name-$version-io.patch
     ./configure --prefix=/usr \
                 --enable-switch \
                 --disable-nls
