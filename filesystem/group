@@ -12,5 +12,6 @@ wheel::10:root
 ftp::11:
 mail::12:
 slocate::13:
+www::15:
 nobody::99:
 users::100:

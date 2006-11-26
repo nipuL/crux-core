@@ -4,7 +4,7 @@
 
 name=lilo
 version=22.7.3
-release=2
+release=3
 source=(http://home.san.rr.com/johninsd/pub/linux/lilo/$name-$version.src.tar.gz \
 	$name-$version.patch lilo.conf)
 

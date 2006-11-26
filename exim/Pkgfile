@@ -1,0 +1,33 @@
+# Description: Mail transfer agent
+# URL:         http://www.exim.org
+# Maintainer:  Juergen Daubert, juergen dot daubert at t-online dot de
+# Depends on:  db, openssl
+
+name=exim
+version=4.63
+release=2
+source=(ftp://ftp.exim.org/pub/exim/exim4/$name-$version.tar.bz2 \
+        $name $name-config.patch)
+
+build() {
+    cd $name-$version
+
+    sed "s/#CFLAGS#/$CFLAGS/" $SRC/$name-config.patch | patch -p1
+    cp src/EDITME Local/Makefile
+
+    make
+    make DESTDIR=$PKG install
+
+    install -D -m 755 $SRC/exim $PKG/etc/rc.d/exim
+    install -D -m 644 doc/exim.8 $PKG/usr/man/man8/exim.8
+
+    install -d $PKG/var/{log,spool} $PKG/usr/bin
+    install -d -m 0750 -o mail -g mail $PKG/var/{log,spool}/exim
+    
+    touch $PKG/var/log/exim/exim_{mainlog,paniclog,rejectlog}
+    chown mail:mail $PKG/var/log/exim/*
+    chmod 640 $PKG/var/log/exim/*
+
+    ln -sf $name-$version-1 $PKG/usr/sbin/sendmail
+    ln -sf ../sbin/$name-$version-1 $PKG/usr/bin/mailq
+}
