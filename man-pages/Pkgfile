@@ -1,11 +1,10 @@
 # Description: The Linux manpages collection
 # URL:         http://www.win.tue.nl/~aeb/linux/man/
 # Maintainer:  Per Lidén, core-ports at crux dot nu
-# Packager:    Per Lidén, per at fukt dot bth dot se
 # Depends on:  man
 
 name=man-pages
-version=2.41
+version=2.42
 release=1
 source=(ftp://ftp.win.tue.nl/pub/linux-local/manpages/$name-$version.tar.gz)
 
