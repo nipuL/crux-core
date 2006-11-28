@@ -3,7 +3,7 @@
 # Maintainer:  Per Lidén, core-ports at crux dot nu
 
 name=gettext
-version=0.16
+version=0.16.1
 release=1
 source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
 
