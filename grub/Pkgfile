@@ -6,12 +6,12 @@
 
 name=grub
 version=0.97
-release=1
+release=2
 source=(ftp://alpha.gnu.org/gnu/grub/$name-$version.tar.gz \
 	http://crux.nu/files/grub/$version/$name-$version-patches.tar.gz \
 	http://crux.nu/files/grub/common/crux02.xpm.gz \
 	http://crux.nu/files/grub/common/crux03.xpm.gz \
-	menu.lst.sample)
+	grub.conf.sample)
 
 build () {
 	cd $name-$version
@@ -82,5 +82,5 @@ build () {
 	rm -rf $PKG/usr/share/info
 
 	mkdir -p $PKG/boot/grub
-	install -m 644 $SRC/{crux*,menu.lst.sample} $PKG/boot/grub/
+	install -m 644 $SRC/{crux*,grub.conf.sample} $PKG/boot/grub/
 }

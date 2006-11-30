@@ -2,7 +2,7 @@ drwxr-xr-x	root/root	boot/
 drwxr-xr-x	root/root	boot/grub/
 -rw-r--r--	root/root	boot/grub/crux02.xpm.gz
 -rw-r--r--	root/root	boot/grub/crux03.xpm.gz
--rw-r--r--	root/root	boot/grub/menu.lst.sample
+-rw-r--r--	root/root	boot/grub/grub.conf.sample
 drwxr-xr-x	root/root	sbin/
 -rwxr-xr-x	root/root	sbin/grub
 -rwxr-xr-x	root/root	sbin/grub-install
