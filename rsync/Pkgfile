@@ -6,7 +6,7 @@
 name=rsync
 version=2.6.9
 release=1
-source=(http://samba.org/ftp/$name/$name-$version.tar.gz \
+source=(http://rsync.samba.org/ftp/$name/$name-$version.tar.gz \
         rsyncd.conf rsyncd rsync.driver)
 
 build () {
