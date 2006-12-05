@@ -110,3 +110,4 @@ drwxr-xr-x	root/root	usr/sbin/
 -rwxr-xr-x	root/root	usr/sbin/iptables
 -rwxr-xr-x	root/root	usr/sbin/iptables-restore
 -rwxr-xr-x	root/root	usr/sbin/iptables-save
+-rwxr-xr-x	root/root	usr/sbin/iptables-xml
