@@ -1,6 +1,6 @@
 diff -aur bzip2-1.0.3.orig/Makefile bzip2-1.0.3/Makefile
 --- bzip2-1.0.3.orig/Makefile	2005-02-17 12:28:24.000000000 +0100
-+++ bzip2-1.0.3/Makefile	2006-04-06 18:23:10.000000000 +0200
++++ bzip2-1.0.3/Makefile	2006-12-06 20:56:42.971829461 +0100
 @@ -8,7 +8,7 @@
  LDFLAGS=
  
@@ -86,7 +86,7 @@ diff -aur bzip2-1.0.3.orig/Makefile bzip2-1.0.3/Makefile
  	rm -f *.o libbz2.a bzip2 bzip2recover \
 diff -aur bzip2-1.0.3.orig/Makefile-libbz2_so bzip2-1.0.3/Makefile-libbz2_so
 --- bzip2-1.0.3.orig/Makefile-libbz2_so	2004-10-17 19:32:13.000000000 +0200
-+++ bzip2-1.0.3/Makefile-libbz2_so	2006-04-06 18:10:21.000000000 +0200
++++ bzip2-1.0.3/Makefile-libbz2_so	2006-12-06 20:57:09.201468711 +0100
 @@ -9,7 +9,7 @@
  SHELL=/bin/sh
  CC=gcc
@@ -96,7 +96,7 @@ diff -aur bzip2-1.0.3.orig/Makefile-libbz2_so bzip2-1.0.3/Makefile-libbz2_so
  
  OBJS= blocksort.o  \
        huffman.o    \
-@@ -22,11 +22,14 @@
+@@ -22,11 +22,15 @@
  all: $(OBJS)
  	$(CC) -shared -Wl,-soname -Wl,libbz2.so.1.0 -o libbz2.so.1.0.3 $(OBJS)
  	$(CC) $(CFLAGS) -o bzip2-shared bzip2.c libbz2.so.1.0.3
@@ -107,6 +107,7 @@ diff -aur bzip2-1.0.3.orig/Makefile-libbz2_so bzip2-1.0.3/Makefile-libbz2_so
 +	install -d $(PREFIX)/lib
 +	install -m 755 libbz2.so.1.0.3 $(PREFIX)/lib
 +	ln -sf libbz2.so.1.0.3 $(PREFIX)/lib/libbz2.so.1.0
++	ln -sf libbz2.so.1.0 $(PREFIX)/lib/libbz2.so
  
  clean: 
 -	rm -f $(OBJS) bzip2.o libbz2.so.1.0.3 libbz2.so.1.0 bzip2-shared
