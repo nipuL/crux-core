@@ -5,7 +5,7 @@
 name=unzip
 version=5.52
 release=2
-source=(http://mirror.switch.ch/ftp/mirror/infozip/src/unzip552.tar.gz)
+source=(http://www.tug.org/ftp/dist/unzip552.tar.gz)
 
 build() {
     cd $name-$version
