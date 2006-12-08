@@ -15,6 +15,7 @@ drwxr-xr-x	root/root	usr/include/
 -rw-r--r--	root/root	usr/include/bzlib.h
 drwxr-xr-x	root/root	usr/lib/
 -rw-r--r--	root/root	usr/lib/libbz2.a
+lrwxrwxrwx	root/root	usr/lib/libbz2.so -> libbz2.so.1.0
 lrwxrwxrwx	root/root	usr/lib/libbz2.so.1.0 -> libbz2.so.1.0.3
 -rwxr-xr-x	root/root	usr/lib/libbz2.so.1.0.3
 drwxr-xr-x	root/root	usr/man/
