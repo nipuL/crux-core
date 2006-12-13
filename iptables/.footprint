@@ -23,7 +23,6 @@ drwxr-xr-x	root/root	usr/lib/iptables/
 -rwxr-xr-x	root/root	usr/lib/iptables/libip6t_owner.so
 -rwxr-xr-x	root/root	usr/lib/iptables/libip6t_physdev.so
 -rwxr-xr-x	root/root	usr/lib/iptables/libip6t_policy.so
--rwxr-xr-x	root/root	usr/lib/iptables/libip6t_sctp.so
 -rwxr-xr-x	root/root	usr/lib/iptables/libip6t_standard.so
 -rwxr-xr-x	root/root	usr/lib/iptables/libip6t_state.so
 -rwxr-xr-x	root/root	usr/lib/iptables/libip6t_tcp.so
