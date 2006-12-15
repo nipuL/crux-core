@@ -3,28 +3,29 @@
 # Maintainer:  Per Lidén, core-ports at crux dot nu
 
 name=gzip
-version=1.2.4b
+version=1.3.9
 release=1
-source=(http://ftp.gnu.org/gnu/$name/$name-1.2.4a.tar.gz \
-	http://www.gzip.org/$name-$version.patch)
+source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
 
 build() {
-    cd $name-1.2.4a
-    patch -p1 < ../$name-$version.patch
-    ./configure --prefix=/usr
-    make all
-    mkdir -p $PKG/bin $PKG/usr/man
-    make prefix=$PKG/usr install
-    rm -rf $PKG/usr/{lib,info}
-    (cd $PKG/usr/bin; mv gzip $PKG/bin; rm gunzip zcat zcmp)
-    (cd $PKG/usr/man/man1; rm gunzip.1 zcat.1 zcmp.1)
-    (cd $PKG/bin; ln -s gzip gunzip; ln -s gzip zcat)
-    (cd $PKG/usr/bin; ln -s zdiff zcmp)
-    sed 's|"/usr/bin"|/bin|g' $PKG/usr/bin/gzexe > $PKG/usr/bin/gzexe.tmp
-    mv $PKG/usr/bin/gzexe.tmp $PKG/usr/bin/gzexe
-    chmod 755 $PKG/usr/bin/gzexe
-    (cd $PKG/usr/man/man1
-    ln -sf gzip.1.gz gunzip.1.gz
-    ln -sf gzip.1.gz zcat.1.gz
-    ln -sf zdiff.1.gz zcmp.1.gz)
+    cd $name-$version
+    ./configure --prefix=/usr --mandir=/usr/man
+    make
+    make DESTDIR=$PKG install
+    
+    rm -rf $PKG/usr/share
+    rm $PKG/usr/bin/{gunzip,zcat,zcmp}
+    rm $PKG/usr/man/man1/{gunzip.1,zcat.1,zcmp.1}
+
+    mkdir -p $PKG/bin
+    mv $PKG/usr/bin/gzip $PKG/bin
+
+    ln -sf gzip  $PKG/bin/gunzip
+    ln -sf gzip  $PKG/bin/zcat
+    ln -sf zdiff $PKG/usr/bin/zcmp
+    ln -sf zgrep $PKG/usr/bin/zfgrep
+    ln -sf zgrep $PKG/usr/bin/zegrep
+    ln -sf gzip.1.gz  $PKG/usr/man/man1/gunzip.1.gz
+    ln -sf gzip.1.gz  $PKG/usr/man/man1/zcat.1.gz
+    ln -sf zdiff.1.gz $PKG/usr/man/man1/zcmp.1.gz
 }
