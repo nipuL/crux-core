@@ -4,7 +4,7 @@
 
 name=net-tools
 version=1.60
-release=5
+release=6
 source=(http://www.tazenda.demon.co.uk/phil/net-tools/$name-$version.tar.bz2 \
 	$name-$version-config.patch \
 	$name-$version-compile_fixes.patch \
@@ -14,8 +14,7 @@ source=(http://www.tazenda.demon.co.uk/phil/net-tools/$name-$version.tar.bz2 \
 	$name-$version-manydevs.patch \
 	$name-$version-virtualname.patch \
 	$name-$version-ipv6.patch \
-	$name-$version-miiioctl.patch \
-	net)
+	$name-$version-miiioctl.patch)
 
 build() {
     cd $name-$version
@@ -30,5 +29,4 @@ build() {
     patch -p1 < ../$name-$version-miiioctl.patch
     make COPTS="$CFLAGS -D_GNU_SOURCE -Wall"
     make BASEDIR=$PKG mandir=/usr/man install
-    install -D -m 755 ../net $PKG/etc/rc.d/net
 }

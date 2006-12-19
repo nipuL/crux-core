@@ -5,9 +5,6 @@ lrwxrwxrwx	root/root	bin/domainname -> hostname
 -rwxr-xr-x	root/root	bin/netstat
 lrwxrwxrwx	root/root	bin/nisdomainname -> hostname
 lrwxrwxrwx	root/root	bin/ypdomainname -> hostname
-drwxr-xr-x	root/root	etc/
-drwxr-xr-x	root/root	etc/rc.d/
--rwxr-xr-x	root/root	etc/rc.d/net
 drwxr-xr-x	root/root	sbin/
 -rwxr-xr-x	root/root	sbin/arp
 -rwxr-xr-x	root/root	sbin/ifconfig
