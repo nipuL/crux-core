@@ -4,8 +4,8 @@
 # Depends on:  db, openssl
 
 name=exim
-version=4.63
-release=2
+version=4.64
+release=1
 source=(ftp://ftp.exim.org/pub/exim/exim4/$name-$version.tar.bz2 \
         $name $name-config.patch)
 
