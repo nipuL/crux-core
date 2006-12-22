@@ -5,7 +5,7 @@
 name=glibc
 version=2.5
 release=1
-source=(http://ftp.gnu.org/gnu/glibc/glibc-$version.tar.gz
+source=(http://ftp.gnu.org/gnu/glibc/glibc-$version.tar.bz2
         http://crux.nu/files/dist/kernel-headers-2.6.18.tar.bz2
 	hosts resolv.conf nsswitch.conf host.conf ld.so.conf)
 
