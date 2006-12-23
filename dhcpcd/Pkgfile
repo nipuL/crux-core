@@ -3,7 +3,7 @@
 # Maintainer:  Per Lidén, core-ports at crux dot nu
 
 name=dhcpcd
-version=3.0.6
+version=3.0.8
 release=1
 source=(http://download.berlios.de/dhcpcd/$name-$version.tar.bz2)
 
