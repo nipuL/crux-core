@@ -12,6 +12,12 @@ wheel::10:root
 ftp::11:
 mail::12:
 slocate::13:
+dialout::14:
 www::15:
+audio::16:
+video::17:
+floppy::18:
+tape::19:
+scanner::20:
 nobody::99:
 users::100:
