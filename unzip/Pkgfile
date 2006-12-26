@@ -1,11 +1,11 @@
 # Description: Decompress utility for zipfiles
-# URL:         http://www.info-zip.org/
+# URL:         http://infozip.sourceforge.net/UnZip.html
 # Maintainer:  Per Lidén, core-ports at crux dot nu
 
 name=unzip
 version=5.52
 release=2
-source=(http://www.tug.org/ftp/dist/unzip552.tar.gz)
+source=(http://fresh.t-systems-sfr.com/unix/src/misc/unzip552.tar.gz)
 
 build() {
     cd $name-$version
