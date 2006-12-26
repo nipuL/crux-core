@@ -1,11 +1,11 @@
 # Description: Compression and file packaging/archive utility
-# URL:         http://www.info-zip.org/Zip.html
+# URL:         http://infozip.sourceforge.net/Zip.html
 # Maintainer:  Per Lidén, core-ports at crux dot nu
 
 name=zip
 version=2.32
 release=1
-source=(http://www.tug.org/ftp/dist/${name}232.tar.gz)
+source=(http://fresh.t-systems-sfr.com/unix/src/misc/zip232.tar.gz)
 
 build() {
     cd $name-$version
