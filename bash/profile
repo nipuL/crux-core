@@ -3,9 +3,9 @@
 #
 
 if [ "$UID" = "0" ]; then
-	export PATH="/sbin:/usr/sbin:/bin:/usr/bin:/usr/X11R6/bin:/opt/bin"
+	export PATH="/sbin:/usr/sbin:/bin:/usr/bin:/opt/bin"
 else
-	export PATH="/bin:/usr/bin:/usr/X11R6/bin:/opt/bin"
+	export PATH="/bin:/usr/bin:/opt/bin"
 fi
 
 if [ ! -f ~/.inputrc ]; then
