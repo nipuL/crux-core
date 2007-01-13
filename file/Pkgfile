@@ -7,7 +7,7 @@
 name=file
 version=4.19
 release=1
-source=(ftp://ftp.astron.com/pub/file/$name-$version.tar.gz)
+source=(ftp://ftp.fu-berlin.de/unix/tools/file/$name-$version.tar.gz)
 
 build() {
     cd $name-$version
