@@ -3,7 +3,7 @@
 # Maintainer:  Per Lidén, core-ports at crux dot nu
 
 name=strace
-version=4.5.14
+version=4.5.15
 release=1
 source=(http://dl.sourceforge.net/$name/$name-$version.tar.bz2)
 
