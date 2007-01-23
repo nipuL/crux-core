@@ -1,6 +1,6 @@
 # Description: NFS utilities
 # URL:         http://nfs.sourceforge.net/
-# Maintainer:  Per Lidén, core-ports at crux dot nu
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=nfs-utils
 version=1.0.10

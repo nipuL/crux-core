@@ -1,7 +1,7 @@
 # Description: File type identification utility
 # URL:         ftp://ftp.fu-berlin.de/unix/tools/file/
-# Maintainer:  Per Lidén, core-ports at crux dot nu
-# Packager:    Per Lidén, per at fukt dot bth dot se
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
+# Packager:    CRUX System Team, core-ports at crux dot nu
 # Depends on:  zlib
 
 name=file

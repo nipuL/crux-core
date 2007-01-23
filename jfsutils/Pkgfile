@@ -1,6 +1,6 @@
 # Description: Tools for IBM's journaled file system
 # URL:         http://jfs.sourceforge.net/
-# Maintainer:  Per Lidén, core-ports at crux dot nu
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
 # Depends on:  e2fsprogs
 
 name=jfsutils

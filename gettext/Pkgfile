@@ -1,6 +1,6 @@
 # Description: The GNU internationalization library
 # URL:         http://www.gnu.org/software/gettext/
-# Maintainer:  Per Lidén, core-ports at crux dot nu
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=gettext
 version=0.16.1

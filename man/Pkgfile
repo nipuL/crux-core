@@ -1,6 +1,6 @@
 # Description: The man page suite used to read most of the documentation for Linux
 # URL:         http://primates.ximian.com/~flucifredi/man/
-# Maintainer:  Per Lidén, core-ports at crux dot nu
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=man
 version=1.6e

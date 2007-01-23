@@ -1,6 +1,6 @@
 # Description: Multi-user cron daemon
 # URL:         http://freshmeat.net/projects/dcron/
-# Maintainer:  Per Lidén, core-ports at crux dot nu
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=dcron
 version=2.3.3

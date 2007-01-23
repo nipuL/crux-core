@@ -1,6 +1,6 @@
 # Description: Monitors and Controls incoming TCP connections
 # URL:         ftp://ftp.porcupine.org/pub/security/index.html
-# Maintainer:  Per Lidén, core-ports at crux dot nu
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=tcp_wrappers
 version=7.6

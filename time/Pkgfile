@@ -1,6 +1,6 @@
 # Description: Measures many of the CPU resources that programs use
 # URL:         http://www.gnu.org/software/time/
-# Maintainer:  Per Lidén, core-ports at crux dot nu
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=time
 version=1.7

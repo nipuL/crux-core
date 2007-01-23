@@ -1,6 +1,6 @@
 # Description: The /proc file system utilities
 # URL:         http://procps.sourceforge.net/
-# Maintainer:  Per Lidén, core-ports at crux dot nu
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
 # Depends on:  ncurses
 
 name=procps

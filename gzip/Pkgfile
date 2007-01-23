@@ -1,6 +1,6 @@
 # Description: GNU compression utility (replacement for compress)
 # URL:         http://www.gzip.org/
-# Maintainer:  Per Lidén, core-ports at crux dot nu
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=gzip
 version=1.3.9

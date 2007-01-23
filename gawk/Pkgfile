@@ -1,6 +1,6 @@
 # Description: A pattern scanning and processing language
 # URL:         http://www.gnu.org/software/gawk/gawk.html
-# Maintainer:  Per Lidén, core-ports at crux dot nu
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=gawk
 version=3.1.5

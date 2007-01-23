@@ -1,6 +1,6 @@
 # Description: The GNU troff text-formatting system
 # URL:         http://www.gnu.org/software/groff/groff.html
-# Maintainer:  Per Lidén, core-ports at crux dot nu
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
 # Depends on:  
 
 name=groff

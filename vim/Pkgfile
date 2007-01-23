@@ -1,6 +1,6 @@
 # Description: A popular vi clone that features syntax highlighting
 # URL:         http://www.vim.org/
-# Packager:    Per Lidén <per@fukt.bth.se>
+# Packager:    CRUX System Team, core-ports at crux dot nu
 # Maintainer:  CRUX core developers, core-ports at crux dot nu
 # Depends on:  ncurses
 

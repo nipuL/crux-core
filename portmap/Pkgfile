@@ -1,6 +1,6 @@
 # Description: RPC connection manager
 # URL:         ftp://ftp.porcupine.org/pub/security/index.html
-# Maintainer:  Per Lidén, core-ports at crux dot nu
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=portmap
 version=5beta

@@ -1,6 +1,6 @@
 # Description: An sh-compatible command language interpreter.
 # URL:         http://cnswww.cns.cwru.edu/~chet/bash/bashtop.html
-# Maintainer:  Per Lidén, core-ports at crux dot nu
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
 # Depends on:  ncurses
 
 name=bash

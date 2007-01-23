@@ -1,6 +1,6 @@
 # Description: The Linux manpages collection
 # URL:         http://www.win.tue.nl/~aeb/linux/man/
-# Maintainer:  Per Lidén, core-ports at crux dot nu
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
 # Depends on:  man
 
 name=man-pages

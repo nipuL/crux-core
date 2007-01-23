@@ -1,6 +1,6 @@
 # Description: A tool to convert RPM files to TAR.GZ files
 # URL:         http://www.crux.nu
-# Maintainer:  Per Lidén, core-ports at crux dot nu
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=rpm2targz
 version=1.0.4

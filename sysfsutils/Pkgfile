@@ -1,6 +1,6 @@
 # Description: System Utilities Based on Sysfs
 # URL: http://linux-diag.sourceforge.net/Sysfsutils.html
-# Maintainer:  Per Lidén, core-ports at crux dot nu
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
 # Packager: Daniel Mueller, daniel at danm dot de
 
 name=sysfsutils

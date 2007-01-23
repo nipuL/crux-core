@@ -1,6 +1,6 @@
 # Description: A simple utility to safely create temporary files
 # URL:         http://www.mktemp.org/mktemp/
-# Maintainer:  Per Lidén, core-ports at crux dot nu
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=mktemp
 version=1.5

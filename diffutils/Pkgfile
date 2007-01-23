@@ -1,6 +1,6 @@
 # Description: Package with the GNU diff, diff3, sdiff, and cmp utilities
 # URL:         http://www.gnu.org/software/diffutils/
-# Maintainer:  Per Lidén, core-ports at crux dot nu
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=diffutils
 version=2.8.1

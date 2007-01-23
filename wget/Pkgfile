@@ -1,7 +1,7 @@
 # Description: A network utility for downloading content from the Web
 # URL:         http://www.gnu.org/software/wget/
-# Maintainer:  Per Lidén, core-ports at crux dot nu
-# Packager:    Per Lidén, per at fukt dot bth dot se
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
+# Packager:    CRUX System Team, core-ports at crux dot nu
 # Depends on:  openssl
 
 name=wget

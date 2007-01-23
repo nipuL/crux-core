@@ -1,6 +1,6 @@
 # Description: The GNU Compiler Collection
 # URL:         http://gcc.gnu.org
-# Packager:    Per Lidén, core-ports at crux dot nu
+# Packager:    CRUX System Team, core-ports at crux dot nu
 # Maintainer:  Johannes Winkelmann, jw at smts dot ch
 
 name=gcc

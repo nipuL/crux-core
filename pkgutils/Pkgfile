@@ -1,6 +1,6 @@
 # Description: A set of utilities to manage software packages 
 # URL:         http://www.fukt.bsnet.se/~per/pkgutils/
-# Maintainer:  Per Lidén, core-ports at crux dot nu
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=pkgutils
 version=5.21

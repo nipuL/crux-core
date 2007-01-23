@@ -1,6 +1,6 @@
 # Description: Filesystem utilities for ReiserFS
 # URL:         http://www.namesys.com/
-# Maintainer:  Per Lidén, core-ports at crux dot nu
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
 # Depends on:  e2fsprogs
 
 name=reiserfsprogs
