@@ -1,4 +1,4 @@
-# Maintainer:  Johannes Winkelmann, jw at tks6 dot net 
+# Maintainer:  CRUX System Team, core-ports at crux dot nu 
 # Description: One way sync over http
 # URL:         http://jw.tks6.net/files/crux/httpup_manual.html 
 # Depends on:  curl

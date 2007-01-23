@@ -1,6 +1,6 @@
 # Description: Miscellaneous system utilities
 # URL:         http://freshmeat.net/projects/util-linux/
-# Maintainer:  Johannes Winkelmann, jw at smts dot ch
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
 # Depends on:  e2fsprogs, ncurses, zlib
 
 name=util-linux

@@ -1,7 +1,7 @@
 # Description: The GNU Compiler Collection
 # URL:         http://gcc.gnu.org
 # Packager:    CRUX System Team, core-ports at crux dot nu
-# Maintainer:  Johannes Winkelmann, jw at smts dot ch
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=gcc
 version=4.1.1

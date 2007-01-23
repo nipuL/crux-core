@@ -1,7 +1,7 @@
 # Description: Shadow password file utilities
 # URL:         http://shadow.pld.org.pl/
 # Packager:    CRUX System Team, core-ports at crux dot nu
-# Maintainer:  Johannes Winkelmann, jw at crux dot nu
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=shadow
 version=4.0.18.1

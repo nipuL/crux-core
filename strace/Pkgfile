@@ -1,6 +1,6 @@
 # Description: System call tracing utility (like trace, truss, etc)
 # URL:         http://www.liacs.nl/~wichert/strace/
-# Maintainer:  Johannes Winkelmann, jw at smts dot ch
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=strace
 version=4.5.15
