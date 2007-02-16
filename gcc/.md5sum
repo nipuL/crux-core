@@ -1,5 +1,5 @@
-30e33e6ecedfc346f48240589414aa92  gcc-4.1.1-fixinc.patch
-36fb6ec15a5f2a6572da0b02a3cf9d66  gcc-4.1.1-nocheck-fixincludes.patch
-a1b189c98aa7d7f164036bbe89b9b2a2  gcc-core-4.1.1.tar.bz2
-70c786bf8ca042e880a87fecb9e4dfcd  gcc-g++-4.1.1.tar.bz2
-4aa85388de4d4fa2cf2368ce94596dee  gcc-objc-4.1.1.tar.bz2
+30e33e6ecedfc346f48240589414aa92  gcc-4.1.2-fixinc.patch
+36fb6ec15a5f2a6572da0b02a3cf9d66  gcc-4.1.2-nocheck-fixincludes.patch
+2af3fb599635219171c6ae1f3034888a  gcc-core-4.1.2.tar.bz2
+75c6d5fa3415d614314caf0f509e8933  gcc-g++-4.1.2.tar.bz2
+abda05c0ab99059e8f9e7a625361fd87  gcc-objc-4.1.2.tar.bz2
