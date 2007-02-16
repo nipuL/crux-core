@@ -6,7 +6,7 @@
 
 name=vim
 version=7.0
-release=4
+release=5
 source=(ftp://ftp.vim.org/pub/vim/unix/vim-$version.tar.bz2 \
         http://jue.li/crux/files/$name-7.0.001-109.tar.gz)
 
@@ -31,7 +31,6 @@ build () {
     mv $PKG/usr/share/vim/vimrc_example.vim $PKG/usr/share/vim/vimrc
     rm -rf $PKG/usr/man/man?/vimtutor* $PKG/usr/share/vim/tutor $PKG/usr/share/vim/macros
     rm $PKG/usr/share/vim/*/README.txt    
-    ln -sf vim $PKG/usr/bin/vi
     ln -sf vim $PKG/usr/bin/evim
     ln -sf vim.1.gz $PKG/usr/man/man1/ex.1.gz
     ln -sf vim.1.gz $PKG/usr/man/man1/vi.1.gz
@@ -39,4 +38,15 @@ build () {
     ln -sf vim.1.gz $PKG/usr/man/man1/view.1.gz
     ln -sf vim.1.gz $PKG/usr/man/man1/rview.1.gz
     ln -sf vim.1.gz $PKG/usr/man/man1/gvim.1.gz
+
+    ./configure --prefix=/ \
+                --with-vim-name=vi \
+                --with-x=no \
+                --enable-gui=no \
+                --enable-multibyte \
+                --disable-gpm \
+                --disable-nls \
+                --with-features=tiny
+
+    make VIMRTDIR= DESTDIR=$PKG installvimbin
 }
