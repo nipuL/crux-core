@@ -5,7 +5,7 @@
 
 name=perl
 version=5.8.8
-release=1
+release=2
 source=(ftp://ftp.perl.org/pub/CPAN/src/$name-$version.tar.gz \
         $name-$version-CVE-2005-3962.patch)
 
@@ -21,6 +21,7 @@ build() {
 		-Dman3dir=/usr/man/man3 \
 		-Di_gdbm \
 		-Di_db \
+		-Duseshrplib=true \
 		-Doptimize="$CFLAGS"
     make
     make DESTDIR=$PKG install

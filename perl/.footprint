@@ -479,7 +479,7 @@ drwxr-xr-x	root/root	usr/lib/perl5/5.8.8/linux/CORE/
 -rw-r--r--	root/root	usr/lib/perl5/5.8.8/linux/CORE/intrpvar.h
 -rw-r--r--	root/root	usr/lib/perl5/5.8.8/linux/CORE/iperlsys.h
 -rw-r--r--	root/root	usr/lib/perl5/5.8.8/linux/CORE/keywords.h
--rw-r--r--	root/root	usr/lib/perl5/5.8.8/linux/CORE/libperl.a
+-rwxr-xr-x	root/root	usr/lib/perl5/5.8.8/linux/CORE/libperl.so
 -rw-r--r--	root/root	usr/lib/perl5/5.8.8/linux/CORE/malloc_ctl.h
 -rw-r--r--	root/root	usr/lib/perl5/5.8.8/linux/CORE/mg.h
 -rw-r--r--	root/root	usr/lib/perl5/5.8.8/linux/CORE/nostdio.h
