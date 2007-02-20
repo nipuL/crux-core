@@ -1,0 +1,30 @@
+# Description: Basic networking applet
+# URL: http://linux-net.osdl.org/index.php/Iputils
+# Maintainer: Matt Housh, jaeger at morpheus dot net
+
+name=iputils
+version=ss021109-try
+release=3
+source=(ftp://ftp.inr.ac.ru/ip-routing/$name-$version.tar.bz2 \
+	$name-ipg-linux26.patch)
+
+build() {
+	cd $name
+	patch -i $SRC/$name-ipg-linux26.patch ipg
+	sed -i -e "/^CCOPT=/s|-O2|$CFLAGS|" \
+		-e '/^CCOPT=/s| -g$||' \
+		-e 's/^\(all:\) check-kernel/\1/' \
+		Makefile
+	make
+	make man
+
+	mkdir -p $PKG/{{s,}bin,usr/{man/man8,sbin}}
+	install ping{,6} $PKG/bin/
+	install arping $PKG/sbin/
+	install tracepath{,6} traceroute6 clockdiff rarpd rdisc \
+		ipg tftpd $PKG/usr/sbin/
+	install doc/*.8 $PKG/usr/man/man8
+	rm -f $PKG/usr/man/man8/setkey*
+	ln -s ping.8 $PKG/usr/man/man8/ping6.8
+	chmod u+s $PKG/bin/ping{,6} $PKG/usr/sbin/traceroute6
+}
