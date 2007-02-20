@@ -4,8 +4,8 @@
 # Packager: Mikhail Kolesnik, mike at openbunker dot org
 
 name=iproute2
-version=2.6.18-061002
-release=2
+version=2.6.19-061214
+release=1
 source=(http://developer.osdl.org/dev/iproute2/download/$name-$version.tar.gz \
 	net.iproute2)
 
