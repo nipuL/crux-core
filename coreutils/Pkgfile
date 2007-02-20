@@ -4,7 +4,7 @@
 
 name=coreutils
 version=6.7
-release=1
+release=2
 source=(http://ftp.gnu.org/pub/gnu/$name/$name-$version.tar.bz2 \
         $name-uname.patch)
 
@@ -23,7 +23,7 @@ build() {
     make DESTDIR=$PKG install 
     
     mkdir $PKG/bin
-    mv $PKG/usr/bin/{cat,chgrp,chmod,chown,cp,date,dd,df,echo,false,ln,ls,mkdir} $PKG/bin
+    mv $PKG/usr/bin/{cat,chgrp,chmod,chown,cp,date,dd,df,echo,false,ln,ls,mkdir,sleep} $PKG/bin
     mv $PKG/usr/bin/{mknod,mv,pwd,readlink,rm,rmdir,stty,sync,touch,true,uname} $PKG/bin
     rm $PKG/usr/bin/hostname $PKG/usr/man/man1/hostname.1  # conflicts with net-tools
     rm $PKG/usr/bin/uptime $PKG/usr/man/man1/uptime.1      # conflicts with procps

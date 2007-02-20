@@ -18,6 +18,7 @@ drwxr-xr-x	root/root	bin/
 -rwxr-xr-x	root/root	bin/readlink
 -rwxr-xr-x	root/root	bin/rm
 -rwxr-xr-x	root/root	bin/rmdir
+-rwxr-xr-x	root/root	bin/sleep
 -rwxr-xr-x	root/root	bin/stty
 -rwxr-xr-x	root/root	bin/sync
 -rwxr-xr-x	root/root	bin/touch
@@ -71,7 +72,6 @@ drwxr-xr-x	root/root	usr/bin/
 -rwxr-xr-x	root/root	usr/bin/sha512sum
 -rwxr-xr-x	root/root	usr/bin/shred
 -rwxr-xr-x	root/root	usr/bin/shuf
--rwxr-xr-x	root/root	usr/bin/sleep
 -rwxr-xr-x	root/root	usr/bin/sort
 -rwxr-xr-x	root/root	usr/bin/split
 -rwxr-xr-x	root/root	usr/bin/stat
