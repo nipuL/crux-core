@@ -3,17 +3,16 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=lilo
-version=22.7.3
-release=3
+version=22.8
+release=1
 source=(http://home.san.rr.com/johninsd/pub/linux/lilo/$name-$version.src.tar.gz \
-	$name-$version.patch lilo.conf)
+        $name-config.patch lilo.conf)
 
 build() {
     cd $name-$version
-    patch -p0 < ../$name-$version.patch
+    patch -p1 -i $SRC/$name-config.patch
     make all
     make ROOT=$PKG install
-    install -m 644 ../lilo.conf $PKG/etc
-    rm -rf $PKG/sbin/mkrescue \
-	   $PKG/usr/man/man8/mkrescue.8
+    install -m 644 $SRC/lilo.conf $PKG/etc
+    rm $PKG/{sbin/mkrescue,usr/man/man8/mkrescue.8}
 }
