@@ -23,7 +23,7 @@ fi
 if [ "$PREVLEVEL" != "N" ]; then
 	# Terminate all processes
 	/sbin/killall5 -15
-	/usr/bin/sleep 5
+	/bin/sleep 5
 	/sbin/killall5 -9
 
         # Start udev
