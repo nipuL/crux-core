@@ -6,7 +6,7 @@
 
 name=vim
 version=7.0
-release=5
+release=6
 source=(ftp://ftp.vim.org/pub/vim/unix/vim-$version.tar.bz2 \
         http://jue.li/crux/files/$name-7.0.001-109.tar.gz)
 
@@ -32,6 +32,7 @@ build () {
     rm -rf $PKG/usr/man/man?/vimtutor* $PKG/usr/share/vim/tutor $PKG/usr/share/vim/macros
     rm $PKG/usr/share/vim/*/README.txt    
     ln -sf vim $PKG/usr/bin/evim
+    ln -sf /bin/vi $PKG/usr/bin/vi
     ln -sf vim.1.gz $PKG/usr/man/man1/ex.1.gz
     ln -sf vim.1.gz $PKG/usr/man/man1/vi.1.gz
     ln -sf vim.1.gz $PKG/usr/man/man1/rvim.1.gz
