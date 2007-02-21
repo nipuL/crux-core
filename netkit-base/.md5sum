@@ -1,8 +1,0 @@
-87fdb9f85d8fc140b2f873e8e4e18440  inetd
-dd0d71e008809420edada02dda7a3149  inetd.conf
-0feee7f8e9d4fea8e8bce70bfc472e53  netkit-base-0.17-break.patch
-f79bb838060f298957daf9d41fd32167  netkit-base-0.17-gcc4.patch
-705b8a9ee47fb056c66c310732c06a56  netkit-base-0.17-usagi-20030214.patch
-1f0193358e92559ec0f598b09ccbc0ec  netkit-base-0.17.tar.gz
-95ede9740e0d48ebdf829d631fe8d06a  protocols
-6b1633c41e670506a513e1c32931628a  services
