@@ -4,16 +4,16 @@
 
 name=iputils
 version=ss021109-try
-release=3
+release=4
 source=(ftp://ftp.inr.ac.ru/ip-routing/$name-$version.tar.bz2 \
-	$name-ipg-linux26.patch)
+	$name-ipg-linux26.patch $name-$version.patch)
 
 build() {
 	cd $name
+	patch -i $SRC/$name-$version.patch Makefile
 	patch -i $SRC/$name-ipg-linux26.patch ipg
 	sed -i -e "/^CCOPT=/s|-O2|$CFLAGS|" \
 		-e '/^CCOPT=/s| -g$||' \
-		-e 's/^\(all:\) check-kernel/\1/' \
 		Makefile
 	make
 	make man
