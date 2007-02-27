@@ -15,10 +15,6 @@ drwxr-xr-x	root/root	usr/man/man8/
 -rw-r--r--	root/root	usr/man/man8/mountd.8.gz
 -rw-r--r--	root/root	usr/man/man8/nfsd.8.gz
 -rw-r--r--	root/root	usr/man/man8/nfsstat.8.gz
--rw-r--r--	root/root	usr/man/man8/nhfsgraph.8.gz
--rw-r--r--	root/root	usr/man/man8/nhfsnums.8.gz
--rw-r--r--	root/root	usr/man/man8/nhfsrun.8.gz
--rw-r--r--	root/root	usr/man/man8/nhfsstone.8.gz
 lrwxrwxrwx	root/root	usr/man/man8/rpc.lockd.8.gz -> lockd.8.gz
 lrwxrwxrwx	root/root	usr/man/man8/rpc.mountd.8.gz -> mountd.8.gz
 lrwxrwxrwx	root/root	usr/man/man8/rpc.nfsd.8.gz -> nfsd.8.gz
@@ -31,10 +27,6 @@ lrwxrwxrwx	root/root	usr/man/man8/rpc.statd.8.gz -> statd.8.gz
 drwxr-xr-x	root/root	usr/sbin/
 -rwxr-xr-x	root/root	usr/sbin/exportfs
 -rwxr-xr-x	root/root	usr/sbin/nfsstat
--rwxr-xr-x	root/root	usr/sbin/nhfsgraph
--rwxr-xr-x	root/root	usr/sbin/nhfsnums
--rwxr-xr-x	root/root	usr/sbin/nhfsrun
--rwxr-xr-x	root/root	usr/sbin/nhfsstone
 -rwxr-xr-x	root/root	usr/sbin/rpc.lockd
 -rwxr-xr-x	root/root	usr/sbin/rpc.mountd
 -rwxr-xr-x	root/root	usr/sbin/rpc.nfsd
