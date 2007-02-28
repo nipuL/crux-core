@@ -1,3 +1,4 @@
 f1682811a7fd2897153c5b0e33177509  exim
 01288e44919d8abdde5a7bd2c200449b  exim-4.66.tar.bz2
 f9edb79bd90e2b6e8233b2ef26e95aa9  exim-config.patch
+600d6448d11289c479da7a7ce600ce31  exim-openssl.patch
