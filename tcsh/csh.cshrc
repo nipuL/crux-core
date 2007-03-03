@@ -3,9 +3,9 @@
 #
 
 if ( "$uid" == "0" ) then
-	setenv PATH "/sbin:/usr/sbin:/bin:/usr/bin:/usr/X11R6/bin:/opt/bin"
+	setenv PATH "/sbin:/usr/sbin:/bin:/usr/bin:/opt/bin"
 else
-	setenv PATH "/bin:/usr/bin:/usr/X11R6/bin:/opt/bin"
+	setenv PATH "/bin:/usr/bin:/opt/bin"
 endif
 
 if ( ! -f ~/.inputrc ) then
