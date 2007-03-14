@@ -6,6 +6,11 @@
 # Load configuration
 . /etc/rc.conf
 
+# Run fixes startup file
+if [ -x /etc/rc.fix ]; then
+        /etc/rc.fix
+fi
+
 # Start services
 if [ "${SERVICES[*]}" ]; then
 	echo -n "starting services:"

@@ -4,8 +4,8 @@
 
 name=rc
 version=2.17
-release=3
-source=(inittab rc rc.modules rc.single rc.multi rc.local rc.shutdown rc.conf)
+release=5
+source=(inittab rc rc.modules rc.single rc.multi rc.local rc.fix rc.shutdown rc.conf)
 
 build() {
     mkdir -p $PKG/etc/rc.d
@@ -15,6 +15,7 @@ build() {
     install -m 755 rc.single $PKG/etc
     install -m 755 rc.multi $PKG/etc
     install -m 755 rc.local $PKG/etc
+    install -m 755 rc.fix $PKG/etc
     install -m 755 rc.shutdown $PKG/etc
     install -m 644 rc.conf $PKG/etc
     mkdir -p $PKG/var/log $PKG/var/lib/urandom
