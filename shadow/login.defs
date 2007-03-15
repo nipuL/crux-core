@@ -20,8 +20,8 @@ SU_NAME			su
 MAIL_DIR		/var/spool/mail
 HUSHLOGIN_FILE		.hushlogin
 ENV_HZ			HZ=100
-ENV_SUPATH		PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/X11R6/bin
-ENV_PATH		PATH=/bin:/usr/bin:/usr/X11R6/bin
+ENV_SUPATH		PATH=/sbin:/bin:/usr/sbin:/usr/bin
+ENV_PATH		PATH=/bin:/usr/bin
 TTYGROUP		tty
 TTYPERM			0600
 ERASECHAR		0177
