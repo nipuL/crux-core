@@ -19,5 +19,6 @@ video::17:
 floppy::18:
 tape::19:
 scanner::20:
+cdrom::21:
 nobody::99:
 users::100:
