@@ -984,3 +984,709 @@ Patch:
 ! #define PATCHLEVEL 10
   
   #endif /* _PATCHLEVEL_H_ */
+
+			     BASH PATCH REPORT
+			     =================
+
+Bash-Release: 3.2
+Patch-ID: bash32-011
+
+Bug-Reported-by: Petr Sumbera <Petr.Sumbera@Sun.COM>
+Bug-Reference-ID: <45AF5F4B.1020800@sun.com>
+Bug-Reference-URL: http://lists.gnu.org/archive/html/bug-bash/2007-01/msg00049.html
+
+Bug-Description:
+
+Under certain circumstances (loopback mounts), the bash getcwd does not
+return correct results.  This patch allows the use of the Solaris libc
+getcwd even though it doesn't dynamically allocate memory.
+
+Run `touch configure' to make sure make doesn't try to run autoconf.
+Then run configure with whatever options you like.
+
+Patch:
+
+*** ../bash-3.2-patched/configure.in	Tue Sep 26 11:05:45 2006
+--- configure.in	Wed Jan 31 09:48:00 2007
+***************
+*** 6,10 ****
+  dnl Process this file with autoconf to produce a configure script.
+  
+! # Copyright (C) 1987-2006 Free Software Foundation, Inc.
+  
+  # This program is free software; you can redistribute it and/or modify
+--- 6,10 ----
+  dnl Process this file with autoconf to produce a configure script.
+  
+! # Copyright (C) 1987-2007 Free Software Foundation, Inc.
+  
+  # This program is free software; you can redistribute it and/or modify
+***************
+*** 992,996 ****
+  sco3.2*)	LOCAL_CFLAGS=-DMUST_UNBLOCK_CHLD ;;
+  sunos4*)	LOCAL_CFLAGS=-DSunOS4 ;;
+! solaris2.5*)	LOCAL_CFLAGS=-DSunOS5 ;;
+  lynxos*)	LOCAL_CFLAGS=-DRECYCLES_PIDS ;;
+  linux*)		LOCAL_LDFLAGS=-rdynamic		 # allow dynamic loading
+--- 992,997 ----
+  sco3.2*)	LOCAL_CFLAGS=-DMUST_UNBLOCK_CHLD ;;
+  sunos4*)	LOCAL_CFLAGS=-DSunOS4 ;;
+! solaris2.5*)	LOCAL_CFLAGS="-DSunOS5 -DSOLARIS" ;;
+! solaris2*)	LOCAL_CFLAGS=-DSOLARIS ;;
+  lynxos*)	LOCAL_CFLAGS=-DRECYCLES_PIDS ;;
+  linux*)		LOCAL_LDFLAGS=-rdynamic		 # allow dynamic loading
+*** ../bash-3.2-patched/config-bot.h	Tue Sep 12 16:43:04 2006
+--- config-bot.h	Tue Mar  6 10:41:31 2007
+***************
+*** 2,6 ****
+  /* modify settings or make new ones based on what autoconf tells us. */
+  
+! /* Copyright (C) 1989-2002 Free Software Foundation, Inc.
+  
+     This file is part of GNU Bash, the Bourne Again SHell.
+--- 2,6 ----
+  /* modify settings or make new ones based on what autoconf tells us. */
+  
+! /* Copyright (C) 1989-2007 Free Software Foundation, Inc.
+  
+     This file is part of GNU Bash, the Bourne Again SHell.
+***************
+*** 71,77 ****
+  #endif
+  
+! /* If we have a getcwd(3), but it calls popen(), #undef HAVE_GETCWD so
+!    the replacement in getcwd.c will be built. */
+! #if defined (HAVE_GETCWD) && defined (GETCWD_BROKEN)
+  #  undef HAVE_GETCWD
+  #endif
+--- 71,79 ----
+  #endif
+  
+! /* If we have a getcwd(3), but one that does not dynamically allocate memory,
+!    #undef HAVE_GETCWD so the replacement in getcwd.c will be built.  We do
+!    not do this on Solaris, because their implementation of loopback mounts
+!    breaks the traditional file system assumptions that getcwd uses. */
+! #if defined (HAVE_GETCWD) && defined (GETCWD_BROKEN) && !defined (SOLARIS)
+  #  undef HAVE_GETCWD
+  #endif
+*** ../bash-3.2-patched/builtins/common.c	Thu Jul 27 09:39:51 2006
+--- builtins/common.c	Tue Mar  6 10:43:27 2007
+***************
+*** 1,3 ****
+! /* Copyright (C) 1987-2005 Free Software Foundation, Inc.
+  
+     This file is part of GNU Bash, the Bourne Again SHell.
+--- 1,3 ----
+! /* Copyright (C) 1987-2007 Free Software Foundation, Inc.
+  
+     This file is part of GNU Bash, the Bourne Again SHell.
+***************
+*** 476,480 ****
+--- 476,484 ----
+    if (the_current_working_directory == 0)
+      {
++ #if defined (GETCWD_BROKEN)
++       the_current_working_directory = getcwd (0, PATH_MAX);
++ #else
+        the_current_working_directory = getcwd (0, 0);
++ #endif
+        if (the_current_working_directory == 0)
+  	{
+*** ../bash-3.2-patched/configure	Tue Sep 26 11:06:01 2006
+--- configure	Tue Mar  6 10:59:20 2007
+***************
+*** 27317,27321 ****
+  sco3.2*)	LOCAL_CFLAGS=-DMUST_UNBLOCK_CHLD ;;
+  sunos4*)	LOCAL_CFLAGS=-DSunOS4 ;;
+! solaris2.5*)	LOCAL_CFLAGS=-DSunOS5 ;;
+  lynxos*)	LOCAL_CFLAGS=-DRECYCLES_PIDS ;;
+  linux*)		LOCAL_LDFLAGS=-rdynamic		 # allow dynamic loading
+--- 27317,27322 ----
+  sco3.2*)	LOCAL_CFLAGS=-DMUST_UNBLOCK_CHLD ;;
+  sunos4*)	LOCAL_CFLAGS=-DSunOS4 ;;
+! solaris2.5*)	LOCAL_CFLAGS="-DSunOS5 -DSOLARIS" ;;
+! solaris2*)	LOCAL_CFLAGS=-DSOLARIS ;;
+  lynxos*)	LOCAL_CFLAGS=-DRECYCLES_PIDS ;;
+  linux*)		LOCAL_LDFLAGS=-rdynamic		 # allow dynamic loading
+*** ../bash-3.2/patchlevel.h	Thu Apr 13 08:31:04 2006
+--- patchlevel.h	Mon Oct 16 14:22:54 2006
+***************
+*** 26,30 ****
+     looks for to find the patch level (for the sccs version string). */
+  
+! #define PATCHLEVEL 10
+  
+  #endif /* _PATCHLEVEL_H_ */
+--- 26,30 ----
+     looks for to find the patch level (for the sccs version string). */
+  
+! #define PATCHLEVEL 11
+  
+  #endif /* _PATCHLEVEL_H_ */
+
+			     BASH PATCH REPORT
+			     =================
+
+Bash-Release: 3.2
+Patch-ID: bash32-012
+
+Bug-Reported-by: John Wyman <JohnWyman@celink.com>
+Bug-Reference-ID: <5E7DEFC094C35044B87FAE761D9F0EE20143A3B7@exchange2k.celink.com>
+Bug-Reference-URL: 
+
+Bug-Description:
+
+Some systems (AIX 4.x) don't implement the PRI_xxx macros correctly,
+causing syntax errors when attempting to compile bash on those systems.
+This patch adds support for the PRI_MACROS_BROKEN define.
+
+You will need to re-run `configure' after applying the patch.  Run
+`touch configure' so make doesn't try to run autoconf.
+
+Patch:
+
+*** ../bash-3.2.11/config.h.in	Tue Sep 12 16:00:54 2006
+--- config.h.in	Tue Mar  6 11:17:55 2007
+***************
+*** 1,5 ****
+  /* config.h -- Configuration file for bash. */
+  
+! /* Copyright (C) 1987-2006 Free Software Foundation, Inc.
+  
+     This file is part of GNU Bash, the Bourne Again SHell.
+--- 1,5 ----
+  /* config.h -- Configuration file for bash. */
+  
+! /* Copyright (C) 1987-2007 Free Software Foundation, Inc.
+  
+     This file is part of GNU Bash, the Bourne Again SHell.
+***************
+*** 414,417 ****
+--- 414,419 ----
+  #undef HAVE_DECL_STRTOLD
+  
++ #undef PRI_MACROS_BROKEN
++ 
+  #undef STRTOLD_BROKEN
+  
+***************
+*** 1007,1010 ****
+--- 1009,1015 ----
+  #undef HAVE_DCGETTEXT
+  
++ /* Define if you have the `localeconv' function. */
++ #undef HAVE_LOCALECONV
++ 
+  /* Define if your system has a working `malloc' function. */
+  /* #undef HAVE_MALLOC */
+*** ../bash-3.2.11/builtins/printf.def	Mon Nov 13 08:58:52 2006
+--- builtins/printf.def	Sun Feb  4 13:58:59 2007
+***************
+*** 2,6 ****
+  It implements the builtin "printf" in Bash.
+  
+! Copyright (C) 1997-2005 Free Software Foundation, Inc.
+  
+  This file is part of GNU Bash, the Bourne Again SHell.
+--- 2,6 ----
+  It implements the builtin "printf" in Bash.
+  
+! Copyright (C) 1997-2007 Free Software Foundation, Inc.
+  
+  This file is part of GNU Bash, the Bourne Again SHell.
+***************
+*** 71,74 ****
+--- 71,78 ----
+  #include "common.h"
+  
++ #if defined (PRI_MACROS_BROKEN)
++ #  undef PRIdMAX
++ #endif
++ 
+  #if !defined (PRIdMAX)
+  #  if HAVE_LONG_LONG
+*** ../bash-3.2/patchlevel.h	Thu Apr 13 08:31:04 2006
+--- patchlevel.h	Mon Oct 16 14:22:54 2006
+***************
+*** 26,30 ****
+     looks for to find the patch level (for the sccs version string). */
+  
+! #define PATCHLEVEL 11
+  
+  #endif /* _PATCHLEVEL_H_ */
+--- 26,30 ----
+     looks for to find the patch level (for the sccs version string). */
+  
+! #define PATCHLEVEL 12
+  
+  #endif /* _PATCHLEVEL_H_ */
+
+			     BASH PATCH REPORT
+			     =================
+
+Bash-Release: 3.2
+Patch-ID: bash32-013
+
+Bug-Reported-by: Magnus Svensson <msvensson@mysql.com>
+Bug-Reference-ID: <45BDC44D.80609@mysql.com>
+Bug-Reference-URL: http://lists.gnu.org/archive/html/bug-readline/2007-01/msg00002.html
+
+Bug-Description:
+
+Readline neglects to reallocate the array it uses to keep track of wrapped
+screen lines when increasing its size.  This will eventually result in
+segmentation faults when given sufficiently long input.
+
+Patch:
+
+*** ../bash-3.2-patched/lib/readline/display.c	Thu Sep 14 14:20:12 2006
+--- lib/readline/display.c	Fri Feb  2 20:23:17 2007
+***************
+*** 561,574 ****
+--- 561,586 ----
+        wrap_offset = prompt_invis_chars_first_line = 0;
+      }
+  
++ #if defined (HANDLE_MULTIBYTE)
+  #define CHECK_INV_LBREAKS() \
+        do { \
+  	if (newlines >= (inv_lbsize - 2)) \
+  	  { \
+  	    inv_lbsize *= 2; \
+  	    inv_lbreaks = (int *)xrealloc (inv_lbreaks, inv_lbsize * sizeof (int)); \
++ 	    _rl_wrapped_line = (int *)xrealloc (_rl_wrapped_line, inv_lbsize * sizeof (int)); \
+  	  } \
+        } while (0)
++ #else
++ #define CHECK_INV_LBREAKS() \
++       do { \
++ 	if (newlines >= (inv_lbsize - 2)) \
++ 	  { \
++ 	    inv_lbsize *= 2; \
++ 	    inv_lbreaks = (int *)xrealloc (inv_lbreaks, inv_lbsize * sizeof (int)); \
++ 	  } \
++       } while (0)
++ #endif /* HANDLE_MULTIBYTE */
+  
+  #if defined (HANDLE_MULTIBYTE)	  
+  #define CHECK_LPOS() \
+
+*** ../bash-3.2/patchlevel.h	Thu Apr 13 08:31:04 2006
+--- patchlevel.h	Mon Oct 16 14:22:54 2006
+***************
+*** 26,30 ****
+     looks for to find the patch level (for the sccs version string). */
+  
+! #define PATCHLEVEL 12
+  
+  #endif /* _PATCHLEVEL_H_ */
+--- 26,30 ----
+     looks for to find the patch level (for the sccs version string). */
+  
+! #define PATCHLEVEL 13
+  
+  #endif /* _PATCHLEVEL_H_ */
+
+			     BASH PATCH REPORT
+			     =================
+
+Bash-Release: 3.2
+Patch-ID: bash32-014
+
+Bug-Reported-by: Brett Stahlman <brettstahlman@comcast.net>
+Bug-Reference-ID: <000701c72d29$a227e0e0$5ec7cf47@computerroom>
+Bug-Reference-URL: http://lists.gnu.org/archive/html/bug-bash/2006-12/msg00065.html
+
+Bug-Description:
+
+Bash mishandles word splitting under certain circumstances when IFS is
+null (IFS=).  Constructs affected include ${param/pat/sub} and others
+when expanding arrays (array[@]).
+
+Patch:
+
+*** ../bash-3.2-patched/array.c	Wed Jun  1 16:39:22 2005
+--- array.c	Mon Jan 15 22:58:00 2007
+***************
+*** 121,125 ****
+  }
+  
+- #ifdef INCLUDE_UNUSED
+  /*
+   * Make and return a new array composed of the elements in array A from
+--- 121,124 ----
+***************
+*** 142,146 ****
+  		n = array_create_element (element_index(p), element_value(p));
+  		ADD_BEFORE(a->head, n);
+! 		mi = element_index(ae);
+  	}
+  	a->num_elements = i;
+--- 141,145 ----
+  		n = array_create_element (element_index(p), element_value(p));
+  		ADD_BEFORE(a->head, n);
+! 		mi = element_index(n);
+  	}
+  	a->num_elements = i;
+***************
+*** 148,152 ****
+  	return a;
+  }
+- #endif
+  
+  /*
+--- 147,150 ----
+***************
+*** 301,304 ****
+--- 299,319 ----
+  }
+  
++ ARRAY	*
++ array_quote_escapes(array)
++ ARRAY	*array;
++ {
++ 	ARRAY_ELEMENT	*a;
++ 	char	*t;
++ 
++ 	if (array == 0 || array_head(array) == 0 || array_empty(array))
++ 		return (ARRAY *)NULL;
++ 	for (a = element_forw(array->head); a != array->head; a = element_forw(a)) {
++ 		t = quote_escapes (a->value);
++ 		FREE(a->value);
++ 		a->value = t;
++ 	}
++ 	return array;
++ }
++ 
+  /*
+   * Return a string whose elements are the members of array A beginning at
+***************
+*** 312,318 ****
+  int	starsub, quoted;
+  {
+  	ARRAY_ELEMENT	*h, *p;
+  	arrayind_t	i;
+! 	char		*ifs, sep[2];
+  
+  	p = a ? array_head (a) : 0;
+--- 327,334 ----
+  int	starsub, quoted;
+  {
++ 	ARRAY		*a2;
+  	ARRAY_ELEMENT	*h, *p;
+  	arrayind_t	i;
+! 	char		*ifs, sep[2], *t;
+  
+  	p = a ? array_head (a) : 0;
+***************
+*** 337,340 ****
+--- 353,363 ----
+  		;
+  
++ 	a2 = array_slice(a, h, p);
++ 
++ 	if (quoted & (Q_DOUBLE_QUOTES|Q_HERE_DOCUMENT))
++ 		array_quote(a2);
++ 	else
++ 		array_quote_escapes(a2);
++ 
+  	if (starsub && (quoted & (Q_DOUBLE_QUOTES|Q_HERE_DOCUMENT))) {
+  		ifs = getifs();
+***************
+*** 344,348 ****
+  	sep[1] = '\0';
+  
+! 	return (array_to_string_internal (h, p, sep, quoted));
+  }
+  
+--- 367,374 ----
+  	sep[1] = '\0';
+  
+! 	t = array_to_string (a2, sep, 0);
+! 	array_dispose(a2);
+! 
+! 	return t;
+  }
+  
+***************
+*** 368,372 ****
+  
+  	if (mflags & MATCH_QUOTED)
+! 		array_quote (a2);
+  	if (mflags & MATCH_STARSUB) {
+  		ifs = getifs();
+--- 394,400 ----
+  
+  	if (mflags & MATCH_QUOTED)
+! 		array_quote(a2);
+! 	else
+! 		array_quote_escapes(a2);
+  	if (mflags & MATCH_STARSUB) {
+  		ifs = getifs();
+*** ../bash-3.2-patched/array.h	Sun Jun  1 15:50:30 2003
+--- array.h	Mon Jan 15 22:35:35 2007
+***************
+*** 56,59 ****
+--- 56,60 ----
+  extern int	array_shift_element __P((ARRAY *, char *));
+  extern ARRAY	*array_quote __P((ARRAY *));
++ extern ARRAY	*array_quote_escapes __P((ARRAY *));
+  
+  extern char	*array_subrange __P((ARRAY *, arrayind_t, arrayind_t, int, int));
+*** ../bash-3.2-patched/subst.c	Fri Mar  2 16:20:50 2007
+--- subst.c	Tue Mar  6 11:40:55 2007
+***************
+*** 1888,1892 ****
+--- 1889,1899 ----
+  #endif
+  
++   /* XXX -- why call quote_list if ifs == 0?  we can get away without doing
++      it now that quote_escapes quotes spaces */
++ #if 0
+    tlist = ((quoted & (Q_HERE_DOCUMENT|Q_DOUBLE_QUOTES)) || (ifs && *ifs == 0))
++ #else
++   tlist = (quoted & (Q_HERE_DOCUMENT|Q_DOUBLE_QUOTES))
++ #endif
+  		? quote_list (list)
+  		: list_quote_escapes (list);
+***************
+*** 2922,2926 ****
+  /* Quote escape characters in string s, but no other characters.  This is
+     used to protect CTLESC and CTLNUL in variable values from the rest of
+!    the word expansion process after the variable is expanded. */
+  char *
+  quote_escapes (string)
+--- 2935,2944 ----
+  /* Quote escape characters in string s, but no other characters.  This is
+     used to protect CTLESC and CTLNUL in variable values from the rest of
+!    the word expansion process after the variable is expanded.  If IFS is
+!    null, we quote spaces as well, just in case we split on spaces later
+!    (in the case of unquoted $@, we will eventually attempt to split the
+!    entire word on spaces).  Corresponding code exists in dequote_escapes.
+!    Even if we don't end up splitting on spaces, quoting spaces is not a
+!    problem. */
+  char *
+  quote_escapes (string)
+***************
+*** 2930,2933 ****
+--- 2948,2952 ----
+    size_t slen;
+    char *result, *send;
++   int quote_spaces;
+    DECLARE_MBSTATE; 
+  
+***************
+*** 2935,2938 ****
+--- 2954,2958 ----
+    send = string + slen;
+  
++   quote_spaces = (ifs_value && *ifs_value == 0);
+    t = result = (char *)xmalloc ((slen * 2) + 1);
+    s = string;
+***************
+*** 2940,2944 ****
+    while (*s)
+      {
+!       if (*s == CTLESC || *s == CTLNUL)
+  	*t++ = CTLESC;
+        COPY_CHAR_P (t, s, send);
+--- 2960,2964 ----
+    while (*s)
+      {
+!       if (*s == CTLESC || *s == CTLNUL || (quote_spaces && *s == ' '))
+  	*t++ = CTLESC;
+        COPY_CHAR_P (t, s, send);
+***************
+*** 2982,2985 ****
+--- 3002,3006 ----
+    size_t slen;
+    char *result, *send;
++   int quote_spaces;
+    DECLARE_MBSTATE;
+  
+***************
+*** 2996,3002 ****
+      return (strcpy (result, s));
+  
+    while (*s)
+      {
+!       if (*s == CTLESC && (s[1] == CTLESC || s[1] == CTLNUL))
+  	{
+  	  s++;
+--- 3017,3024 ----
+      return (strcpy (result, s));
+  
++   quote_spaces = (ifs_value && *ifs_value == 0);
+    while (*s)
+      {
+!       if (*s == CTLESC && (s[1] == CTLESC || s[1] == CTLNUL || (quote_spaces && s[1] == ' ')))
+  	{
+  	  s++;
+***************
+*** 4462,4466 ****
+        RESIZE_MALLOCED_BUFFER (istring, istring_index, 2, istring_size, DEFAULT_ARRAY_SIZE);
+  
+!       if ((quoted & (Q_HERE_DOCUMENT|Q_DOUBLE_QUOTES)) || c == CTLESC || c == CTLNUL)
+  	istring[istring_index++] = CTLESC;
+  
+--- 4498,4510 ----
+        RESIZE_MALLOCED_BUFFER (istring, istring_index, 2, istring_size, DEFAULT_ARRAY_SIZE);
+  
+!       /* This is essentially quote_string inline */
+!       if ((quoted & (Q_HERE_DOCUMENT|Q_DOUBLE_QUOTES)) /* || c == CTLESC || c == CTLNUL */)
+! 	istring[istring_index++] = CTLESC;
+!       /* Escape CTLESC and CTLNUL in the output to protect those characters
+! 	 from the rest of the word expansions (word splitting and globbing.)
+! 	 This is essentially quote_escapes inline. */
+!       else if (c == CTLESC)
+! 	istring[istring_index++] = CTLESC;
+!       else if (c == CTLNUL || (c == ' ' && (ifs_value && *ifs_value == 0)))
+  	istring[istring_index++] = CTLESC;
+  
+***************
+*** 5552,5555 ****
+--- 5610,5616 ----
+  	 rely on array_subrange to understand how to deal with them). */
+        tt = array_subrange (array_cell (v), e1, e2, starsub, quoted);
++ #if 0
++       /* array_subrange now calls array_quote_escapes as appropriate, so the
++ 	 caller no longer needs to. */
+        if ((quoted & (Q_DOUBLE_QUOTES|Q_HERE_DOCUMENT)) == 0)
+  	{
+***************
+*** 5558,5561 ****
+--- 5619,5623 ----
+  	}
+        else
++ #endif
+  	temp = tt;
+        break;
+***************
+*** 5808,5811 ****
+--- 5870,5876 ----
+      case VT_ARRAYVAR:
+        temp = array_patsub (array_cell (v), p, rep, mflags);
++ #if 0
++       /* Don't need to do this anymore; array_patsub calls array_quote_escapes
++ 	 as appropriate before adding the space separators. */
+        if (temp && (mflags & MATCH_QUOTED) == 0)
+  	{
+***************
+*** 5814,5817 ****
+--- 5879,5883 ----
+  	  temp = tt;
+  	}
++ #endif
+        break;
+  #endif
+*** ../bash-3.2/patchlevel.h	Thu Apr 13 08:31:04 2006
+--- patchlevel.h	Mon Oct 16 14:22:54 2006
+***************
+*** 26,30 ****
+     looks for to find the patch level (for the sccs version string). */
+  
+! #define PATCHLEVEL 13
+  
+  #endif /* _PATCHLEVEL_H_ */
+--- 26,30 ----
+     looks for to find the patch level (for the sccs version string). */
+  
+! #define PATCHLEVEL 14
+  
+  #endif /* _PATCHLEVEL_H_ */
+
+			     BASH PATCH REPORT
+			     =================
+
+Bash-Release: 3.2
+Patch-ID: bash32-015
+
+Bug-Reported-by:
+Bug-Reference-ID:
+Bug-Reference-URL:
+
+Bug-Description:
+
+Under certain circumstances, when using FIFOs for process substitution,
+bash fails to unlink the FIFOs.  This leaves open file descriptors that
+can cause the shell to hang and litters the file system.
+
+Patch:
+
+*** ../bash-3.2-patched/execute_cmd.c	Fri Mar  2 16:20:50 2007
+--- execute_cmd.c	Wed Jan 31 23:12:06 2007
+***************
+*** 3051,3054 ****
+--- 3051,3059 ----
+      command_line = savestring (the_printed_command_except_trap);
+  
++ #if defined (PROCESS_SUBSTITUTION)
++   if ((subshell_environment & SUBSHELL_COMSUB) && (simple_command->flags & CMD_NO_FORK) && fifos_pending() > 0)
++     simple_command->flags &= ~CMD_NO_FORK;
++ #endif
++ 
+    execute_disk_command (words, simple_command->redirects, command_line,
+  			pipe_in, pipe_out, async, fds_to_close,
+*** ../bash-3.2-patched/subst.c	Fri Mar  2 16:20:50 2007
+--- subst.c	Tue Mar  6 11:40:55 2007
+***************
+*** 4129,4132 ****
+--- 4151,4160 ----
+  }
+  
++ int
++ fifos_pending ()
++ {
++   return nfifo;
++ }
++ 
+  static char *
+  make_named_pipe ()
+***************
+*** 4178,4181 ****
+--- 4206,4215 ----
+  }
+  
++ int
++ fifos_pending ()
++ {
++   return 0;	/* used for cleanup; not needed with /dev/fd */
++ }
++ 
+  void
+  unlink_fifo_list ()
+***************
+*** 4671,4674 ****
+--- 4719,4725 ----
+        last_command_exit_value = rc;
+        rc = run_exit_trap ();
++ #if defined (PROCESS_SUBSTITUTION)
++       unlink_fifo_list ();
++ #endif
+        exit (rc);
+      }
+*** ../bash-3.2-patched/subst.h	Tue Sep 19 08:34:41 2006
+--- subst.h	Wed Jan 10 09:46:47 2007
+***************
+*** 223,226 ****
+--- 223,227 ----
+  extern char *pat_subst __P((char *, char *, char *, int));
+  
++ extern int fifos_pending __P((void));
+  extern void unlink_fifo_list __P((void));
+
+*** ../bash-3.2/patchlevel.h	Thu Apr 13 08:31:04 2006
+--- patchlevel.h	Mon Oct 16 14:22:54 2006
+***************
+*** 26,30 ****
+     looks for to find the patch level (for the sccs version string). */
+  
+! #define PATCHLEVEL 14
+  
+  #endif /* _PATCHLEVEL_H_ */
+--- 26,30 ----
+     looks for to find the patch level (for the sccs version string). */
+  
+! #define PATCHLEVEL 15
+  
+  #endif /* _PATCHLEVEL_H_ */
