@@ -6,7 +6,7 @@
 name=shadow
 version=4.0.18.1
 release=5
-source=(ftp://ftp.pld.org.pl/software/shadow/$name-$version.tar.bz2
+source=(http://gentoo.osuosl.org/distfiles/$name-$version.tar.bz2
         pwck login.defs
         shadow-4.0.16-fix-useradd-usergroups.patch
         shadow-4.0.18.1-useradd-usermod.diff)
