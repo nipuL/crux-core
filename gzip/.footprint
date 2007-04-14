@@ -1,14 +1,15 @@
 drwxr-xr-x	root/root	bin/
-lrwxrwxrwx	root/root	bin/gunzip -> gzip
+-rwxr-xr-x	root/root	bin/gunzip
 -rwxr-xr-x	root/root	bin/gzip
-lrwxrwxrwx	root/root	bin/zcat -> gzip
+-rwxr-xr-x	root/root	bin/zcat
 drwxr-xr-x	root/root	usr/
 drwxr-xr-x	root/root	usr/bin/
 -rwxr-xr-x	root/root	usr/bin/gzexe
-lrwxrwxrwx	root/root	usr/bin/zcmp -> zdiff
+-rwxr-xr-x	root/root	usr/bin/uncompress
+-rwxr-xr-x	root/root	usr/bin/zcmp
 -rwxr-xr-x	root/root	usr/bin/zdiff
-lrwxrwxrwx	root/root	usr/bin/zegrep -> zgrep
-lrwxrwxrwx	root/root	usr/bin/zfgrep -> zgrep
+-rwxr-xr-x	root/root	usr/bin/zegrep
+-rwxr-xr-x	root/root	usr/bin/zfgrep
 -rwxr-xr-x	root/root	usr/bin/zforce
 -rwxr-xr-x	root/root	usr/bin/zgrep
 -rwxr-xr-x	root/root	usr/bin/zless
