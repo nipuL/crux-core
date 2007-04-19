@@ -6,25 +6,27 @@
 
 name=vim
 version=7.0
-release=6
+release=7
 source=(ftp://ftp.vim.org/pub/vim/unix/vim-$version.tar.bz2 \
-        http://jue.li/crux/files/$name-7.0.001-109.tar.gz)
+        http://jue.li/crux/files/$name-7.0.001-109.tar.gz \
+        http://jue.li/crux/files/$name-7.0.110-224.tar.gz)
 
 build () {
     cd $name${version/\./}
 
-    for p in $SRC/$name-7.0.001-109/*; do
+    for p in $SRC/$name-7.0.{001-109,110-224}/*; do
        patch -p0 -i $p
     done
 
     cd src
     ./configure --prefix=/usr \
-		--with-vim-name=vim \
-		--with-x=no \
-		--enable-gui=no \
-		--enable-multibyte \
-		--disable-gpm \
-		--disable-nls
+                --with-vim-name=vim \
+                --with-x=no \
+                --enable-gui=no \
+                --enable-multibyte \
+                --disable-gpm \
+                --disable-nls
+
     make VIMRTDIR=
     make VIMRTDIR= DESTDIR=$PKG installvimbin installruntime installlinks
 
