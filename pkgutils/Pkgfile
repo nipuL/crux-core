@@ -1,9 +1,10 @@
 # Description: A set of utilities to manage software packages 
 # URL:         http://www.fukt.bsnet.se/~per/pkgutils/
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
+# Depends on:  libarchive
 
 name=pkgutils
-version=5.22
+version=5.30.0
 release=1
 source=(http://crux.nu/files/$name-$version.tar.gz)
 
