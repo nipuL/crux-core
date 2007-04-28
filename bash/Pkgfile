@@ -4,25 +4,25 @@
 # Depends on:  ncurses
 
 name=bash
-version=3.2.15
+version=3.2.17
 release=1
 source=(http://ftp.gnu.org/gnu/$name/$name-3.2.tar.gz \
-        $name-3.2-001-015.patch \
+        $name-3.2-001-017.patch \
         $name-3.2-doc.patch \
         profile)
 
 build() {
     cd $name-3.2
     
-    patch -p0 < $SRC/$name-3.2-001-015.patch
+    patch -p0 < $SRC/$name-3.2-001-017.patch
     patch -p1 < $SRC/$name-3.2-doc.patch
-    
+
     touch configure
     ./configure --prefix=/usr \
                 --exec-prefix= \
                 --mandir=/usr/man \
                 --disable-nls
-    make
+    make -j1
     make DESTDIR=$PKG install
 
     rm -rf $PKG/usr/info $PKG/bin/bashbug $PKG/usr/man/man1/bashbug.1
