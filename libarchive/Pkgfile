@@ -5,7 +5,7 @@
 
 name=libarchive
 version=2.1.9
-release=1
+release=2
 source=(http://people.freebsd.org/~kientzle/$name/src/$name-$version.tar.gz)
 
 build() {
@@ -15,4 +15,9 @@ build() {
 
 	make
 	make DESTDIR=$PKG install
+
+	rm -f $PKG/usr/bin/bsdtar
+	rm -f $PKG/usr/man/man1/bsdtar.1
+	rmdir $PKG/usr/bin
+	rmdir $PKG/usr/man/man1
 }
