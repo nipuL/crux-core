@@ -4,7 +4,7 @@
 # Depends on: bzip2, zlib
 
 name=libarchive
-version=2.1.10
+version=2.2.1
 release=1
 source=(http://people.freebsd.org/~kientzle/$name/src/$name-$version.tar.gz)
 
