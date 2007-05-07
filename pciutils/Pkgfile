@@ -4,21 +4,19 @@
 # Maintainer:  Jürgen Daubert, juergen dot daubert at t-online dot de
 
 name=pciutils
-version=2.2.4
-release=2
-source=(http://www.kernel.org/pub/software/utils/$name/$name-$version.tar.gz \
-        http://jue.li/crux/files/pci.ids-060909.gz)
+version=2.2.5
+release=1
+source=(http://www.kernel.org/pub/software/utils/$name/$name-$version.tar.gz)
 
 build() {
-    mkdir -p $PKG/usr/{lib,share,include/pci}
-    gunzip -c $SRC/pci.ids-060909.gz > $PKG/usr/share/pci.ids
-
     cd $name-$version
     sed -i "s/-O2/$CFLAGS/" Makefile
     make PREFIX=/usr ZLIB=no
     make PREFIX=$PKG/usr install 
 
-    cp lib/libpci.a $PKG/usr/lib
-    cp lib/*.h $PKG/usr/include/pci
+    install -d $PKG/usr/{lib,share,include/pci}
+    install -m 644 pci.ids $PKG/usr/share
+    install -m 644 lib/libpci.a $PKG/usr/lib
+    install -m 644 lib/*.h $PKG/usr/include/pci
     rm $PKG/usr/include/pci/i386-io-{h*,s*,w*}
 }
