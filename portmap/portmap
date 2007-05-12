@@ -5,7 +5,7 @@
 
 case $1 in
 start)
-	/sbin/portmap
+	/sbin/portmap -t /var/empty
 	;;
 stop)
 	killall -q /sbin/portmap
