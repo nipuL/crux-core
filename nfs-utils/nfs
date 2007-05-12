@@ -5,6 +5,7 @@
 
 case $1 in
 start)
+	/usr/sbin/sm-notify -q
 	/usr/sbin/rpc.statd
 	/bin/mount -a -t nfs
 	;;
