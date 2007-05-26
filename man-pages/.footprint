@@ -38,6 +38,7 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/dup2.2.gz
 -rw-r--r--	root/root	usr/man/man2/epoll_create.2.gz
 -rw-r--r--	root/root	usr/man/man2/epoll_ctl.2.gz
+-rw-r--r--	root/root	usr/man/man2/epoll_pwait.2.gz
 -rw-r--r--	root/root	usr/man/man2/epoll_wait.2.gz
 -rw-r--r--	root/root	usr/man/man2/execve.2.gz
 -rw-r--r--	root/root	usr/man/man2/exit.2.gz
@@ -444,6 +445,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/bcmp.3.gz
 -rw-r--r--	root/root	usr/man/man3/bcopy.3.gz
 -rw-r--r--	root/root	usr/man/man3/bindresvport.3.gz
+-rw-r--r--	root/root	usr/man/man3/bsd_signal.3.gz
 -rw-r--r--	root/root	usr/man/man3/bsearch.3.gz
 -rw-r--r--	root/root	usr/man/man3/bstring.3.gz
 -rw-r--r--	root/root	usr/man/man3/btowc.3.gz
@@ -617,6 +619,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/dremf.3.gz
 -rw-r--r--	root/root	usr/man/man3/dreml.3.gz
 -rw-r--r--	root/root	usr/man/man3/dysize.3.gz
+-rw-r--r--	root/root	usr/man/man3/eaccess.3.gz
 -rw-r--r--	root/root	usr/man/man3/ecb_crypt.3.gz
 -rw-r--r--	root/root	usr/man/man3/ecvt.3.gz
 -rw-r--r--	root/root	usr/man/man3/ecvt_r.3.gz
@@ -666,6 +669,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/ether_ntoa.3.gz
 -rw-r--r--	root/root	usr/man/man3/ether_ntoa_r.3.gz
 -rw-r--r--	root/root	usr/man/man3/ether_ntohost.3.gz
+-rw-r--r--	root/root	usr/man/man3/euidaccess.3.gz
 -rw-r--r--	root/root	usr/man/man3/exec.3.gz
 -rw-r--r--	root/root	usr/man/man3/execl.3.gz
 -rw-r--r--	root/root	usr/man/man3/execle.3.gz
@@ -885,6 +889,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/getspent_r.3.gz
 -rw-r--r--	root/root	usr/man/man3/getspnam.3.gz
 -rw-r--r--	root/root	usr/man/man3/getspnam_r.3.gz
+-rw-r--r--	root/root	usr/man/man3/getsubopt.3.gz
 -rw-r--r--	root/root	usr/man/man3/getttyent.3.gz
 -rw-r--r--	root/root	usr/man/man3/getttynam.3.gz
 -rw-r--r--	root/root	usr/man/man3/getumask.3.gz
@@ -1255,6 +1260,8 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/sem_init.3.gz
 -rw-r--r--	root/root	usr/man/man3/sem_open.3.gz
 -rw-r--r--	root/root	usr/man/man3/sem_post.3.gz
+-rw-r--r--	root/root	usr/man/man3/sem_timedwait.3.gz
+-rw-r--r--	root/root	usr/man/man3/sem_trywait.3.gz
 -rw-r--r--	root/root	usr/man/man3/sem_unlink.3.gz
 -rw-r--r--	root/root	usr/man/man3/sem_wait.3.gz
 -rw-r--r--	root/root	usr/man/man3/setaliasent.3.gz
@@ -1419,6 +1426,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/sysconf.3.gz
 -rw-r--r--	root/root	usr/man/man3/syslog.3.gz
 -rw-r--r--	root/root	usr/man/man3/system.3.gz
+-rw-r--r--	root/root	usr/man/man3/sysv_signal.3.gz
 -rw-r--r--	root/root	usr/man/man3/tan.3.gz
 -rw-r--r--	root/root	usr/man/man3/tanf.3.gz
 -rw-r--r--	root/root	usr/man/man3/tanh.3.gz
