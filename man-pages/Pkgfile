@@ -4,9 +4,9 @@
 # Depends on:  man
 
 name=man-pages
-version=2.51
+version=2.53
 release=1
-source=(ftp://ftp.win.tue.nl/pub/linux-local/manpages/$name-$version.tar.gz)
+source=(ftp://ftp.win.tue.nl/pub/linux-local/manpages/$name-$version.tar.bz2)
 
 build() {
     cd $name-$version
