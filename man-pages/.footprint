@@ -208,7 +208,6 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/putpmsg.2.gz
 -rw-r--r--	root/root	usr/man/man2/pwrite.2.gz
 -rw-r--r--	root/root	usr/man/man2/query_module.2.gz
--rw-r--r--	root/root	usr/man/man2/quotactl.2.gz
 -rw-r--r--	root/root	usr/man/man2/read.2.gz
 -rw-r--r--	root/root	usr/man/man2/readahead.2.gz
 -rw-r--r--	root/root	usr/man/man2/readdir.2.gz
@@ -1680,7 +1679,6 @@ drwxr-xr-x	root/root	usr/man/man5/
 drwxr-xr-x	root/root	usr/man/man6/
 -rw-r--r--	root/root	usr/man/man6/intro.6.gz
 drwxr-xr-x	root/root	usr/man/man7/
--rw-r--r--	root/root	usr/man/man7/LDP.7.gz
 -rw-r--r--	root/root	usr/man/man7/arp.7.gz
 -rw-r--r--	root/root	usr/man/man7/ascii.7.gz
 -rw-r--r--	root/root	usr/man/man7/boot.7.gz
@@ -1727,6 +1725,7 @@ drwxr-xr-x	root/root	usr/man/man7/
 -rw-r--r--	root/root	usr/man/man7/latin9.7.gz
 -rw-r--r--	root/root	usr/man/man7/locale.7.gz
 -rw-r--r--	root/root	usr/man/man7/mailaddr.7.gz
+-rw-r--r--	root/root	usr/man/man7/man-pages.7.gz
 -rw-r--r--	root/root	usr/man/man7/man.7.gz
 -rw-r--r--	root/root	usr/man/man7/mdoc.7.gz
 -rw-r--r--	root/root	usr/man/man7/mdoc.samples.7.gz
@@ -1772,6 +1771,4 @@ drwxr-xr-x	root/root	usr/man/man8/
 -rw-r--r--	root/root	usr/man/man8/tzselect.8.gz
 -rw-r--r--	root/root	usr/man/man8/zdump.8.gz
 -rw-r--r--	root/root	usr/man/man8/zic.8.gz
-drwxr-xr-x	root/root	usr/man/man9/
--rw-r--r--	root/root	usr/man/man9/ksoftirqd.9.gz
 -rw-r--r--	root/root	usr/man/whatis (EMPTY)
