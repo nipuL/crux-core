@@ -3,13 +3,13 @@
 # Maintainer: Tilman Sauerbeck, tilman at crux dot nu
 
 name=pkg-config
-version=0.21
+version=0.22
 release=1
 source=(http://$name.freedesktop.org/releases/$name-$version.tar.gz)
 
 build() {
 	cd $name-$version
-	./configure --prefix=/usr
+	./configure --prefix=/usr --mandir=/usr/man
 	make
 	make DESTDIR=$PKG install
 }
