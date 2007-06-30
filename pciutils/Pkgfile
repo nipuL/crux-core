@@ -4,7 +4,7 @@
 # Maintainer:  Jürgen Daubert, juergen dot daubert at t-online dot de
 
 name=pciutils
-version=2.2.5
+version=2.2.6
 release=1
 source=(http://www.kernel.org/pub/software/utils/$name/$name-$version.tar.gz)
 
@@ -12,11 +12,5 @@ build() {
     cd $name-$version
     sed -i "s/-O2/$CFLAGS/" Makefile
     make PREFIX=/usr ZLIB=no
-    make PREFIX=$PKG/usr install 
-
-    install -d $PKG/usr/{lib,share,include/pci}
-    install -m 644 pci.ids $PKG/usr/share
-    install -m 644 lib/libpci.a $PKG/usr/lib
-    install -m 644 lib/*.h $PKG/usr/include/pci
-    rm $PKG/usr/include/pci/i386-io-{h*,s*,w*}
+    make PREFIX=$PKG/usr install install-lib
 }

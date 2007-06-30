@@ -3,14 +3,12 @@ drwxr-xr-x	root/root	usr/include/
 drwxr-xr-x	root/root	usr/include/pci/
 -rw-r--r--	root/root	usr/include/pci/config.h
 -rw-r--r--	root/root	usr/include/pci/header.h
--rw-r--r--	root/root	usr/include/pci/i386-io-linux.h
--rw-r--r--	root/root	usr/include/pci/internal.h
 -rw-r--r--	root/root	usr/include/pci/pci.h
--rw-r--r--	root/root	usr/include/pci/pread.h
--rw-r--r--	root/root	usr/include/pci/sysdep.h
 -rw-r--r--	root/root	usr/include/pci/types.h
 drwxr-xr-x	root/root	usr/lib/
 -rw-r--r--	root/root	usr/lib/libpci.a
+drwxr-xr-x	root/root	usr/lib/pkgconfig/
+-rw-r--r--	root/root	usr/lib/pkgconfig/libpci.pc
 drwxr-xr-x	root/root	usr/man/
 drwxr-xr-x	root/root	usr/man/man8/
 -rw-r--r--	root/root	usr/man/man8/lspci.8.gz
