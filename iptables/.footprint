@@ -9,7 +9,7 @@ drwxr-xr-x	root/root	usr/lib/iptables/
 -rwxr-xr-x	root/root	usr/lib/iptables/libip6t_MARK.so
 -rwxr-xr-x	root/root	usr/lib/iptables/libip6t_NFQUEUE.so
 -rwxr-xr-x	root/root	usr/lib/iptables/libip6t_REJECT.so
--rwxr-xr-x	root/root	usr/lib/iptables/libip6t_TRACE.so
+-rwxr-xr-x	root/root	usr/lib/iptables/libip6t_TCPMSS.so
 -rwxr-xr-x	root/root	usr/lib/iptables/libip6t_connmark.so
 -rwxr-xr-x	root/root	usr/lib/iptables/libip6t_esp.so
 -rwxr-xr-x	root/root	usr/lib/iptables/libip6t_eui64.so
@@ -44,17 +44,14 @@ drwxr-xr-x	root/root	usr/lib/iptables/
 -rwxr-xr-x	root/root	usr/lib/iptables/libipt_REJECT.so
 -rwxr-xr-x	root/root	usr/lib/iptables/libipt_SAME.so
 -rwxr-xr-x	root/root	usr/lib/iptables/libipt_SNAT.so
--rwxr-xr-x	root/root	usr/lib/iptables/libipt_TARPIT.so
 -rwxr-xr-x	root/root	usr/lib/iptables/libipt_TCPMSS.so
 -rwxr-xr-x	root/root	usr/lib/iptables/libipt_TOS.so
--rwxr-xr-x	root/root	usr/lib/iptables/libipt_TRACE.so
 -rwxr-xr-x	root/root	usr/lib/iptables/libipt_TTL.so
 -rwxr-xr-x	root/root	usr/lib/iptables/libipt_ULOG.so
 -rwxr-xr-x	root/root	usr/lib/iptables/libipt_addrtype.so
 -rwxr-xr-x	root/root	usr/lib/iptables/libipt_ah.so
 -rwxr-xr-x	root/root	usr/lib/iptables/libipt_comment.so
 -rwxr-xr-x	root/root	usr/lib/iptables/libipt_connbytes.so
--rwxr-xr-x	root/root	usr/lib/iptables/libipt_connlimit.so
 -rwxr-xr-x	root/root	usr/lib/iptables/libipt_connmark.so
 -rwxr-xr-x	root/root	usr/lib/iptables/libipt_conntrack.so
 -rwxr-xr-x	root/root	usr/lib/iptables/libipt_dccp.so
@@ -76,7 +73,6 @@ drwxr-xr-x	root/root	usr/lib/iptables/
 -rwxr-xr-x	root/root	usr/lib/iptables/libipt_policy.so
 -rwxr-xr-x	root/root	usr/lib/iptables/libipt_realm.so
 -rwxr-xr-x	root/root	usr/lib/iptables/libipt_recent.so
--rwxr-xr-x	root/root	usr/lib/iptables/libipt_rpc.so
 -rwxr-xr-x	root/root	usr/lib/iptables/libipt_sctp.so
 -rwxr-xr-x	root/root	usr/lib/iptables/libipt_standard.so
 -rwxr-xr-x	root/root	usr/lib/iptables/libipt_state.so
