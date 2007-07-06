@@ -52,6 +52,8 @@ drwxr-xr-x	root/root	usr/include/ext2fs/
 -rw-r--r--	root/root	usr/include/ext2fs/ext2_io.h
 -rw-r--r--	root/root	usr/include/ext2fs/ext2_types.h
 -rw-r--r--	root/root	usr/include/ext2fs/ext2fs.h
+-rw-r--r--	root/root	usr/include/ext2fs/ext3_extents.h
+-rw-r--r--	root/root	usr/include/ext2fs/tdb.h
 drwxr-xr-x	root/root	usr/include/ss/
 -rw-r--r--	root/root	usr/include/ss/ss.h
 -rw-r--r--	root/root	usr/include/ss/ss_err.h
