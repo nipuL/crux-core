@@ -15,7 +15,7 @@ build() {
     sed "s/#CFLAGS#/$CFLAGS/" $SRC/$name-config.patch | patch -p1
     cp src/EDITME Local/Makefile
 
-    make
+    make -j1
     make DESTDIR=$PKG install
 
     install -D -m 755 $SRC/exim $PKG/etc/rc.d/exim
