@@ -72,6 +72,9 @@ only append files that are newer than copy in archive
 extract files from an archive
 .SH "OTHER OPTIONS"
 .TP
+.B \-\-allow\-name\-mangling
+re-enable handling of GNUTYPE_NAMES which is now disabled by default
+.TP
 .B \-\-anchored	
 force exclusion patterns to match initial subsequences
 .TP
@@ -84,7 +87,7 @@ use record size of Nx512 bytes (default N=20)
 .B \-B, \-\-read\-full\-records
 reblock as we read (for reading 4.2BSD pipes)
 .TP
-.B \-\-backup [TYPE]
+.B \-\-backup[\=TYPE]
 back up files instead of overwriting (TYPE=numbered, existing, simple)
 .TP 
 .B \-C, \-\-directory DIR	
@@ -142,8 +145,8 @@ keep existing files; don't overwrite them from archive
 .B \-K, \-\-starting\-file F	
 begin at file F in the archive
 .TP
-.B \-l, \-\-one\-file\-system	
-stay in local file system when creating an archive
+.B \-l, \-\-check\-links
+print a message if not all links are dumped
 .TP
 .B \-L, \-\-tape\-length N	
 change tapes after writing N*1024 bytes
@@ -172,7 +175,7 @@ match patterns case sensitively (the default)
 .B \-\-no\-recursion
 do not recurse into subdirectories
 .TP
-.B \-\-no\-same\-owner
+.B \-o, \-\-no\-same\-owner
 extract files with owner set to current user (the default for non-root
 users)
 .TP
@@ -191,8 +194,14 @@ for \-T, use "NUL" instead of newline as filename terminator
 .B \-\-numeric\-owner
 always use numbers for user/group names
 .TP
-.B \-o, \-\-old\-archive, \-\-portability	
-write a V7 format archive, rather than ANSI format
+.B \-\-old\-archive, \-\-portability	
+write a V7 format archive, rather than ANSI format.  These options are
+deprecated, please use 
+.B \-\-format\=v7
+instead.
+.TP
+.B \-\-one\-file\-system	
+stay in local file system when creating an archive
 .TP
 .B \-\-owner O
 set owner to O while adding files
@@ -207,7 +216,10 @@ ignore umask when extracting files (the default for root)
 don't strip leading `/'s from file names
 .TP
 .B \-\-posix
-create POSIX compliant archive
+create POSIX compliant archive.  This option is deprecated,
+please use 
+.B \-\-format\=posix
+instead.
 .TP
 .B \-\-preserve		
 like \-p \-s

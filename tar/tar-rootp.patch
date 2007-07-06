@@ -1,9 +1,7 @@
-Don't keep permissions by default if we are root.
-
-diff -aur tar-1.16.orig/src/extract.c tar-1.16/src/extract.c
---- tar-1.16.orig/src/extract.c	2006-06-24 18:56:56.000000000 +0200
-+++ tar-1.16/src/extract.c	2006-10-22 18:53:38.706626788 +0200
-@@ -112,8 +112,6 @@
+diff -Nru tar-1.18.orig/src/extract.c tar-1.18/src/extract.c
+--- tar-1.18.orig/src/extract.c	2007-07-05 08:19:23.000000000 +0200
++++ tar-1.18/src/extract.c	2007-07-05 08:19:37.000000000 +0200
+@@ -113,8 +113,6 @@
  extr_init (void)
  {
    we_are_root = geteuid () == 0;
