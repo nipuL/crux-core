@@ -1,6 +1,4 @@
-.TH LIBTOOLIZE 1
-.\" NAME should be all caps, SECTION should be 1-8, maybe w/ subsection
-.\" other parms are allowed: see man(7), man(1)
+.TH LIBTOOLIZE 1 "August 2003" "Library Support" "User Manuals"
 .SH NAME
 libtoolize \- add libtool support to your package
 .SH SYNOPSIS
@@ -22,6 +20,9 @@ your package, when `AC_PROG_LIBTOOL' appears in your `configure.in'.
 .B \-\-copy, \-c
 Copy files from the libtool data directory rather than creating
 symlinks.
+.TP
+.B \-\-debug
+Enable verbose shell tracing
 .TP
 .B \-\-dry-run, \-n
 Don't run any commands that modify the file system, just print them
@@ -58,4 +59,5 @@ Info system.
 .SH AUTHOR
 This manual page was written by Frederic Lepied <Lepied@debian.org>,
 for the Debian GNU/Linux system (but may be used by others).
-It was updated by Ossama Othman <ossama@debian.org>.
+It was updated by Ossama Othman <ossama@debian.org> and updated for
+Libtool 1.5 by Scott James Remnant <scott@netsplit.com>.
