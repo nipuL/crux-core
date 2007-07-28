@@ -11,5 +11,5 @@ build() {
     cd $name-$version
     ./configure --prefix=/usr
     make
-    make prefix=$PKG/usr install
+    make -j1 prefix=$PKG/usr install
 }
