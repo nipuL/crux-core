@@ -14,7 +14,7 @@ build() {
     patch -p0 < ../$name-$version-mm.patch
     ./configure --prefix=/usr --without-x
     mkdir -p $PKG/usr
-    make datasubdir=/usr/share/groff
+    make -j1 datasubdir=/usr/share/groff
     make prefix=$PKG/usr \
          datasubdir=$PKG/usr/share/groff \
          appresdir=$PKG/etc/X11/app-defaults \
