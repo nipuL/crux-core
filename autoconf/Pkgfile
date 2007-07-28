@@ -10,7 +10,7 @@ source=(ftp://ftp.gnu.org/gnu/$name/$name-$version.tar.bz2)
 build () {
 	cd $name-$version
 	./configure --prefix=/usr --mandir=$PKG/usr/man
-	make
+	make -j1
 	make prefix=$PKG/usr install
-	rm -rf $PKG/usr/share/info $PKG/usr/share/emacs
+	rm -r $PKG/usr/share/info 
 }
