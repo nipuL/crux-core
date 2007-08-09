@@ -3,13 +3,13 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=strace
-version=4.5.15
+version=4.5.16
 release=1
 source=(http://dl.sourceforge.net/$name/$name-$version.tar.bz2)
 
 build() {
     cd $name-$version
-    ./configure --prefix=/usr
+    ./configure --prefix=/usr --mandir=/usr/man
     make
     make DESTDIR=$PKG install
 }
