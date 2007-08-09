@@ -4,20 +4,18 @@
 # Depends on: bzip2, zlib
 
 name=libarchive
-version=2.2.5
+version=2.2.6
 release=1
 source=(http://people.freebsd.org/~kientzle/$name/src/$name-$version.tar.gz)
 
 build() {
 	cd libarchive-$version
 
-	./configure --prefix=/usr --mandir=/usr/man
+	./configure --prefix=/usr --mandir=/usr/man --disable-bsdtar
 
 	make
 	make DESTDIR=$PKG install
 
-	rm -f $PKG/usr/bin/bsdtar
-	rm -f $PKG/usr/man/man1/bsdtar.1
 	rmdir $PKG/usr/bin
 	rmdir $PKG/usr/man/man1
 }
