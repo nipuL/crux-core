@@ -9,6 +9,8 @@ drwxr-xr-x	root/root	bin/
 -rwxr-xr-x	root/root	bin/xfs_info
 -rwxr-xr-x	root/root	bin/xfs_io
 -rwxr-xr-x	root/root	bin/xfs_logprint
+-rwxr-xr-x	root/root	bin/xfs_mdrestore
+-rwxr-xr-x	root/root	bin/xfs_metadump
 -rwxr-xr-x	root/root	bin/xfs_mkfile
 -rwxr-xr-x	root/root	bin/xfs_ncheck
 -rwxr-xr-x	root/root	bin/xfs_quota
@@ -37,6 +39,8 @@ drwxr-xr-x	root/root	usr/man/man8/
 lrwxrwxrwx	root/root	usr/man/man8/xfs_info.8.gz -> xfs_growfs.8.gz
 -rw-r--r--	root/root	usr/man/man8/xfs_io.8.gz
 -rw-r--r--	root/root	usr/man/man8/xfs_logprint.8.gz
+-rw-r--r--	root/root	usr/man/man8/xfs_mdrestore.8.gz
+-rw-r--r--	root/root	usr/man/man8/xfs_metadump.8.gz
 -rw-r--r--	root/root	usr/man/man8/xfs_mkfile.8.gz
 -rw-r--r--	root/root	usr/man/man8/xfs_ncheck.8.gz
 -rw-r--r--	root/root	usr/man/man8/xfs_quota.8.gz
