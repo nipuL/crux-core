@@ -5,18 +5,22 @@
 
 name=rsync
 version=2.6.9
-release=1
+release=2
 source=(http://rsync.samba.org/ftp/$name/$name-$version.tar.gz \
-        rsyncd.conf rsyncd rsync.driver)
+        rsyncd.conf rsyncd rsync.driver \
+        $name-$version-fname-obo.diff)
 
 build () {
     cd $name-$version
+
+    patch -p1 -i $SRC/$name-$version-fname-obo.diff
+
     ./configure --prefix=/usr \
                 --mandir=/usr/man \
                 --with-rsh=ssh
     make
     make DESTDIR=$PKG install
-    
+
     mkdir -p $PKG/etc/{rc.d,ports/drivers} $PKG/var/log
     install -m 755 $SRC/rsyncd $PKG/etc/rc.d
     install -m 644 $SRC/rsyncd.conf $PKG/etc
