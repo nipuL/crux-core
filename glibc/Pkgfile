@@ -3,16 +3,16 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=glibc
-version=2.5
+version=2.6.1
 release=1
 source=(http://ftp.gnu.org/gnu/glibc/glibc-$version.tar.bz2
-        http://crux.nu/files/dist/kernel-headers-2.6.18.tar.bz2
+        http://crux.nu/files/dist/kernel-headers-2.6.22.tar.bz2
 	hosts resolv.conf nsswitch.conf host.conf ld.so.conf)
 
 build() {
     # install build kernel headers
     mkdir $PKG/usr/
-    cp -r kernel-headers-2.6.18/include $PKG/usr
+    cp -r kernel-headers-2.6.22/include $PKG/usr
     chown root:root $PKG/usr
 
     mkdir build

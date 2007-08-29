@@ -8,47 +8,47 @@ lrwxrwxrwx	root/root	etc/localtime -> ../usr/share/zoneinfo/UTC
 -rw-r--r--	root/root	etc/resolv.conf
 -rw-r--r--	root/root	etc/rpc
 drwxr-xr-x	root/root	lib/
--rwxr-xr-x	root/root	lib/ld-2.5.so
-lrwxrwxrwx	root/root	lib/ld-linux.so.2 -> ld-2.5.so
--rwxr-xr-x	root/root	lib/libBrokenLocale-2.5.so
-lrwxrwxrwx	root/root	lib/libBrokenLocale.so.1 -> libBrokenLocale-2.5.so
+-rwxr-xr-x	root/root	lib/ld-2.6.1.so
+lrwxrwxrwx	root/root	lib/ld-linux.so.2 -> ld-2.6.1.so
+-rwxr-xr-x	root/root	lib/libBrokenLocale-2.6.1.so
+lrwxrwxrwx	root/root	lib/libBrokenLocale.so.1 -> libBrokenLocale-2.6.1.so
 -rwxr-xr-x	root/root	lib/libSegFault.so
--rwxr-xr-x	root/root	lib/libanl-2.5.so
-lrwxrwxrwx	root/root	lib/libanl.so.1 -> libanl-2.5.so
--rwxr-xr-x	root/root	lib/libc-2.5.so
-lrwxrwxrwx	root/root	lib/libc.so.6 -> libc-2.5.so
--rwxr-xr-x	root/root	lib/libcrypt-2.5.so
-lrwxrwxrwx	root/root	lib/libcrypt.so.1 -> libcrypt-2.5.so
--rwxr-xr-x	root/root	lib/libdl-2.5.so
-lrwxrwxrwx	root/root	lib/libdl.so.2 -> libdl-2.5.so
--rwxr-xr-x	root/root	lib/libm-2.5.so
-lrwxrwxrwx	root/root	lib/libm.so.6 -> libm-2.5.so
+-rwxr-xr-x	root/root	lib/libanl-2.6.1.so
+lrwxrwxrwx	root/root	lib/libanl.so.1 -> libanl-2.6.1.so
+-rwxr-xr-x	root/root	lib/libc-2.6.1.so
+lrwxrwxrwx	root/root	lib/libc.so.6 -> libc-2.6.1.so
+-rwxr-xr-x	root/root	lib/libcrypt-2.6.1.so
+lrwxrwxrwx	root/root	lib/libcrypt.so.1 -> libcrypt-2.6.1.so
+-rwxr-xr-x	root/root	lib/libdl-2.6.1.so
+lrwxrwxrwx	root/root	lib/libdl.so.2 -> libdl-2.6.1.so
+-rwxr-xr-x	root/root	lib/libm-2.6.1.so
+lrwxrwxrwx	root/root	lib/libm.so.6 -> libm-2.6.1.so
 -rwxr-xr-x	root/root	lib/libmemusage.so
--rwxr-xr-x	root/root	lib/libnsl-2.5.so
-lrwxrwxrwx	root/root	lib/libnsl.so.1 -> libnsl-2.5.so
--rwxr-xr-x	root/root	lib/libnss_compat-2.5.so
-lrwxrwxrwx	root/root	lib/libnss_compat.so.2 -> libnss_compat-2.5.so
--rwxr-xr-x	root/root	lib/libnss_dns-2.5.so
-lrwxrwxrwx	root/root	lib/libnss_dns.so.2 -> libnss_dns-2.5.so
--rwxr-xr-x	root/root	lib/libnss_files-2.5.so
-lrwxrwxrwx	root/root	lib/libnss_files.so.2 -> libnss_files-2.5.so
--rwxr-xr-x	root/root	lib/libnss_hesiod-2.5.so
-lrwxrwxrwx	root/root	lib/libnss_hesiod.so.2 -> libnss_hesiod-2.5.so
--rwxr-xr-x	root/root	lib/libnss_nis-2.5.so
-lrwxrwxrwx	root/root	lib/libnss_nis.so.2 -> libnss_nis-2.5.so
--rwxr-xr-x	root/root	lib/libnss_nisplus-2.5.so
-lrwxrwxrwx	root/root	lib/libnss_nisplus.so.2 -> libnss_nisplus-2.5.so
+-rwxr-xr-x	root/root	lib/libnsl-2.6.1.so
+lrwxrwxrwx	root/root	lib/libnsl.so.1 -> libnsl-2.6.1.so
+-rwxr-xr-x	root/root	lib/libnss_compat-2.6.1.so
+lrwxrwxrwx	root/root	lib/libnss_compat.so.2 -> libnss_compat-2.6.1.so
+-rwxr-xr-x	root/root	lib/libnss_dns-2.6.1.so
+lrwxrwxrwx	root/root	lib/libnss_dns.so.2 -> libnss_dns-2.6.1.so
+-rwxr-xr-x	root/root	lib/libnss_files-2.6.1.so
+lrwxrwxrwx	root/root	lib/libnss_files.so.2 -> libnss_files-2.6.1.so
+-rwxr-xr-x	root/root	lib/libnss_hesiod-2.6.1.so
+lrwxrwxrwx	root/root	lib/libnss_hesiod.so.2 -> libnss_hesiod-2.6.1.so
+-rwxr-xr-x	root/root	lib/libnss_nis-2.6.1.so
+lrwxrwxrwx	root/root	lib/libnss_nis.so.2 -> libnss_nis-2.6.1.so
+-rwxr-xr-x	root/root	lib/libnss_nisplus-2.6.1.so
+lrwxrwxrwx	root/root	lib/libnss_nisplus.so.2 -> libnss_nisplus-2.6.1.so
 -rwxr-xr-x	root/root	lib/libpcprofile.so
--rwxr-xr-x	root/root	lib/libpthread-2.5.so
-lrwxrwxrwx	root/root	lib/libpthread.so.0 -> libpthread-2.5.so
--rwxr-xr-x	root/root	lib/libresolv-2.5.so
-lrwxrwxrwx	root/root	lib/libresolv.so.2 -> libresolv-2.5.so
--rwxr-xr-x	root/root	lib/librt-2.5.so
-lrwxrwxrwx	root/root	lib/librt.so.1 -> librt-2.5.so
+-rwxr-xr-x	root/root	lib/libpthread-2.6.1.so
+lrwxrwxrwx	root/root	lib/libpthread.so.0 -> libpthread-2.6.1.so
+-rwxr-xr-x	root/root	lib/libresolv-2.6.1.so
+lrwxrwxrwx	root/root	lib/libresolv.so.2 -> libresolv-2.6.1.so
+-rwxr-xr-x	root/root	lib/librt-2.6.1.so
+lrwxrwxrwx	root/root	lib/librt.so.1 -> librt-2.6.1.so
 -rwxr-xr-x	root/root	lib/libthread_db-1.0.so
 lrwxrwxrwx	root/root	lib/libthread_db.so.1 -> libthread_db-1.0.so
--rwxr-xr-x	root/root	lib/libutil-2.5.so
-lrwxrwxrwx	root/root	lib/libutil.so.1 -> libutil-2.5.so
+-rwxr-xr-x	root/root	lib/libutil-2.6.1.so
+lrwxrwxrwx	root/root	lib/libutil.so.1 -> libutil-2.6.1.so
 drwxr-xr-x	root/root	sbin/
 -rwxr-xr-x	root/root	sbin/ldconfig
 -rwxr-xr-x	root/root	sbin/sln
@@ -86,13 +86,13 @@ drwxr-xr-x	root/root	usr/include/arpa/
 -rw-r--r--	root/root	usr/include/arpa/telnet.h
 -rw-r--r--	root/root	usr/include/arpa/tftp.h
 drwxr-xr-x	root/root	usr/include/asm-generic/
--rw-r--r--	root/root	usr/include/asm-generic/atomic.h
 -rw-r--r--	root/root	usr/include/asm-generic/errno-base.h
 -rw-r--r--	root/root	usr/include/asm-generic/errno.h
 -rw-r--r--	root/root	usr/include/asm-generic/fcntl.h
 -rw-r--r--	root/root	usr/include/asm-generic/ioctl.h
 -rw-r--r--	root/root	usr/include/asm-generic/ipc.h
 -rw-r--r--	root/root	usr/include/asm-generic/mman.h
+-rw-r--r--	root/root	usr/include/asm-generic/poll.h
 -rw-r--r--	root/root	usr/include/asm-generic/resource.h
 -rw-r--r--	root/root	usr/include/asm-generic/siginfo.h
 -rw-r--r--	root/root	usr/include/asm-generic/signal.h
@@ -112,11 +112,14 @@ drwxr-xr-x	root/root	usr/include/asm/
 -rw-r--r--	root/root	usr/include/asm/ldt.h
 -rw-r--r--	root/root	usr/include/asm/mman.h
 -rw-r--r--	root/root	usr/include/asm/msgbuf.h
+-rw-r--r--	root/root	usr/include/asm/msr-index.h
+-rw-r--r--	root/root	usr/include/asm/msr.h
 -rw-r--r--	root/root	usr/include/asm/mtrr.h
 -rw-r--r--	root/root	usr/include/asm/page.h
 -rw-r--r--	root/root	usr/include/asm/param.h
 -rw-r--r--	root/root	usr/include/asm/poll.h
 -rw-r--r--	root/root	usr/include/asm/posix_types.h
+-rw-r--r--	root/root	usr/include/asm/ptrace-abi.h
 -rw-r--r--	root/root	usr/include/asm/ptrace.h
 -rw-r--r--	root/root	usr/include/asm/resource.h
 -rw-r--r--	root/root	usr/include/asm/sembuf.h
@@ -286,7 +289,6 @@ drwxr-xr-x	root/root	usr/include/linux/
 -rw-r--r--	root/root	usr/include/linux/acct.h
 -rw-r--r--	root/root	usr/include/linux/adb.h
 -rw-r--r--	root/root	usr/include/linux/adfs_fs.h
--rw-r--r--	root/root	usr/include/linux/affs_fs.h
 -rw-r--r--	root/root	usr/include/linux/affs_hardblocks.h
 -rw-r--r--	root/root	usr/include/linux/agpgart.h
 -rw-r--r--	root/root	usr/include/linux/aio_abi.h
@@ -315,7 +317,6 @@ drwxr-xr-x	root/root	usr/include/linux/
 -rw-r--r--	root/root	usr/include/linux/auto_fs.h
 -rw-r--r--	root/root	usr/include/linux/auto_fs4.h
 -rw-r--r--	root/root	usr/include/linux/auxvec.h
--rw-r--r--	root/root	usr/include/linux/awe_voice.h
 -rw-r--r--	root/root	usr/include/linux/ax25.h
 -rw-r--r--	root/root	usr/include/linux/b1lli.h
 -rw-r--r--	root/root	usr/include/linux/baycom.h
@@ -327,9 +328,7 @@ drwxr-xr-x	root/root	usr/include/linux/byteorder/
 -rw-r--r--	root/root	usr/include/linux/byteorder/big_endian.h
 -rw-r--r--	root/root	usr/include/linux/byteorder/generic.h
 -rw-r--r--	root/root	usr/include/linux/byteorder/little_endian.h
--rw-r--r--	root/root	usr/include/linux/byteorder/pdp_endian.h
 -rw-r--r--	root/root	usr/include/linux/byteorder/swab.h
--rw-r--r--	root/root	usr/include/linux/byteorder/swabb.h
 -rw-r--r--	root/root	usr/include/linux/capability.h
 -rw-r--r--	root/root	usr/include/linux/capi.h
 -rw-r--r--	root/root	usr/include/linux/cciss_ioctl.h
@@ -344,13 +343,15 @@ drwxr-xr-x	root/root	usr/include/linux/byteorder/
 -rw-r--r--	root/root	usr/include/linux/comstats.h
 -rw-r--r--	root/root	usr/include/linux/connector.h
 -rw-r--r--	root/root	usr/include/linux/consolemap.h
+-rw-r--r--	root/root	usr/include/linux/const.h
 -rw-r--r--	root/root	usr/include/linux/cramfs_fs.h
 -rw-r--r--	root/root	usr/include/linux/cuda.h
 -rw-r--r--	root/root	usr/include/linux/cyclades.h
 -rw-r--r--	root/root	usr/include/linux/cycx_cfm.h
 -rw-r--r--	root/root	usr/include/linux/dccp.h
 -rw-r--r--	root/root	usr/include/linux/dirent.h
--rw-r--r--	root/root	usr/include/linux/divert.h
+-rw-r--r--	root/root	usr/include/linux/dlm.h
+-rw-r--r--	root/root	usr/include/linux/dlm_device.h
 -rw-r--r--	root/root	usr/include/linux/dm-ioctl.h
 -rw-r--r--	root/root	usr/include/linux/dn.h
 -rw-r--r--	root/root	usr/include/linux/dqblk_v1.h
@@ -381,12 +382,12 @@ drwxr-xr-x	root/root	usr/include/linux/dvb/
 -rw-r--r--	root/root	usr/include/linux/fcntl.h
 -rw-r--r--	root/root	usr/include/linux/fd.h
 -rw-r--r--	root/root	usr/include/linux/fdreg.h
+-rw-r--r--	root/root	usr/include/linux/fib_rules.h
 -rw-r--r--	root/root	usr/include/linux/filter.h
+-rw-r--r--	root/root	usr/include/linux/firewire-cdev.h
+-rw-r--r--	root/root	usr/include/linux/firewire-constants.h
 -rw-r--r--	root/root	usr/include/linux/flat.h
 -rw-r--r--	root/root	usr/include/linux/fs.h
--rw-r--r--	root/root	usr/include/linux/ftape-header-segment.h
--rw-r--r--	root/root	usr/include/linux/ftape-vendors.h
--rw-r--r--	root/root	usr/include/linux/ftape.h
 -rw-r--r--	root/root	usr/include/linux/fuse.h
 -rw-r--r--	root/root	usr/include/linux/futex.h
 -rw-r--r--	root/root	usr/include/linux/gameport.h
@@ -394,6 +395,7 @@ drwxr-xr-x	root/root	usr/include/linux/dvb/
 -rw-r--r--	root/root	usr/include/linux/generic_serial.h
 -rw-r--r--	root/root	usr/include/linux/genetlink.h
 -rw-r--r--	root/root	usr/include/linux/genhd.h
+-rw-r--r--	root/root	usr/include/linux/gfs2_ondisk.h
 -rw-r--r--	root/root	usr/include/linux/gigaset_dev.h
 -rw-r--r--	root/root	usr/include/linux/hayesesp.h
 -rw-r--r--	root/root	usr/include/linux/hdlc.h
@@ -404,7 +406,6 @@ drwxr-xr-x	root/root	usr/include/linux/hdlc/
 -rw-r--r--	root/root	usr/include/linux/hdsmart.h
 -rw-r--r--	root/root	usr/include/linux/hiddev.h
 -rw-r--r--	root/root	usr/include/linux/hpet.h
--rw-r--r--	root/root	usr/include/linux/hpfs_fs.h
 -rw-r--r--	root/root	usr/include/linux/hysdn_if.h
 -rw-r--r--	root/root	usr/include/linux/i2c-dev.h
 -rw-r--r--	root/root	usr/include/linux/i2c.h
@@ -413,6 +414,7 @@ drwxr-xr-x	root/root	usr/include/linux/hdlc/
 -rw-r--r--	root/root	usr/include/linux/icmp.h
 -rw-r--r--	root/root	usr/include/linux/icmpv6.h
 -rw-r--r--	root/root	usr/include/linux/if.h
+-rw-r--r--	root/root	usr/include/linux/if_addr.h
 -rw-r--r--	root/root	usr/include/linux/if_arcnet.h
 -rw-r--r--	root/root	usr/include/linux/if_arp.h
 -rw-r--r--	root/root	usr/include/linux/if_bonding.h
@@ -426,6 +428,7 @@ drwxr-xr-x	root/root	usr/include/linux/hdlc/
 -rw-r--r--	root/root	usr/include/linux/if_frad.h
 -rw-r--r--	root/root	usr/include/linux/if_hippi.h
 -rw-r--r--	root/root	usr/include/linux/if_infiniband.h
+-rw-r--r--	root/root	usr/include/linux/if_link.h
 -rw-r--r--	root/root	usr/include/linux/if_ltalk.h
 -rw-r--r--	root/root	usr/include/linux/if_packet.h
 -rw-r--r--	root/root	usr/include/linux/if_plip.h
@@ -448,6 +451,7 @@ drwxr-xr-x	root/root	usr/include/linux/hdlc/
 -rw-r--r--	root/root	usr/include/linux/input.h
 -rw-r--r--	root/root	usr/include/linux/ioctl.h
 -rw-r--r--	root/root	usr/include/linux/ip.h
+-rw-r--r--	root/root	usr/include/linux/ip6_tunnel.h
 -rw-r--r--	root/root	usr/include/linux/ip_mp_alg.h
 -rw-r--r--	root/root	usr/include/linux/ipc.h
 -rw-r--r--	root/root	usr/include/linux/ipmi.h
@@ -465,7 +469,6 @@ drwxr-xr-x	root/root	usr/include/linux/isdn/
 -rw-r--r--	root/root	usr/include/linux/isdnif.h
 -rw-r--r--	root/root	usr/include/linux/isicom.h
 -rw-r--r--	root/root	usr/include/linux/iso_fs.h
--rw-r--r--	root/root	usr/include/linux/ite_gpio.h
 -rw-r--r--	root/root	usr/include/linux/ixjuser.h
 -rw-r--r--	root/root	usr/include/linux/jbd.h
 -rw-r--r--	root/root	usr/include/linux/jffs2.h
@@ -476,10 +479,13 @@ drwxr-xr-x	root/root	usr/include/linux/isdn/
 -rw-r--r--	root/root	usr/include/linux/kernelcapi.h
 -rw-r--r--	root/root	usr/include/linux/keyboard.h
 -rw-r--r--	root/root	usr/include/linux/keyctl.h
+-rw-r--r--	root/root	usr/include/linux/kvm.h
 -rw-r--r--	root/root	usr/include/linux/limits.h
 -rw-r--r--	root/root	usr/include/linux/llc.h
+-rw-r--r--	root/root	usr/include/linux/lock_dlm_plock.h
 -rw-r--r--	root/root	usr/include/linux/loop.h
 -rw-r--r--	root/root	usr/include/linux/lp.h
+-rw-r--r--	root/root	usr/include/linux/magic.h
 -rw-r--r--	root/root	usr/include/linux/major.h
 -rw-r--r--	root/root	usr/include/linux/matroxfb.h
 -rw-r--r--	root/root	usr/include/linux/mempolicy.h
@@ -499,6 +505,7 @@ drwxr-xr-x	root/root	usr/include/linux/isdn/
 -rw-r--r--	root/root	usr/include/linux/ncp_fs.h
 -rw-r--r--	root/root	usr/include/linux/ncp_mount.h
 -rw-r--r--	root/root	usr/include/linux/ncp_no.h
+-rw-r--r--	root/root	usr/include/linux/neighbour.h
 -rw-r--r--	root/root	usr/include/linux/net.h
 -rw-r--r--	root/root	usr/include/linux/netdevice.h
 -rw-r--r--	root/root	usr/include/linux/netfilter.h
@@ -516,15 +523,20 @@ drwxr-xr-x	root/root	usr/include/linux/netfilter/
 -rw-r--r--	root/root	usr/include/linux/netfilter/xt_CLASSIFY.h
 -rw-r--r--	root/root	usr/include/linux/netfilter/xt_CONNMARK.h
 -rw-r--r--	root/root	usr/include/linux/netfilter/xt_CONNSECMARK.h
+-rw-r--r--	root/root	usr/include/linux/netfilter/xt_DSCP.h
 -rw-r--r--	root/root	usr/include/linux/netfilter/xt_MARK.h
+-rw-r--r--	root/root	usr/include/linux/netfilter/xt_NFLOG.h
 -rw-r--r--	root/root	usr/include/linux/netfilter/xt_NFQUEUE.h
 -rw-r--r--	root/root	usr/include/linux/netfilter/xt_SECMARK.h
+-rw-r--r--	root/root	usr/include/linux/netfilter/xt_TCPMSS.h
 -rw-r--r--	root/root	usr/include/linux/netfilter/xt_comment.h
 -rw-r--r--	root/root	usr/include/linux/netfilter/xt_connbytes.h
 -rw-r--r--	root/root	usr/include/linux/netfilter/xt_connmark.h
 -rw-r--r--	root/root	usr/include/linux/netfilter/xt_conntrack.h
 -rw-r--r--	root/root	usr/include/linux/netfilter/xt_dccp.h
+-rw-r--r--	root/root	usr/include/linux/netfilter/xt_dscp.h
 -rw-r--r--	root/root	usr/include/linux/netfilter/xt_esp.h
+-rw-r--r--	root/root	usr/include/linux/netfilter/xt_hashlimit.h
 -rw-r--r--	root/root	usr/include/linux/netfilter/xt_helper.h
 -rw-r--r--	root/root	usr/include/linux/netfilter/xt_length.h
 -rw-r--r--	root/root	usr/include/linux/netfilter/xt_limit.h
@@ -565,22 +577,6 @@ drwxr-xr-x	root/root	usr/include/linux/netfilter_bridge/
 -rw-r--r--	root/root	usr/include/linux/netfilter_decnet.h
 -rw-r--r--	root/root	usr/include/linux/netfilter_ipv4.h
 drwxr-xr-x	root/root	usr/include/linux/netfilter_ipv4/
--rw-r--r--	root/root	usr/include/linux/netfilter_ipv4/ip_conntrack.h
--rw-r--r--	root/root	usr/include/linux/netfilter_ipv4/ip_conntrack_h323.h
--rw-r--r--	root/root	usr/include/linux/netfilter_ipv4/ip_conntrack_helper.h
--rw-r--r--	root/root	usr/include/linux/netfilter_ipv4/ip_conntrack_helper_h323_asn1.h
--rw-r--r--	root/root	usr/include/linux/netfilter_ipv4/ip_conntrack_helper_h323_types.h
--rw-r--r--	root/root	usr/include/linux/netfilter_ipv4/ip_conntrack_irc.h
--rw-r--r--	root/root	usr/include/linux/netfilter_ipv4/ip_conntrack_pptp.h
--rw-r--r--	root/root	usr/include/linux/netfilter_ipv4/ip_conntrack_proto_gre.h
--rw-r--r--	root/root	usr/include/linux/netfilter_ipv4/ip_conntrack_protocol.h
--rw-r--r--	root/root	usr/include/linux/netfilter_ipv4/ip_conntrack_sctp.h
--rw-r--r--	root/root	usr/include/linux/netfilter_ipv4/ip_conntrack_tcp.h
--rw-r--r--	root/root	usr/include/linux/netfilter_ipv4/ip_conntrack_tftp.h
--rw-r--r--	root/root	usr/include/linux/netfilter_ipv4/ip_conntrack_tuple.h
--rw-r--r--	root/root	usr/include/linux/netfilter_ipv4/ip_nat.h
--rw-r--r--	root/root	usr/include/linux/netfilter_ipv4/ip_nat_pptp.h
--rw-r--r--	root/root	usr/include/linux/netfilter_ipv4/ip_nat_rule.h
 -rw-r--r--	root/root	usr/include/linux/netfilter_ipv4/ip_queue.h
 -rw-r--r--	root/root	usr/include/linux/netfilter_ipv4/ip_tables.h
 -rw-r--r--	root/root	usr/include/linux/netfilter_ipv4/ipt_CLASSIFY.h
@@ -649,7 +645,6 @@ drwxr-xr-x	root/root	usr/include/linux/netfilter_ipv6/
 -rw-r--r--	root/root	usr/include/linux/netfilter_ipv6/ip6t_physdev.h
 -rw-r--r--	root/root	usr/include/linux/netfilter_ipv6/ip6t_policy.h
 -rw-r--r--	root/root	usr/include/linux/netfilter_ipv6/ip6t_rt.h
--rw-r--r--	root/root	usr/include/linux/netfilter_logging.h
 -rw-r--r--	root/root	usr/include/linux/netlink.h
 -rw-r--r--	root/root	usr/include/linux/netrom.h
 -rw-r--r--	root/root	usr/include/linux/nfs.h
@@ -669,18 +664,19 @@ drwxr-xr-x	root/root	usr/include/linux/nfsd/
 -rw-r--r--	root/root	usr/include/linux/nfsd/nfsfh.h
 -rw-r--r--	root/root	usr/include/linux/nfsd/stats.h
 -rw-r--r--	root/root	usr/include/linux/nfsd/syscall.h
+-rw-r--r--	root/root	usr/include/linux/nl80211.h
 -rw-r--r--	root/root	usr/include/linux/nubus.h
 -rw-r--r--	root/root	usr/include/linux/nvram.h
--rw-r--r--	root/root	usr/include/linux/openprom_fs.h
+-rw-r--r--	root/root	usr/include/linux/oom.h
 -rw-r--r--	root/root	usr/include/linux/param.h
 -rw-r--r--	root/root	usr/include/linux/parport.h
 -rw-r--r--	root/root	usr/include/linux/patchkey.h
 -rw-r--r--	root/root	usr/include/linux/pci.h
--rw-r--r--	root/root	usr/include/linux/pci_ids.h
 -rw-r--r--	root/root	usr/include/linux/pci_regs.h
 -rw-r--r--	root/root	usr/include/linux/personality.h
 -rw-r--r--	root/root	usr/include/linux/pfkeyv2.h
 -rw-r--r--	root/root	usr/include/linux/pg.h
+-rw-r--r--	root/root	usr/include/linux/phantom.h
 -rw-r--r--	root/root	usr/include/linux/pkt_cls.h
 -rw-r--r--	root/root	usr/include/linux/pkt_sched.h
 -rw-r--r--	root/root	usr/include/linux/pktcdvd.h
@@ -693,7 +689,6 @@ drwxr-xr-x	root/root	usr/include/linux/nfsd/
 -rw-r--r--	root/root	usr/include/linux/prctl.h
 -rw-r--r--	root/root	usr/include/linux/ps2esdi.h
 -rw-r--r--	root/root	usr/include/linux/ptrace.h
--rw-r--r--	root/root	usr/include/linux/qic117.h
 -rw-r--r--	root/root	usr/include/linux/qnx4_fs.h
 -rw-r--r--	root/root	usr/include/linux/qnxtypes.h
 -rw-r--r--	root/root	usr/include/linux/quota.h
@@ -716,7 +711,6 @@ drwxr-xr-x	root/root	usr/include/linux/raid/
 -rw-r--r--	root/root	usr/include/linux/rtnetlink.h
 -rw-r--r--	root/root	usr/include/linux/scc.h
 -rw-r--r--	root/root	usr/include/linux/sched.h
--rw-r--r--	root/root	usr/include/linux/sctp.h
 -rw-r--r--	root/root	usr/include/linux/sdla.h
 -rw-r--r--	root/root	usr/include/linux/selinux_netlink.h
 -rw-r--r--	root/root	usr/include/linux/sem.h
@@ -725,6 +719,7 @@ drwxr-xr-x	root/root	usr/include/linux/raid/
 -rw-r--r--	root/root	usr/include/linux/serio.h
 -rw-r--r--	root/root	usr/include/linux/shm.h
 -rw-r--r--	root/root	usr/include/linux/signal.h
+-rw-r--r--	root/root	usr/include/linux/signalfd.h
 -rw-r--r--	root/root	usr/include/linux/smb.h
 -rw-r--r--	root/root	usr/include/linux/smb_fs.h
 -rw-r--r--	root/root	usr/include/linux/smb_mount.h
@@ -737,12 +732,15 @@ drwxr-xr-x	root/root	usr/include/linux/raid/
 -rw-r--r--	root/root	usr/include/linux/sonypi.h
 -rw-r--r--	root/root	usr/include/linux/sound.h
 -rw-r--r--	root/root	usr/include/linux/soundcard.h
+drwxr-xr-x	root/root	usr/include/linux/spi/
+-rw-r--r--	root/root	usr/include/linux/spi/spidev.h
 -rw-r--r--	root/root	usr/include/linux/stat.h
 -rw-r--r--	root/root	usr/include/linux/stddef.h
 drwxr-xr-x	root/root	usr/include/linux/sunrpc/
 -rw-r--r--	root/root	usr/include/linux/sunrpc/debug.h
 -rw-r--r--	root/root	usr/include/linux/synclink.h
 -rw-r--r--	root/root	usr/include/linux/sysctl.h
+-rw-r--r--	root/root	usr/include/linux/taskstats.h
 drwxr-xr-x	root/root	usr/include/linux/tc_act/
 -rw-r--r--	root/root	usr/include/linux/tc_act/tc_gact.h
 -rw-r--r--	root/root	usr/include/linux/tc_act/tc_ipt.h
@@ -762,12 +760,17 @@ drwxr-xr-x	root/root	usr/include/linux/tc_act/
 -rw-r--r--	root/root	usr/include/linux/types.h
 -rw-r--r--	root/root	usr/include/linux/udf_fs_i.h
 -rw-r--r--	root/root	usr/include/linux/udp.h
+-rw-r--r--	root/root	usr/include/linux/ufs_fs.h
 -rw-r--r--	root/root	usr/include/linux/uinput.h
 -rw-r--r--	root/root	usr/include/linux/uio.h
 -rw-r--r--	root/root	usr/include/linux/ultrasound.h
 -rw-r--r--	root/root	usr/include/linux/un.h
 -rw-r--r--	root/root	usr/include/linux/unistd.h
--rw-r--r--	root/root	usr/include/linux/usb_ch9.h
+drwxr-xr-x	root/root	usr/include/linux/usb/
+-rw-r--r--	root/root	usr/include/linux/usb/audio.h
+-rw-r--r--	root/root	usr/include/linux/usb/cdc.h
+-rw-r--r--	root/root	usr/include/linux/usb/ch9.h
+-rw-r--r--	root/root	usr/include/linux/usb/midi.h
 -rw-r--r--	root/root	usr/include/linux/usbdevice_fs.h
 -rw-r--r--	root/root	usr/include/linux/user.h
 -rw-r--r--	root/root	usr/include/linux/utime.h
@@ -782,13 +785,10 @@ drwxr-xr-x	root/root	usr/include/linux/tc_act/
 -rw-r--r--	root/root	usr/include/linux/wait.h
 -rw-r--r--	root/root	usr/include/linux/wanrouter.h
 -rw-r--r--	root/root	usr/include/linux/watchdog.h
--rw-r--r--	root/root	usr/include/linux/wavefront.h
 -rw-r--r--	root/root	usr/include/linux/wireless.h
 -rw-r--r--	root/root	usr/include/linux/x25.h
 -rw-r--r--	root/root	usr/include/linux/xattr.h
 -rw-r--r--	root/root	usr/include/linux/xfrm.h
--rw-r--r--	root/root	usr/include/linux/zftape.h
--rw-r--r--	root/root	usr/include/linux/zorro_ids.h
 -rw-r--r--	root/root	usr/include/locale.h
 -rw-r--r--	root/root	usr/include/malloc.h
 -rw-r--r--	root/root	usr/include/math.h
@@ -803,6 +803,8 @@ drwxr-xr-x	root/root	usr/include/mtd/
 -rw-r--r--	root/root	usr/include/mtd/mtd-abi.h
 -rw-r--r--	root/root	usr/include/mtd/mtd-user.h
 -rw-r--r--	root/root	usr/include/mtd/nftl-user.h
+-rw-r--r--	root/root	usr/include/mtd/ubi-header.h
+-rw-r--r--	root/root	usr/include/mtd/ubi-user.h
 drwxr-xr-x	root/root	usr/include/net/
 -rw-r--r--	root/root	usr/include/net/ethernet.h
 -rw-r--r--	root/root	usr/include/net/if.h
@@ -1073,6 +1075,7 @@ drwxr-xr-x	root/root	usr/lib/gconv/
 -rwxr-xr-x	root/root	usr/lib/gconv/ASMO_449.so
 -rwxr-xr-x	root/root	usr/lib/gconv/BIG5.so
 -rwxr-xr-x	root/root	usr/lib/gconv/BIG5HKSCS.so
+-rwxr-xr-x	root/root	usr/lib/gconv/BRF.so
 -rwxr-xr-x	root/root	usr/lib/gconv/CP10007.so
 -rwxr-xr-x	root/root	usr/lib/gconv/CP1125.so
 -rwxr-xr-x	root/root	usr/lib/gconv/CP1250.so
@@ -1366,6 +1369,7 @@ drwxr-xr-x	root/root	usr/share/i18n/charmaps/
 -rw-r--r--	root/root	usr/share/i18n/charmaps/ASMO_449.gz
 -rw-r--r--	root/root	usr/share/i18n/charmaps/BIG5-HKSCS.gz
 -rw-r--r--	root/root	usr/share/i18n/charmaps/BIG5.gz
+-rw-r--r--	root/root	usr/share/i18n/charmaps/BRF.gz
 -rw-r--r--	root/root	usr/share/i18n/charmaps/BS_4730.gz
 -rw-r--r--	root/root	usr/share/i18n/charmaps/BS_VIEWDATA.gz
 -rw-r--r--	root/root	usr/share/i18n/charmaps/CP10007.gz
@@ -1607,6 +1611,7 @@ drwxr-xr-x	root/root	usr/share/i18n/locales/
 -rw-r--r--	root/root	usr/share/i18n/locales/ar_TN
 -rw-r--r--	root/root	usr/share/i18n/locales/ar_YE
 -rw-r--r--	root/root	usr/share/i18n/locales/as_IN
+-rw-r--r--	root/root	usr/share/i18n/locales/ast_ES
 -rw-r--r--	root/root	usr/share/i18n/locales/az_AZ
 -rw-r--r--	root/root	usr/share/i18n/locales/be_BY
 -rw-r--r--	root/root	usr/share/i18n/locales/be_BY@latin
@@ -1622,6 +1627,7 @@ drwxr-xr-x	root/root	usr/share/i18n/locales/
 -rw-r--r--	root/root	usr/share/i18n/locales/ca_ES@euro
 -rw-r--r--	root/root	usr/share/i18n/locales/ca_FR
 -rw-r--r--	root/root	usr/share/i18n/locales/ca_IT
+-rw-r--r--	root/root	usr/share/i18n/locales/crh_UA
 -rw-r--r--	root/root	usr/share/i18n/locales/cs_CZ
 -rw-r--r--	root/root	usr/share/i18n/locales/csb_PL
 -rw-r--r--	root/root	usr/share/i18n/locales/cy_GB
@@ -1712,6 +1718,8 @@ drwxr-xr-x	root/root	usr/share/i18n/locales/
 -rw-r--r--	root/root	usr/share/i18n/locales/id_ID
 -rw-r--r--	root/root	usr/share/i18n/locales/is_IS
 -rw-r--r--	root/root	usr/share/i18n/locales/iso14651_t1
+-rw-r--r--	root/root	usr/share/i18n/locales/iso14651_t1_common
+-rw-r--r--	root/root	usr/share/i18n/locales/iso14651_t1_pinyin
 -rw-r--r--	root/root	usr/share/i18n/locales/it_CH
 -rw-r--r--	root/root	usr/share/i18n/locales/it_IT
 -rw-r--r--	root/root	usr/share/i18n/locales/it_IT@euro
@@ -1730,6 +1738,7 @@ drwxr-xr-x	root/root	usr/share/i18n/locales/
 -rw-r--r--	root/root	usr/share/i18n/locales/lo_LA
 -rw-r--r--	root/root	usr/share/i18n/locales/lt_LT
 -rw-r--r--	root/root	usr/share/i18n/locales/lv_LV
+-rw-r--r--	root/root	usr/share/i18n/locales/mai_IN
 -rw-r--r--	root/root	usr/share/i18n/locales/mg_MG
 -rw-r--r--	root/root	usr/share/i18n/locales/mi_NZ
 -rw-r--r--	root/root	usr/share/i18n/locales/mk_MK
@@ -1773,6 +1782,8 @@ drwxr-xr-x	root/root	usr/share/i18n/locales/
 -rw-r--r--	root/root	usr/share/i18n/locales/sq_AL
 -rw-r--r--	root/root	usr/share/i18n/locales/sr_CS
 -rw-r--r--	root/root	usr/share/i18n/locales/sr_ME
+-rw-r--r--	root/root	usr/share/i18n/locales/sr_RS
+-rw-r--r--	root/root	usr/share/i18n/locales/sr_RS@latin
 -rw-r--r--	root/root	usr/share/i18n/locales/ss_ZA
 -rw-r--r--	root/root	usr/share/i18n/locales/st_ZA
 -rw-r--r--	root/root	usr/share/i18n/locales/sv_FI
@@ -1803,6 +1814,7 @@ drwxr-xr-x	root/root	usr/share/i18n/locales/
 -rw-r--r--	root/root	usr/share/i18n/locales/translit_wide
 -rw-r--r--	root/root	usr/share/i18n/locales/ts_ZA
 -rw-r--r--	root/root	usr/share/i18n/locales/tt_RU
+-rw-r--r--	root/root	usr/share/i18n/locales/tt_RU@iqtelif
 -rw-r--r--	root/root	usr/share/i18n/locales/uk_UA
 -rw-r--r--	root/root	usr/share/i18n/locales/ur_PK
 -rw-r--r--	root/root	usr/share/i18n/locales/uz_UZ
@@ -1825,6 +1837,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/Africa/
 -rw-r--r--	root/root	usr/share/zoneinfo/Africa/Accra
 -rw-r--r--	root/root	usr/share/zoneinfo/Africa/Addis_Ababa
 -rw-r--r--	root/root	usr/share/zoneinfo/Africa/Algiers
+-rw-r--r--	root/root	usr/share/zoneinfo/Africa/Asmara
 -rw-r--r--	root/root	usr/share/zoneinfo/Africa/Asmera
 -rw-r--r--	root/root	usr/share/zoneinfo/Africa/Bamako
 -rw-r--r--	root/root	usr/share/zoneinfo/Africa/Bangui
@@ -1893,11 +1906,13 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/America/Argentina/
 -rw-r--r--	root/root	usr/share/zoneinfo/America/Argentina/Ushuaia
 -rw-r--r--	root/root	usr/share/zoneinfo/America/Aruba
 -rw-r--r--	root/root	usr/share/zoneinfo/America/Asuncion
+-rw-r--r--	root/root	usr/share/zoneinfo/America/Atikokan
 -rw-r--r--	root/root	usr/share/zoneinfo/America/Atka
 -rw-r--r--	root/root	usr/share/zoneinfo/America/Bahia
 -rw-r--r--	root/root	usr/share/zoneinfo/America/Barbados
 -rw-r--r--	root/root	usr/share/zoneinfo/America/Belem
 -rw-r--r--	root/root	usr/share/zoneinfo/America/Belize
+-rw-r--r--	root/root	usr/share/zoneinfo/America/Blanc-Sablon
 -rw-r--r--	root/root	usr/share/zoneinfo/America/Boa_Vista
 -rw-r--r--	root/root	usr/share/zoneinfo/America/Bogota
 -rw-r--r--	root/root	usr/share/zoneinfo/America/Boise
@@ -1947,6 +1962,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/America/Indiana/
 -rw-r--r--	root/root	usr/share/zoneinfo/America/Indiana/Petersburg
 -rw-r--r--	root/root	usr/share/zoneinfo/America/Indiana/Vevay
 -rw-r--r--	root/root	usr/share/zoneinfo/America/Indiana/Vincennes
+-rw-r--r--	root/root	usr/share/zoneinfo/America/Indiana/Winamac
 -rw-r--r--	root/root	usr/share/zoneinfo/America/Indianapolis
 -rw-r--r--	root/root	usr/share/zoneinfo/America/Inuvik
 -rw-r--r--	root/root	usr/share/zoneinfo/America/Iqaluit
@@ -1983,6 +1999,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/America/Kentucky/
 -rw-r--r--	root/root	usr/share/zoneinfo/America/Noronha
 drwxr-xr-x	root/root	usr/share/zoneinfo/America/North_Dakota/
 -rw-r--r--	root/root	usr/share/zoneinfo/America/North_Dakota/Center
+-rw-r--r--	root/root	usr/share/zoneinfo/America/North_Dakota/New_Salem
 -rw-r--r--	root/root	usr/share/zoneinfo/America/Panama
 -rw-r--r--	root/root	usr/share/zoneinfo/America/Pangnirtung
 -rw-r--r--	root/root	usr/share/zoneinfo/America/Paramaribo
@@ -1996,6 +2013,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/America/North_Dakota/
 -rw-r--r--	root/root	usr/share/zoneinfo/America/Rankin_Inlet
 -rw-r--r--	root/root	usr/share/zoneinfo/America/Recife
 -rw-r--r--	root/root	usr/share/zoneinfo/America/Regina
+-rw-r--r--	root/root	usr/share/zoneinfo/America/Resolute
 -rw-r--r--	root/root	usr/share/zoneinfo/America/Rio_Branco
 -rw-r--r--	root/root	usr/share/zoneinfo/America/Rosario
 -rw-r--r--	root/root	usr/share/zoneinfo/America/Santiago
@@ -2128,6 +2146,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/Atlantic/
 -rw-r--r--	root/root	usr/share/zoneinfo/Atlantic/Canary
 -rw-r--r--	root/root	usr/share/zoneinfo/Atlantic/Cape_Verde
 -rw-r--r--	root/root	usr/share/zoneinfo/Atlantic/Faeroe
+-rw-r--r--	root/root	usr/share/zoneinfo/Atlantic/Faroe
 -rw-r--r--	root/root	usr/share/zoneinfo/Atlantic/Jan_Mayen
 -rw-r--r--	root/root	usr/share/zoneinfo/Atlantic/Madeira
 -rw-r--r--	root/root	usr/share/zoneinfo/Atlantic/Reykjavik
@@ -2142,6 +2161,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/Australia/
 -rw-r--r--	root/root	usr/share/zoneinfo/Australia/Canberra
 -rw-r--r--	root/root	usr/share/zoneinfo/Australia/Currie
 -rw-r--r--	root/root	usr/share/zoneinfo/Australia/Darwin
+-rw-r--r--	root/root	usr/share/zoneinfo/Australia/Eucla
 -rw-r--r--	root/root	usr/share/zoneinfo/Australia/Hobart
 -rw-r--r--	root/root	usr/share/zoneinfo/Australia/LHI
 -rw-r--r--	root/root	usr/share/zoneinfo/Australia/Lindeman
@@ -2234,8 +2254,11 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/Europe/
 -rw-r--r--	root/root	usr/share/zoneinfo/Europe/Copenhagen
 -rw-r--r--	root/root	usr/share/zoneinfo/Europe/Dublin
 -rw-r--r--	root/root	usr/share/zoneinfo/Europe/Gibraltar
+-rw-r--r--	root/root	usr/share/zoneinfo/Europe/Guernsey
 -rw-r--r--	root/root	usr/share/zoneinfo/Europe/Helsinki
+-rw-r--r--	root/root	usr/share/zoneinfo/Europe/Isle_of_Man
 -rw-r--r--	root/root	usr/share/zoneinfo/Europe/Istanbul
+-rw-r--r--	root/root	usr/share/zoneinfo/Europe/Jersey
 -rw-r--r--	root/root	usr/share/zoneinfo/Europe/Kaliningrad
 -rw-r--r--	root/root	usr/share/zoneinfo/Europe/Kiev
 -rw-r--r--	root/root	usr/share/zoneinfo/Europe/Lisbon
@@ -2251,6 +2274,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/Europe/
 -rw-r--r--	root/root	usr/share/zoneinfo/Europe/Nicosia
 -rw-r--r--	root/root	usr/share/zoneinfo/Europe/Oslo
 -rw-r--r--	root/root	usr/share/zoneinfo/Europe/Paris
+-rw-r--r--	root/root	usr/share/zoneinfo/Europe/Podgorica
 -rw-r--r--	root/root	usr/share/zoneinfo/Europe/Prague
 -rw-r--r--	root/root	usr/share/zoneinfo/Europe/Riga
 -rw-r--r--	root/root	usr/share/zoneinfo/Europe/Rome
@@ -2269,6 +2293,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/Europe/
 -rw-r--r--	root/root	usr/share/zoneinfo/Europe/Vatican
 -rw-r--r--	root/root	usr/share/zoneinfo/Europe/Vienna
 -rw-r--r--	root/root	usr/share/zoneinfo/Europe/Vilnius
+-rw-r--r--	root/root	usr/share/zoneinfo/Europe/Volgograd
 -rw-r--r--	root/root	usr/share/zoneinfo/Europe/Warsaw
 -rw-r--r--	root/root	usr/share/zoneinfo/Europe/Zagreb
 -rw-r--r--	root/root	usr/share/zoneinfo/Europe/Zaporozhye
@@ -2391,6 +2416,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/posix/Africa/
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Africa/Accra
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Africa/Addis_Ababa
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Africa/Algiers
+-rw-r--r--	root/root	usr/share/zoneinfo/posix/Africa/Asmara
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Africa/Asmera
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Africa/Bamako
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Africa/Bangui
@@ -2459,11 +2485,13 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/posix/America/Argentina/
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/America/Argentina/Ushuaia
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/America/Aruba
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/America/Asuncion
+-rw-r--r--	root/root	usr/share/zoneinfo/posix/America/Atikokan
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/America/Atka
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/America/Bahia
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/America/Barbados
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/America/Belem
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/America/Belize
+-rw-r--r--	root/root	usr/share/zoneinfo/posix/America/Blanc-Sablon
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/America/Boa_Vista
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/America/Bogota
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/America/Boise
@@ -2513,6 +2541,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/posix/America/Indiana/
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/America/Indiana/Petersburg
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/America/Indiana/Vevay
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/America/Indiana/Vincennes
+-rw-r--r--	root/root	usr/share/zoneinfo/posix/America/Indiana/Winamac
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/America/Indianapolis
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/America/Inuvik
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/America/Iqaluit
@@ -2549,6 +2578,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/posix/America/Kentucky/
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/America/Noronha
 drwxr-xr-x	root/root	usr/share/zoneinfo/posix/America/North_Dakota/
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/America/North_Dakota/Center
+-rw-r--r--	root/root	usr/share/zoneinfo/posix/America/North_Dakota/New_Salem
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/America/Panama
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/America/Pangnirtung
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/America/Paramaribo
@@ -2562,6 +2592,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/posix/America/North_Dakota/
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/America/Rankin_Inlet
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/America/Recife
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/America/Regina
+-rw-r--r--	root/root	usr/share/zoneinfo/posix/America/Resolute
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/America/Rio_Branco
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/America/Rosario
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/America/Santiago
@@ -2694,6 +2725,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/posix/Atlantic/
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Atlantic/Canary
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Atlantic/Cape_Verde
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Atlantic/Faeroe
+-rw-r--r--	root/root	usr/share/zoneinfo/posix/Atlantic/Faroe
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Atlantic/Jan_Mayen
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Atlantic/Madeira
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Atlantic/Reykjavik
@@ -2708,6 +2740,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/posix/Australia/
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Australia/Canberra
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Australia/Currie
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Australia/Darwin
+-rw-r--r--	root/root	usr/share/zoneinfo/posix/Australia/Eucla
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Australia/Hobart
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Australia/LHI
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Australia/Lindeman
@@ -2800,8 +2833,11 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/posix/Europe/
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Europe/Copenhagen
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Europe/Dublin
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Europe/Gibraltar
+-rw-r--r--	root/root	usr/share/zoneinfo/posix/Europe/Guernsey
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Europe/Helsinki
+-rw-r--r--	root/root	usr/share/zoneinfo/posix/Europe/Isle_of_Man
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Europe/Istanbul
+-rw-r--r--	root/root	usr/share/zoneinfo/posix/Europe/Jersey
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Europe/Kaliningrad
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Europe/Kiev
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Europe/Lisbon
@@ -2817,6 +2853,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/posix/Europe/
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Europe/Nicosia
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Europe/Oslo
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Europe/Paris
+-rw-r--r--	root/root	usr/share/zoneinfo/posix/Europe/Podgorica
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Europe/Prague
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Europe/Riga
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Europe/Rome
@@ -2835,6 +2872,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/posix/Europe/
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Europe/Vatican
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Europe/Vienna
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Europe/Vilnius
+-rw-r--r--	root/root	usr/share/zoneinfo/posix/Europe/Volgograd
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Europe/Warsaw
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Europe/Zagreb
 -rw-r--r--	root/root	usr/share/zoneinfo/posix/Europe/Zaporozhye
@@ -2957,6 +2995,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/right/Africa/
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Africa/Accra
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Africa/Addis_Ababa
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Africa/Algiers
+-rw-r--r--	root/root	usr/share/zoneinfo/right/Africa/Asmara
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Africa/Asmera
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Africa/Bamako
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Africa/Bangui
@@ -3025,11 +3064,13 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/right/America/Argentina/
 -rw-r--r--	root/root	usr/share/zoneinfo/right/America/Argentina/Ushuaia
 -rw-r--r--	root/root	usr/share/zoneinfo/right/America/Aruba
 -rw-r--r--	root/root	usr/share/zoneinfo/right/America/Asuncion
+-rw-r--r--	root/root	usr/share/zoneinfo/right/America/Atikokan
 -rw-r--r--	root/root	usr/share/zoneinfo/right/America/Atka
 -rw-r--r--	root/root	usr/share/zoneinfo/right/America/Bahia
 -rw-r--r--	root/root	usr/share/zoneinfo/right/America/Barbados
 -rw-r--r--	root/root	usr/share/zoneinfo/right/America/Belem
 -rw-r--r--	root/root	usr/share/zoneinfo/right/America/Belize
+-rw-r--r--	root/root	usr/share/zoneinfo/right/America/Blanc-Sablon
 -rw-r--r--	root/root	usr/share/zoneinfo/right/America/Boa_Vista
 -rw-r--r--	root/root	usr/share/zoneinfo/right/America/Bogota
 -rw-r--r--	root/root	usr/share/zoneinfo/right/America/Boise
@@ -3079,6 +3120,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/right/America/Indiana/
 -rw-r--r--	root/root	usr/share/zoneinfo/right/America/Indiana/Petersburg
 -rw-r--r--	root/root	usr/share/zoneinfo/right/America/Indiana/Vevay
 -rw-r--r--	root/root	usr/share/zoneinfo/right/America/Indiana/Vincennes
+-rw-r--r--	root/root	usr/share/zoneinfo/right/America/Indiana/Winamac
 -rw-r--r--	root/root	usr/share/zoneinfo/right/America/Indianapolis
 -rw-r--r--	root/root	usr/share/zoneinfo/right/America/Inuvik
 -rw-r--r--	root/root	usr/share/zoneinfo/right/America/Iqaluit
@@ -3115,6 +3157,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/right/America/Kentucky/
 -rw-r--r--	root/root	usr/share/zoneinfo/right/America/Noronha
 drwxr-xr-x	root/root	usr/share/zoneinfo/right/America/North_Dakota/
 -rw-r--r--	root/root	usr/share/zoneinfo/right/America/North_Dakota/Center
+-rw-r--r--	root/root	usr/share/zoneinfo/right/America/North_Dakota/New_Salem
 -rw-r--r--	root/root	usr/share/zoneinfo/right/America/Panama
 -rw-r--r--	root/root	usr/share/zoneinfo/right/America/Pangnirtung
 -rw-r--r--	root/root	usr/share/zoneinfo/right/America/Paramaribo
@@ -3128,6 +3171,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/right/America/North_Dakota/
 -rw-r--r--	root/root	usr/share/zoneinfo/right/America/Rankin_Inlet
 -rw-r--r--	root/root	usr/share/zoneinfo/right/America/Recife
 -rw-r--r--	root/root	usr/share/zoneinfo/right/America/Regina
+-rw-r--r--	root/root	usr/share/zoneinfo/right/America/Resolute
 -rw-r--r--	root/root	usr/share/zoneinfo/right/America/Rio_Branco
 -rw-r--r--	root/root	usr/share/zoneinfo/right/America/Rosario
 -rw-r--r--	root/root	usr/share/zoneinfo/right/America/Santiago
@@ -3260,6 +3304,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/right/Atlantic/
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Atlantic/Canary
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Atlantic/Cape_Verde
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Atlantic/Faeroe
+-rw-r--r--	root/root	usr/share/zoneinfo/right/Atlantic/Faroe
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Atlantic/Jan_Mayen
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Atlantic/Madeira
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Atlantic/Reykjavik
@@ -3274,6 +3319,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/right/Australia/
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Australia/Canberra
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Australia/Currie
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Australia/Darwin
+-rw-r--r--	root/root	usr/share/zoneinfo/right/Australia/Eucla
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Australia/Hobart
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Australia/LHI
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Australia/Lindeman
@@ -3366,8 +3412,11 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/right/Europe/
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Europe/Copenhagen
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Europe/Dublin
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Europe/Gibraltar
+-rw-r--r--	root/root	usr/share/zoneinfo/right/Europe/Guernsey
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Europe/Helsinki
+-rw-r--r--	root/root	usr/share/zoneinfo/right/Europe/Isle_of_Man
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Europe/Istanbul
+-rw-r--r--	root/root	usr/share/zoneinfo/right/Europe/Jersey
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Europe/Kaliningrad
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Europe/Kiev
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Europe/Lisbon
@@ -3383,6 +3432,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/right/Europe/
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Europe/Nicosia
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Europe/Oslo
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Europe/Paris
+-rw-r--r--	root/root	usr/share/zoneinfo/right/Europe/Podgorica
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Europe/Prague
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Europe/Riga
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Europe/Rome
@@ -3401,6 +3451,7 @@ drwxr-xr-x	root/root	usr/share/zoneinfo/right/Europe/
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Europe/Vatican
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Europe/Vienna
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Europe/Vilnius
+-rw-r--r--	root/root	usr/share/zoneinfo/right/Europe/Volgograd
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Europe/Warsaw
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Europe/Zagreb
 -rw-r--r--	root/root	usr/share/zoneinfo/right/Europe/Zaporozhye
