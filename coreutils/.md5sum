@@ -1,2 +1,3 @@
 c9607d8495f16e98906e7ed2d9751a06  coreutils-6.9.tar.bz2
+253a70b30fc9ed3e5ecb17dc846acda2  coreutils-futimens.patch
 c05b735710fbd62239588c07084852a0  coreutils-uname.patch

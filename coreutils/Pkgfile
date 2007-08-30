@@ -4,14 +4,15 @@
 
 name=coreutils
 version=6.9
-release=1
+release=2
 source=(http://ftp.gnu.org/pub/gnu/$name/$name-$version.tar.bz2 \
-        $name-uname.patch)
+        $name-uname.patch $name-futimens.patch)
 
 build() {
     cd $name-$version
     
     patch -p1 < $SRC/$name-uname.patch
+    patch -p1 < $SRC/$name-futimens.patch
     
     DEFAULT_POSIX2_VERSION=199209 \
     ./configure --prefix=/usr \
