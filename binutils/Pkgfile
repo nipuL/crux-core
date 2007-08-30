@@ -3,16 +3,17 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=binutils
-version=2.17
+version=2.18
 release=1
 source=(ftp://ftp.gnu.org/gnu/$name/$name-$version.tar.bz2)
 
 build() {
+    sed -i '/^SUBDIRS/s/doc//' $name-$version/bfd/Makefile.in
     mkdir build
     cd build
     ../$name-$version/configure --prefix=/usr \
-				--enable-shared \
-				--disable-nls
+                                --enable-shared \
+                                --disable-nls
     make tooldir=/usr
     make check
     make tooldir=/usr DESTDIR=$PKG install
