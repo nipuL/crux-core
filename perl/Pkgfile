@@ -5,24 +5,26 @@
 
 name=perl
 version=5.8.8
-release=2
+release=3
 source=(ftp://ftp.perl.org/pub/CPAN/src/$name-$version.tar.gz \
-        $name-$version-CVE-2005-3962.patch)
+        $name-$version-CVE-2005-3962.patch \
+        $name-$version-gcc42.patch)
 
 build() {
     cd $name-$version
-    patch -p4 < ../$name-$version-CVE-2005-3962.patch
+    patch -p4 < $SRC/$name-$version-CVE-2005-3962.patch
+    patch -p1 < $SRC/$name-$version-gcc42.patch
     ./Configure -des \
-		-Dprefix=/usr \
-		-Darchname=linux \
-		-Dman1ext=1pm \
-		-Dman3ext=3pm \
-		-Dman1dir=/usr/man/man1 \
-		-Dman3dir=/usr/man/man3 \
-		-Di_gdbm \
-		-Di_db \
-		-Duseshrplib=true \
-		-Doptimize="$CFLAGS"
+                -Dprefix=/usr \
+                -Darchname=linux \
+                -Dman1ext=1pm \
+                -Dman3ext=3pm \
+                -Dman1dir=/usr/man/man1 \
+                -Dman3dir=/usr/man/man3 \
+                -Di_gdbm \
+                -Di_db \
+                -Duseshrplib=true \
+                -Doptimize="$CFLAGS"
     make
     make DESTDIR=$PKG install
     ln -sf perl$version $PKG/usr/bin/perl
