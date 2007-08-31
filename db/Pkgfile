@@ -3,14 +3,14 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=db
-version=4.4.20
-release=2
+version=4.5.20
+release=1
 source=(http://download.oracle.com/berkeley-db/$name-$version.tar.gz \
-	http://www.oracle.com/technology/products/berkeley-db/db/update/4.4.20/patch.4.4.20.{1,2,3,4})
+	http://www.oracle.com/technology/products/berkeley-db/db/update/4.5.20/patch.4.5.20.{1,2})
 
 build() {
     cd $name-$version
-    cat $SRC/patch.4.4.20.{1,2,3,4} | patch -p0 
+    cat $SRC/patch.4.5.20.{1,2} | patch -p0 
     cd build_unix
     LDFLAGS="-lpthread" \
     ../dist/configure --prefix=/usr \
