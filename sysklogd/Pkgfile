@@ -3,14 +3,13 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=sysklogd
-version=1.4.1
-release=5
+version=1.5
+release=1
 source=(http://www.ibiblio.org/pub/Linux/system/daemons/$name-$version.tar.gz \
-	rotatelog syslog syslog.conf $name-$version.patch)
+	rotatelog syslog syslog.conf)
 
 build() {
     cd $name-$version
-    patch -p1 < ../$name-$version.patch
     mkdir -p $PKG/usr/sbin \
 	     $PKG/etc/cron/weekly \
 	     $PKG/var/log \
