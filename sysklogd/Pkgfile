@@ -4,12 +4,16 @@
 
 name=sysklogd
 version=1.5
-release=1
+release=2
 source=(http://www.ibiblio.org/pub/Linux/system/daemons/$name-$version.tar.gz \
 	rotatelog syslog syslog.conf)
 
 build() {
     cd $name-$version
+
+    # don't try to fclose(NULL)
+    sed -i -e '192d' ksym_mod.c
+
     mkdir -p $PKG/usr/sbin \
 	     $PKG/etc/cron/weekly \
 	     $PKG/var/log \
