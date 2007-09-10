@@ -4,7 +4,7 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=gcc
-version=4.1.2
+version=4.2.1
 release=1
 source=(ftp://sources.redhat.com/pub/gcc/releases/$name-$version/$name-{core,g++,objc}-$version.tar.bz2
         $name-$version-nocheck-fixincludes.patch 
@@ -30,7 +30,7 @@ build() {
                                 --with-x=no
     make bootstrap
     make check
-    make DESTDIR=$PKG install
+    make -j1 DESTDIR=$PKG install
     
     mkdir $PKG/lib
     ln -sf ../usr/bin/cpp $PKG/lib/cpp
