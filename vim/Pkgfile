@@ -4,12 +4,16 @@
 # Depends on:  ncurses
 
 name=vim
-version=7.1
+version=7.1.123
 release=1
-source=(ftp://ftp.vim.org/pub/vim/unix/vim-$version.tar.bz2)
+source=(ftp://ftp.vim.org/pub/vim/unix/vim-7.1.tar.bz2 \
+        http://crux.nu/~jue/files/dist/vim-7.1.001-123.tar.bz2)
 
 build () {
-    cd $name${version/\./}/src
+    cd vim71/src
+
+    cat $SRC/vim-7.1-patches/* | patch -p0 -d $SRC/vim71
+
     ./configure --prefix=/usr \
                 --with-vim-name=vim \
                 --with-x=no \
