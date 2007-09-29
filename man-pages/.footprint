@@ -30,6 +30,9 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/chown.2.gz
 -rw-r--r--	root/root	usr/man/man2/chown32.2.gz
 -rw-r--r--	root/root	usr/man/man2/chroot.2.gz
+-rw-r--r--	root/root	usr/man/man2/clock_getres.2.gz
+-rw-r--r--	root/root	usr/man/man2/clock_gettime.2.gz
+-rw-r--r--	root/root	usr/man/man2/clock_settime.2.gz
 -rw-r--r--	root/root	usr/man/man2/clone.2.gz
 -rw-r--r--	root/root	usr/man/man2/clone2.2.gz
 -rw-r--r--	root/root	usr/man/man2/close.2.gz
@@ -753,6 +756,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/fdimf.3.gz
 -rw-r--r--	root/root	usr/man/man3/fdiml.3.gz
 -rw-r--r--	root/root	usr/man/man3/fdopen.3.gz
+-rw-r--r--	root/root	usr/man/man3/fdopendir.3.gz
 -rw-r--r--	root/root	usr/man/man3/feclearexcept.3.gz
 -rw-r--r--	root/root	usr/man/man3/fedisableexcept.3.gz
 -rw-r--r--	root/root	usr/man/man3/feenableexcept.3.gz
@@ -895,6 +899,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/getgrnam_r.3.gz
 -rw-r--r--	root/root	usr/man/man3/getgrouplist.3.gz
 -rw-r--r--	root/root	usr/man/man3/gethostbyaddr.3.gz
+-rw-r--r--	root/root	usr/man/man3/gethostbyaddr_r.3.gz
 -rw-r--r--	root/root	usr/man/man3/gethostbyname.3.gz
 -rw-r--r--	root/root	usr/man/man3/gethostbyname2.3.gz
 -rw-r--r--	root/root	usr/man/man3/gethostbyname2_r.3.gz
@@ -1505,6 +1510,11 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/tgammal.3.gz
 -rw-r--r--	root/root	usr/man/man3/timegm.3.gz
 -rw-r--r--	root/root	usr/man/man3/timelocal.3.gz
+-rw-r--r--	root/root	usr/man/man3/timeradd.3.gz
+-rw-r--r--	root/root	usr/man/man3/timerclear.3.gz
+-rw-r--r--	root/root	usr/man/man3/timercmp.3.gz
+-rw-r--r--	root/root	usr/man/man3/timerisset.3.gz
+-rw-r--r--	root/root	usr/man/man3/timersub.3.gz
 -rw-r--r--	root/root	usr/man/man3/tmpfile.3.gz
 -rw-r--r--	root/root	usr/man/man3/tmpnam.3.gz
 -rw-r--r--	root/root	usr/man/man3/tmpnam_r.3.gz
