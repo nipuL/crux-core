@@ -4,9 +4,9 @@ for i in /dev/cdrom-*
 do
 	if [ -L $i ]
 	then
-		[ "$CD_NUM" = "" ] && ln -s $i /dev/cdrom
-		[ "$CD_NUM" = "" ] && CD_NUM="-1"
-		[ ! "$CD_NUM" = "" ] && CD_NUM="$((CD_NUM+1))" && ln -s $i /dev/cdrom$CD_NUM
+		[ "$CD_NUMBER" = "" ] && ln -s $i /dev/cdrom
+		[ "$CD_NUMBER" = "" ] && CD_NUMBER="-1"
+		[ ! "$CD_NUMBER" = "" ] && CD_NUMBER="$((CD_NUMBER+1))" && ln -s $i /dev/cdrom$CD_NUMBER
 	fi
 done
 
@@ -14,9 +14,9 @@ for i in /dev/cdrw-*
 do
 	if [ -L $i ]
 	then
-		[ "$CDRW_NUM" = "" ] && ln -s $i /dev/cdrw
-		[ "$CDRW_NUM" = "" ] && CDRW_NUM="-1"
-		[ ! "$CDRW_NUM" = "" ] && CDRW_NUM="$((CDRW_NUM+1))" && ln -s $i /dev/cdrw$CDRW_NUM
+		[ "$CDRW_NUMBER" = "" ] && ln -s $i /dev/cdrw
+		[ "$CDRW_NUMBER" = "" ] && CDRW_NUMBER="-1"
+		[ ! "$CDRW_NUMBER" = "" ] && CDRW_NUMBER="$((CDRW_NUMBER+1))" && ln -s $i /dev/cdrw$CDRW_NUMBER
 	fi
 done
 
@@ -24,9 +24,9 @@ for i in /dev/dvd-*
 do
 	if [ -L $i ]
 	then
-		[ "$DVD_NUM" = "" ] && ln -s $i /dev/dvd
-		[ "$DVD_NUM" = "" ] && DVD_NUM="-1"
-		[ ! "$DVD_NUM" = "" ] && DVD_NUM="$((DVD_NUM+1))" && ln -s $i /dev/dvd$DVD_NUM
+		[ "$DVD_NUMBER" = "" ] && ln -s $i /dev/dvd
+		[ "$DVD_NUMBER" = "" ] && DVD_NUMBER="-1"
+		[ ! "$DVD_NUMBER" = "" ] && DVD_NUMBER="$((DVD_NUMBER+1))" && ln -s $i /dev/dvd$DVD_NUMBER
 	fi
 done
 
@@ -34,8 +34,8 @@ for i in /dev/dvdrw-*
 do
 	if [ -L $i ]
 	then
-		[ "$DVDRW_NUM" = "" ] && ln -s $i /dev/dvdrw
-		[ "$DVDRW_NUM" = "" ] && DVDRW_NUM="-1"
-		[ ! "$DVDRW_NUM" = "" ] && DVDRW_NUM="$((DVDRW_NUM+1))" && ln -s $i /dev/dvdrw$DVDRW_NUM
+		[ "$DVDRW_NUMBER" = "" ] && ln -s $i /dev/dvdrw
+		[ "$DVDRW_NUMBER" = "" ] && DVDRW_NUMBER="-1"
+		[ ! "$DVDRW_NUMBER" = "" ] && DVDRW_NUMBER="$((DVDRW_NUMBER+1))" && ln -s $i /dev/dvdrw$DVDRW_NUMBER
 	fi
 done
