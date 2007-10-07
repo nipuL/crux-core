@@ -3,22 +3,20 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=gawk
-version=3.1.5
-release=3
-source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz \
-        $name-$version-io.patch)
+version=3.1.5h
+release=1
+source=(http://www.skeeve.com/$name/$name-$version.tar.bz2)
 
 build() {
     cd $name-$version
-
-    patch -p0 -i $SRC/$name-$version-io.patch
     ./configure --prefix=/usr \
+                --mandir=/usr/man \
                 --enable-switch \
                 --disable-nls
     make
     make DESTDIR=$PKG install
 
-    rm -rf $PKG/usr/{info,share,libexec}
+    rm -r $PKG/usr/{share/info,libexec}
     rm $PKG/usr/bin/gawk-$version \
        $PKG/usr/bin/pgawk-$version \
        $PKG/usr/bin/{p,i}gawk \
