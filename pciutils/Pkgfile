@@ -4,13 +4,12 @@
 # Maintainer:  Jürgen Daubert, juergen dot daubert at t-online dot de
 
 name=pciutils
-version=2.2.6
+version=2.2.7
 release=1
 source=(http://www.kernel.org/pub/software/utils/$name/$name-$version.tar.gz)
 
 build() {
     cd $name-$version
-    sed -i "s/-O2/$CFLAGS/" Makefile
-    make PREFIX=/usr ZLIB=no
-    make PREFIX=$PKG/usr install install-lib
+    make OPT="$CFLAGS" PREFIX=/usr ZLIB=no
+    make DESTDIR=$PKG PREFIX=/usr install install-lib
 }
