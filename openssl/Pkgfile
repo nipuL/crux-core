@@ -6,12 +6,14 @@ name=openssl
 version=0.9.8e
 release=3
 source=(http://www.openssl.org/source/$name-$version.tar.gz \
-	mksslcert.sh openssl-0.9.8b-parallel-build.patch \
-	CVE-2007-3108.patch openssl-0.9.8-gcc42.patch)
+        mksslcert.sh openssl-0.9.8b-parallel-build.patch \
+        CVE-2007-3108.patch CVE-2007-5135.patch \
+        openssl-0.9.8-gcc42.patch)
 
 build() {
     cd $name-$version
     patch -p1 -i $SRC/CVE-2007-3108.patch
+    patch -p0 -d ssl -i $SRC/CVE-2007-5135.patch
     patch -p1 -i $SRC/openssl-0.9.8b-parallel-build.patch
     patch -p0 -i $SRC/openssl-0.9.8-gcc42.patch
     ./config --prefix=/usr --openssldir=/etc/ssl shared
