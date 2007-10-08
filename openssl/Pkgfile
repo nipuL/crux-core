@@ -4,14 +4,15 @@
 
 name=openssl
 version=0.9.8e
-release=2
+release=3
 source=(http://www.openssl.org/source/$name-$version.tar.gz \
 	mksslcert.sh openssl-0.9.8b-parallel-build.patch \
-	CVE-2007-3108.patch)
+	CVE-2007-3108.patch CVE-2007-5135.patch)
 
 build() {
     cd $name-$version
     patch -p1 -i $SRC/CVE-2007-3108.patch
+    patch -p0 -d ssl -i $SRC/CVE-2007-5135.patch
     patch -p1 -i $SRC/openssl-0.9.8b-parallel-build.patch
     ./config --prefix=/usr --openssldir=/etc/ssl shared
     make

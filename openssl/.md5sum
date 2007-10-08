@@ -1,4 +1,5 @@
 30ad2995a2668db16ae3083c11a42307  CVE-2007-3108.patch
+21119cb0b942c835395d7f57530ba14a  CVE-2007-5135.patch
 9d0df57845af8acd1027a7df5c18d017  mksslcert.sh
 58daa890c3bc19bd6ce3451b2e5e335c  openssl-0.9.8b-parallel-build.patch
 3a7ff24f6ea5cd711984722ad654b927  openssl-0.9.8e.tar.gz
