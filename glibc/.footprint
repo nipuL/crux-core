@@ -910,8 +910,6 @@ drwxr-xr-x	root/root	usr/include/rpcsvc/
 -rw-r--r--	root/root	usr/include/rpcsvc/nlm_prot.x
 -rw-r--r--	root/root	usr/include/rpcsvc/rex.h
 -rw-r--r--	root/root	usr/include/rpcsvc/rex.x
--rw-r--r--	root/root	usr/include/rpcsvc/rquota.h
--rw-r--r--	root/root	usr/include/rpcsvc/rquota.x
 -rw-r--r--	root/root	usr/include/rpcsvc/rstat.h
 -rw-r--r--	root/root	usr/include/rpcsvc/rstat.x
 -rw-r--r--	root/root	usr/include/rpcsvc/rusers.h

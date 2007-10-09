@@ -4,7 +4,7 @@
 
 name=glibc
 version=2.6.1
-release=1
+release=2
 source=(http://ftp.gnu.org/gnu/glibc/glibc-$version.tar.bz2
         http://crux.nu/files/dist/kernel-headers-2.6.22.tar.bz2
 	hosts resolv.conf nsswitch.conf host.conf ld.so.conf)
@@ -31,5 +31,9 @@ build() {
     make install_root=$PKG localedata/install-locales
     cp ../{hosts,resolv.conf,nsswitch.conf,host.conf,ld.so.conf} $PKG/etc
     ln -sf ../usr/share/zoneinfo/UTC $PKG/etc/localtime
+
+    # conflicts with quota
+    rm $PKG/usr/include/rpcsvc/{rquota.h,rquota.x}
+    
     rm -rf $PKG/usr/share/locale
 }
