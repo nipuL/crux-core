@@ -2,6 +2,8 @@ drwxr-xr-x	root/root	etc/
 drwxr-xr-x	root/root	etc/cron/
 drwxr-xr-x	root/root	etc/cron/weekly/
 -rwxr-xr-x	root/root	etc/cron/weekly/syslog
+drwxr-xr-x	root/root	etc/rc.d/
+-rwxr-xr-x	root/root	etc/rc.d/sysklogd
 -rw-r--r--	root/root	etc/syslog.conf
 drwxr-xr-x	root/root	usr/
 drwxr-xr-x	root/root	usr/man/
