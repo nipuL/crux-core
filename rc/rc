@@ -76,10 +76,6 @@ if [ "$TIMEZONE" ]; then
 fi
 /sbin/hwclock --hctosys
 
-# Start log daemons
-/usr/sbin/syslogd
-/usr/sbin/klogd -c 4
-
 # Load console font
 if [ "$FONT" ]; then
 	echo "font: $FONT"

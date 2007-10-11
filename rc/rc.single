@@ -26,13 +26,14 @@ if [ "$PREVLEVEL" != "N" ]; then
 	/bin/sleep 5
 	/sbin/killall5 -9
 
-        # Start udev
-        /bin/mount -n -t proc none /proc
-        /bin/mount -n -t sysfs none /sys
-        /sbin/start_udev
-        
-	/usr/sbin/syslogd
-	/usr/sbin/klogd -c 4
+	# Start udev
+	/bin/mount -n -t proc none /proc
+	/bin/mount -n -t sysfs none /sys
+	/sbin/start_udev
+  
+	if [ -f /etc/rc.d/$SYSLOG -a -x /etc/rc.d/$SYSLOG ]; then
+		/etc/rc.d/$SYSLOG &> /dev/null
+	fi	
 fi
 
 if [ "$RUNLEVEL" = "1" ]; then
