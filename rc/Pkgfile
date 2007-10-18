@@ -3,8 +3,8 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=rc
-version=2.17
-release=6
+version=2.18
+release=1
 source=(inittab rc rc.modules rc.single rc.multi rc.local rc.fix rc.shutdown rc.conf)
 
 build() {

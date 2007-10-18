@@ -32,7 +32,7 @@ if [ "$PREVLEVEL" != "N" ]; then
 	/sbin/start_udev
   
 	if [ -f /etc/rc.d/$SYSLOG -a -x /etc/rc.d/$SYSLOG ]; then
-		/etc/rc.d/$SYSLOG &> /dev/null
+		/etc/rc.d/$SYSLOG start &> /dev/null
 	fi	
 fi
 

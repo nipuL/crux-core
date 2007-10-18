@@ -16,7 +16,7 @@ if [ "${SERVICES[*]}" ]; then
 	echo -n "starting services:"
 	if [ -f /etc/rc.d/$SYSLOG -a -x /etc/rc.d/$SYSLOG ]; then
 		echo -n " $SYSLOG"
-		/etc/rc.d/$SYSLOG &> /dev/null || echo -n "[ERROR]"
+		/etc/rc.d/$SYSLOG start &> /dev/null || echo -n "[ERROR]"
 	fi
 	for service in ${SERVICES[@]}; do
 		echo -n " $service"
