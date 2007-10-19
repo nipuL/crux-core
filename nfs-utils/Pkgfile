@@ -3,7 +3,7 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=nfs-utils
-version=1.1.0
+version=1.1.1
 release=1
 source=(http://dl.sourceforge.net/nfs/$name-$version.tar.gz \
         exports nfs nfsserver)
