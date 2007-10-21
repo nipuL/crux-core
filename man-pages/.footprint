@@ -52,6 +52,7 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/faccessat.2.gz
 -rw-r--r--	root/root	usr/man/man2/fadvise64.2.gz
 -rw-r--r--	root/root	usr/man/man2/fadvise64_64.2.gz
+-rw-r--r--	root/root	usr/man/man2/fallocate.2.gz
 -rw-r--r--	root/root	usr/man/man2/fchdir.2.gz
 -rw-r--r--	root/root	usr/man/man2/fchmod.2.gz
 -rw-r--r--	root/root	usr/man/man2/fchmodat.2.gz
