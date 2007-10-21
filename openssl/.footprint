@@ -1118,5 +1118,4 @@ drwxr-xr-x	root/root	usr/man/man5/
 -rw-r--r--	root/root	usr/man/man5/config.5ssl.gz
 -rw-r--r--	root/root	usr/man/man5/x509v3_config.5ssl.gz
 drwxr-xr-x	root/root	usr/man/man7/
-lrwxrwxrwx	root/root	usr/man/man7/Modes_of_DES.7ssl.gz -> des_modes.7ssl.gz
 -rw-r--r--	root/root	usr/man/man7/des_modes.7ssl.gz
