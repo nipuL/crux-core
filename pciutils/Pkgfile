@@ -1,10 +1,9 @@
 # Description: Library and utilities to access the PCI bus configuration registers
 # URL:         http://atrey.karlin.mff.cuni.cz/~mj/pciutils.shtml
-# Packager:    Markus Ackermann, maol at symlink dot ch
 # Maintainer:  Jürgen Daubert, juergen dot daubert at t-online dot de
 
 name=pciutils
-version=2.2.7
+version=2.2.8
 release=1
 source=(http://www.kernel.org/pub/software/utils/$name/$name-$version.tar.gz)
 
