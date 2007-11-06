@@ -4,7 +4,7 @@
 # Depends on:  ncurses
 
 name=psmisc
-version=22.5
+version=22.6
 release=1
 source=(http://dl.sourceforge.net/$name/$name-$version.tar.gz)
 
