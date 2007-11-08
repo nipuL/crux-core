@@ -4,7 +4,7 @@
 # Depends on:  man
 
 name=man-pages
-version=2.66
+version=2.67
 release=1
 source=(ftp://ftp.win.tue.nl/pub/linux-local/manpages/$name-$version.tar.gz)
 
