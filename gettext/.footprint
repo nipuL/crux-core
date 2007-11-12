@@ -37,7 +37,6 @@ lrwxrwxrwx	root/root	usr/lib/libasprintf.so -> libasprintf.so.0.0.0
 lrwxrwxrwx	root/root	usr/lib/libasprintf.so.0 -> libasprintf.so.0.0.0
 -rwxr-xr-x	root/root	usr/lib/libasprintf.so.0.0.0
 -rwxr-xr-x	root/root	usr/lib/libgettextlib-0.17.so
--rw-r--r--	root/root	usr/lib/libgettextlib.a
 -rwxr-xr-x	root/root	usr/lib/libgettextlib.la
 lrwxrwxrwx	root/root	usr/lib/libgettextlib.so -> libgettextlib-0.17.so
 -rw-r--r--	root/root	usr/lib/libgettextpo.a
@@ -46,7 +45,6 @@ lrwxrwxrwx	root/root	usr/lib/libgettextpo.so -> libgettextpo.so.0.4.0
 lrwxrwxrwx	root/root	usr/lib/libgettextpo.so.0 -> libgettextpo.so.0.4.0
 -rwxr-xr-x	root/root	usr/lib/libgettextpo.so.0.4.0
 -rwxr-xr-x	root/root	usr/lib/libgettextsrc-0.17.so
--rw-r--r--	root/root	usr/lib/libgettextsrc.a
 -rwxr-xr-x	root/root	usr/lib/libgettextsrc.la
 lrwxrwxrwx	root/root	usr/lib/libgettextsrc.so -> libgettextsrc-0.17.so
 -rw-r--r--	root/root	usr/lib/preloadable_libintl.so
