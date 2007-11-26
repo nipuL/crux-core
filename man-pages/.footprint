@@ -9,6 +9,7 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/_exit.2.gz
 -rw-r--r--	root/root	usr/man/man2/_llseek.2.gz
 -rw-r--r--	root/root	usr/man/man2/_newselect.2.gz
+-rw-r--r--	root/root	usr/man/man2/_syscall.2.gz
 -rw-r--r--	root/root	usr/man/man2/_sysctl.2.gz
 -rw-r--r--	root/root	usr/man/man2/accept.2.gz
 -rw-r--r--	root/root	usr/man/man2/access.2.gz
