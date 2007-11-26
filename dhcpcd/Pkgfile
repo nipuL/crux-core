@@ -3,13 +3,12 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=dhcpcd
-version=3.1.7
+version=3.1.8
 release=1
-source=(http://download.berlios.de/dhcpcd/$name-$version.tar.bz2)
+source=(http://download.berlios.de/$name/$name-$version.tar.bz2)
 
 build () {
     cd $name-$version
     make
-    install -D -m 755 dhcpcd $PKG/sbin/dhcpcd
-    install -D -m 644 dhcpcd.8 $PKG/usr/man/man8/dhcpcd.8
+    make DESTDIR=$PKG MANPREFIX=/usr install
 }
