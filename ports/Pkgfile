@@ -4,7 +4,7 @@
 
 name=ports
 version=1.5
-release=6
+release=7
 source=(http://crux.nu/files/tools/ports/$name-$version.tar.gz \
         core.rsync opt.rsync xorg.rsync contrib.rsync.inactive)
 
