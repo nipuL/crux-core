@@ -571,6 +571,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/cfree.3.gz
 -rw-r--r--	root/root	usr/man/man3/cfsetispeed.3.gz
 -rw-r--r--	root/root	usr/man/man3/cfsetospeed.3.gz
+-rw-r--r--	root/root	usr/man/man3/cfsetspeed.3.gz
 -rw-r--r--	root/root	usr/man/man3/cimag.3.gz
 -rw-r--r--	root/root	usr/man/man3/cimagf.3.gz
 -rw-r--r--	root/root	usr/man/man3/cimagl.3.gz
