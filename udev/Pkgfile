@@ -3,7 +3,7 @@
 # Maintainer: CRUX System Team, core-ports at crux dot nu
 
 name=udev
-version=115
+version=117
 release=1
 source=(ftp://ftp.kernel.org/pub/linux/utils/kernel/hotplug/$name-$version.tar.bz2 \
 	http://www.linuxfromscratch.org/lfs/downloads/development/udev-config-20070731.tar.bz2 \
