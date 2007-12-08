@@ -6,8 +6,8 @@
 name=reiserfsprogs
 version=3.6.19
 release=1
-source=(ftp://ftp.namesys.com/pub/reiserfsprogs/$name-$version.tar.gz \
-	$name-$version.patch)
+source=(http://fresh.t-systems-sfr.com/linux/src/$name-$version.tar.gz \
+        $name-$version.patch)
 
 build () {
     cd $name-$version
