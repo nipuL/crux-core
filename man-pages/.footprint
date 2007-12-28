@@ -454,6 +454,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/aio_write.3.gz
 -rw-r--r--	root/root	usr/man/man3/alloca.3.gz
 -rw-r--r--	root/root	usr/man/man3/alphasort.3.gz
+-rw-r--r--	root/root	usr/man/man3/argz.3.gz
 -rw-r--r--	root/root	usr/man/man3/argz_add.3.gz
 -rw-r--r--	root/root	usr/man/man3/argz_add_sep.3.gz
 -rw-r--r--	root/root	usr/man/man3/argz_append.3.gz
@@ -699,6 +700,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/endusershell.3.gz
 -rw-r--r--	root/root	usr/man/man3/endutent.3.gz
 -rw-r--r--	root/root	usr/man/man3/endutxent.3.gz
+-rw-r--r--	root/root	usr/man/man3/envz.3.gz
 -rw-r--r--	root/root	usr/man/man3/envz_add.3.gz
 -rw-r--r--	root/root	usr/man/man3/envz_entry.3.gz
 -rw-r--r--	root/root	usr/man/man3/envz_get.3.gz
@@ -1714,6 +1716,7 @@ drwxr-xr-x	root/root	usr/man/man5/
 -rw-r--r--	root/root	usr/man/man5/dir_colors.5.gz
 -rw-r--r--	root/root	usr/man/man5/elf.5.gz
 -rw-r--r--	root/root	usr/man/man5/environ.5.gz
+-rw-r--r--	root/root	usr/man/man5/filesystems.5.gz
 -rw-r--r--	root/root	usr/man/man5/fs.5.gz
 -rw-r--r--	root/root	usr/man/man5/ftpusers.5.gz
 -rw-r--r--	root/root	usr/man/man5/group.5.gz
