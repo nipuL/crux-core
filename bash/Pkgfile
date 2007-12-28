@@ -4,17 +4,17 @@
 # Depends on:  ncurses
 
 name=bash
-version=3.2.25
-release=2
+version=3.2.33
+release=1
 source=(http://ftp.gnu.org/gnu/$name/$name-3.2.tar.gz \
-        $name-3.2-001-025.patch \
+        $name-3.2-001-033.patch \
         $name-3.2-doc.patch \
         profile)
 
 build() {
     cd $name-3.2
-    
-    patch -p0 < $SRC/$name-3.2-001-025.patch
+
+    patch -p0 < $SRC/$name-3.2-001-033.patch
     patch -p1 < $SRC/$name-3.2-doc.patch
 
     touch configure
