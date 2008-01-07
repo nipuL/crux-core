@@ -3,7 +3,7 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=e2fsprogs
-version=1.40.3
+version=1.40.4
 release=1
 source=(http://dl.sourceforge.net/sourceforge/$name/$name-$version.tar.gz \
         $name-symlink.patch)
@@ -24,6 +24,6 @@ build() {
                  --disable-nls
     make
     make DESTDIR=$PKG install install-libs
-    rm -rf $PKG/usr/share/info
+    rm -rf $PKG/{usr/share/info,etc/init.d}
     chmod +w -R $PKG
 }

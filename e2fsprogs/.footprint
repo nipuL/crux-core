@@ -121,9 +121,11 @@ lrwxrwxrwx	root/root	usr/man/man8/mkfs.ext3.8.gz -> mke2fs.8.gz
 -rw-r--r--	root/root	usr/man/man8/mklost+found.8.gz
 -rw-r--r--	root/root	usr/man/man8/resize2fs.8.gz
 -rw-r--r--	root/root	usr/man/man8/tune2fs.8.gz
+-rw-r--r--	root/root	usr/man/man8/uuidd.8.gz
 drwxr-xr-x	root/root	usr/sbin/
 -rwxr-xr-x	root/root	usr/sbin/filefrag
 -rwxr-xr-x	root/root	usr/sbin/mklost+found
+-rwxr-xr-x	root/root	usr/sbin/uuidd
 drwxr-xr-x	root/root	usr/share/
 drwxr-xr-x	root/root	usr/share/et/
 -rw-r--r--	root/root	usr/share/et/et_c.awk
