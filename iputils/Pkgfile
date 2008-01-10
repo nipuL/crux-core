@@ -1,30 +1,23 @@
 # Description: Basic networking applet
-# URL: http://linux-net.osdl.org/index.php/Iputils
+# URL: http://www.linux-foundation.org/en/Net:Iputils
 # Maintainer: Matt Housh, jaeger at morpheus dot net
+# Packager: Juergen Daubert, juergen dot daubert at t-online dot de
 
 name=iputils
-version=ss021109-try
-release=4
-source=(ftp://ftp.inr.ac.ru/ip-routing/$name-$version.tar.bz2 \
-	$name-ipg-linux26.patch $name-$version.patch)
+version=s20071127
+release=1
+source=(http://www.skbuff.net/iputils/$name-$version.tar.bz2 \
+        http://crux.nu/~jue/files/dist/$name-man-$version.tar.bz2)
 
 build() {
-	cd $name
-	patch -i $SRC/$name-$version.patch Makefile
-	patch -i $SRC/$name-ipg-linux26.patch ipg
-	sed -i -e "/^CCOPT=/s|-O2|$CFLAGS|" \
-		-e '/^CCOPT=/s| -g$||' \
-		Makefile
+	cd $name-$version
+	sed -i "/^CCOPT=/s|-O2|$CFLAGS|;s| -g$||" Makefile
 	make
-	make man
 
-	mkdir -p $PKG/{{s,}bin,usr/{man/man8,sbin}}
+	install -d $PKG/{{s,}bin,usr/{man/man8,sbin}}
 	install ping{,6} $PKG/bin/
 	install arping $PKG/sbin/
-	install tracepath{,6} traceroute6 clockdiff rarpd rdisc \
-		ipg tftpd $PKG/usr/sbin/
-	install doc/*.8 $PKG/usr/man/man8
-	rm -f $PKG/usr/man/man8/setkey*
-	ln -s ping.8 $PKG/usr/man/man8/ping6.8
+	install tracepath{,6} traceroute6 clockdiff rarpd rdisc ipg tftpd $PKG/usr/sbin/
+	cp -d $SRC/$name-man-$version/* $PKG/usr/man/man8
 	chmod u+s $PKG/bin/ping{,6} $PKG/usr/sbin/traceroute6
 }
