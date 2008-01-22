@@ -4,7 +4,7 @@
 # Depends on:  e2fsprogs
 
 name=xfsprogs
-version=2.9.4
+version=2.9.5
 release=1
 source=(ftp://oss.sgi.com/projects/xfs/cmd_tars/${name}_${version}-1.tar.gz)
 
