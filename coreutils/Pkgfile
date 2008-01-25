@@ -4,11 +4,14 @@
 
 name=coreutils
 version=6.10
-release=1
-source=(http://ftp.gnu.org/pub/gnu/$name/$name-$version.tar.gz)
+release=2
+source=(http://ftp.gnu.org/pub/gnu/$name/$name-$version.tar.gz 
+        coreutils-uname.patch)
 
 build() {
     cd $name-$version
+
+    patch -p1 -i $SRC/coreutils-uname.patch
 
     DEFAULT_POSIX2_VERSION=199209 \
     ./configure --prefix=/usr \
