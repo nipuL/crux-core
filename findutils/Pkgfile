@@ -3,7 +3,7 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=findutils
-version=4.2.31
+version=4.2.32
 release=1
 source=(http://ftp.gnu.org/pub/gnu/$name/$name-$version.tar.gz)
 
