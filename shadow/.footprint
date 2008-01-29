@@ -34,7 +34,6 @@ drwxr-xr-x	root/root	usr/man/man1/
 -rw-r--r--	root/root	usr/man/man1/su.1.gz
 drwxr-xr-x	root/root	usr/man/man5/
 -rw-r--r--	root/root	usr/man/man5/faillog.5.gz
--rw-r--r--	root/root	usr/man/man5/gshadow.5.gz
 -rw-r--r--	root/root	usr/man/man5/limits.5.gz
 -rw-r--r--	root/root	usr/man/man5/login.access.5.gz
 -rw-r--r--	root/root	usr/man/man5/login.defs.5.gz
@@ -73,4 +72,5 @@ lrwxrwxrwx	root/root	usr/sbin/vigr -> vipw
 -rwxr-xr-x	root/root	usr/sbin/vipw
 drwxr-xr-x	root/root	var/
 drwxr-xr-x	root/root	var/log/
+-rw-r--r--	root/root	var/log/faillog (EMPTY)
 -rw-r--r--	root/root	var/log/lastlog (EMPTY)

@@ -1,5 +1,4 @@
-e98baece425f10e7e1dd68c412e0f7dd  login.defs
+05a85f1ea6bf26aec66a91b5f98a51b0  login.defs
 be8f69c2701118093af3d7f3bc02af16  pwck
-d58a29c9fa227f18545d8c43997dbb7d  shadow-4.0.16-fix-useradd-usergroups.patch
-aa1259020b925cd3088cb7a36fbe7753  shadow-4.0.18.1-useradd-usermod.diff
-e7751d46ecf219c07ae0b028ab3335c6  shadow-4.0.18.1.tar.bz2
+3c3a1fbfae01534de2c8bbd566200dce  shadow-4.1.0.patch
+dd6ca3ac424b447962d7a7af923b7bda  shadow-4.1.0.tar.bz2
