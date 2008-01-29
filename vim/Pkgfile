@@ -4,10 +4,11 @@
 # Depends on:  ncurses
 
 name=vim
-version=7.1.123
+version=7.1.242
 release=1
 source=(ftp://ftp.vim.org/pub/vim/unix/vim-7.1.tar.bz2 \
-        http://crux.nu/~jue/files/dist/vim-7.1.001-123.tar.bz2)
+        http://crux.nu/~jue/files/dist/vim-7.1.001-123.tar.bz2
+        http://crux.nu/~jue/files/dist/vim-7.1.124-242.tar.bz2)
 
 build () {
     cd vim71/src
@@ -27,7 +28,7 @@ build () {
 
     mv $PKG/usr/share/vim/vimrc_example.vim $PKG/usr/share/vim/vimrc
     rm -rf $PKG/usr/man/man?/vimtutor* $PKG/usr/share/vim/tutor $PKG/usr/share/vim/macros
-    rm $PKG/usr/share/vim/*/README.txt    
+    rm $PKG/usr/share/vim/*/README.txt
     ln -sf vim $PKG/usr/bin/evim
     ln -sf /bin/vi $PKG/usr/bin/vi
     ln -sf vim.1.gz $PKG/usr/man/man1/ex.1.gz
