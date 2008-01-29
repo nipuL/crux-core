@@ -29,6 +29,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/curl_easy_escape.3.gz
 -rw-r--r--	root/root	usr/man/man3/curl_easy_getinfo.3.gz
 -rw-r--r--	root/root	usr/man/man3/curl_easy_init.3.gz
+-rw-r--r--	root/root	usr/man/man3/curl_easy_pause.3.gz
 -rw-r--r--	root/root	usr/man/man3/curl_easy_perform.3.gz
 -rw-r--r--	root/root	usr/man/man3/curl_easy_reset.3.gz
 -rw-r--r--	root/root	usr/man/man3/curl_easy_setopt.3.gz

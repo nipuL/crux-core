@@ -4,16 +4,15 @@
 # Depends:     openssl, zlib
 
 name=curl
-version=7.17.1
+version=7.18.0
 release=1
 source=(http://curl.haxx.se/download/$name-$version.tar.bz2)
 
 build() {
     cd $name-$version
     ./configure --prefix=/usr \
-                --enable-ipv6 \
-                --mandir=/usr/man
+                --mandir=/usr/man \
+                --enable-ipv6
     make
     make DESTDIR=$PKG install
-    rm -rf $PKG/usr/info
 }
