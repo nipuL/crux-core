@@ -13,5 +13,6 @@ build() {
     ./configure --prefix=/usr --disable-zlib
     make
     make DESTDIR=$PKG install
+    sed -i '/^DEST/s|usb.ids|/usr/share/usb.ids|' update-usbids.sh
     install -D -m 755 update-usbids.sh $PKG/usr/sbin/update-usbids
 }
