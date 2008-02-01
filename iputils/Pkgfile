@@ -1,6 +1,6 @@
 # Description: Basic networking applet
 # URL: http://www.linux-foundation.org/en/Net:Iputils
-# Maintainer: Matt Housh, jaeger at morpheus dot net
+# Maintainer: CRUX System Team, core-ports at crux dot nu
 # Packager: Juergen Daubert, juergen dot daubert at t-online dot de
 
 name=iputils
