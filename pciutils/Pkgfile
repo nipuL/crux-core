@@ -3,7 +3,7 @@
 # Maintainer:  Jürgen Daubert, juergen dot daubert at t-online dot de
 
 name=pciutils
-version=2.2.9
+version=2.2.10
 release=1
 source=(http://www.kernel.org/pub/software/utils/$name/$name-$version.tar.gz)
 
