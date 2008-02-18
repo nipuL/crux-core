@@ -5,7 +5,7 @@
 
 name=exim
 version=4.69
-release=1
+release=2
 source=(ftp://ftp.exim.org/pub/exim/exim4/$name-$version.tar.bz2 \
         $name $name-config.patch)
 

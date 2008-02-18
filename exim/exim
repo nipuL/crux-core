@@ -16,7 +16,7 @@ restart)
 	$0 start
 	;;
 reload)
-	kill -s SIGHUP `pidof exim`
+	kill -s HUP $(pidof exim)
 	;;
 *)
 	echo "usage: $0 [start|stop|restart|reload]"
