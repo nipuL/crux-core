@@ -4,7 +4,7 @@
 # Depends on:  man
 
 name=man-pages
-version=2.76
+version=2.78
 release=1
 source=(ftp://ftp.win.tue.nl/pub/linux-local/manpages/$name-$version.tar.gz)
 
@@ -14,5 +14,4 @@ build() {
     make gz
     make MANDIR=/usr/man DESTDIR=$PKG install
     touch $PKG/usr/man/whatis
-    rm -r $PKG/usr/man/man?p
 }
