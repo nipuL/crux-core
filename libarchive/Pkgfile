@@ -4,12 +4,17 @@
 # Depends on: bzip2, zlib
 
 name=libarchive
-version=2.4.11
+version=2.4.13
 release=1
-source=(http://people.freebsd.org/~kientzle/$name/src/$name-$version.tar.gz)
+source=(http://people.freebsd.org/~kientzle/$name/src/$name-$version.tar.gz \
+        $name.diff)
 
 build() {
 	cd libarchive-$version
+
+	# disable the tests here, so that we don't have to pull in sharutils
+	# for uudecode.
+	patch -Np1 -i $SRC/$name.diff
 
 	./configure --prefix=/usr --mandir=/usr/man
 
