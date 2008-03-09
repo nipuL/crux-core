@@ -3,10 +3,10 @@
 # Maintainer: CRUX System Team, core-ports at crux dot nu
 
 name=udev
-version=117
+version=118
 release=1
 source=(ftp://ftp.kernel.org/pub/linux/utils/kernel/hotplug/$name-$version.tar.bz2 \
-	http://www.linuxfromscratch.org/lfs/downloads/development/udev-config-20070731.tar.bz2 \
+	http://www.linuxfromscratch.org/lfs/downloads/development/udev-config-20080217.tar.bz2 \
 	start_udev cdrom.rules cdsymlinks)
 
 build() {
@@ -25,7 +25,7 @@ build() {
 	make EXTRAS="$extras"
 	make install DESTDIR=$PKG mandir="/usr/man" EXTRAS="$extras"
 
-	pushd $SRC/udev-config-20070731
+	pushd $SRC/udev-config-20080217
 	make DESTDIR=$PKG install
 	popd
 
@@ -41,8 +41,9 @@ build() {
 	install -m 0755 $SRC/start_udev $PKG/sbin
 	install -m 0755 $SRC/cdsymlinks $PKG/lib/udev/
 	install -m 644 etc/udev/rules.d/[0-9]* $PKG/etc/udev/rules.d/
-	install -m 644 $SRC/cdrom.rules $PKG/etc/udev/rules.d/81-cdrom.rules
+	install -m 644 $SRC/cdrom.rules $PKG/etc/udev/rules.d/61-cdrom.rules
 
 	# Comment uucp lines in default rules
 	sed -i 's|.*uucp.*|#&|g' $PKG/etc/udev/rules.d/50-udev-default.rules
+	sed -i 's|.*uucp.*|#&|g' $PKG/etc/udev/rules.d/55-lfs.rules
 }
