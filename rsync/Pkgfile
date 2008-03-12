@@ -1,28 +1,26 @@
 # Description: Utility for incremental file transfers over networks
 # URL:         http://rsync.samba.org
-# Maintainer:  Jürgen Daubert, juergen dot daubert at t-online dot de
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
 # Depends on:  openssh
 
 name=rsync
-version=2.6.9
-release=2
+version=3.0.0
+release=1
 source=(http://rsync.samba.org/ftp/$name/$name-$version.tar.gz \
-        rsyncd.conf rsyncd rsync.driver \
-        $name-$version-fname-obo.diff)
+        rsyncd.conf rsyncd rsync.driver)
 
 build () {
     cd $name-$version
-
-    patch -p1 -i $SRC/$name-$version-fname-obo.diff
 
     ./configure --prefix=/usr \
                 --mandir=/usr/man \
                 --with-rsh=ssh \
                 --with-included-popt
+
     make
     make DESTDIR=$PKG install
 
-    mkdir -p $PKG/etc/{rc.d,ports/drivers} $PKG/var/log
+    install -d $PKG/etc/{rc.d,ports/drivers} $PKG/var/log
     install -m 755 $SRC/rsyncd $PKG/etc/rc.d
     install -m 644 $SRC/rsyncd.conf $PKG/etc
     install -m 755 $SRC/rsync.driver $PKG/etc/ports/drivers/rsync
