@@ -650,6 +650,9 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/tee.2.gz
 -rw-r--r--	root/root	usr/man/man2/tgkill.2.gz
 -rw-r--r--	root/root	usr/man/man2/time.2.gz
+-rw-r--r--	root/root	usr/man/man2/timerfd_create.2.gz
+-rw-r--r--	root/root	usr/man/man2/timerfd_gettime.2.gz
+-rw-r--r--	root/root	usr/man/man2/timerfd_settime.2.gz
 -rw-r--r--	root/root	usr/man/man2/times.2.gz
 -rw-r--r--	root/root	usr/man/man2/tkill.2.gz
 -rw-r--r--	root/root	usr/man/man2/truncate.2.gz
@@ -1011,6 +1014,8 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/ether_ntoa_r.3.gz
 -rw-r--r--	root/root	usr/man/man3/ether_ntohost.3.gz
 -rw-r--r--	root/root	usr/man/man3/euidaccess.3.gz
+-rw-r--r--	root/root	usr/man/man3/eventfd_read.3.gz
+-rw-r--r--	root/root	usr/man/man3/eventfd_write.3.gz
 -rw-r--r--	root/root	usr/man/man3/exec.3.gz
 -rw-r--r--	root/root	usr/man/man3/execl.3.gz
 -rw-r--r--	root/root	usr/man/man3/execle.3.gz
