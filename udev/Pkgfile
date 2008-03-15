@@ -6,7 +6,7 @@ name=udev
 version=118
 release=1
 source=(ftp://ftp.kernel.org/pub/linux/utils/kernel/hotplug/$name-$version.tar.bz2 \
-	http://www.linuxfromscratch.org/lfs/downloads/development/udev-config-20080217.tar.bz2 \
+	http://crux.nu/files/distfiles/udev-config-20080217.tar.bz2 \
 	start_udev cdrom.rules cdsymlinks)
 
 build() {
