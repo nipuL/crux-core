@@ -4,8 +4,8 @@
 # Depends on:  openssl, zlib
 
 name=openssh
-version=4.7p1
-release=2
+version=4.9p1
+release=1
 source=(http://fresh.t-systems-sfr.com/unix/src/misc/$name-$version.tar.gz sshd)
 
 build() {
