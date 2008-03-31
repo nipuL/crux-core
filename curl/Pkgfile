@@ -4,7 +4,7 @@
 # Depends:     openssl, zlib
 
 name=curl
-version=7.18.0
+version=7.18.1
 release=1
 source=(http://curl.haxx.se/download/$name-$version.tar.bz2)
 
