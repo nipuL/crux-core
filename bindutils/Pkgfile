@@ -11,7 +11,7 @@ source=(ftp://ftp.isc.org/isc/bind9/$version/bind-$version.tar.gz)
 build() {
     cd bind-$version
     ./configure --prefix=/usr
-    make -C lib
+    make -j1 -C lib
     make -C bin/dig
     install -D -m 755 bin/dig/host $PKG/usr/bin/host
     install -D -m 644 bin/dig/host.1 $PKG/usr/man/man1/host.1
