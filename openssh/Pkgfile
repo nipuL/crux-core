@@ -4,9 +4,9 @@
 # Depends on:  openssl, zlib
 
 name=openssh
-version=4.9p1
+version=5.0p1
 release=1
-source=(http://fresh.t-systems-sfr.com/unix/src/misc/$name-$version.tar.gz sshd)
+source=(ftp://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/$name-$version.tar.gz sshd)
 
 build() {
     cd $name-$version
