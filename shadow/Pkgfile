@@ -3,16 +3,13 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=shadow
-version=4.1.0
+version=4.1.1
 release=1
 source=(ftp://pkg-shadow.alioth.debian.org/pub/pkg-shadow/$name-$version.tar.bz2
-        pwck login.defs
-        shadow-4.1.0.patch)
+        pwck login.defs)
 
 build() {
     cd $name-$version
-
-    patch -p1 -i $SRC/shadow-4.1.0.patch
 
     ./configure --prefix=/usr \
                 --mandir=/usr/man \
@@ -22,7 +19,6 @@ build() {
                 --disable-nls \
                 --without-selinux \
                 --without-libpam
-
 
     make
     make DESTDIR=$PKG install
@@ -41,7 +37,5 @@ build() {
           $PKG/usr/man/man8/{newusers.8,pwconv.8,pwunconv.8} \
           $PKG/usr/man/man5/gshadow.5 \
           $PKG/usr/man/man3 \
-          $PKG/lib \
           $PKG/etc/{login.access,limits,default}
-
 }
