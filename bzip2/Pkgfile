@@ -3,7 +3,7 @@
 # Maintainer: Tilman Sauerbeck, tilman at crux dot nu
 
 name=bzip2
-version=1.0.4
+version=1.0.5
 release=1
 source=(http://www.bzip.org/$version/$name-$version.tar.gz \
         $name.patch)
