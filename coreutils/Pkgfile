@@ -3,8 +3,8 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=coreutils
-version=6.10
-release=2
+version=6.11
+release=1
 source=(http://ftp.gnu.org/pub/gnu/$name/$name-$version.tar.gz 
         coreutils-uname.patch)
 
