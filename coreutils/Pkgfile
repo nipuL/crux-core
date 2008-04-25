@@ -18,13 +18,12 @@ build() {
                 --mandir=/usr/man \
                 --disable-nls \
                 --disable-assert \
-                --enable-no-install-program=uptime,kill,mktemp,chcon,runcon
+                --enable-no-install-program=uptime,kill,mktemp,chcon,runcon,groups
     make
     make DESTDIR=$PKG install 
 
     mkdir $PKG/bin
     mv $PKG/usr/bin/{cat,chgrp,chmod,chown,cp,date,dd,df,echo,false,ln,ls,mkdir,sleep} $PKG/bin
     mv $PKG/usr/bin/{mknod,mv,pwd,readlink,rm,rmdir,stty,sync,touch,true,uname} $PKG/bin
-    rm $PKG/usr/bin/groups $PKG/usr/man/man1/groups.1
     rm -r $PKG/usr/share
 }
