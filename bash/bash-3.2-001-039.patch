@@ -3399,3 +3399,650 @@ Patch:
   
   #endif /* _PATCHLEVEL_H_ */
 
+			     BASH PATCH REPORT
+			     =================
+
+Bash-Release: 3.2
+Patch-ID: bash32-034
+
+Bug-Reported-by:	Ian Campbell <ian.campbell@xensource.com>
+Bug-Reference-ID:	<EXCHPAFExU3l5bhn1ow00001dfe@rpc.xensource.com>
+Bug-Reference-URL:	http://lists.gnu.org/archive/html/bug-bash/2007-10/msg00060.html
+
+Bug-Description:
+
+The bash getcwd replacement will write past the end of allocated memory
+when it allocates the buffer itself if it uses the buffer size passed as
+an argument, and that size is less than the length of the pathname.
+
+Patch:
+
+*** ../bash-3.2-patched/lib/sh/getcwd.c	2004-07-21 17:15:19.000000000 -0400
+--- lib/sh/getcwd.c	2007-12-31 19:26:36.000000000 -0500
+***************
+*** 252,268 ****
+    {
+      size_t len = pathbuf + pathsize - pathp;
+      if (buf == NULL)
+        {
+! 	if (len < (size_t) size)
+! 	  len = size;
+! 	buf = (char *) malloc (len);
+  	if (buf == NULL)
+  	  goto lose2;
+        }
+!     else if ((size_t) size < len)
+!       {
+! 	errno = ERANGE;
+! 	goto lose2;
+!       }
+      (void) memcpy((PTR_T) buf, (PTR_T) pathp, len);
+    }
+--- 287,305 ----
+    {
+      size_t len = pathbuf + pathsize - pathp;
++     if (buf == NULL && size <= 0)
++       size = len;
++ 
++     if ((size_t) size < len)
++       {
++ 	errno = ERANGE;
++ 	goto lose2;
++       }
+      if (buf == NULL)
+        {
+! 	buf = (char *) malloc (size);
+  	if (buf == NULL)
+  	  goto lose2;
+        }
+! 
+      (void) memcpy((PTR_T) buf, (PTR_T) pathp, len);
+    }
+*** ../bash-3.2/patchlevel.h	Thu Apr 13 08:31:04 2006
+--- patchlevel.h	Mon Oct 16 14:22:54 2006
+***************
+*** 26,30 ****
+     looks for to find the patch level (for the sccs version string). */
+  
+! #define PATCHLEVEL 33
+  
+  #endif /* _PATCHLEVEL_H_ */
+--- 26,30 ----
+     looks for to find the patch level (for the sccs version string). */
+  
+! #define PATCHLEVEL 34
+  
+  #endif /* _PATCHLEVEL_H_ */
+
+			     BASH PATCH REPORT
+			     =================
+
+Bash-Release: 3.2
+Patch-ID: bash32-035
+
+Bug-Reported-by:	Ingo Molnar <mingo@elte.hu>
+Bug-Reference-ID:	<20071205202901.GA25202@elte.hu>
+Bug-Reference-URL:	http://lists.gnu.org/archive/html/bug-bash/2007-12/msg00014.html
+
+Bug-Description:
+
+Bash incorrectly puts the second and subsequent children spawned by a
+shell forked to run a command substitution in the wrong process group.
+
+Patch:
+
+*** ../bash-3.2-patched/subst.c	2007-12-13 22:31:21.000000000 -0500
+--- subst.c	2008-01-17 22:48:15.000000000 -0500
+***************
+*** 4621,4627 ****
+  
+  #if defined (JOB_CONTROL)
+    set_sigchld_handler ();
+    stop_making_children ();
+!   pipeline_pgrp = old_pipeline_pgrp;
+  #else
+    stop_making_children ();
+--- 4721,4728 ----
+  
+  #if defined (JOB_CONTROL)
+    set_sigchld_handler ();
+    stop_making_children ();
+!   if (pid != 0)
+!     pipeline_pgrp = old_pipeline_pgrp;
+  #else
+    stop_making_children ();
+*** ../bash-3.2-patched/jobs.c	2007-08-25 13:46:59.000000000 -0400
+--- jobs.c	2007-12-08 16:47:43.000000000 -0500
+***************
+*** 251,254 ****
+--- 251,255 ----
+  static int set_job_status_and_cleanup __P((int));
+  
++ static WAIT job_signal_status __P((int));
+  static WAIT raw_job_exit_status __P((int));
+  
+***************
+*** 2220,2223 ****
+--- 2238,2261 ----
+  }
+  
++ static WAIT
++ job_signal_status (job)
++      int job;
++ {
++   register PROCESS *p;
++   WAIT s;
++ 
++   p = jobs[job]->pipe;
++   do
++     {
++       s = p->status;
++       if (WIFSIGNALED(s) || WIFSTOPPED(s))
++ 	break;
++       p = p->next;
++     }
++   while (p != jobs[job]->pipe);
++ 
++   return s;
++ }
++   
+  /* Return the exit status of the last process in the pipeline for job JOB.
+     This is the exit status of the entire job. */
+***************
+*** 2302,2310 ****
+       received, only if one of the jobs run is killed via SIGINT.  If
+       job control is not set, the job will be run in the same pgrp as
+!      the shell, and the shell will see any signals the job gets. */
+  
+    /* This is possibly a race condition -- should it go in stop_pipeline? */
+    wait_sigint_received = 0;
+!   if (job_control == 0)
+      {
+        old_sigint_handler = set_signal_handler (SIGINT, wait_sigint_handler);
+--- 2343,2354 ----
+       received, only if one of the jobs run is killed via SIGINT.  If
+       job control is not set, the job will be run in the same pgrp as
+!      the shell, and the shell will see any signals the job gets.  In
+!      fact, we want this set every time the waiting shell and the waited-
+!      for process are in the same process group, including command
+!      substitution. */
+  
+    /* This is possibly a race condition -- should it go in stop_pipeline? */
+    wait_sigint_received = 0;
+!   if (job_control == 0 || (subshell_environment&SUBSHELL_COMSUB))
+      {
+        old_sigint_handler = set_signal_handler (SIGINT, wait_sigint_handler);
+***************
+*** 2452,2464 ****
+  	     the last process in the pipeline.  If no process exits due to a
+  	     signal, S is left as the status of the last job in the pipeline. */
+! 	  p = jobs[job]->pipe;
+! 	  do
+! 	    {
+! 	      s = p->status;
+! 	      if (WIFSIGNALED(s) || WIFSTOPPED(s))
+! 		break;
+! 	      p = p->next;
+! 	    }
+! 	  while (p != jobs[job]->pipe);
+  
+  	  if (WIFSIGNALED (s) || WIFSTOPPED (s))
+--- 2496,2500 ----
+  	     the last process in the pipeline.  If no process exits due to a
+  	     signal, S is left as the status of the last job in the pipeline. */
+! 	  s = job_signal_status (job);
+  
+  	  if (WIFSIGNALED (s) || WIFSTOPPED (s))
+***************
+*** 2494,2497 ****
+--- 2530,2551 ----
+  	    }
+  	}
++       else if ((subshell_environment & SUBSHELL_COMSUB) && wait_sigint_received)
++ 	{
++ 	  /* If waiting for a job in a subshell started to do command
++ 	     substitution, simulate getting and being killed by the SIGINT to
++ 	     pass the status back to our parent. */
++ 	  s = job_signal_status (job);
++ 	
++ 	  if (WIFSIGNALED (s) && WTERMSIG (s) == SIGINT && signal_is_trapped (SIGINT) == 0)
++ 	    {
++ 	      UNBLOCK_CHILD (oset);
++ 	      restore_sigint_handler ();
++ 	      old_sigint_handler = set_signal_handler (SIGINT, SIG_DFL);
++ 	      if (old_sigint_handler == SIG_IGN)
++ 		restore_sigint_handler ();
++ 	      else
++ 		kill (getpid (), SIGINT);
++ 	    }
++ 	}
+  
+        /* Moved here from set_job_status_and_cleanup, which is in the SIGCHLD
+*** ../bash-3.2/patchlevel.h	Thu Apr 13 08:31:04 2006
+--- patchlevel.h	Mon Oct 16 14:22:54 2006
+***************
+*** 26,30 ****
+     looks for to find the patch level (for the sccs version string). */
+  
+! #define PATCHLEVEL 34
+  
+  #endif /* _PATCHLEVEL_H_ */
+--- 26,30 ----
+     looks for to find the patch level (for the sccs version string). */
+  
+! #define PATCHLEVEL 35
+  
+  #endif /* _PATCHLEVEL_H_ */
+
+			     BASH PATCH REPORT
+			     =================
+
+Bash-Release: 3.2
+Patch-ID: bash32-036
+
+Bug-Reported-by:	Len Lattanzi <llattanzi@apple.com>
+Bug-Reference-ID:	<87493131-7AEC-4301-A684-E6CC6D06E3E1@apple.com>
+Bug-Reference-URL:
+
+Bug-Description:
+
+When initializing a subshell, bash did not reset a sentinel keeping track
+of the number of command substitutions, leading to an infinite loop if
+an error was encountered in the subshell.
+
+Patch:
+
+*** ../bash-3.2-patched/execute_cmd.c	2007-12-13 22:31:14.000000000 -0500
+--- execute_cmd.c	2007-12-20 08:52:34.000000000 -0500
+***************
+*** 3881,3884 ****
+--- 3916,3921 ----
+  
+    clear_unwind_protect_list (0);
++   /* XXX -- are there other things we should be resetting here? */
++   parse_and_execute_level = 0;		/* nothing left to restore it */
+  
+    /* We're no longer inside a shell function. */
+*** ../bash-3.2/patchlevel.h	Thu Apr 13 08:31:04 2006
+--- patchlevel.h	Mon Oct 16 14:22:54 2006
+***************
+*** 26,30 ****
+     looks for to find the patch level (for the sccs version string). */
+  
+! #define PATCHLEVEL 35
+  
+  #endif /* _PATCHLEVEL_H_ */
+--- 26,30 ----
+     looks for to find the patch level (for the sccs version string). */
+  
+! #define PATCHLEVEL 36
+  
+  #endif /* _PATCHLEVEL_H_ */
+
+			     BASH PATCH REPORT
+			     =================
+
+Bash-Release: 3.2
+Patch-ID: bash32-037
+
+Bug-Reported-by:	jared r r spiegel <jrrs@iorek.ice-nine.org>
+Bug-Reference-ID:	<200801152201.m0FM1lDp021260@iorek.ice-nine.org>
+Bug-Reference-URL:	http://lists.gnu.org/archive/html/bug-bash/2008-01/msg00049.html
+
+Bug-Description:
+
+Bash inappropriately evaluates command substitutions while expanding
+directory names as part of command substitution.
+
+Patch:
+
+*** ../bash-3.2-patched/subst.c	2007-12-13 22:31:21.000000000 -0500
+--- subst.c	2008-01-17 22:48:15.000000000 -0500
+***************
+*** 2815,2821 ****
+     to jump_to_top_level here so we don't endlessly loop. */
+  WORD_LIST *
+! expand_prompt_string (string, quoted)
+       char *string;
+       int quoted;
+  {
+    WORD_LIST *value;
+--- 2895,2902 ----
+     to jump_to_top_level here so we don't endlessly loop. */
+  WORD_LIST *
+! expand_prompt_string (string, quoted, wflags)
+       char *string;
+       int quoted;
++      int wflags;
+  {
+    WORD_LIST *value;
+***************
+*** 2825,2829 ****
+      return ((WORD_LIST *)NULL);
+  
+!   td.flags = 0;
+    td.word = savestring (string);
+  
+--- 2906,2910 ----
+      return ((WORD_LIST *)NULL);
+  
+!   td.flags = wflags;
+    td.word = savestring (string);
+  
+*** ../bash-3.2-patched/subst.h	2007-03-24 14:51:05.000000000 -0400
+--- subst.h	2008-01-17 22:46:08.000000000 -0500
+***************
+*** 136,140 ****
+  
+  /* Expand a prompt string. */
+! extern WORD_LIST *expand_prompt_string __P((char *, int));
+  
+  /* Expand STRING just as if you were expanding a word.  This also returns
+--- 137,141 ----
+  
+  /* Expand a prompt string. */
+! extern WORD_LIST *expand_prompt_string __P((char *, int, int));
+  
+  /* Expand STRING just as if you were expanding a word.  This also returns
+*** ../bash-3.2-patched/parse.y	2007-08-25 13:47:06.000000000 -0400
+--- parse.y	2008-01-17 22:46:30.000000000 -0500
+***************
+*** 4367,4371 ****
+      {
+        last_exit_value = last_command_exit_value;
+!       list = expand_prompt_string (result, Q_DOUBLE_QUOTES);
+        free (result);
+        result = string_list (list);
+--- 4367,4371 ----
+      {
+        last_exit_value = last_command_exit_value;
+!       list = expand_prompt_string (result, Q_DOUBLE_QUOTES, 0);
+        free (result);
+        result = string_list (list);
+*** ../bash-3.2-patched/bashline.c	2006-07-29 16:39:30.000000000 -0400
+--- bashline.c	2008-02-17 12:53:42.000000000 -0500
+***************
+*** 2358,2362 ****
+      {
+        new_dirname = savestring (local_dirname);
+!       wl = expand_prompt_string (new_dirname, 0);	/* does the right thing */
+        if (wl)
+  	{
+--- 2376,2380 ----
+      {
+        new_dirname = savestring (local_dirname);
+!       wl = expand_prompt_string (new_dirname, 0, W_NOCOMSUB);	/* does the right thing */
+        if (wl)
+  	{
+*** ../bash-3.2/patchlevel.h	Thu Apr 13 08:31:04 2006
+--- patchlevel.h	Mon Oct 16 14:22:54 2006
+***************
+*** 26,30 ****
+     looks for to find the patch level (for the sccs version string). */
+  
+! #define PATCHLEVEL 36
+  
+  #endif /* _PATCHLEVEL_H_ */
+--- 26,30 ----
+     looks for to find the patch level (for the sccs version string). */
+  
+! #define PATCHLEVEL 37
+  
+  #endif /* _PATCHLEVEL_H_ */
+
+			     BASH PATCH REPORT
+			     =================
+
+Bash-Release: 3.2
+Patch-ID: bash32-038
+
+Bug-Reported-by:	Wojciech Puchar <wojtek@wojtek.tensor.gdynia.pl>
+Bug-Reference-ID:	<200803131141.m2DBf9vo001136@wojtek.tensor.gdynia.pl>
+Bug-Reference-URL:	http://lists.gnu.org/archive/html/bug-bash/2008-03/msg00029.html
+
+Bug-Description:
+
+When reading input lines into a single variable using the `read' builtin,
+bash did not free the memory it read after assigining it to the named
+variable, causing a memory leak noticable when reading large amounts of
+data.
+
+
+Patch:
+
+*** ../bash-3.2-patched/builtins/read.def	2007-08-25 13:47:07.000000000 -0400
+--- builtins/read.def	2008-03-07 12:55:47.000000000 -0500
+***************
+*** 135,139 ****
+    char c;
+    char *input_string, *orig_input_string, *ifs_chars, *prompt, *arrayname;
+!   char *e, *t, *t1, *ps2;
+    struct stat tsb;
+    SHELL_VAR *var;
+--- 152,156 ----
+    char c;
+    char *input_string, *orig_input_string, *ifs_chars, *prompt, *arrayname;
+!   char *e, *t, *t1, *ps2, *tofree;
+    struct stat tsb;
+    SHELL_VAR *var;
+***************
+*** 675,678 ****
+--- 728,732 ----
+    /* Check whether or not the number of fields is exactly the same as the
+       number of variables. */
++   tofree = NULL;
+    if (*input_string)
+      {
+***************
+*** 680,684 ****
+        t = get_word_from_string (&input_string, ifs_chars, &e);
+        if (*input_string == 0)
+! 	input_string = t;
+        else
+  	input_string = strip_trailing_ifs_whitespace (t1, ifs_chars, saw_escape);
+--- 734,738 ----
+        t = get_word_from_string (&input_string, ifs_chars, &e);
+        if (*input_string == 0)
+! 	tofree = input_string = t;
+        else
+  	input_string = strip_trailing_ifs_whitespace (t1, ifs_chars, saw_escape);
+***************
+*** 695,698 ****
+--- 749,754 ----
+      var = bind_read_variable (list->word->word, input_string);
+    stupidly_hack_special_variables (list->word->word);
++   FREE (tofree);
++ 
+    if (var)
+      VUNSETATTR (var, att_invisible);
+*** ../bash-3.2/patchlevel.h	Thu Apr 13 08:31:04 2006
+--- patchlevel.h	Mon Oct 16 14:22:54 2006
+***************
+*** 26,30 ****
+     looks for to find the patch level (for the sccs version string). */
+  
+! #define PATCHLEVEL 37
+  
+  #endif /* _PATCHLEVEL_H_ */
+--- 26,30 ----
+     looks for to find the patch level (for the sccs version string). */
+  
+! #define PATCHLEVEL 38
+  
+  #endif /* _PATCHLEVEL_H_ */
+
+			     BASH PATCH REPORT
+			     =================
+
+Bash-Release: 3.2
+Patch-ID: bash32-039
+
+Bug-Reported-by:	rew@erebor.com
+Bug-Reference-ID:	<20070119065603.546D011E9C@kansas.erebor.com>
+Bug-Reference-URL:	
+
+Bug-Description:
+
+Bash-3.2 changed the behavior of the [[ command's `=~' operator when the
+right-hand side was quoted:  it matched the quoted portions as strings.
+This patch introduces a new shell option: compat31.  When enabled, it
+restores the bash-3.1 behavior with respect to evaluating quoted arguments
+to the =~ operator.
+
+Patch:
+
+*** ../bash-3.2-patched/execute_cmd.c	2007-12-14 21:12:39.000000000 -0500
+--- execute_cmd.c	2008-02-22 21:20:40.000000000 -0500
+***************
+*** 2547,2551 ****
+        if (arg1 == 0)
+  	arg1 = nullstr;
+!       arg2 = cond_expand_word (cond->right->op, rmatch ? 2 : (patmatch ? 1 : 0));
+        if (arg2 == 0)
+  	arg2 = nullstr;
+--- 2552,2557 ----
+        if (arg1 == 0)
+  	arg1 = nullstr;
+!       arg2 = cond_expand_word (cond->right->op,
+! 			       (rmatch && shell_compatibility_level > 31) ? 2 : (patmatch ? 1 : 0));
+        if (arg2 == 0)
+  	arg2 = nullstr;
+*** ../bash-3.2-patched/shell.h	2003-06-01 15:04:36.000000000 -0400
+--- shell.h	2008-02-22 21:16:48.000000000 -0500
+***************
+*** 90,93 ****
+--- 90,94 ----
+  extern int interactive, interactive_shell;
+  extern int startup_state;
++ extern int shell_compatibility_level;
+  
+  /* Structure to pass around that holds a bitmap of file descriptors
+*** ../bash-3.2-patched/version.c	2007-12-14 21:12:29.000000000 -0500
+--- version.c	2008-04-10 08:22:22.000000000 -0400
+***************
+*** 44,47 ****
+--- 44,50 ----
+  const char *sccs_version = SCCSVERSION;
+  
++ /* If == 31, shell compatible with bash-3.1, == 32 with bash-3.2, and so on */
++ int shell_compatibility_level = 32;
++ 
+  /* Functions for getting, setting, and displaying the shell version. */
+  
+*** ../bash-3.2-patched/builtins/shopt.def	2005-02-19 17:25:03.000000000 -0500
+--- builtins/shopt.def	2008-04-10 08:13:32.000000000 -0400
+***************
+*** 102,105 ****
+--- 102,107 ----
+  static int set_shellopts_after_change __P((int));
+  
++ static int set_compatibility_level __P((int));
++ 
+  #if defined (RESTRICTED_SHELL)
+  static int set_restricted_shell __P((int));
+***************
+*** 107,110 ****
+--- 109,113 ----
+  
+  static int shopt_login_shell;
++ static int shopt_compat31;
+  
+  typedef int shopt_set_func_t __P((int));
+***************
+*** 122,125 ****
+--- 125,129 ----
+    { "cmdhist", &command_oriented_history, (shopt_set_func_t *)NULL },
+  #endif
++   { "compat31", &shopt_compat31, set_compatibility_level },
+    { "dotglob", &glob_dot_filenames, (shopt_set_func_t *)NULL },
+    { "execfail", &no_exit_on_failed_exec, (shopt_set_func_t *)NULL },
+***************
+*** 460,463 ****
+--- 464,479 ----
+  }
+  
++ static int
++ set_compatibility_level (mode)
++      int mode;
++ {
++   /* Need to change logic here as we add more compatibility levels */
++   if (shopt_compat31)
++     shell_compatibility_level = 31;
++   else
++     shell_compatibility_level = 32;
++   return 0;
++ }
++ 
+  #if defined (RESTRICTED_SHELL)
+  /* Don't allow the value of restricted_shell to be modified. */
+*** ../bash-3.2-patched/doc/bash.1	2006-09-28 10:26:05.000000000 -0400
+--- doc/bash.1	2008-04-25 12:32:49.000000000 -0400
+***************
+*** 7978,7981 ****
+--- 8200,8209 ----
+  easy re-editing of multi-line commands.
+  .TP 8
++ .B compat31
++ If set,
++ .B bash
++ changes its behavior to that of version 3.1 with respect to quoted
++ arguments to the conditional command's =~ operator.
++ .TP 8
+  .B dotglob
+  If set, 
+*** ../bash-20080214/doc/bashref.texi	2008-02-08 21:28:35.000000000 -0500
+--- doc/bashref.texi	2008-02-22 21:44:51.000000000 -0500
+***************
+*** 4053,4056 ****
+--- 4061,4069 ----
+  easy re-editing of multi-line commands.
+  
++ @item compat31
++ If set, Bash
++ changes its behavior to that of version 3.1 with respect to quoted
++ arguments to the conditional command's =~ operator.
++ 
+  @item dotglob
+  If set, Bash includes filenames beginning with a `.' in
+*** ../bash-3.2-patched/tests/shopt.right	2005-02-19 17:46:09.000000000 -0500
+--- tests/shopt.right	2008-04-28 09:13:07.000000000 -0400
+***************
+*** 7,10 ****
+--- 7,11 ----
+  shopt -u checkwinsize
+  shopt -s cmdhist
++ shopt -u compat31
+  shopt -u dotglob
+  shopt -u execfail
+***************
+*** 54,57 ****
+--- 55,59 ----
+  shopt -u checkhash
+  shopt -u checkwinsize
++ shopt -u compat31
+  shopt -u dotglob
+  shopt -u execfail
+***************
+*** 78,81 ****
+--- 80,84 ----
+  checkhash      	off
+  checkwinsize   	off
++ compat31       	off
+  dotglob        	off
+  execfail       	off
+
+*** ../bash-3.2/patchlevel.h	Thu Apr 13 08:31:04 2006
+--- patchlevel.h	Mon Oct 16 14:22:54 2006
+***************
+*** 26,30 ****
+     looks for to find the patch level (for the sccs version string). */
+  
+! #define PATCHLEVEL 38
+  
+  #endif /* _PATCHLEVEL_H_ */
+--- 26,30 ----
+     looks for to find the patch level (for the sccs version string). */
+  
+! #define PATCHLEVEL 39
+  
+  #endif /* _PATCHLEVEL_H_ */
