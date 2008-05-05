@@ -3,7 +3,7 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=libtool
-version=2.2.2
+version=2.2.4
 release=1
 source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz \
 	libtool.1 libtoolize.1)
