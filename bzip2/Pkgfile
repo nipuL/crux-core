@@ -1,6 +1,6 @@
 # Description: Very high-quality data compression program
 # URL: http://www.bzip.org/
-# Maintainer: Tilman Sauerbeck, tilman at crux dot nu
+# Maintainer: CRUX System Team, core-ports at crux dot nu
 
 name=bzip2
 version=1.0.5
