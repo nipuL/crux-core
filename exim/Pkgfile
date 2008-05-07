@@ -1,6 +1,6 @@
 # Description: Mail transfer agent
 # URL:         http://www.exim.org
-# Maintainer:  Juergen Daubert, juergen dot daubert at t-online dot de
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
 # Depends on:  db, openssl
 
 name=exim
