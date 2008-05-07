@@ -1,6 +1,6 @@
 # Description: Library giving userland programs access to USB devices
 # URL:         http://libusb.sourceforge.net/
-# Maintainer:  Jürgen Daubert, juergen dot daubert at t-online dot de
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=libusb
 version=0.1.12
