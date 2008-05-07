@@ -1,6 +1,6 @@
 # Description: Library and utilities to access the PCI bus configuration registers
 # URL:         http://mj.ucw.cz/pciutils.shtml
-# Maintainer:  Jürgen Daubert, juergen dot daubert at t-online dot de
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=pciutils
 version=3.0.0
