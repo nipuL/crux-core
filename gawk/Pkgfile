@@ -4,19 +4,20 @@
 
 name=gawk
 version=3.1.6
-release=1
+release=2
 source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.bz2)
 
 build() {
     cd $name-$version
     ./configure --prefix=/usr \
+                --libexecdir=/usr/lib \
                 --mandir=/usr/man \
                 --enable-switch \
                 --disable-nls
     make
     make DESTDIR=$PKG install
 
-    rm -r $PKG/usr/{share/info,libexec}
+    rm -r $PKG/usr/share/info
     rm $PKG/usr/bin/gawk-$version \
        $PKG/usr/bin/pgawk-$version \
        $PKG/usr/bin/{p,i}gawk \
