@@ -4,15 +4,15 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=gcc
-version=4.2.3
+version=4.2.4
 release=1
 source=(ftp://sources.redhat.com/pub/gcc/releases/$name-$version/$name-{core,g++,objc}-$version.tar.bz2
         $name-$version-nocheck-fixincludes.patch 
         $name-$version-fixinc.patch)
 	
 build() {
-    patch -d $name-$version -p1 < $SRC/$name-$version-nocheck-fixincludes.patch
-    patch -d $name-$version -p1 < $SRC/$name-$version-fixinc.patch
+    patch -d $name-$version -p1 -i $SRC/$name-$version-nocheck-fixincludes.patch
+    patch -d $name-$version -p1 -i $SRC/$name-$version-fixinc.patch
 
     sed -i -e 's|VERSUFFIX ""|VERSUFFIX " (CRUX)"|' \
         $name-$version/$name/version.c
