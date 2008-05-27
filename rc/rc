@@ -72,7 +72,7 @@ fi
 
 # Configure system clock
 if [ "$TIMEZONE" ]; then
-	/bin/ln -sf /usr/share/zoneinfo/$TIMEZONE /etc/localtime
+	/bin/ln -snf /usr/share/zoneinfo/$TIMEZONE /etc/localtime
 fi
 /sbin/hwclock --hctosys
 
