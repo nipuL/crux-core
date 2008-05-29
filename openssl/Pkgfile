@@ -3,7 +3,7 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=openssl
-version=0.9.8g
+version=0.9.8h
 release=1
 source=(http://www.openssl.org/source/$name-$version.tar.gz \
         mksslcert.sh openssl-0.9.8b-parallel-build.patch)
@@ -14,7 +14,7 @@ build() {
     ./config --prefix=/usr --openssldir=/etc/ssl shared
     make
     make INSTALL_PREFIX=$PKG MANDIR=/usr/man MANSUFFIX=ssl install
-    find $PKG -name "*fips*" -exec rm -f {} \;
+    find $PKG -name "*fips*" -delete
     chmod -R +w $PKG
     install -D -m 755 ../mksslcert.sh $PKG/usr/bin/mksslcert
 }
