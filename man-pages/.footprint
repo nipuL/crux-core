@@ -938,6 +938,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/ctime_r.3.gz
 -rw-r--r--	root/root	usr/man/man3/cuserid.3.gz
 -rw-r--r--	root/root	usr/man/man3/daemon.3.gz
+-rw-r--r--	root/root	usr/man/man3/daylight.3.gz
 -rw-r--r--	root/root	usr/man/man3/db.3.gz
 -rw-r--r--	root/root	usr/man/man3/dbopen.3.gz
 -rw-r--r--	root/root	usr/man/man3/des_crypt.3.gz
@@ -967,6 +968,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/ecvt.3.gz
 -rw-r--r--	root/root	usr/man/man3/ecvt_r.3.gz
 -rw-r--r--	root/root	usr/man/man3/encrypt.3.gz
+-rw-r--r--	root/root	usr/man/man3/encrypt_r.3.gz
 -rw-r--r--	root/root	usr/man/man3/endaliasent.3.gz
 -rw-r--r--	root/root	usr/man/man3/endfsent.3.gz
 -rw-r--r--	root/root	usr/man/man3/endgrent.3.gz
@@ -1300,6 +1302,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/infnan.3.gz
 -rw-r--r--	root/root	usr/man/man3/initgroups.3.gz
 -rw-r--r--	root/root	usr/man/man3/initstate.3.gz
+-rw-r--r--	root/root	usr/man/man3/initstate_r.3.gz
 -rw-r--r--	root/root	usr/man/man3/innetgr.3.gz
 -rw-r--r--	root/root	usr/man/man3/insque.3.gz
 -rw-r--r--	root/root	usr/man/man3/intro.3.gz
@@ -1323,6 +1326,8 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/islessgreater.3.gz
 -rw-r--r--	root/root	usr/man/man3/islower.3.gz
 -rw-r--r--	root/root	usr/man/man3/isnan.3.gz
+-rw-r--r--	root/root	usr/man/man3/isnanf.3.gz
+-rw-r--r--	root/root	usr/man/man3/isnanl.3.gz
 -rw-r--r--	root/root	usr/man/man3/isnormal.3.gz
 -rw-r--r--	root/root	usr/man/man3/isprint.3.gz
 -rw-r--r--	root/root	usr/man/man3/ispunct.3.gz
@@ -1418,6 +1423,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/lroundl.3.gz
 -rw-r--r--	root/root	usr/man/man3/lsearch.3.gz
 -rw-r--r--	root/root	usr/man/man3/lseek64.3.gz
+-rw-r--r--	root/root	usr/man/man3/lutimes.3.gz
 -rw-r--r--	root/root	usr/man/man3/makecontext.3.gz
 -rw-r--r--	root/root	usr/man/man3/malloc.3.gz
 -rw-r--r--	root/root	usr/man/man3/malloc_hook.3.gz
@@ -1543,6 +1549,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/rand.3.gz
 -rw-r--r--	root/root	usr/man/man3/rand_r.3.gz
 -rw-r--r--	root/root	usr/man/man3/random.3.gz
+-rw-r--r--	root/root	usr/man/man3/random_r.3.gz
 -rw-r--r--	root/root	usr/man/man3/rcmd.3.gz
 -rw-r--r--	root/root	usr/man/man3/re_comp.3.gz
 -rw-r--r--	root/root	usr/man/man3/re_exec.3.gz
@@ -1620,6 +1627,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/sethostent.3.gz
 -rw-r--r--	root/root	usr/man/man3/setjmp.3.gz
 -rw-r--r--	root/root	usr/man/man3/setkey.3.gz
+-rw-r--r--	root/root	usr/man/man3/setkey_r.3.gz
 -rw-r--r--	root/root	usr/man/man3/setlinebuf.3.gz
 -rw-r--r--	root/root	usr/man/man3/setlocale.3.gz
 -rw-r--r--	root/root	usr/man/man3/setlogmask.3.gz
@@ -1632,6 +1640,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/setservent.3.gz
 -rw-r--r--	root/root	usr/man/man3/setspent.3.gz
 -rw-r--r--	root/root	usr/man/man3/setstate.3.gz
+-rw-r--r--	root/root	usr/man/man3/setstate_r.3.gz
 -rw-r--r--	root/root	usr/man/man3/setttyent.3.gz
 -rw-r--r--	root/root	usr/man/man3/setusershell.3.gz
 -rw-r--r--	root/root	usr/man/man3/setutent.3.gz
@@ -1688,6 +1697,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/srand48.3.gz
 -rw-r--r--	root/root	usr/man/man3/srand48_r.3.gz
 -rw-r--r--	root/root	usr/man/man3/srandom.3.gz
+-rw-r--r--	root/root	usr/man/man3/srandom_r.3.gz
 -rw-r--r--	root/root	usr/man/man3/sscanf.3.gz
 -rw-r--r--	root/root	usr/man/man3/ssignal.3.gz
 -rw-r--r--	root/root	usr/man/man3/stdarg.3.gz
@@ -1805,6 +1815,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/timercmp.3.gz
 -rw-r--r--	root/root	usr/man/man3/timerisset.3.gz
 -rw-r--r--	root/root	usr/man/man3/timersub.3.gz
+-rw-r--r--	root/root	usr/man/man3/timezone.3.gz
 -rw-r--r--	root/root	usr/man/man3/tmpfile.3.gz
 -rw-r--r--	root/root	usr/man/man3/tmpnam.3.gz
 -rw-r--r--	root/root	usr/man/man3/tmpnam_r.3.gz
@@ -1822,6 +1833,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/ttyname_r.3.gz
 -rw-r--r--	root/root	usr/man/man3/ttyslot.3.gz
 -rw-r--r--	root/root	usr/man/man3/twalk.3.gz
+-rw-r--r--	root/root	usr/man/man3/tzname.3.gz
 -rw-r--r--	root/root	usr/man/man3/tzset.3.gz
 -rw-r--r--	root/root	usr/man/man3/ualarm.3.gz
 -rw-r--r--	root/root	usr/man/man3/ulckpwdf.3.gz
