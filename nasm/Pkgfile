@@ -3,7 +3,7 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=nasm
-version=2.02
+version=2.03
 release=1
 source=(http://dl.sourceforge.net/$name/$name-$version.tar.bz2)
 
