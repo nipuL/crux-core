@@ -4,8 +4,8 @@
 # Depends on:  curl
 
 name=httpup
-version=0.4.0i
-release=2
+version=0.4.0j
+release=1
 source=(http://jw.tks6.net/files/crux/${name}-$version.tar.gz httpup)
 
 build() {
