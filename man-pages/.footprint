@@ -365,6 +365,7 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/get_mempolicy.2.gz
 -rw-r--r--	root/root	usr/man/man2/get_thread_area.2.gz
 -rw-r--r--	root/root	usr/man/man2/getcontext.2.gz
+-rw-r--r--	root/root	usr/man/man2/getcwd.2.gz
 -rw-r--r--	root/root	usr/man/man2/getdents.2.gz
 -rw-r--r--	root/root	usr/man/man2/getdents64.2.gz
 -rw-r--r--	root/root	usr/man/man2/getdomainname.2.gz
@@ -1449,6 +1450,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/mkdtemp.3.gz
 -rw-r--r--	root/root	usr/man/man3/mkfifo.3.gz
 -rw-r--r--	root/root	usr/man/man3/mkfifoat.3.gz
+-rw-r--r--	root/root	usr/man/man3/mkostemp.3.gz
 -rw-r--r--	root/root	usr/man/man3/mkstemp.3.gz
 -rw-r--r--	root/root	usr/man/man3/mktemp.3.gz
 -rw-r--r--	root/root	usr/man/man3/mktime.3.gz
@@ -3186,6 +3188,7 @@ drwxr-xr-x	root/root	usr/man/man7/
 -rw-r--r--	root/root	usr/man/man7/futex.7.gz
 -rw-r--r--	root/root	usr/man/man7/glob.7.gz
 -rw-r--r--	root/root	usr/man/man7/hier.7.gz
+-rw-r--r--	root/root	usr/man/man7/hostname.7.gz
 -rw-r--r--	root/root	usr/man/man7/icmp.7.gz
 -rw-r--r--	root/root	usr/man/man7/inotify.7.gz
 -rw-r--r--	root/root	usr/man/man7/intro.7.gz
@@ -3241,6 +3244,7 @@ drwxr-xr-x	root/root	usr/man/man7/
 -rw-r--r--	root/root	usr/man/man7/standards.7.gz
 -rw-r--r--	root/root	usr/man/man7/suffixes.7.gz
 -rw-r--r--	root/root	usr/man/man7/svipc.7.gz
+-rw-r--r--	root/root	usr/man/man7/symlink.7.gz
 -rw-r--r--	root/root	usr/man/man7/tcp.7.gz
 -rw-r--r--	root/root	usr/man/man7/termio.7.gz
 -rw-r--r--	root/root	usr/man/man7/time.7.gz
