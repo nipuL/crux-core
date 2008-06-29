@@ -1,0 +1,5 @@
+a617c4d3fa11e0c9410ac213eb061677  gcc-4.3.1-nocheck-fixincludes.patch
+f30652bdee577911681c86f5d7f23d65  gcc-core-4.3.1.tar.bz2
+1e0eadf92c2aeff4611fe9da286348d4  gcc-g++-4.3.1.tar.bz2
+94353db338ac174a9ce6533ae78acbcd  gcc-objc-4.3.1.tar.bz2
+2a18ba8310c463910d0156b7aff63da1  gcc-pure64.patch
