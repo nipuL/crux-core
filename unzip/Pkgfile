@@ -1,0 +1,17 @@
+# Description: Decompress utility for zipfiles
+# URL:         http://infozip.sourceforge.net/UnZip.html
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
+# Arch Maintainer: CRUX x86_64 System Team, core-ports-x86_64 at crux dot nu
+
+name=unzip
+version=5.52
+release=2
+source=(http://fresh.t-systems-sfr.com/unix/src/misc/unzip552.tar.gz)
+
+build() {
+    cd $name-$version
+    make -f unix/Makefile LOCAL_UNZIP=-D FILE_OFFSET_BITS=64 \
+	CF="-O -Wall -I. -DUSE_UNSHRINK" prefix=/usr unzips
+    make -f unix/Makefile prefix=$PKG/usr install
+    ln -sf unzip $PKG/usr/bin/zipinfo
+}
