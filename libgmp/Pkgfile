@@ -1,0 +1,17 @@
+# Description: Free library for arbitrary precision arithmetic
+# URL:         http://www.swox.com/gmp/
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
+# Arch Maintainer: CRUX x86_64 System Team, core-ports-x86_64 at crux dot nu
+
+name=libgmp
+version=4.2.2
+release=1
+source=(ftp://ftp.gnu.org/gnu/gmp/gmp-$version.tar.bz2)
+
+build() {
+    cd gmp-$version
+    ./configure --prefix=/usr --enable-cxx
+    make
+    make DESTDIR=$PKG install
+    rm -rf $PKG/usr/info
+}
