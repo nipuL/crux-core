@@ -1,0 +1,23 @@
+# Description: A tool to copy files into or out of a cpio or tar archive
+# URL:         http://www.gnu.org/software/cpio/
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
+# Arch Maintainer: CRUX x86_64 System Team, core-ports-x86_64 at crux dot nu
+
+name=cpio
+version=2.9
+release=1
+source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.bz2 \
+        cpio-2.9_gcc43-inline.patch)
+
+build() {
+    cd $name-$version
+    patch -p0 < ../cpio-2.9_gcc43-inline.patch
+    ./configure --prefix=/usr \
+                --mandir=/usr/man \
+                --with-rmt=/usr/lib/tar/rmt \
+                --disable-nls
+    make
+    make DESTDIR=$PKG install
+    rm -r $PKG/usr/{share,libexec}
+    rm $PKG/usr/man/man1/mt.1
+}
