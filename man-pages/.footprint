@@ -311,6 +311,7 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/chroot.2.gz
 -rw-r--r--	root/root	usr/man/man2/clock_getres.2.gz
 -rw-r--r--	root/root	usr/man/man2/clock_gettime.2.gz
+-rw-r--r--	root/root	usr/man/man2/clock_nanosleep.2.gz
 -rw-r--r--	root/root	usr/man/man2/clock_settime.2.gz
 -rw-r--r--	root/root	usr/man/man2/clone.2.gz
 -rw-r--r--	root/root	usr/man/man2/clone2.2.gz
@@ -1251,6 +1252,8 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/getutid_r.3.gz
 -rw-r--r--	root/root	usr/man/man3/getutline.3.gz
 -rw-r--r--	root/root	usr/man/man3/getutline_r.3.gz
+-rw-r--r--	root/root	usr/man/man3/getutmp.3.gz
+-rw-r--r--	root/root	usr/man/man3/getutmpx.3.gz
 -rw-r--r--	root/root	usr/man/man3/getutxent.3.gz
 -rw-r--r--	root/root	usr/man/man3/getutxid.3.gz
 -rw-r--r--	root/root	usr/man/man3/getutxline.3.gz
@@ -1264,6 +1267,8 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/globfree.3.gz
 -rw-r--r--	root/root	usr/man/man3/gmtime.3.gz
 -rw-r--r--	root/root	usr/man/man3/gmtime_r.3.gz
+-rw-r--r--	root/root	usr/man/man3/gnu_get_libc_release.3.gz
+-rw-r--r--	root/root	usr/man/man3/gnu_get_libc_version.3.gz
 -rw-r--r--	root/root	usr/man/man3/grantpt.3.gz
 -rw-r--r--	root/root	usr/man/man3/gsignal.3.gz
 -rw-r--r--	root/root	usr/man/man3/hash.3.gz
@@ -1679,6 +1684,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/sigsetmask.3.gz
 -rw-r--r--	root/root	usr/man/man3/sigsetops.3.gz
 -rw-r--r--	root/root	usr/man/man3/sigvec.3.gz
+-rw-r--r--	root/root	usr/man/man3/sigwait.3.gz
 -rw-r--r--	root/root	usr/man/man3/sin.3.gz
 -rw-r--r--	root/root	usr/man/man3/sincos.3.gz
 -rw-r--r--	root/root	usr/man/man3/sincosf.3.gz
@@ -1849,6 +1855,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/updwtmp.3.gz
 -rw-r--r--	root/root	usr/man/man3/usleep.3.gz
 -rw-r--r--	root/root	usr/man/man3/utmpname.3.gz
+-rw-r--r--	root/root	usr/man/man3/utmpxname.3.gz
 -rw-r--r--	root/root	usr/man/man3/va_arg.3.gz
 -rw-r--r--	root/root	usr/man/man3/va_copy.3.gz
 -rw-r--r--	root/root	usr/man/man3/va_end.3.gz
@@ -3168,6 +3175,7 @@ drwxr-xr-x	root/root	usr/man/man5/
 -rw-r--r--	root/root	usr/man/man5/ttytype.5.gz
 -rw-r--r--	root/root	usr/man/man5/tzfile.5.gz
 -rw-r--r--	root/root	usr/man/man5/utmp.5.gz
+-rw-r--r--	root/root	usr/man/man5/utmpx.5.gz
 -rw-r--r--	root/root	usr/man/man5/wtmp.5.gz
 drwxr-xr-x	root/root	usr/man/man6/
 -rw-r--r--	root/root	usr/man/man6/intro.6.gz
@@ -3238,6 +3246,7 @@ drwxr-xr-x	root/root	usr/man/man7/
 -rw-r--r--	root/root	usr/man/man7/regex.7.gz
 -rw-r--r--	root/root	usr/man/man7/rtnetlink.7.gz
 -rw-r--r--	root/root	usr/man/man7/sem_overview.7.gz
+-rw-r--r--	root/root	usr/man/man7/shm_overview.7.gz
 -rw-r--r--	root/root	usr/man/man7/signal.7.gz
 -rw-r--r--	root/root	usr/man/man7/socket.7.gz
 -rw-r--r--	root/root	usr/man/man7/spufs.7.gz
