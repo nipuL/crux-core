@@ -3,7 +3,7 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=e2fsprogs
-version=1.40.11
+version=1.41.0
 release=1
 source=(http://dl.sourceforge.net/sourceforge/$name/$name-$version.tar.gz \
         $name-symlink.patch)
@@ -11,17 +11,15 @@ source=(http://dl.sourceforge.net/sourceforge/$name/$name-$version.tar.gz \
 build() {
     cd $name-$version
     patch -p1 -i $SRC/$name-symlink.patch
-    mkdir build
-    cd build
-    ../configure --prefix=/usr \
-                 --with-root-prefix= \
-                 --mandir=/usr/man \
-                 --enable-elf-shlibs \
-                 --disable-debugfs \
-                 --disable-imager \
-                 --disable-e2initrd-helper \
-                 --disable-evms \
-                 --disable-nls
+    ./configure --prefix=/usr \
+                --with-root-prefix= \
+                --mandir=/usr/man \
+                --enable-elf-shlibs \
+                --disable-debugfs \
+                --disable-imager \
+                --disable-e2initrd-helper \
+                --disable-evms \
+                --disable-nls
     make
     make DESTDIR=$PKG install install-libs
     rm -r $PKG/usr/share/info

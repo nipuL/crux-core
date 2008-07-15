@@ -19,14 +19,19 @@ drwxr-xr-x	root/root	sbin/
 -rwxr-xr-x	root/root	sbin/dumpe2fs
 -rwxr-xr-x	root/root	sbin/e2fsck
 lrwxrwxrwx	root/root	sbin/e2label -> tune2fs
+-rwxr-xr-x	root/root	sbin/e2undo
 lrwxrwxrwx	root/root	sbin/findfs -> tune2fs
 -rwxr-xr-x	root/root	sbin/fsck
 lrwxrwxrwx	root/root	sbin/fsck.ext2 -> e2fsck
 lrwxrwxrwx	root/root	sbin/fsck.ext3 -> e2fsck
+lrwxrwxrwx	root/root	sbin/fsck.ext4 -> e2fsck
+lrwxrwxrwx	root/root	sbin/fsck.ext4dev -> e2fsck
 -rwxr-xr-x	root/root	sbin/logsave
 -rwxr-xr-x	root/root	sbin/mke2fs
 lrwxrwxrwx	root/root	sbin/mkfs.ext2 -> mke2fs
 lrwxrwxrwx	root/root	sbin/mkfs.ext3 -> mke2fs
+lrwxrwxrwx	root/root	sbin/mkfs.ext4 -> mke2fs
+lrwxrwxrwx	root/root	sbin/mkfs.ext4dev -> mke2fs
 -rwxr-xr-x	root/root	sbin/resize2fs
 -rwxr-xr-x	root/root	sbin/tune2fs
 drwxr-xr-x	root/root	usr/
@@ -109,15 +114,20 @@ drwxr-xr-x	root/root	usr/man/man8/
 -rw-r--r--	root/root	usr/man/man8/dumpe2fs.8.gz
 -rw-r--r--	root/root	usr/man/man8/e2fsck.8.gz
 -rw-r--r--	root/root	usr/man/man8/e2label.8.gz
+-rw-r--r--	root/root	usr/man/man8/e2undo.8.gz
 -rw-r--r--	root/root	usr/man/man8/filefrag.8.gz
 -rw-r--r--	root/root	usr/man/man8/findfs.8.gz
 -rw-r--r--	root/root	usr/man/man8/fsck.8.gz
 lrwxrwxrwx	root/root	usr/man/man8/fsck.ext2.8.gz -> e2fsck.8.gz
 lrwxrwxrwx	root/root	usr/man/man8/fsck.ext3.8.gz -> e2fsck.8.gz
+lrwxrwxrwx	root/root	usr/man/man8/fsck.ext4.8.gz -> e2fsck.8.gz
+lrwxrwxrwx	root/root	usr/man/man8/fsck.ext4dev.8.gz -> e2fsck.8.gz
 -rw-r--r--	root/root	usr/man/man8/logsave.8.gz
 -rw-r--r--	root/root	usr/man/man8/mke2fs.8.gz
 lrwxrwxrwx	root/root	usr/man/man8/mkfs.ext2.8.gz -> mke2fs.8.gz
 lrwxrwxrwx	root/root	usr/man/man8/mkfs.ext3.8.gz -> mke2fs.8.gz
+lrwxrwxrwx	root/root	usr/man/man8/mkfs.ext4.8.gz -> mke2fs.8.gz
+lrwxrwxrwx	root/root	usr/man/man8/mkfs.ext4dev.8.gz -> mke2fs.8.gz
 -rw-r--r--	root/root	usr/man/man8/mklost+found.8.gz
 -rw-r--r--	root/root	usr/man/man8/resize2fs.8.gz
 -rw-r--r--	root/root	usr/man/man8/tune2fs.8.gz
