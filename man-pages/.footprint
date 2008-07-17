@@ -366,6 +366,7 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/get_mempolicy.2.gz
 -rw-r--r--	root/root	usr/man/man2/get_thread_area.2.gz
 -rw-r--r--	root/root	usr/man/man2/getcontext.2.gz
+-rw-r--r--	root/root	usr/man/man2/getcpu.2.gz
 -rw-r--r--	root/root	usr/man/man2/getcwd.2.gz
 -rw-r--r--	root/root	usr/man/man2/getdents.2.gz
 -rw-r--r--	root/root	usr/man/man2/getdents64.2.gz
@@ -672,6 +673,7 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/uselib.2.gz
 -rw-r--r--	root/root	usr/man/man2/ustat.2.gz
 -rw-r--r--	root/root	usr/man/man2/utime.2.gz
+-rw-r--r--	root/root	usr/man/man2/utimensat.2.gz
 -rw-r--r--	root/root	usr/man/man2/utimes.2.gz
 -rw-r--r--	root/root	usr/man/man2/vfork.2.gz
 -rw-r--r--	root/root	usr/man/man2/vhangup.2.gz
@@ -969,8 +971,10 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/ecb_crypt.3.gz
 -rw-r--r--	root/root	usr/man/man3/ecvt.3.gz
 -rw-r--r--	root/root	usr/man/man3/ecvt_r.3.gz
+-rw-r--r--	root/root	usr/man/man3/edata.3.gz
 -rw-r--r--	root/root	usr/man/man3/encrypt.3.gz
 -rw-r--r--	root/root	usr/man/man3/encrypt_r.3.gz
+-rw-r--r--	root/root	usr/man/man3/end.3.gz
 -rw-r--r--	root/root	usr/man/man3/endaliasent.3.gz
 -rw-r--r--	root/root	usr/man/man3/endfsent.3.gz
 -rw-r--r--	root/root	usr/man/man3/endgrent.3.gz
@@ -1010,6 +1014,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/error_on_per_line.3.gz
 -rw-r--r--	root/root	usr/man/man3/error_print_progname.3.gz
 -rw-r--r--	root/root	usr/man/man3/errx.3.gz
+-rw-r--r--	root/root	usr/man/man3/etext.3.gz
 -rw-r--r--	root/root	usr/man/man3/ether_aton.3.gz
 -rw-r--r--	root/root	usr/man/man3/ether_aton_r.3.gz
 -rw-r--r--	root/root	usr/man/man3/ether_hostton.3.gz
@@ -1155,6 +1160,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/fts_set.3.gz
 -rw-r--r--	root/root	usr/man/man3/ftw.3.gz
 -rw-r--r--	root/root	usr/man/man3/funlockfile.3.gz
+-rw-r--r--	root/root	usr/man/man3/futimens.3.gz
 -rw-r--r--	root/root	usr/man/man3/futimes.3.gz
 -rw-r--r--	root/root	usr/man/man3/fwide.3.gz
 -rw-r--r--	root/root	usr/man/man3/fwprintf.3.gz
@@ -1178,6 +1184,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/getchar_unlocked.3.gz
 -rw-r--r--	root/root	usr/man/man3/getcwd.3.gz
 -rw-r--r--	root/root	usr/man/man3/getdate.3.gz
+-rw-r--r--	root/root	usr/man/man3/getdate_err.3.gz
 -rw-r--r--	root/root	usr/man/man3/getdate_r.3.gz
 -rw-r--r--	root/root	usr/man/man3/getdelim.3.gz
 -rw-r--r--	root/root	usr/man/man3/getdirentries.3.gz
@@ -1271,6 +1278,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/gnu_get_libc_version.3.gz
 -rw-r--r--	root/root	usr/man/man3/grantpt.3.gz
 -rw-r--r--	root/root	usr/man/man3/gsignal.3.gz
+-rw-r--r--	root/root	usr/man/man3/h_errno.3.gz
 -rw-r--r--	root/root	usr/man/man3/hash.3.gz
 -rw-r--r--	root/root	usr/man/man3/hasmntopt.3.gz
 -rw-r--r--	root/root	usr/man/man3/hcreate.3.gz
@@ -1503,6 +1511,10 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/opendir.3.gz
 -rw-r--r--	root/root	usr/man/man3/openlog.3.gz
 -rw-r--r--	root/root	usr/man/man3/openpty.3.gz
+-rw-r--r--	root/root	usr/man/man3/optarg.3.gz
+-rw-r--r--	root/root	usr/man/man3/opterr.3.gz
+-rw-r--r--	root/root	usr/man/man3/optind.3.gz
+-rw-r--r--	root/root	usr/man/man3/optopt.3.gz
 -rw-r--r--	root/root	usr/man/man3/passwd2des.3.gz
 -rw-r--r--	root/root	usr/man/man3/pathconf.3.gz
 -rw-r--r--	root/root	usr/man/man3/pclose.3.gz
@@ -1557,10 +1569,12 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/rand_r.3.gz
 -rw-r--r--	root/root	usr/man/man3/random.3.gz
 -rw-r--r--	root/root	usr/man/man3/random_r.3.gz
+-rw-r--r--	root/root	usr/man/man3/rawmemchr.3.gz
 -rw-r--r--	root/root	usr/man/man3/rcmd.3.gz
 -rw-r--r--	root/root	usr/man/man3/re_comp.3.gz
 -rw-r--r--	root/root	usr/man/man3/re_exec.3.gz
 -rw-r--r--	root/root	usr/man/man3/readdir.3.gz
+-rw-r--r--	root/root	usr/man/man3/readdir_r.3.gz
 -rw-r--r--	root/root	usr/man/man3/realloc.3.gz
 -rw-r--r--	root/root	usr/man/man3/realpath.3.gz
 -rw-r--r--	root/root	usr/man/man3/recno.3.gz
@@ -1612,6 +1626,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/scalbnl.3.gz
 -rw-r--r--	root/root	usr/man/man3/scandir.3.gz
 -rw-r--r--	root/root	usr/man/man3/scanf.3.gz
+-rw-r--r--	root/root	usr/man/man3/sched_getcpu.3.gz
 -rw-r--r--	root/root	usr/man/man3/seed48.3.gz
 -rw-r--r--	root/root	usr/man/man3/seed48_r.3.gz
 -rw-r--r--	root/root	usr/man/man3/seekdir.3.gz
@@ -1788,6 +1803,8 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/swab.3.gz
 -rw-r--r--	root/root	usr/man/man3/swapcontext.3.gz
 -rw-r--r--	root/root	usr/man/man3/swprintf.3.gz
+-rw-r--r--	root/root	usr/man/man3/sys_errlist.3.gz
+-rw-r--r--	root/root	usr/man/man3/sys_nerr.3.gz
 -rw-r--r--	root/root	usr/man/man3/sysconf.3.gz
 -rw-r--r--	root/root	usr/man/man3/syslog.3.gz
 -rw-r--r--	root/root	usr/man/man3/system.3.gz
@@ -1853,6 +1870,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/unlockpt.3.gz
 -rw-r--r--	root/root	usr/man/man3/unsetenv.3.gz
 -rw-r--r--	root/root	usr/man/man3/updwtmp.3.gz
+-rw-r--r--	root/root	usr/man/man3/updwtmpx.3.gz
 -rw-r--r--	root/root	usr/man/man3/usleep.3.gz
 -rw-r--r--	root/root	usr/man/man3/utmpname.3.gz
 -rw-r--r--	root/root	usr/man/man3/utmpxname.3.gz
@@ -3187,6 +3205,7 @@ drwxr-xr-x	root/root	usr/man/man7/
 -rw-r--r--	root/root	usr/man/man7/capabilities.7.gz
 -rw-r--r--	root/root	usr/man/man7/charsets.7.gz
 -rw-r--r--	root/root	usr/man/man7/complex.7.gz
+-rw-r--r--	root/root	usr/man/man7/cpuset.7.gz
 -rw-r--r--	root/root	usr/man/man7/credentials.7.gz
 -rw-r--r--	root/root	usr/man/man7/ddp.7.gz
 -rw-r--r--	root/root	usr/man/man7/environ.7.gz
