@@ -11,6 +11,7 @@ drwxr-xr-x	root/root	sbin/
 drwxr-xr-x	root/root	usr/
 drwxr-xr-x	root/root	usr/man/
 drwxr-xr-x	root/root	usr/man/man5/
+-rw-r--r--	root/root	usr/man/man5/depmod.conf.5.gz
 -rw-r--r--	root/root	usr/man/man5/modprobe.conf.5.gz
 -rw-r--r--	root/root	usr/man/man5/modules.dep.5.gz
 drwxr-xr-x	root/root	usr/man/man8/

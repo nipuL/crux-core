@@ -3,19 +3,20 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=module-init-tools
-version=3.2.2
+version=3.4
 release=1
-source=(http://www.kernel.org/pub/linux/kernel/people/rusty/modules/$name-$version.tar.bz2 \
-	modprobe.conf)
+source=(http://www.kernel.org/pub/linux/kernel/people/rusty/modules/$name-$version.tar.bz2
+        http://crux.nu/~jue/files/dist/$name-man-$version.tar.bz2
+        modprobe.conf)
 
 build() {
     cd $name-$version
+    cp $SRC/$name-man-$version/* .
     ./configure --prefix=/usr \
-		--bindir=/sbin \
-		--sbindir=/sbin
-    touch *.5 *.8
+                --bindir=/sbin \
+                --sbindir=/sbin
     make
     make DESTDIR=$PKG mandir=/usr/man install
-    install -D -m 644 ../modprobe.conf $PKG/etc/modprobe.conf
+    install -D -m 644 $SRC/modprobe.conf $PKG/etc/modprobe.conf
     rm -f $PKG/sbin/generate-modprobe.conf
 }
