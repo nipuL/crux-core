@@ -3,7 +3,7 @@
 # Maintainer: CRUX System Team, core-ports at crux dot nu
 
 name=udev
-version=124
+version=125
 release=1
 source=(ftp://ftp.kernel.org/pub/linux/utils/kernel/hotplug/$name-$version.tar.bz2 \
 	http://crux.nu/files/distfiles/udev-config-20080217.tar.bz2 \
@@ -26,7 +26,7 @@ build() {
 	make install DESTDIR=$PKG mandir="/usr/man" EXTRAS="$extras"
 
 	pushd $SRC/udev-config-20080217
-	make DESTDIR=$PKG install
+	make DESTDIR=$PKG RULES_DIR=/lib/udev/rules.d install
 	popd
 
 	mkdir -p $PKG/lib/{firmware,udev/devices/{pts,shm}}
@@ -40,10 +40,10 @@ build() {
 	ln -s /proc/kcore $PKG/lib/udev/devices/core
 	install -m 0755 $SRC/start_udev $PKG/sbin
 	install -m 0755 $SRC/cdsymlinks $PKG/lib/udev/
-	install -m 644 etc/udev/rules.d/[0-9]* $PKG/etc/udev/rules.d/
-	install -m 644 $SRC/cdrom.rules $PKG/etc/udev/rules.d/61-cdrom.rules
+	install -m 644 rules/rules.d/[0-9]* $PKG/lib/udev/rules.d/
+	install -m 644 $SRC/cdrom.rules $PKG/lib/udev/rules.d/61-cdrom.rules
 
 	# Comment uucp lines in default rules
-	sed -i 's|.*uucp.*|#&|g' $PKG/etc/udev/rules.d/50-udev-default.rules
-	sed -i 's|.*uucp.*|#&|g' $PKG/etc/udev/rules.d/55-lfs.rules
+	sed -i 's|.*uucp.*|#&|g' $PKG/lib/udev/rules.d/50-udev-default.rules
+	sed -i 's|.*uucp.*|#&|g' $PKG/lib/udev/rules.d/55-lfs.rules
 }
