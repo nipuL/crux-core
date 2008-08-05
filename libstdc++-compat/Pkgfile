@@ -1,0 +1,17 @@
+# Description: Compatibility libraries
+# URL:         ftp://sunsite.cnlab-switch.ch/mirror/fedora/linux/core/3/x86_64/os/Fedora/RPMS
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
+# Arch Maintainer:  Lucas Hazel, lucas at die dot net dot au
+
+name=libstdc++-compat
+version=5.0.7
+release=1
+source=(http://crux64.die.net.au/files/compat-libstdc++-$version.rpm)
+
+build() {
+	rpm2targz compat-libstdc++-$version.rpm
+	tar -zxf compat-libstdc++-$version.tar.gz
+	cp -R usr $PKG
+	mv $PKG/usr/lib64 $PKG/usr/lib
+	ln -s libstdc++.so.5.0.7 $PKG/usr/lib/libstdc++.so.5
+}
