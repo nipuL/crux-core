@@ -1,0 +1,86 @@
+# Description: Root filesystem package
+# URL:         http://crux.nu
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
+# Arch Maintainer:  Lucas Hazel, lucas at die dot net dot au
+
+name=filesystem
+version=2.4
+release=1
+source=(issue motd shells group passwd shadow securetty fstab mime.types)
+
+build() {
+    # Directory structure
+    mkdir $PKG/bin
+    mkdir $PKG/sbin
+    mkdir $PKG/boot
+    mkdir $PKG/dev
+    mkdir $PKG/proc
+    mkdir $PKG/sys
+    mkdir $PKG/etc
+    mkdir $PKG/tmp
+    mkdir $PKG/mnt
+    mkdir $PKG/root
+    mkdir $PKG/lib
+    ln -s /lib $PKG/lib64
+    mkdir $PKG/lib32
+    mkdir $PKG/lib/modules
+    mkdir $PKG/opt
+    mkdir $PKG/opt/bin
+    mkdir $PKG/usr
+    mkdir $PKG/usr/{bin,include,lib,lib32,sbin,share,src,man}
+    ln -s /usr/lib $PKG/usr/lib64
+    mkdir $PKG/usr/man/man{1,2,3,4,5,6,7,8}
+    ln -s ../var $PKG/usr/var
+    mkdir $PKG/var
+    mkdir $PKG/var/cache
+    mkdir $PKG/var/lib
+    mkdir $PKG/var/lib/pkg
+    mkdir $PKG/var/lock
+    mkdir $PKG/var/log
+    mkdir $PKG/var/log/old
+    mkdir $PKG/var/run
+    touch $PKG/var/run/utmp
+    mkdir $PKG/var/spool
+    mkdir $PKG/var/spool/mail
+    mkdir $PKG/var/tmp
+    mkdir $PKG/var/ftp
+    mkdir $PKG/var/www
+    mkdir $PKG/var/empty
+    ln -s spool/mail $PKG/var/mail
+    mkdir $PKG/home
+
+    chmod 1777 $PKG/var/spool/mail
+    chmod 1777 $PKG/tmp
+    chmod 1777 $PKG/var/lock
+    chmod 1777 $PKG/var/tmp
+    chmod 0750 $PKG/root
+
+    # /dev
+    mknod $PKG/dev/console c 5 1
+    chmod 0600 $PKG/dev/console
+
+    # /etc
+    sed -i "s/CRUX/CRUX64(multilib)/" issue
+    cp issue $PKG/etc
+    cp motd $PKG/etc
+    cp shells $PKG/etc
+    cp group $PKG/etc
+    cp passwd $PKG/etc
+    cp shadow $PKG/etc
+    cp securetty $PKG/etc
+    cp fstab $PKG/etc
+    cp mime.types $PKG/etc
+    touch $PKG/etc/mtab
+    chmod 640 $PKG/etc/shadow
+
+    # /usr/bin/crux
+cat > $PKG/usr/bin/crux << EOF
+#!/bin/sh
+
+echo "CRUX64(multilib) version $version"
+
+# End of file
+EOF
+    chmod 755 $PKG/usr/bin/crux
+}
+
