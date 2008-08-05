@@ -1,19 +1,21 @@
 # Description: The C library used in the GNU system
 # URL:         http://www.gnu.org/software/libc/
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
-# Arch Maintainer: CRUX x86_64 System Team, core-ports-x86_64 at crux dot nu
+# Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
+# Arch Packager: CRUX x86_64 System Team, core-ports-x86_64 at crux dot nu
+# Arch Packager: Lucas Hazel, lucas at die dot net dot au
 
 name=glibc
 version=2.7
 release=1
 source=(http://ftp.gnu.org/gnu/glibc/glibc-$version.tar.bz2
-        http://fredrik.obra.se/linux-headers-2.6.22.6.tar.bz2
+        http://crux64.die.net.au/files/kernel-headers-2.6.22.tar.bz2
 	hosts resolv.conf nsswitch.conf host.conf ld.so.conf)
 
 build() {
     # install build kernel headers
-    mkdir -p $PKG/usr/include
-    cp -r linux-headers-2.6.22.6/include/* $PKG/usr/include/
+    mkdir -p $PKG/usr/
+    cp -r kernel-headers-2.6.22/include $PKG/usr/
     chown root:root $PKG/usr
 
     mkdir build
@@ -32,7 +34,7 @@ build() {
     #make check
     make install_root=$PKG install
     make install_root=$PKG localedata/install-locales
-    sed -i '/RTLDLIST/s%/ld-linux.so.2 /lib64%%' $PKG/usr/bin/ldd
+    #sed -i '/RTLDLIST/s%/ld-linux.so.2 /lib64%%' $PKG/usr/bin/ldd
     cp ../{hosts,resolv.conf,nsswitch.conf,host.conf,ld.so.conf} $PKG/etc
     ln -sf ../usr/share/zoneinfo/UTC $PKG/etc/localtime
     rm -rf $PKG/usr/share/locale

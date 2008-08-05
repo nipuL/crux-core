@@ -1,7 +1,7 @@
 065c5952b439deba40083ccd67bcc8f7  glibc-2.7.tar.bz2
 96156bec8e05de67384dc93e72bdc313  host.conf
 fbbc215a9b15ba4846f326cc88108057  hosts
+fed5f829ce148f68eafc1ca41edf0d8a  kernel-headers-2.6.22.tar.bz2
 fa7b1e5c59d8e6a051a0b83c88f37e16  ld.so.conf
-c09328cf7b3d1d873c9d1ae2f3977f96  linux-headers-2.6.22.6.tar.bz2
 75931315bf9bc9be15a5e25e4ddd5f0d  nsswitch.conf
 acf9daad1ee85de5efd3543965596a63  resolv.conf
