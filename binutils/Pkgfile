@@ -1,0 +1,27 @@
+# Description: The GNU Binutils are a collection of binary tools
+# URL:         http://sources.redhat.com/binutils/
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
+# Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
+
+name=binutils
+version=2.18
+release=1
+source=(ftp://ftp.gnu.org/gnu/$name/$name-$version.tar.bz2)
+
+build() {
+    sed -i '/^SUBDIRS/s/doc//' $name-$version/bfd/Makefile.in
+    mkdir build
+    cd build
+    ../$name-$version/configure --prefix=/usr \
+                                --enable-shared \
+                                --disable-nls
+    make tooldir=/usr
+    make check
+    make tooldir=/usr DESTDIR=$PKG install
+    cp ../$name-$version/include/libiberty.h $PKG/usr/include
+    mkdir $PKG/usr/lib32
+    ln -sf ../lib/ldscripts $PKG/usr/lib32
+    mv $PKG/usr/lib64/* $PKG/usr/lib/
+    rm -rf $PKG/usr/info $PKG/usr/lib64
+    sed -i "s|-L$SRC[^ ]* ||g" $PKG/usr/lib/libbfd.la
+}
