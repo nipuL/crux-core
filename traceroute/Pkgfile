@@ -1,18 +1,16 @@
 # Description: A tool to trace the route of ip packets
 # URL:         ftp://ftp.ee.lbl.gov/
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
-# Arch Maintainer: CRUX x86_64 System Team, core-ports-x86_64 at crux dot nu
+# Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
 
 name=traceroute
 version=1.4a12
 release=1
-source=(ftp://ftp.ee.lbl.gov/$name-$version.tar.gz \
-	traceroute-1.4a12-update_config-1.patch)
+source=(ftp://ftp.ee.lbl.gov/$name-$version.tar.gz)
 
 build() {
     cd $name-$version
-    patch -p1 < $SRC/traceroute-1.4a12-update_config-1.patch
-    ./configure --prefix=/usr
+    linux32 ./configure --prefix=/usr
     make
     mkdir -p $PKG/usr/sbin $PKG/usr/man/man8
     make DESTDIR=$PKG install install-man
