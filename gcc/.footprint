@@ -641,6 +641,30 @@ drwxr-xr-x	root/root	usr/include/c++/4.3.1/tr1_impl/
 -rw-r--r--	root/root	usr/include/c++/4.3.1/valarray
 -rw-r--r--	root/root	usr/include/c++/4.3.1/vector
 drwxr-xr-x	root/root	usr/include/c++/4.3.1/x86_64-unknown-linux-gnu/
+drwxr-xr-x	root/root	usr/include/c++/4.3.1/x86_64-unknown-linux-gnu/32/
+drwxr-xr-x	root/root	usr/include/c++/4.3.1/x86_64-unknown-linux-gnu/32/bits/
+-rw-r--r--	root/root	usr/include/c++/4.3.1/x86_64-unknown-linux-gnu/32/bits/atomic_word.h
+-rw-r--r--	root/root	usr/include/c++/4.3.1/x86_64-unknown-linux-gnu/32/bits/basic_file.h
+-rw-r--r--	root/root	usr/include/c++/4.3.1/x86_64-unknown-linux-gnu/32/bits/c++allocator.h
+-rw-r--r--	root/root	usr/include/c++/4.3.1/x86_64-unknown-linux-gnu/32/bits/c++config.h
+-rw-r--r--	root/root	usr/include/c++/4.3.1/x86_64-unknown-linux-gnu/32/bits/c++io.h
+-rw-r--r--	root/root	usr/include/c++/4.3.1/x86_64-unknown-linux-gnu/32/bits/c++locale.h
+-rw-r--r--	root/root	usr/include/c++/4.3.1/x86_64-unknown-linux-gnu/32/bits/cpu_defines.h
+-rw-r--r--	root/root	usr/include/c++/4.3.1/x86_64-unknown-linux-gnu/32/bits/ctype_base.h
+-rw-r--r--	root/root	usr/include/c++/4.3.1/x86_64-unknown-linux-gnu/32/bits/ctype_inline.h
+-rw-r--r--	root/root	usr/include/c++/4.3.1/x86_64-unknown-linux-gnu/32/bits/ctype_noninline.h
+-rw-r--r--	root/root	usr/include/c++/4.3.1/x86_64-unknown-linux-gnu/32/bits/cxxabi_tweaks.h
+-rw-r--r--	root/root	usr/include/c++/4.3.1/x86_64-unknown-linux-gnu/32/bits/extc++.h
+-rw-r--r--	root/root	usr/include/c++/4.3.1/x86_64-unknown-linux-gnu/32/bits/gthr-default.h
+-rw-r--r--	root/root	usr/include/c++/4.3.1/x86_64-unknown-linux-gnu/32/bits/gthr-posix.h
+-rw-r--r--	root/root	usr/include/c++/4.3.1/x86_64-unknown-linux-gnu/32/bits/gthr-single.h
+-rw-r--r--	root/root	usr/include/c++/4.3.1/x86_64-unknown-linux-gnu/32/bits/gthr-tpf.h
+-rw-r--r--	root/root	usr/include/c++/4.3.1/x86_64-unknown-linux-gnu/32/bits/gthr.h
+-rw-r--r--	root/root	usr/include/c++/4.3.1/x86_64-unknown-linux-gnu/32/bits/messages_members.h
+-rw-r--r--	root/root	usr/include/c++/4.3.1/x86_64-unknown-linux-gnu/32/bits/os_defines.h
+-rw-r--r--	root/root	usr/include/c++/4.3.1/x86_64-unknown-linux-gnu/32/bits/stdc++.h
+-rw-r--r--	root/root	usr/include/c++/4.3.1/x86_64-unknown-linux-gnu/32/bits/stdtr1c++.h
+-rw-r--r--	root/root	usr/include/c++/4.3.1/x86_64-unknown-linux-gnu/32/bits/time_members.h
 drwxr-xr-x	root/root	usr/include/c++/4.3.1/x86_64-unknown-linux-gnu/bits/
 -rw-r--r--	root/root	usr/include/c++/4.3.1/x86_64-unknown-linux-gnu/bits/atomic_word.h
 -rw-r--r--	root/root	usr/include/c++/4.3.1/x86_64-unknown-linux-gnu/bits/basic_file.h
@@ -668,6 +692,19 @@ drwxr-xr-x	root/root	usr/lib/
 drwxr-xr-x	root/root	usr/lib/gcc/
 drwxr-xr-x	root/root	usr/lib/gcc/x86_64-unknown-linux-gnu/
 drwxr-xr-x	root/root	usr/lib/gcc/x86_64-unknown-linux-gnu/4.3.1/
+drwxr-xr-x	root/root	usr/lib/gcc/x86_64-unknown-linux-gnu/4.3.1/32/
+-rw-r--r--	root/root	usr/lib/gcc/x86_64-unknown-linux-gnu/4.3.1/32/crtbegin.o
+-rw-r--r--	root/root	usr/lib/gcc/x86_64-unknown-linux-gnu/4.3.1/32/crtbeginS.o
+-rw-r--r--	root/root	usr/lib/gcc/x86_64-unknown-linux-gnu/4.3.1/32/crtbeginT.o
+-rw-r--r--	root/root	usr/lib/gcc/x86_64-unknown-linux-gnu/4.3.1/32/crtend.o
+-rw-r--r--	root/root	usr/lib/gcc/x86_64-unknown-linux-gnu/4.3.1/32/crtendS.o
+-rw-r--r--	root/root	usr/lib/gcc/x86_64-unknown-linux-gnu/4.3.1/32/crtfastmath.o
+-rw-r--r--	root/root	usr/lib/gcc/x86_64-unknown-linux-gnu/4.3.1/32/crtprec32.o
+-rw-r--r--	root/root	usr/lib/gcc/x86_64-unknown-linux-gnu/4.3.1/32/crtprec64.o
+-rw-r--r--	root/root	usr/lib/gcc/x86_64-unknown-linux-gnu/4.3.1/32/crtprec80.o
+-rw-r--r--	root/root	usr/lib/gcc/x86_64-unknown-linux-gnu/4.3.1/32/libgcc.a
+-rw-r--r--	root/root	usr/lib/gcc/x86_64-unknown-linux-gnu/4.3.1/32/libgcc_eh.a
+-rw-r--r--	root/root	usr/lib/gcc/x86_64-unknown-linux-gnu/4.3.1/32/libgcov.a
 -rwxr-xr-x	root/root	usr/lib/gcc/x86_64-unknown-linux-gnu/4.3.1/cc1
 -rwxr-xr-x	root/root	usr/lib/gcc/x86_64-unknown-linux-gnu/4.3.1/cc1obj
 -rwxr-xr-x	root/root	usr/lib/gcc/x86_64-unknown-linux-gnu/4.3.1/cc1plus
@@ -766,6 +803,45 @@ lrwxrwxrwx	root/root	usr/lib/libstdc++.so.6 -> libstdc++.so.6.0.10
 -rwxr-xr-x	root/root	usr/lib/libstdc++.so.6.0.10
 -rw-r--r--	root/root	usr/lib/libsupc++.a
 -rwxr-xr-x	root/root	usr/lib/libsupc++.la
+drwxr-xr-x	root/root	usr/lib32/
+lrwxrwxrwx	root/root	usr/lib32/libgcc_s.so -> libgcc_s.so.1
+-rw-r--r--	root/root	usr/lib32/libgcc_s.so.1
+-rw-r--r--	root/root	usr/lib32/libgomp.a
+-rwxr-xr-x	root/root	usr/lib32/libgomp.la
+lrwxrwxrwx	root/root	usr/lib32/libgomp.so -> libgomp.so.1.0.0
+lrwxrwxrwx	root/root	usr/lib32/libgomp.so.1 -> libgomp.so.1.0.0
+-rwxr-xr-x	root/root	usr/lib32/libgomp.so.1.0.0
+-rw-r--r--	root/root	usr/lib32/libgomp.spec
+-rw-r--r--	root/root	usr/lib32/libiberty.a
+-rw-r--r--	root/root	usr/lib32/libmudflap.a
+-rwxr-xr-x	root/root	usr/lib32/libmudflap.la
+lrwxrwxrwx	root/root	usr/lib32/libmudflap.so -> libmudflap.so.0.0.0
+lrwxrwxrwx	root/root	usr/lib32/libmudflap.so.0 -> libmudflap.so.0.0.0
+-rwxr-xr-x	root/root	usr/lib32/libmudflap.so.0.0.0
+-rw-r--r--	root/root	usr/lib32/libmudflapth.a
+-rwxr-xr-x	root/root	usr/lib32/libmudflapth.la
+lrwxrwxrwx	root/root	usr/lib32/libmudflapth.so -> libmudflapth.so.0.0.0
+lrwxrwxrwx	root/root	usr/lib32/libmudflapth.so.0 -> libmudflapth.so.0.0.0
+-rwxr-xr-x	root/root	usr/lib32/libmudflapth.so.0.0.0
+-rw-r--r--	root/root	usr/lib32/libobjc.a
+-rwxr-xr-x	root/root	usr/lib32/libobjc.la
+lrwxrwxrwx	root/root	usr/lib32/libobjc.so -> libobjc.so.2.0.0
+lrwxrwxrwx	root/root	usr/lib32/libobjc.so.2 -> libobjc.so.2.0.0
+-rwxr-xr-x	root/root	usr/lib32/libobjc.so.2.0.0
+-rw-r--r--	root/root	usr/lib32/libssp.a
+-rwxr-xr-x	root/root	usr/lib32/libssp.la
+lrwxrwxrwx	root/root	usr/lib32/libssp.so -> libssp.so.0.0.0
+lrwxrwxrwx	root/root	usr/lib32/libssp.so.0 -> libssp.so.0.0.0
+-rwxr-xr-x	root/root	usr/lib32/libssp.so.0.0.0
+-rw-r--r--	root/root	usr/lib32/libssp_nonshared.a
+-rwxr-xr-x	root/root	usr/lib32/libssp_nonshared.la
+-rw-r--r--	root/root	usr/lib32/libstdc++.a
+-rwxr-xr-x	root/root	usr/lib32/libstdc++.la
+lrwxrwxrwx	root/root	usr/lib32/libstdc++.so -> libstdc++.so.6.0.10
+lrwxrwxrwx	root/root	usr/lib32/libstdc++.so.6 -> libstdc++.so.6.0.10
+-rwxr-xr-x	root/root	usr/lib32/libstdc++.so.6.0.10
+-rw-r--r--	root/root	usr/lib32/libsupc++.a
+-rwxr-xr-x	root/root	usr/lib32/libsupc++.la
 drwxr-xr-x	root/root	usr/man/
 drwxr-xr-x	root/root	usr/man/man1/
 -rw-r--r--	root/root	usr/man/man1/cpp.1.gz
