@@ -1,0 +1,23 @@
+diff -ru tcp_wrappers_7.6/Makefile tcp_wrappers_7.6-new/Makefile
+--- tcp_wrappers_7.6/Makefile	2003-03-15 14:14:07.000000000 +0100
++++ tcp_wrappers_7.6-new/Makefile	2003-03-15 14:13:51.000000000 +0100
+@@ -149,8 +149,8 @@
+ 	EXTRA_CFLAGS="-DSYS_ERRLIST_DEFINED -DINET6 -Dss_family=__ss_family -Dss_len=__ss_len" VSYSLOG= all
+ 
+ linux:
+-	@make REAL_DAEMON_DIR=$(REAL_DAEMON_DIR) STYLE=$(STYLE) \
+-	LIBS= RANLIB=ranlib ARFLAGS=rv AUX_OBJ=setenv.o NETGROUP= TLI= \
++	@make REAL_DAEMON_DIR=$(REAL_DAEMON_DIR) STYLE="$(STYLE)" \
++	LIBS= RANLIB=ranlib ARFLAGS=rv AUX_OBJ= NETGROUP= TLI= \
+ 	EXTRA_CFLAGS="-DSYS_ERRLIST_DEFINED -DBROKEN_SO_LINGER -DINET6=1 -Dss_family=__ss_family -Dss_len=__ss_len" all
+ 
+ linux-old:
+@@ -679,7 +679,7 @@
+ SHELL	= /bin/sh
+ .c.o:;	$(CC) $(CFLAGS) -c $*.c
+ 
+-CFLAGS	= -O -DFACILITY=$(FACILITY) $(ACCESS) $(PARANOID) $(NETGROUP) \
++CFLAGS	+= -DFACILITY=$(FACILITY) $(ACCESS) $(PARANOID) $(NETGROUP) \
+ 	$(BUGS) $(SYSTYPE) $(AUTH) $(UMASK) \
+ 	-DREAL_DAEMON_DIR=\"$(REAL_DAEMON_DIR)\" $(STYLE) $(KILL_OPT) \
+ 	-DSEVERITY=$(SEVERITY) -DRFC931_TIMEOUT=$(RFC931_TIMEOUT) \
