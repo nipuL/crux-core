@@ -4,7 +4,7 @@
 # Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
 
 name=which
-version=2.19
+version=2.20
 release=1
 source=(http://www.xs4all.nl/~carlo17/which/$name-$version.tar.gz)
 
