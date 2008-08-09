@@ -1,0 +1,34 @@
+# Description: An sh-compatible command language interpreter
+# URL:         http://cnswww.cns.cwru.edu/~chet/bash/bashtop.html
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
+# Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
+# Depends on:  ncurses
+
+name=bash
+version=3.2.39
+release=1
+source=(http://ftp.gnu.org/gnu/$name/$name-3.2.tar.gz \
+        $name-3.2-001-039.patch \
+        $name-3.2-doc.patch \
+        profile)
+
+build() {
+    cd $name-3.2
+
+    patch -p0 < $SRC/$name-3.2-001-039.patch
+    patch -p1 < $SRC/$name-3.2-doc.patch
+
+    touch configure
+    ./configure --prefix=/usr \
+                --exec-prefix= \
+                --mandir=/usr/man \
+                --disable-nls \
+                --with-curses 
+    make -j1
+    make DESTDIR=$PKG install
+
+    rm -rf $PKG/usr/info $PKG/bin/bashbug $PKG/usr/man/man1/bashbug.1
+    install -D -m 644 $SRC/profile $PKG/etc/profile
+    ln -sf bash $PKG/bin/sh
+    ln -sf bash.1 $PKG/usr/man/man1/sh.1
+}
