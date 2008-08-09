@@ -3,7 +3,7 @@
 # Maintainer: CRUX System Team, core-ports at crux dot nu
 
 name=udev
-version=125
+version=126
 release=1
 source=(ftp://ftp.kernel.org/pub/linux/utils/kernel/hotplug/$name-$version.tar.bz2 \
 	http://crux.nu/files/distfiles/udev-config-20080217.tar.bz2 \
@@ -21,6 +21,8 @@ build() {
 			extras/volume_id"
 
 	cd udev-$version
+
+	./configure --prefix=/usr --exec-prefix= --sysconfdir=/etc
 
 	make EXTRAS="$extras"
 	make install DESTDIR=$PKG mandir="/usr/man" EXTRAS="$extras"
