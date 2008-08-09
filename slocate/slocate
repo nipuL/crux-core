@@ -1,0 +1,8 @@
+#!/bin/sh
+#
+# /etc/cron/daily/updatedb: update the slocate database
+#
+
+/usr/bin/updatedb
+
+# End of file

@@ -1,0 +1,34 @@
+# Description: Secure version of the GNU locate program
+# URL:         http://packages.debian.org/unstable/utils/slocate
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
+# Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
+
+name=slocate
+version=3.1
+release=1
+source=(http://ftp.debian.org/debian/pool/main/s/$name/${name}_${version}.orig.tar.gz \
+        slocate updatedb.conf CVE-2007-0227.patch)
+
+build() {
+    cd $name-$version
+
+    patch -p1 -i $SRC/CVE-2007-0227.patch
+    sed -i "s/-O2/$CFLAGS/" src/Makefile
+
+    make -j1
+    
+    install -D -m 2755 -g slocate src/slocate $PKG/usr/bin/slocate
+    ln -sf slocate $PKG/usr/bin/locate
+    ln -sf slocate $PKG/usr/bin/updatedb
+
+    touch slocate.db
+    install -d -m 0750 -g slocate $PKG/var/lib/slocate
+    install -m 0640 -g slocate slocate.db $PKG/var/lib/slocate
+    
+    install -D -m 0755 $SRC/slocate $PKG/etc/cron/daily/slocate
+    install -m 0644 $SRC/updatedb.conf $PKG/etc
+    
+    install -D -m 0644 doc/slocate.1 $PKG/usr/man/man1/slocate.1
+    install -m 0644 doc/updatedb.1 $PKG/usr/man/man1
+    ln -sf slocate.1.gz $PKG/usr/man/man1/locate.1.gz
+}
