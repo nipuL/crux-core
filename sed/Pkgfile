@@ -1,0 +1,19 @@
+# Description: Sed - streams editor
+# URL:         http://www.gnu.org/software/sed//sed.html
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
+# Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
+
+name=sed
+version=4.1.5
+release=1
+source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
+
+build() {
+    cd $name-$version
+    ./configure --prefix=/usr \
+		--exec-prefix=/ \
+		--disable-nls
+    make
+    make DESTDIR=$PKG install
+    rm -rf $PKG/usr/info
+}
