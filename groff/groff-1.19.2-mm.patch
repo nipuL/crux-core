@@ -1,0 +1,17 @@
+Index: groff-1.19.2-mm.patch
+===================================================================
+--- groff-1.19.2-mm.patch	(revision 0)
++++ groff-1.19.2-mm.patch	(revision 0)
+@@ -0,0 +1,12 @@
++diff -ru groff-1.19.2.orig/contrib/mm/m.tmac groff-1.19.2/contrib/mm/m.tmac
++--- groff-1.19.2.orig/contrib/mm/m.tmac	2005-12-12 10:00:01.000000000 +0100
+++++ groff-1.19.2/contrib/mm/m.tmac	2005-12-12 10:02:27.000000000 +0100
++@@ -2571,7 +2571,7 @@
++ .	if 0\\$6=2 .ds lix*label \\*[Li\\$1]\ \\$5\\*[lix*ds-form]
++ .\}
++ .\" print line if not between DS/DE
++-.ie \\n[ds*lvl]<1&\\n[df*float]=0 \{\
+++.ie (\\n[ds*lvl]<1)&(\\n[df*float]=0) \{\
++ .	lix@print-text "\\*[lix*label]" "\\*[lix*text]" \\$1 \\$2 \\$7
++ .\}
++ .el \{\
