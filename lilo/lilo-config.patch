@@ -1,0 +1,30 @@
+diff -Nru lilo-22.8.orig/Makefile lilo-22.8/Makefile
+--- lilo-22.8.orig/Makefile	2007-02-19 18:15:10.000000000 +0100
++++ lilo-22.8/Makefile	2007-02-20 15:19:21.000000000 +0100
+@@ -65,7 +65,7 @@
+ #   XL_SECS=n	  Support for extra large (non-standard) floppies.
+ 
+ CONFIG=-DBDATA -DDSECS=3 -DEVMS -DIGNORECASE -DLVM -DNOKEYBOARD -DONE_SHOT \
+-   -DPASS160 -DREISERFS -DREWRITE_TABLE -DSOLO_CHAIN -DVERSION -DVIRTUAL \
++   -DPASS160 -DREISERFS -DREWRITE_TABLE -DSOLO_CHAIN -DVIRTUAL \
+    -DMDPRAID -DDEVMAPPER
+    
+ 
+@@ -80,7 +80,7 @@
+ #
+ MAN_DIR=`if [ -f /usr/bin/manpath ]; then \
+ 	manpath | sed "s/:.*//"; else echo /usr/share/man; fi`
+-#MAN_DIR=/usr/share/man
++MAN_DIR=/usr/man
+ 
+ # set the compiler optimization level
+ 
+@@ -165,7 +165,7 @@
+ #
+ # everything needed to run, just short of installation
+ #
+-all:	lilo bootsect.b diag1.img # OBSOLETE:  $(BOOTS) edit dparam.com activate
++all:	lilo bootsect.b # diag1.img OBSOLETE:  $(BOOTS) edit dparam.com activate
+ 	if [ -x /usr/bin/bcc -o -x /usr/local/bin/bcc ]; then \
+ 		make diagnostic; \
+ 		make dosexe; fi

@@ -1,0 +1,19 @@
+# Description: LInux boot LOader
+# URL:         http://tldp.org/HOWTO/LILO.html
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
+# Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
+
+name=lilo
+version=22.8
+release=1
+source=(http://home.san.rr.com/johninsd/pub/linux/lilo/$name-$version.src.tar.gz \
+        $name-config.patch lilo.conf)
+
+build() {
+    cd $name-$version
+    patch -p1 -i $SRC/$name-config.patch
+    make all
+    make ROOT=$PKG install
+    install -m 644 $SRC/lilo.conf $PKG/etc
+    rm $PKG/{sbin/mkrescue,usr/man/man8/mkrescue.8}
+}
