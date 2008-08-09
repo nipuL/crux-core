@@ -1,0 +1,22 @@
+# Description: A telnet client
+# URL:         ftp://ftp.uk.linux.org/pub/linux/Networking/netkit
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
+# Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
+# Depends on:  ncurses
+
+name=netkit-telnet
+version=0.17
+release=3
+source=(ftp://ftp.uk.linux.org/pub/linux/Networking/netkit/$name-$version.tar.gz \
+	$name-$version.patch)
+
+build() {
+    cd $name-$version
+    patch -p1 < ../$name-$version.patch
+    ./configure --installroot=$PKG \
+		--prefix=/usr \
+		--with-c++-compiler=g++
+    make SUB=telnet
+    mkdir -p $PKG/usr/bin $PKG/usr/man/man1
+    make SUB=telnet install
+}
