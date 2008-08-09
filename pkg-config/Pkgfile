@@ -1,0 +1,16 @@
+# Description: A system for managing library compile/link flags
+# URL: http://pkgconfig.freedesktop.org/wiki/
+# Maintainer: CRUX System Team, core-ports at crux dot nu
+# Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
+
+name=pkg-config
+version=0.23
+release=1
+source=(http://$name.freedesktop.org/releases/$name-$version.tar.gz)
+
+build() {
+	cd $name-$version
+	./configure --prefix=/usr --mandir=/usr/man
+	make
+	make DESTDIR=$PKG install
+}
