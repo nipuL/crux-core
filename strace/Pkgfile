@@ -1,0 +1,16 @@
+# Description: System call tracing utility (like trace, truss, etc)
+# URL:         http://www.liacs.nl/~wichert/strace/
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
+# Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
+
+name=strace
+version=4.5.17
+release=1
+source=(http://dl.sourceforge.net/$name/$name-$version.tar.bz2)
+
+build() {
+    cd $name-$version
+    ./configure --prefix=/usr --mandir=/usr/man
+    make
+    make DESTDIR=$PKG install
+}
