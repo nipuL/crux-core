@@ -1,0 +1,22 @@
+# Description: A compression/decompression Library
+# URL:         http://www.zlib.net/
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
+# Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
+
+name=zlib
+version=1.2.3
+release=1
+source=(http://www.zlib.net/$name-$version.tar.bz2)
+
+build() {
+    cd $name-$version
+    ./configure --prefix=/usr
+    make
+    make prefix=$PKG/usr mandir=$PKG/usr/man install
+    make clean
+    export CFLAGS="${CFLAGS} -fPIC"
+    ./configure --prefix=/usr --shared
+    make
+    make prefix=$PKG/usr mandir=$PKG/usr/man install
+    chmod -x $PKG/usr/lib/libz.a
+}
