@@ -1,0 +1,52 @@
+# Description: A popular vi clone that features syntax highlighting
+# URL:         http://www.vim.org/
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
+# Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
+# Depends on:  ncurses
+
+name=vim
+version=7.1.242
+release=1
+source=(ftp://ftp.vim.org/pub/vim/unix/vim-7.1.tar.bz2 \
+        http://crux.nu/~jue/files/dist/vim-7.1.001-123.tar.bz2
+        http://crux.nu/~jue/files/dist/vim-7.1.124-242.tar.bz2)
+
+build () {
+    cd vim71/src
+
+    cat $SRC/vim-7.1-patches/* | patch -p0 -d $SRC/vim71
+
+    ./configure --prefix=/usr \
+                --with-vim-name=vim \
+                --with-x=no \
+                --enable-gui=no \
+                --enable-multibyte \
+                --disable-gpm \
+                --disable-nls
+
+    make VIMRTDIR=
+    make VIMRTDIR= DESTDIR=$PKG installvimbin installruntime installlinks
+
+    mv $PKG/usr/share/vim/vimrc_example.vim $PKG/usr/share/vim/vimrc
+    rm -rf $PKG/usr/man/man?/vimtutor* $PKG/usr/share/vim/tutor $PKG/usr/share/vim/macros
+    rm $PKG/usr/share/vim/*/README.txt
+    ln -sf vim $PKG/usr/bin/evim
+    ln -sf /bin/vi $PKG/usr/bin/vi
+    ln -sf vim.1.gz $PKG/usr/man/man1/ex.1.gz
+    ln -sf vim.1.gz $PKG/usr/man/man1/vi.1.gz
+    ln -sf vim.1.gz $PKG/usr/man/man1/rvim.1.gz
+    ln -sf vim.1.gz $PKG/usr/man/man1/view.1.gz
+    ln -sf vim.1.gz $PKG/usr/man/man1/rview.1.gz
+    ln -sf vim.1.gz $PKG/usr/man/man1/gvim.1.gz
+
+    ./configure --prefix=/ \
+                --with-vim-name=vi \
+                --with-x=no \
+                --enable-gui=no \
+                --enable-multibyte \
+                --disable-gpm \
+                --disable-nls \
+                --with-features=tiny
+
+    make VIMRTDIR= DESTDIR=$PKG installvimbin
+}
