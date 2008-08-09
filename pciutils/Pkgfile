@@ -1,0 +1,15 @@
+# Description: Library and utilities to access the PCI bus configuration registers
+# URL:         http://mj.ucw.cz/pciutils.shtml
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
+# Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
+
+name=pciutils
+version=3.0.0
+release=1
+source=(http://www.kernel.org/pub/software/utils/$name/$name-$version.tar.gz)
+
+build() {
+    cd $name-$version
+    make OPT="$CFLAGS" PREFIX=/usr ZLIB=no
+    make DESTDIR=$PKG PREFIX=/usr MANDIR=/usr/man install install-lib
+}
