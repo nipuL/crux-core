@@ -1,0 +1,29 @@
+# Description: Keytable files and keyboard utilities
+# URL:         ftp://ftp.win.tue.nl/pub/linux-local/utils/kbd/
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
+# Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
+
+name=kbd
+version=1.12
+release=2
+source=(ftp://ftp.win.tue.nl/pub/linux-local/utils/kbd/$name-$version.tar.gz \
+        kbd-1.12-alias.patch)
+
+build() {
+    cd $name-$version
+    patch -p1 < $SRC/kbd-1.12-alias.patch
+    ./configure --prefix=/usr \
+		--mandir=/usr/man \
+		--datadir=/usr/share/kbd \
+		--disable-nls
+    make
+    make DESTDIR=$PKG install
+    ln -sf default8x16.psfu.gz $PKG/usr/share/kbd/consolefonts/default.gz
+    rm -rf $PKG/usr/share/kbd/keymaps/{ppc,mac,atari,amiga,sun} \
+	   $PKG/usr/bin/{psfxtable,resizecons,mapscrn,loadunimap} \
+	   $PKG/usr/bin/{psfaddtable,psfgettable,psfstriptable} \
+	   $PKG/usr/man/man1/{psfaddtable.1,psfgettable.1,psfstriptable.1,psfxtable.1} \
+	   $PKG/usr/man/man8/{loadunimap.8,mapscrn.8,resizecons.8}
+    find $PKG/usr/share/kbd/ -name "README*" -exec rm {} \;
+    chmod -R 0644 $PKG/usr/man/man?/*
+}
