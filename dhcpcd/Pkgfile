@@ -1,0 +1,15 @@
+# Description: An RFC2131-compliant DHCP client daemon
+# URL:         http://roy.marples.name/dhcpcd
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
+# Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
+
+name=dhcpcd
+version=3.2.3
+release=1
+source=(http://roy.marples.name/dhcpcd/$name-$version.tar.bz2)
+
+build () {
+    cd $name-$version
+    make CSTD=gnu99
+    make DESTDIR=$PKG MANPREFIX=/usr install
+}
