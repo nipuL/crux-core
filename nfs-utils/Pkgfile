@@ -1,0 +1,27 @@
+# Description: NFS utilities
+# URL:         http://nfs.sourceforge.net/
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
+# Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
+
+name=nfs-utils
+version=1.1.3
+release=1
+source=(http://dl.sourceforge.net/nfs/$name-$version.tar.gz \
+        exports nfs nfsserver)
+
+build () {
+    cd $name-$version
+    ./configure --prefix=/usr \
+                --mandir=/usr/man \
+                --enable-nfsv3 \
+                --disable-nfsv4 \
+                --disable-gss \
+                --with-statedir=/var/lib/nfs \
+                --sysconfdir=/etc
+    make
+    make DESTDIR=$PKG install
+
+    install -D -m 755 $SRC/nfs $PKG/etc/rc.d/nfs
+    install -D -m 755 $SRC/nfsserver $PKG/etc/rc.d/nfsserver
+    install -D -m 644 $SRC/exports $PKG/etc/exports
+}

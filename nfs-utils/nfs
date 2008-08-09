@@ -1,0 +1,26 @@
+#!/bin/sh
+#
+# /etc/rc.d/nfs: start/stop nfs client
+#
+
+case $1 in
+start)
+	/usr/sbin/sm-notify -q
+	/usr/sbin/rpc.statd
+	/bin/mount -a -t nfs
+	;;
+stop)
+	/bin/umount -a -t nfs
+	killall -q /usr/sbin/rpc.statd
+	;;
+restart)
+	$0 stop
+	sleep 2
+	$0 start
+	;;
+*)
+	echo "usage: $0 [start|stop|restart]"
+	;;
+esac
+
+# End of file
