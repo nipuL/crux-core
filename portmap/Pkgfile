@@ -1,0 +1,19 @@
+# Description: RPC connection manager
+# URL:         http://neil.brown.name/portmap
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
+# Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
+
+name=portmap
+version=6.0
+release=1
+source=(http://neil.brown.name/$name/$name-$version.tgz \
+	portmap)
+
+build() { 
+    cd ${name}_$version
+    sed -i 's|share/man|man|' Makefile
+    install -d $PKG/{sbin,usr/man/man8,etc/rc.d}
+    make
+    make BASEDIR=$PKG install
+    install -m 755 $SRC/portmap $PKG/etc/rc.d
+}

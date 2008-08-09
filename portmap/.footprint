@@ -1,0 +1,13 @@
+drwxr-xr-x	root/root	etc/
+drwxr-xr-x	root/root	etc/rc.d/
+-rwxr-xr-x	root/root	etc/rc.d/portmap
+drwxr-xr-x	root/root	sbin/
+-rwxr-xr-x	root/root	sbin/pmap_dump
+-rwxr-xr-x	root/root	sbin/pmap_set
+-rwxr-xr-x	root/root	sbin/portmap
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/man/
+drwxr-xr-x	root/root	usr/man/man8/
+-rw-r--r--	root/root	usr/man/man8/pmap_dump.8.gz
+-rw-r--r--	root/root	usr/man/man8/pmap_set.8.gz
+-rw-r--r--	root/root	usr/man/man8/portmap.8.gz
