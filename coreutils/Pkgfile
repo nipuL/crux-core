@@ -1,0 +1,30 @@
+# Description: A collection of core GNU utilities
+# URL:         http://www.gnu.org/software/coreutils/
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
+# Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
+
+name=coreutils
+version=6.12
+release=1
+source=(http://ftp.gnu.org/pub/gnu/$name/$name-$version.tar.gz 
+        coreutils-uname.patch)
+
+build() {
+    cd $name-$version
+
+    patch -p1 -i $SRC/coreutils-uname.patch
+
+    DEFAULT_POSIX2_VERSION=199209 \
+    ./configure --prefix=/usr \
+                --mandir=/usr/man \
+                --disable-nls \
+                --disable-assert \
+                --enable-no-install-program=uptime,kill,mktemp,chcon,runcon,groups
+    make
+    make DESTDIR=$PKG install 
+
+    mkdir $PKG/bin
+    mv $PKG/usr/bin/{cat,chgrp,chmod,chown,cp,date,dd,df,echo,false,ln,ls,mkdir,sleep} $PKG/bin
+    mv $PKG/usr/bin/{mknod,mv,pwd,readlink,rm,rmdir,stty,sync,touch,true,uname} $PKG/bin
+    rm -r $PKG/usr/share
+}
