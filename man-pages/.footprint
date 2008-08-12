@@ -465,6 +465,7 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/mmap2.2.gz
 -rw-r--r--	root/root	usr/man/man2/modify_ldt.2.gz
 -rw-r--r--	root/root	usr/man/man2/mount.2.gz
+-rw-r--r--	root/root	usr/man/man2/move_pages.2.gz
 -rw-r--r--	root/root	usr/man/man2/mprotect.2.gz
 -rw-r--r--	root/root	usr/man/man2/mpx.2.gz
 -rw-r--r--	root/root	usr/man/man2/mq_getsetattr.2.gz
@@ -884,6 +885,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/clntudp_bufcreate.3.gz
 -rw-r--r--	root/root	usr/man/man3/clntudp_create.3.gz
 -rw-r--r--	root/root	usr/man/man3/clock.3.gz
+-rw-r--r--	root/root	usr/man/man3/clock_getcpuclockid.3.gz
 -rw-r--r--	root/root	usr/man/man3/clock_getres.3.gz
 -rw-r--r--	root/root	usr/man/man3/clock_gettime.3.gz
 -rw-r--r--	root/root	usr/man/man3/clock_settime.3.gz
@@ -3279,6 +3281,7 @@ drwxr-xr-x	root/root	usr/man/man7/
 -rw-r--r--	root/root	usr/man/man7/termio.7.gz
 -rw-r--r--	root/root	usr/man/man7/time.7.gz
 -rw-r--r--	root/root	usr/man/man7/udp.7.gz
+-rw-r--r--	root/root	usr/man/man7/udplite.7.gz
 -rw-r--r--	root/root	usr/man/man7/unicode.7.gz
 -rw-r--r--	root/root	usr/man/man7/units.7.gz
 -rw-r--r--	root/root	usr/man/man7/unix.7.gz
