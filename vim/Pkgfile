@@ -1,22 +1,19 @@
-# Description: A popular vi clone that features syntax highlighting
+# Description: Highly configurable text editor
 # URL:         http://www.vim.org/
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 # Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
 # Depends on:  ncurses
 
 name=vim
-version=7.1.242
+version=7.2
 release=1
-source=(ftp://ftp.vim.org/pub/vim/unix/vim-7.1.tar.bz2 \
-        http://crux.nu/~jue/files/dist/vim-7.1.001-123.tar.bz2
-        http://crux.nu/~jue/files/dist/vim-7.1.124-242.tar.bz2)
+source=(ftp://ftp.vim.org/pub/vim/unix/vim-7.2.tar.bz2)
 
 build () {
-    cd vim71/src
-
-    cat $SRC/vim-7.1-patches/* | patch -p0 -d $SRC/vim71
+    cd vim72/src
 
     ./configure --prefix=/usr \
+                --mandir=/usr/man \
                 --with-vim-name=vim \
                 --with-x=no \
                 --enable-gui=no \
