@@ -1,0 +1,22 @@
+# Description: A compression/decompression Library
+# URL:         http://www.zlib.net/
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
+
+name=zlib-compat32
+version=1.2.3
+release=1
+source=(http://www.zlib.net/zlib-$version.tar.bz2)
+
+build() {
+    cd zlib-$version
+    ./configure --prefix=/usr --libdir=/usr/lib32
+    make
+    make prefix=$PKG/usr libdir=$PKG/usr/lib32 mandir=$PKG/usr/man install
+    make clean
+    export CFLAGS="${CFLAGS} -fPIC"
+    ./configure --prefix=/usr --shared --libdir=/usr/lib32
+    make
+    make prefix=$PKG/usr libdir=$PKG/usr/lib32 mandir=$PKG/usr/man install
+    chmod -x $PKG/usr/lib32/libz.a
+    rm -rf $PKG/usr/{include,man}
+}
