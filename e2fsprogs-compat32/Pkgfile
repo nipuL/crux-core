@@ -1,0 +1,31 @@
+# Description: Ext2 Filesystem Utilities
+# URL:         http://e2fsprogs.sourceforge.net/
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
+# Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
+
+name=e2fsprogs-compat32
+version=1.40.10
+release=1
+source=(http://dl.sourceforge.net/sourceforge/e2fsprogs/e2fsprogs-$version.tar.gz \
+        e2fsprogs-symlink.patch)
+
+build() {
+    cd e2fsprogs-$version
+    patch -p1 -i $SRC/e2fsprogs-symlink.patch
+    mkdir build
+    cd build
+    ../configure --prefix=/usr \
+	--libdir=/usr/lib32 \
+        --with-root-prefix= \
+        --mandir=/usr/man \
+        --enable-elf-shlibs \
+        --disable-debugfs \
+        --disable-imager \
+        --disable-e2initrd-helper \
+        --disable-evms \
+        --disable-nls
+    make
+    make DESTDIR=$PKG install install-libs
+    rm -rf $PKG/{etc,sbin,usr/{bin,etc,include,man,sbin,share}}
+    chmod +w -R $PKG
+}
