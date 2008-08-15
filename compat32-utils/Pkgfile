@@ -1,0 +1,12 @@
+# Description: Some scripts for compat32 ports
+# Maintainer: Lucas Hazel, lucas at die dot net dot au
+
+name=compat32-utils
+version=0.1
+release=1
+source=(compat32_dep_check.sh)
+
+build() {
+    install -D -o root -g root -m 0755 \
+	compat32_dep_check.sh $PKG/usr/bin/compat32_dep_check
+}
