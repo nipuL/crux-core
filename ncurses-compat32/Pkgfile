@@ -1,0 +1,43 @@
+# Description: A System V Release 4.0 curses emulation library
+# URL:         http://www.gnu.org/software/ncurses/ncurses.html
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
+# Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
+
+name=ncurses-compat32
+version=5.6
+release=1
+source=(http://ftp.gnu.org/gnu/ncurses/ncurses-$version.tar.gz)
+
+build() {
+    cd ncurses-$version
+
+    local OPTIONS="\
+--with-install-prefix=$PKG \
+--prefix=/usr \
+--libdir=/usr/lib32 \
+--with-normal \
+--with-shared \
+--without-debug \
+--without-ada
+"
+
+    ./configure $OPTIONS
+    make
+    make install
+    make distclean
+
+    ./configure $OPTIONS --enable-widec
+    make
+    make install
+
+    mkdir $PKG/lib32
+
+    for i in w ''; do \
+        mv $PKG/usr/lib32/libncurses$i.so.* $PKG/lib32 && \
+        ln -sf libncurses$i.so $PKG/usr/lib32/libcurses$i.so && \
+        ln -sf ../../lib32/libncurses$i.so.5 $PKG/usr/lib32/libncurses$i.so && \
+        ln -sf ../../lib32/libncurses$i.so.5 $PKG/usr/lib32/libncurses$i.so.5 \
+    ; done
+    
+    rm -rf $PKG/usr/{bin,include,man,share}
+}

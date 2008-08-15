@@ -1,0 +1,42 @@
+drwxr-xr-x	root/root	lib32/
+lrwxrwxrwx	root/root	lib32/libncurses.so.5 -> libncurses.so.5.6
+-rwxr-xr-x	root/root	lib32/libncurses.so.5.6
+lrwxrwxrwx	root/root	lib32/libncursesw.so.5 -> libncursesw.so.5.6
+-rwxr-xr-x	root/root	lib32/libncursesw.so.5.6
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/lib32/
+lrwxrwxrwx	root/root	usr/lib32/libcurses.a -> libncurses.a
+lrwxrwxrwx	root/root	usr/lib32/libcurses.so -> libncurses.so
+lrwxrwxrwx	root/root	usr/lib32/libcursesw.so -> libncursesw.so
+-rw-r--r--	root/root	usr/lib32/libform.a
+lrwxrwxrwx	root/root	usr/lib32/libform.so -> libform.so.5
+lrwxrwxrwx	root/root	usr/lib32/libform.so.5 -> libform.so.5.6
+-rwxr-xr-x	root/root	usr/lib32/libform.so.5.6
+-rw-r--r--	root/root	usr/lib32/libformw.a
+lrwxrwxrwx	root/root	usr/lib32/libformw.so -> libformw.so.5
+lrwxrwxrwx	root/root	usr/lib32/libformw.so.5 -> libformw.so.5.6
+-rwxr-xr-x	root/root	usr/lib32/libformw.so.5.6
+-rw-r--r--	root/root	usr/lib32/libmenu.a
+lrwxrwxrwx	root/root	usr/lib32/libmenu.so -> libmenu.so.5
+lrwxrwxrwx	root/root	usr/lib32/libmenu.so.5 -> libmenu.so.5.6
+-rwxr-xr-x	root/root	usr/lib32/libmenu.so.5.6
+-rw-r--r--	root/root	usr/lib32/libmenuw.a
+lrwxrwxrwx	root/root	usr/lib32/libmenuw.so -> libmenuw.so.5
+lrwxrwxrwx	root/root	usr/lib32/libmenuw.so.5 -> libmenuw.so.5.6
+-rwxr-xr-x	root/root	usr/lib32/libmenuw.so.5.6
+-rwxr-xr-x	root/root	usr/lib32/libncurses++.a
+-rwxr-xr-x	root/root	usr/lib32/libncurses++w.a
+-rw-r--r--	root/root	usr/lib32/libncurses.a
+lrwxrwxrwx	root/root	usr/lib32/libncurses.so -> ../../lib32/libncurses.so.5
+lrwxrwxrwx	root/root	usr/lib32/libncurses.so.5 -> ../../lib32/libncurses.so.5
+-rw-r--r--	root/root	usr/lib32/libncursesw.a
+lrwxrwxrwx	root/root	usr/lib32/libncursesw.so -> ../../lib32/libncursesw.so.5
+lrwxrwxrwx	root/root	usr/lib32/libncursesw.so.5 -> ../../lib32/libncursesw.so.5
+-rw-r--r--	root/root	usr/lib32/libpanel.a
+lrwxrwxrwx	root/root	usr/lib32/libpanel.so -> libpanel.so.5
+lrwxrwxrwx	root/root	usr/lib32/libpanel.so.5 -> libpanel.so.5.6
+-rwxr-xr-x	root/root	usr/lib32/libpanel.so.5.6
+-rw-r--r--	root/root	usr/lib32/libpanelw.a
+lrwxrwxrwx	root/root	usr/lib32/libpanelw.so -> libpanelw.so.5
+lrwxrwxrwx	root/root	usr/lib32/libpanelw.so.5 -> libpanelw.so.5.6
+-rwxr-xr-x	root/root	usr/lib32/libpanelw.so.5.6
