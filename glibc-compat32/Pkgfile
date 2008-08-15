@@ -1,0 +1,49 @@
+# Description: The C library used in the GNU system
+# URL:         http://www.gnu.org/software/libc/
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
+# Arch Maintainer:  Lucas Hazel, lucas at die dot net dot au
+# Depends on: glibc
+
+name=glibc-compat32
+version=2.7
+release=1
+source=(http://ftp.gnu.org/gnu/glibc/glibc-$version.tar.bz2)
+
+build() {
+    mkdir build
+    cd build
+    
+    echo 'slibdir=/lib32' >> configparms
+    ../glibc-$version/configure --prefix=/usr \
+	--libdir=/usr/lib32 \
+	--libexecdir=/usr/lib32 \
+	--with-headers=/usr/include \
+	--with-tls \
+	--enable-kernel=2.6.0 \
+	--enable-add-ons \
+	--disable-profile \
+	--without-gd \
+	--build i686-gnu-linux \
+	--host i686-gnu-linux
+
+    make
+    #make check
+    make install_root=$PKG install
+    make install_root=$PKG localedata/install-locales
+
+    mv $PKG/usr/bin $PKG/usr/bin32
+    
+    mkdir $PKG/usr/bin $PKG/lib
+    
+    ln -s ../lib32/ld-$version.so $PKG/lib/ld-linux.so.2
+    mv $PKG/usr/bin32/lddlibc4 $PKG/usr/bin
+    
+    # Keep stubs-32.h
+    mv $PKG/usr/include $PKG/usr/include32
+    mkdir -p $PKG/usr/include/gnu
+    cp $PKG/usr/include32/gnu/stubs-32.h $PKG/usr/include/gnu
+
+    # superfluous (already in 'glibc')
+    rm -rf $PKG/usr/{bin32,include32,sbin,share}
+    rm -rf $PKG/{etc,sbin} 
+}
