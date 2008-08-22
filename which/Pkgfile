@@ -1,7 +1,7 @@
 # Description: Show full path of commands
 # URL:         http://www.xs4all.nl/~carlo17/which/
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
-# Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
+# Arch Maintainer: CRUX x86_64 System Team, core-ports-x86_64 at crux dot nu
 
 name=which
 version=2.20

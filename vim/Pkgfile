@@ -1,7 +1,7 @@
 # Description: Highly configurable text editor
 # URL:         http://www.vim.org/
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
-# Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
+# Arch Maintainer: CRUX x86_64 System Team, core-ports-x86_64 at crux dot nu
 # Depends on:  ncurses
 
 name=vim
