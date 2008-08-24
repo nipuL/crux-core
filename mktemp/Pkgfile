@@ -3,13 +3,13 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=mktemp
-version=1.5
+version=1.6
 release=1
 source=(ftp://ftp.mktemp.org/pub/mktemp/$name-$version.tar.gz)
 
 build() {
     cd $name-$version
-    ./configure --prefix=/usr
+    ./configure
     make
-    make -j1 prefix=$PKG/usr install
+    make -j1 prefix=$PKG/usr mandir=$PKG/usr/man install
 }
