@@ -4,7 +4,7 @@
 # Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
 
 name=ed
-version=0.9
+version=1.0
 release=1
 source=(ftp://ftp.gnu.org/gnu/$name/$name-$version.tar.bz2)
 
@@ -16,9 +16,12 @@ build() {
     # as a temporary workaround, i'm making it use symlinks instead.
     sed -i -e 's/ln /ln -s /' Makefile.in
 
-    ./configure --prefix=/usr --mandir=/usr/man
+    ./configure --prefix=/usr \
+                --exec-prefix=/ \
+                --mandir=/usr/man \
+                CFLAGS="$CFLAGS"
+
     make
     make DESTDIR=$PKG install install-man
-    mv $PKG/usr/bin $PKG
-    rm -rf $PKG/usr/share
+    rm -r $PKG/usr/share
 }
