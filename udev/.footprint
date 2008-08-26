@@ -55,6 +55,8 @@ drwxr-xr-x	root/root	sbin/
 -rwxr-xr-x	root/root	sbin/udevadm
 -rwxr-xr-x	root/root	sbin/udevd
 drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/bin/
+lrwxrwxrwx	root/root	usr/bin/udevinfo -> /sbin/udevadm
 drwxr-xr-x	root/root	usr/include/
 -rw-r--r--	root/root	usr/include/libvolume_id.h
 drwxr-xr-x	root/root	usr/lib/
