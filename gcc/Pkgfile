@@ -6,7 +6,7 @@
 # Depends on:  mpfr, libgmp
 
 name=gcc
-version=4.3.1
+version=4.3.2
 release=1
 source=(ftp://sources.redhat.com/pub/gcc/releases/$name-$version/$name-{core,g++,objc}-$version.tar.bz2
         $name-$version-nocheck-fixincludes.patch gcc-pure64.patch)
