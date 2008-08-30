@@ -1,11 +1,11 @@
 # Description: Userspace device management daemon
 # URL: http://www.kernel.org/pub/linux/utils/kernel/hotplug/udev.html
 # Maintainer: CRUX System Team, core-ports at crux dot nu
-# Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
+# Arch Maintainer: CRUX x86_64 System Team, core-ports-x86_64 at crux dot nu
 
 name=udev
-version=126
-release=2
+version=127
+release=1
 source=(ftp://ftp.kernel.org/pub/linux/utils/kernel/hotplug/$name-$version.tar.bz2 \
 	http://crux.nu/files/distfiles/udev-config-20080217.tar.bz2 \
 	start_udev cdrom.rules cdsymlinks)
