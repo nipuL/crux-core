@@ -1,12 +1,12 @@
 # Description: File type identification utility
 # URL:         http://www.darwinsys.com/file/
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
-# Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
+# Arch Maintainer: CRUX x86_64 System Team, core-ports-x86_64 at crux dot nu
 # Packager:    CRUX System Team, core-ports at crux dot nu
 # Depends on:  zlib
 
 name=file
-version=4.25
+version=4.26
 release=1
 source=(ftp://ftp.fu-berlin.de/unix/tools/file/$name-$version.tar.gz)
 
