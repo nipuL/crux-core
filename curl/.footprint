@@ -5,6 +5,8 @@ drwxr-xr-x	root/root	usr/bin/
 drwxr-xr-x	root/root	usr/include/
 drwxr-xr-x	root/root	usr/include/curl/
 -rw-r--r--	root/root	usr/include/curl/curl.h
+-rw-r--r--	root/root	usr/include/curl/curlbuild.h
+-rw-r--r--	root/root	usr/include/curl/curlrules.h
 -rw-r--r--	root/root	usr/include/curl/curlver.h
 -rw-r--r--	root/root	usr/include/curl/easy.h
 -rw-r--r--	root/root	usr/include/curl/mprintf.h
