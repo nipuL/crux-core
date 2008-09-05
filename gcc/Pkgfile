@@ -2,11 +2,12 @@
 # URL:         http://gcc.gnu.org
 # Packager:    CRUX System Team, core-ports at crux dot nu
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
-# Arch Maintainer: CRUX x86_64 System Team, core-ports-x86_64 at crux dot nu
+# Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
+# Arch Packager: CRUX x86_64 System Team, core-ports-x86_64 at crux dot nu
 # Depends on:  mpfr, libgmp
 
 name=gcc
-version=4.3.1
+version=4.3.2
 release=1
 source=(ftp://sources.redhat.com/pub/gcc/releases/$name-$version/$name-{core,g++,objc}-$version.tar.bz2
         $name-$version-nocheck-fixincludes.patch)

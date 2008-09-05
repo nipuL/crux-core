@@ -1,4 +1,4 @@
-a617c4d3fa11e0c9410ac213eb061677  gcc-4.3.1-nocheck-fixincludes.patch
-f30652bdee577911681c86f5d7f23d65  gcc-core-4.3.1.tar.bz2
-1e0eadf92c2aeff4611fe9da286348d4  gcc-g++-4.3.1.tar.bz2
-94353db338ac174a9ce6533ae78acbcd  gcc-objc-4.3.1.tar.bz2
+a617c4d3fa11e0c9410ac213eb061677  gcc-4.3.2-nocheck-fixincludes.patch
+dd8048b43d3d4e5595bcade47b9144c6  gcc-core-4.3.2.tar.bz2
+bfdf8d19e1b85f522f8b8d48d25e7aaa  gcc-g++-4.3.2.tar.bz2
+08efa42ef267f8759146aa4e11904d25  gcc-objc-4.3.2.tar.bz2
