@@ -4,13 +4,13 @@
 # Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
 
 name=libtool
-version=2.2.4
+version=2.2.6a
 release=1
 source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz \
-	libtool.1 libtoolize.1)
+        libtool.1 libtoolize.1)
 
 build() {
-    cd $name-$version
+    cd $name-${version/a/}
     ./configure --prefix=/usr
     make
     make DESTDIR=$PKG install
