@@ -1,25 +1,25 @@
 # Description: Berkeley DB
-# URL:         http://www.sleepycat.com/products/db.shtml
+# URL:         http://www.oracle.com/database/berkeley-db/index.html
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=db
-version=4.5.20
+version=4.7.25
 release=1
 source=(http://download.oracle.com/berkeley-db/$name-$version.tar.gz \
-	http://www.oracle.com/technology/products/berkeley-db/db/update/4.5.20/patch.4.5.20.{1,2})
+        http://www.oracle.com/technology/products/berkeley-db/db/update/$version/patch.$version.1)
 
 build() {
     cd $name-$version
-    cat $SRC/patch.4.5.20.{1,2} | patch -p0 
+    cat $SRC/patch.$version.1 | patch -p0 
     cd build_unix
     LDFLAGS="-lpthread" \
     ../dist/configure --prefix=/usr \
-		      --enable-compat185 \
-		      --enable-shared \
-		      --enable-static \
-		      --enable-cxx
+                      --enable-compat185 \
+                      --enable-shared \
+                      --enable-static \
+                      --enable-cxx
     make
     make DESTDIR=$PKG install
-    rm -rf $PKG/usr/docs
+    rm -r $PKG/usr/docs
     chmod -R +w $PKG
 }
