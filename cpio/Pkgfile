@@ -4,11 +4,13 @@
 
 name=cpio
 version=2.9
-release=1
-source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.bz2)
+release=2
+source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.bz2
+        cpio-2.9-gcc43-inline.patch)
 
 build() {
     cd $name-$version
+    patch -p0 -i $SRC/cpio-2.9-gcc43-inline.patch
     ./configure --prefix=/usr \
                 --mandir=/usr/man \
                 --with-rmt=/usr/lib/tar/rmt \
