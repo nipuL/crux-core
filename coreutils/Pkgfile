@@ -4,7 +4,7 @@
 
 name=coreutils
 version=6.12
-release=1
+release=2
 source=(http://ftp.gnu.org/pub/gnu/$name/$name-$version.tar.gz 
         coreutils-uname.patch)
 
@@ -18,7 +18,7 @@ build() {
                 --mandir=/usr/man \
                 --disable-nls \
                 --disable-assert \
-                --enable-no-install-program=uptime,kill,mktemp,chcon,runcon,groups
+                --enable-no-install-program=uptime,kill,chcon,runcon,groups
     make
     make DESTDIR=$PKG install 
 
