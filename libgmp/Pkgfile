@@ -1,5 +1,5 @@
 # Description: Free library for arbitrary precision arithmetic
-# URL:         http://www.swox.com/gmp/
+# URL:         http://gmplib.org/
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 # Arch Maintainer: CRUX x86_64 System Team, core-ports-x86_64 at crux dot nu
 
@@ -10,8 +10,8 @@ source=(ftp://ftp.gnu.org/gnu/gmp/gmp-$version.tar.bz2)
 
 build() {
     cd gmp-$version
-    ./configure --prefix=/usr --enable-cxx
+    ABI=64 ./configure --prefix=/usr --enable-cxx
     make
     make DESTDIR=$PKG install
-    rm -rf $PKG/usr/info
+    rm -r $PKG/usr/info
 }
