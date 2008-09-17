@@ -6,19 +6,21 @@
 
 name=iputils
 version=s20071127
-release=1
-source=(http://www.skbuff.net/iputils/$name-$version.tar.bz2 \
-        http://crux.nu/~jue/files/dist/$name-man-$version.tar.bz2)
+release=2
+source=(http://www.skbuff.net/iputils/$name-$version.tar.bz2
+        http://crux.nu/~jue/files/dist/$name-man-$version.tar.bz2
+        $name-$version-open_max.patch)
 
 build() {
-	cd $name-$version
-	sed -i "/^CCOPT=/s|-O2|$CFLAGS|;s| -g$||" Makefile
-	make
+    cd $name-$version
+    patch -p1 -i $SRC/$name-$version-open_max.patch
+    sed -i "/^CCOPT=/s|-O2|$CFLAGS|;s| -g$||" Makefile
+    make
 
-	install -d $PKG/{{s,}bin,usr/{man/man8,sbin}}
-	install ping{,6} $PKG/bin/
-	install arping $PKG/sbin/
-	install tracepath{,6} traceroute6 clockdiff rarpd rdisc ipg tftpd $PKG/usr/sbin/
-	cp -d $SRC/$name-man-$version/* $PKG/usr/man/man8
-	chmod u+s $PKG/bin/ping{,6} $PKG/usr/sbin/traceroute6
+    install -d $PKG/{{s,}bin,usr/{man/man8,sbin}}
+    install ping{,6} $PKG/bin/
+    install arping $PKG/sbin/
+    install tracepath{,6} traceroute6 clockdiff rarpd rdisc ipg tftpd $PKG/usr/sbin/
+    cp -d $SRC/$name-man-$version/* $PKG/usr/man/man8
+    chmod u+s $PKG/bin/ping{,6} $PKG/usr/sbin/traceroute6
 }
