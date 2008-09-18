@@ -91,6 +91,7 @@ drwxr-xr-x	root/root	usr/lib/engines/
 -rwxr-xr-x	root/root	usr/lib/engines/lib4758cca.so
 -rwxr-xr-x	root/root	usr/lib/engines/libaep.so
 -rwxr-xr-x	root/root	usr/lib/engines/libatalla.so
+-rwxr-xr-x	root/root	usr/lib/engines/libcapi.so
 -rwxr-xr-x	root/root	usr/lib/engines/libchil.so
 -rwxr-xr-x	root/root	usr/lib/engines/libcswift.so
 -rwxr-xr-x	root/root	usr/lib/engines/libgmp.so
