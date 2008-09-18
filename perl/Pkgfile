@@ -2,19 +2,16 @@
 # URL:         http://www.perl.org/
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 # Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
-# Depends on:  db, gdbm
+# Depends on:  db gdbm
 
 name=perl
-version=5.8.8
-release=3
-source=(ftp://ftp.perl.org/pub/CPAN/src/$name-$version.tar.gz \
-        $name-$version-CVE-2005-3962.patch \
-        $name-$version-gcc42.patch)
+version=5.10.0
+release=1
+source=(ftp://ftp.perl.org/pub/CPAN/src/$name-$version.tar.gz)
 
 build() {
     cd $name-$version
-    patch -p4 < $SRC/$name-$version-CVE-2005-3962.patch
-    patch -p1 < $SRC/$name-$version-gcc42.patch
+
     ./Configure -des \
                 -Dprefix=/usr \
                 -Darchname=linux \
@@ -28,11 +25,13 @@ build() {
                 -Doptimize="$CFLAGS"
     make
     make DESTDIR=$PKG install
+
     ln -sf perl$version $PKG/usr/bin/perl
     ln -sf c2ph $PKG/usr/bin/pstruct
     ln -sf s2p $PKG/usr/bin/psed
     ln -sf c2ph.1pm $PKG/usr/man/man1/pstruct.1pm
     ln -sf s2p.1pm $PKG/usr/man/man1/psed.1pm
+
     find $PKG \
          -iname 'TODO*' -or \
          -iname 'Change*' -or \
