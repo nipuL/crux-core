@@ -1,17 +1,18 @@
 # Description: Mail transfer agent
 # URL:         http://www.exim.org
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
-# Depends on:  db, openssl
+# Depends on:  db openssl libpcre
 
 name=exim
 version=4.69
-release=2
+release=3
 source=(ftp://ftp.exim.org/pub/exim/exim4/$name-$version.tar.bz2 \
-        $name $name-config.patch)
+        $name $name-config.patch $name-syspcre.patch)
 
 build() {
     cd $name-$version
 
+    patch -p1 -i $SRC/$name-syspcre.patch
     sed "s/#CFLAGS#/$CFLAGS/" $SRC/$name-config.patch | patch -p1
     cp src/EDITME Local/Makefile
 
@@ -23,7 +24,7 @@ build() {
 
     install -d $PKG/var/{log,spool} $PKG/usr/bin
     install -d -m 0750 -o mail -g mail $PKG/var/{log,spool}/exim
-    
+
     touch $PKG/var/log/exim/exim_{mainlog,paniclog,rejectlog}
     chown mail:mail $PKG/var/log/exim/*
     chmod 640 $PKG/var/log/exim/*
