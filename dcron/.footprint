@@ -1,4 +1,5 @@
 drwxr-xr-x	root/root	etc/
+drwxr-xr-x	root/root	etc/cron.d/
 drwxr-xr-x	root/root	etc/cron/
 drwxr-xr-x	root/root	etc/cron/daily/
 drwxr-xr-x	root/root	etc/cron/monthly/
