@@ -1,5 +1,5 @@
-3540f192c0d50dbc566211ac7052f39e  crond
+1a208f09e660c72f0117185289b2c109  crond
 3e71eb70863bea6491bf4b3ac291a7b0  crontab
-d0d819a48773b4f3f9f2f8322ca64097  dcron-2.3.3.patch
-537cda2dff7dfaf87660fee91b2cf78f  dcron-2.3.3.tar.gz
+adf3ad8cb05ea391b9a9169ddcccaba4  dcron-3.2.patch
+c2c816deb389b4bfb00761f26afe3efd  dcron32.tgz
 d80b27b1b9532890136c14d30e2a0d2b  runjobs
