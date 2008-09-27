@@ -34,7 +34,6 @@ drwxr-xr-x	root/root	usr/bin/
 -rwxr-xr-x	root/root	usr/bin/column
 -rwxr-xr-x	root/root	usr/bin/cytune
 -rwxr-xr-x	root/root	usr/bin/ddate
--rwxr-xr-x	root/root	usr/bin/fdformat
 -rwxr-xr-x	root/root	usr/bin/flock
 -rwxr-xr-x	root/root	usr/bin/getopt
 -rwxr-xr-x	root/root	usr/bin/hexdump
@@ -116,6 +115,7 @@ drwxr-xr-x	root/root	usr/man/man8/
 -rw-r--r--	root/root	usr/man/man8/hwclock.8.gz
 -rw-r--r--	root/root	usr/man/man8/i386.8.gz
 -rw-r--r--	root/root	usr/man/man8/isosize.8.gz
+-rw-r--r--	root/root	usr/man/man8/ldattach.8.gz
 -rw-r--r--	root/root	usr/man/man8/linux32.8.gz
 -rw-r--r--	root/root	usr/man/man8/linux64.8.gz
 -rw-r--r--	root/root	usr/man/man8/losetup.8.gz
@@ -137,6 +137,8 @@ drwxr-xr-x	root/root	usr/man/man8/
 -rw-r--r--	root/root	usr/man/man8/vidmode.8.gz
 -rw-r--r--	root/root	usr/man/man8/x86_64.8.gz
 drwxr-xr-x	root/root	usr/sbin/
+-rwxr-xr-x	root/root	usr/sbin/fdformat
+-rwxr-xr-x	root/root	usr/sbin/ldattach
 lrwxrwxrwx	root/root	usr/sbin/ramsize -> rdev
 -rwxr-xr-x	root/root	usr/sbin/rdev
 -rwxr-xr-x	root/root	usr/sbin/readprofile
