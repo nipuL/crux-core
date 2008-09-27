@@ -1124,6 +1124,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/fmtmsg.3.gz
 -rw-r--r--	root/root	usr/man/man3/fnmatch.3.gz
 -rw-r--r--	root/root	usr/man/man3/fopen.3.gz
+-rw-r--r--	root/root	usr/man/man3/fopencookie.3.gz
 -rw-r--r--	root/root	usr/man/man3/forkpty.3.gz
 -rw-r--r--	root/root	usr/man/man3/fpathconf.3.gz
 -rw-r--r--	root/root	usr/man/man3/fpclassify.3.gz
@@ -3193,6 +3194,7 @@ drwxr-xr-x	root/root	usr/man/man5/
 -rw-r--r--	root/root	usr/man/man5/issue.5.gz
 -rw-r--r--	root/root	usr/man/man5/locale.5.gz
 -rw-r--r--	root/root	usr/man/man5/motd.5.gz
+-rw-r--r--	root/root	usr/man/man5/networks.5.gz
 -rw-r--r--	root/root	usr/man/man5/nologin.5.gz
 -rw-r--r--	root/root	usr/man/man5/nscd.conf.5.gz
 -rw-r--r--	root/root	usr/man/man5/nsswitch.conf.5.gz
