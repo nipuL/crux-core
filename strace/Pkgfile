@@ -3,7 +3,7 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=strace
-version=4.5.17
+version=4.5.18
 release=1
 source=(http://dl.sourceforge.net/$name/$name-$version.tar.bz2)
 
