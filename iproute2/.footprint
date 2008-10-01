@@ -37,16 +37,22 @@ drwxr-xr-x	root/root	usr/man/
 drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/libnetlink.3.gz
 drwxr-xr-x	root/root	usr/man/man8/
+-rw-r--r--	root/root	usr/man/man8/arpd.8.gz
+lrwxrwxrwx	root/root	usr/man/man8/ctstat.8.gz -> lnstat.8.gz
 -rw-r--r--	root/root	usr/man/man8/ip.8.gz
 -rw-r--r--	root/root	usr/man/man8/lnstat.8.gz
+lrwxrwxrwx	root/root	usr/man/man8/nstat.8.gz -> rtacct.8.gz
+lrwxrwxrwx	root/root	usr/man/man8/routef.8.gz -> routel.8.gz
+-rw-r--r--	root/root	usr/man/man8/routel.8.gz
+-rw-r--r--	root/root	usr/man/man8/rtacct.8.gz
 -rw-r--r--	root/root	usr/man/man8/rtmon.8.gz
+lrwxrwxrwx	root/root	usr/man/man8/rtstat.8.gz -> lnstat.8.gz
 -rw-r--r--	root/root	usr/man/man8/ss.8.gz
-lrwxrwxrwx	root/root	usr/man/man8/tc-bfifo.8.gz -> tc-pbfifo.8.gz
+-rw-r--r--	root/root	usr/man/man8/tc-bfifo.8.gz
 -rw-r--r--	root/root	usr/man/man8/tc-cbq-details.8.gz
 -rw-r--r--	root/root	usr/man/man8/tc-cbq.8.gz
 -rw-r--r--	root/root	usr/man/man8/tc-htb.8.gz
--rw-r--r--	root/root	usr/man/man8/tc-pbfifo.8.gz
-lrwxrwxrwx	root/root	usr/man/man8/tc-pfifo.8.gz -> tc-pbfifo.8.gz
+lrwxrwxrwx	root/root	usr/man/man8/tc-pfifo.8.gz -> tc-bfifo.8.gz
 -rw-r--r--	root/root	usr/man/man8/tc-pfifo_fast.8.gz
 -rw-r--r--	root/root	usr/man/man8/tc-prio.8.gz
 -rw-r--r--	root/root	usr/man/man8/tc-red.8.gz
