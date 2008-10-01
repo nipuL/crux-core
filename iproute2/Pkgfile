@@ -5,15 +5,17 @@
 # Packager: Mikhail Kolesnik, mike at openbunker dot org
 
 name=iproute2
-version=2.6.19-061214
+version=2.6.26
 release=1
-source=(http://developer.osdl.org/dev/iproute2/download/$name-$version.tar.gz \
-	net.iproute2)
+source=(http://devresources.linux-foundation.org/dev/iproute2/download/$name-$version.tar.bz2 \
+	net.iproute2 $name-netem.patch)
 
 build() {
 	cd $name-$version
+	patch -p1 < ../$name-netem.patch
 	make KERNEL_INCLUDE="/lib/modules/`uname -r`/source/include"
 	make SBINDIR=/sbin MANDIR=/usr/man DESTDIR=$PKG install
-	rm -rf $PKG/usr/share
+	rm -rf $PKG/share
 	install -D -o root -g root -m 0755 $SRC/net.iproute2 $PKG/etc/rc.d/net
+	mv $PKG/lib $PKG/usr
 }
