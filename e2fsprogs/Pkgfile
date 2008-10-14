@@ -4,7 +4,7 @@
 # Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
 
 name=e2fsprogs
-version=1.41.2
+version=1.41.3
 release=1
 source=(http://dl.sourceforge.net/sourceforge/$name/$name-$version.tar.gz \
         $name-symlink.patch)
@@ -22,7 +22,7 @@ build() {
                 --disable-evms \
                 --disable-nls
     make
-    make DESTDIR=$PKG install install-libs
+    make -j1 DESTDIR=$PKG install install-libs
     rm -r $PKG/usr/share/info
     chmod +w -R $PKG
 }
