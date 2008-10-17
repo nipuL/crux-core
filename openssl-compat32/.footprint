@@ -75,6 +75,7 @@ drwxr-xr-x	root/root	usr/lib32/engines/
 -rwxr-xr-x	root/root	usr/lib32/engines/lib4758cca.so
 -rwxr-xr-x	root/root	usr/lib32/engines/libaep.so
 -rwxr-xr-x	root/root	usr/lib32/engines/libatalla.so
+-rwxr-xr-x	root/root	usr/lib32/engines/libcapi.so
 -rwxr-xr-x	root/root	usr/lib32/engines/libchil.so
 -rwxr-xr-x	root/root	usr/lib32/engines/libcswift.so
 -rwxr-xr-x	root/root	usr/lib32/engines/libgmp.so
