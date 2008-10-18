@@ -1,1 +1,5 @@
+<<<<<<< HEAD:libgmp/.md5sum
 7cc56604c03134f2c4bc1fb1ea748f6f  gmp-4.2.3.tar.bz2
+=======
+fc1e3b3a2a5038d4d74138d0b9cf8dbe  gmp-4.2.4.tar.bz2
+>>>>>>> d4d753b... libgmp: updated to 4.2.4.:libgmp/.md5sum

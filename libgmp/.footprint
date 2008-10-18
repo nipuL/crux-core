@@ -5,6 +5,7 @@ drwxr-xr-x	root/root	usr/include/
 drwxr-xr-x	root/root	usr/lib/
 -rw-r--r--	root/root	usr/lib/libgmp.a
 -rwxr-xr-x	root/root	usr/lib/libgmp.la
+<<<<<<< HEAD:libgmp/.footprint
 lrwxrwxrwx	root/root	usr/lib/libgmp.so -> libgmp.so.3.4.3
 lrwxrwxrwx	root/root	usr/lib/libgmp.so.3 -> libgmp.so.3.4.3
 -rwxr-xr-x	root/root	usr/lib/libgmp.so.3.4.3
@@ -13,3 +14,13 @@ lrwxrwxrwx	root/root	usr/lib/libgmp.so.3 -> libgmp.so.3.4.3
 lrwxrwxrwx	root/root	usr/lib/libgmpxx.so -> libgmpxx.so.4.0.3
 lrwxrwxrwx	root/root	usr/lib/libgmpxx.so.4 -> libgmpxx.so.4.0.3
 -rwxr-xr-x	root/root	usr/lib/libgmpxx.so.4.0.3
+=======
+lrwxrwxrwx	root/root	usr/lib/libgmp.so -> libgmp.so.3.4.4
+lrwxrwxrwx	root/root	usr/lib/libgmp.so.3 -> libgmp.so.3.4.4
+-rwxr-xr-x	root/root	usr/lib/libgmp.so.3.4.4
+-rw-r--r--	root/root	usr/lib/libgmpxx.a
+-rwxr-xr-x	root/root	usr/lib/libgmpxx.la
+lrwxrwxrwx	root/root	usr/lib/libgmpxx.so -> libgmpxx.so.4.0.4
+lrwxrwxrwx	root/root	usr/lib/libgmpxx.so.4 -> libgmpxx.so.4.0.4
+-rwxr-xr-x	root/root	usr/lib/libgmpxx.so.4.0.4
+>>>>>>> d4d753b... libgmp: updated to 4.2.4.:libgmp/.footprint
