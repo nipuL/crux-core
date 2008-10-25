@@ -5,7 +5,7 @@
 name=dhcpcd
 version=3.2.3
 release=1
-source=(http://roy.marples.name/dhcpcd/$name-$version.tar.bz2)
+source=(http://roy.marples.name/downloads/dhcpcd/$name-$version.tar.bz2)
 
 build () {
     cd $name-$version
