@@ -42,6 +42,7 @@ fi
 /bin/mount -n -o remount,rw /
 /bin/umount /sys /proc
 /bin/rm -f /etc/mtab*
+/bin/touch /etc/mtab
 /bin/mount -a -O no_netdev
 
 # Activate swap
