@@ -4,7 +4,7 @@
 # Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
 
 name=ncurses
-version=5.6
+version=5.7
 release=1
 source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
 
