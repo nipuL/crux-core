@@ -4,7 +4,7 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 # Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
 # Arch Packager: CRUX x86_64 System Team, core-ports-x86_64 at crux dot nu
-# Depends on:  mpfr, libgmp
+# Depends on:  libmpfr, libgmp
 
 name=gcc
 version=4.3.2
