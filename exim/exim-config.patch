@@ -1,0 +1,179 @@
+diff -Nru exim-4.64.orig/src/EDITME exim-4.64/src/EDITME
+--- exim-4.64.orig/src/EDITME	2006-12-20 17:25:02.883289610 +0100
++++ exim-4.64/src/EDITME	2006-12-20 17:28:48.227111555 +0100
+@@ -74,7 +74,7 @@
+ # this would be wanted.
+ ###############################################################################
+ 
+-
++CFLAGS=#CFLAGS#
+ 
+ ###############################################################################
+ #                    THESE ARE THINGS YOU MUST SPECIFY                        #
+@@ -100,7 +100,7 @@
+ # /usr/local/sbin. The installation script will try to create this directory,
+ # and any superior directories, if they do not exist.
+ 
+-BIN_DIRECTORY=/usr/exim/bin
++BIN_DIRECTORY=/usr/sbin
+ 
+ 
+ #------------------------------------------------------------------------------
+@@ -116,7 +116,7 @@
+ # don't exist. It will also install a default runtime configuration if this
+ # file does not exist.
+ 
+-CONFIGURE_FILE=/usr/exim/configure
++CONFIGURE_FILE=/etc/exim/exim.conf
+ 
+ # It is possible to specify a colon-separated list of files for CONFIGURE_FILE.
+ # In this case, Exim will use the first of them that exists when it is run.
+@@ -134,7 +134,7 @@
+ # owner of a local mailbox.) Specifying these values as root is very strongly
+ # discouraged.
+ 
+-EXIM_USER=
++EXIM_USER=ref:mail
+ 
+ # If you specify EXIM_USER as a name, this is looked up at build time, and the
+ # uid number is built into the binary. However, you can specify that this
+@@ -244,7 +244,7 @@
+ # MBX, is included only when requested. If you do not know what this is about,
+ # leave these settings commented out.
+ 
+-# SUPPORT_MAILDIR=yes
++SUPPORT_MAILDIR=yes
+ # SUPPORT_MAILSTORE=yes
+ # SUPPORT_MBX=yes
+ 
+@@ -261,9 +261,9 @@
+ LOOKUP_DBM=yes
+ LOOKUP_LSEARCH=yes
+ 
+-# LOOKUP_CDB=yes
++LOOKUP_CDB=yes
+ # LOOKUP_DNSDB=yes
+-# LOOKUP_DSEARCH=yes
++LOOKUP_DSEARCH=yes
+ # LOOKUP_IBASE=yes
+ # LOOKUP_LDAP=yes
+ # LOOKUP_MYSQL=yes
+@@ -320,7 +320,7 @@
+ # files are defaulted in the OS/Makefile-Default file, but can be overridden in
+ # local OS-specific make files.
+ 
+-EXIM_MONITOR=eximon.bin
++# EXIM_MONITOR=eximon.bin
+ 
+ 
+ #------------------------------------------------------------------------------
+@@ -473,10 +473,10 @@
+ # included in the Exim binary. You will then need to set up the run time
+ # configuration to make use of the mechanism(s) selected.
+ 
+-# AUTH_CRAM_MD5=yes
++AUTH_CRAM_MD5=yes
+ # AUTH_CYRUS_SASL=yes
+ # AUTH_DOVECOT=yes
+-# AUTH_PLAINTEXT=yes
++AUTH_PLAINTEXT=yes
+ # AUTH_SPA=yes
+ 
+ 
+@@ -576,10 +576,10 @@
+ # leave these settings commented out.
+ 
+ # This setting is required for any TLS support (either OpenSSL or GnuTLS)
+-# SUPPORT_TLS=yes
++SUPPORT_TLS=yes
+ 
+ # Uncomment this setting if you are using OpenSSL
+-# TLS_LIBS=-lssl -lcrypto
++TLS_LIBS=-lssl -lcrypto
+ 
+ # Uncomment these settings if you are using GnuTLS
+ # USE_GNUTLS=yes
+@@ -643,7 +643,7 @@
+ # %s. This will be replaced by one of the strings "main", "panic", or "reject"
+ # to form the final file names. Some installations may want something like this:
+ 
+-# LOG_FILE_PATH=/var/log/exim_%slog
++LOG_FILE_PATH=/var/log/exim/exim_%slog
+ 
+ # which results in files with names /var/log/exim_mainlog, etc. The directory
+ # in which the log files are placed must exist; Exim does not try to create
+@@ -692,7 +692,7 @@
+ # files. Both the name of the command and the suffix that it adds to files
+ # need to be defined here. See also the EXICYCLOG_MAX configuration.
+ 
+-COMPRESS_COMMAND=/usr/bin/gzip
++COMPRESS_COMMAND=/bin/gzip
+ COMPRESS_SUFFIX=gz
+ 
+ 
+@@ -700,7 +700,7 @@
+ # If the exigrep utility is fed compressed log files, it tries to uncompress
+ # them using this command.
+ 
+-ZCAT_COMMAND=/usr/bin/zcat
++ZCAT_COMMAND=/bin/zcat
+ 
+ 
+ #------------------------------------------------------------------------------
+@@ -810,9 +810,9 @@
+ # You may well also have to specify a local "include" file and an additional
+ # library for TCP wrappers, so you probably need something like this:
+ #
+-# USE_TCP_WRAPPERS=yes
++USE_TCP_WRAPPERS=yes
+ # CFLAGS=-O -I/usr/local/include
+-# EXTRALIBS_EXIM=-L/usr/local/lib -lwrap
++EXTRALIBS_EXIM=-lwrap
+ #
+ # but of course there may need to be other things in CFLAGS and EXTRALIBS_EXIM
+ # as well.
+@@ -838,7 +838,7 @@
+ # aliases). The following setting can be changed to specify a different
+ # location for the system alias file.
+ 
+-SYSTEM_ALIASES_FILE=/etc/aliases
++SYSTEM_ALIASES_FILE=/etc/exim/aliases
+ 
+ 
+ #------------------------------------------------------------------------------
+@@ -884,10 +884,10 @@
+ # haven't got Perl, Exim will still build and run; you just won't be able to
+ # use those utilities.
+ 
+-# CHOWN_COMMAND=/usr/bin/chown
+-# CHGRP_COMMAND=/usr/bin/chgrp
+-# MV_COMMAND=/bin/mv
+-# RM_COMMAND=/bin/rm
++CHOWN_COMMAND=/bin/chown
++CHGRP_COMMAND=/bin/chgrp
++MV_COMMAND=/bin/mv
++RM_COMMAND=/bin/rm
+ # PERL_COMMAND=/usr/bin/perl
+ 
+ 
+@@ -1082,7 +1082,7 @@
+ # (process id) to a file so that it can easily be identified. The path of the
+ # file can be specified here. Some installations may want something like this:
+ 
+-# PID_FILE_PATH=/var/lock/exim.pid
++PID_FILE_PATH=/var/run/exim.pid
+ 
+ # If PID_FILE_PATH is not defined, Exim writes a file in its spool directory
+ # using the name "exim-daemon.pid".
+diff -Nru exim-4.64.orig/src/configure.default exim-4.64/src/configure.default
+--- exim-4.64.orig/src/configure.default	2006-12-20 17:25:03.073284153 +0100
++++ exim-4.64/src/configure.default	2006-12-20 17:25:18.952828014 +0100
+@@ -56,7 +56,7 @@
+ # +local_domains, +relay_to_domains, and +relay_from_hosts, respectively. They
+ # are all colon-separated lists:
+ 
+-domainlist local_domains = @
++domainlist local_domains = @ : localhost
+ domainlist relay_to_domains =
+ hostlist   relay_from_hosts = 127.0.0.1
+ 
