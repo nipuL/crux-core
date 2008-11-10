@@ -4,7 +4,7 @@
 # Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
 
 name=pciutils
-version=3.0.2
+version=3.0.3
 release=1
 source=(http://www.kernel.org/pub/software/utils/$name/$name-$version.tar.gz)
 
