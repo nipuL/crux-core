@@ -1,47 +1,49 @@
 drwxr-xr-x	root/root	lib/
-lrwxrwxrwx	root/root	lib/ld-linux.so.2 -> ../lib32/ld-2.7.so
+lrwxrwxrwx	root/root	lib/ld-linux.so.2 -> ../lib32/ld-2.8.so
 drwxr-xr-x	root/root	lib32/
--rwxr-xr-x	root/root	lib32/ld-2.7.so
-lrwxrwxrwx	root/root	lib32/ld-linux.so.2 -> ld-2.7.so
--rwxr-xr-x	root/root	lib32/libBrokenLocale-2.7.so
-lrwxrwxrwx	root/root	lib32/libBrokenLocale.so.1 -> libBrokenLocale-2.7.so
+-rwxr-xr-x	root/root	lib32/ld-2.8.so
+lrwxrwxrwx	root/root	lib32/ld-linux.so.2 -> ld-2.8.so
+-rwxr-xr-x	root/root	lib32/libBrokenLocale-2.8.so
+lrwxrwxrwx	root/root	lib32/libBrokenLocale.so.1 -> libBrokenLocale-2.8.so
 -rwxr-xr-x	root/root	lib32/libSegFault.so
--rwxr-xr-x	root/root	lib32/libanl-2.7.so
-lrwxrwxrwx	root/root	lib32/libanl.so.1 -> libanl-2.7.so
--rwxr-xr-x	root/root	lib32/libc-2.7.so
-lrwxrwxrwx	root/root	lib32/libc.so.6 -> libc-2.7.so
--rwxr-xr-x	root/root	lib32/libcrypt-2.7.so
-lrwxrwxrwx	root/root	lib32/libcrypt.so.1 -> libcrypt-2.7.so
--rwxr-xr-x	root/root	lib32/libdl-2.7.so
-lrwxrwxrwx	root/root	lib32/libdl.so.2 -> libdl-2.7.so
--rwxr-xr-x	root/root	lib32/libm-2.7.so
-lrwxrwxrwx	root/root	lib32/libm.so.6 -> libm-2.7.so
+-rwxr-xr-x	root/root	lib32/libanl-2.8.so
+lrwxrwxrwx	root/root	lib32/libanl.so.1 -> libanl-2.8.so
+-rwxr-xr-x	root/root	lib32/libc-2.8.so
+lrwxrwxrwx	root/root	lib32/libc.so.6 -> libc-2.8.so
+-rwxr-xr-x	root/root	lib32/libcidn-2.8.so
+lrwxrwxrwx	root/root	lib32/libcidn.so.1 -> libcidn-2.8.so
+-rwxr-xr-x	root/root	lib32/libcrypt-2.8.so
+lrwxrwxrwx	root/root	lib32/libcrypt.so.1 -> libcrypt-2.8.so
+-rwxr-xr-x	root/root	lib32/libdl-2.8.so
+lrwxrwxrwx	root/root	lib32/libdl.so.2 -> libdl-2.8.so
+-rwxr-xr-x	root/root	lib32/libm-2.8.so
+lrwxrwxrwx	root/root	lib32/libm.so.6 -> libm-2.8.so
 -rwxr-xr-x	root/root	lib32/libmemusage.so
--rwxr-xr-x	root/root	lib32/libnsl-2.7.so
-lrwxrwxrwx	root/root	lib32/libnsl.so.1 -> libnsl-2.7.so
--rwxr-xr-x	root/root	lib32/libnss_compat-2.7.so
-lrwxrwxrwx	root/root	lib32/libnss_compat.so.2 -> libnss_compat-2.7.so
--rwxr-xr-x	root/root	lib32/libnss_dns-2.7.so
-lrwxrwxrwx	root/root	lib32/libnss_dns.so.2 -> libnss_dns-2.7.so
--rwxr-xr-x	root/root	lib32/libnss_files-2.7.so
-lrwxrwxrwx	root/root	lib32/libnss_files.so.2 -> libnss_files-2.7.so
--rwxr-xr-x	root/root	lib32/libnss_hesiod-2.7.so
-lrwxrwxrwx	root/root	lib32/libnss_hesiod.so.2 -> libnss_hesiod-2.7.so
--rwxr-xr-x	root/root	lib32/libnss_nis-2.7.so
-lrwxrwxrwx	root/root	lib32/libnss_nis.so.2 -> libnss_nis-2.7.so
--rwxr-xr-x	root/root	lib32/libnss_nisplus-2.7.so
-lrwxrwxrwx	root/root	lib32/libnss_nisplus.so.2 -> libnss_nisplus-2.7.so
+-rwxr-xr-x	root/root	lib32/libnsl-2.8.so
+lrwxrwxrwx	root/root	lib32/libnsl.so.1 -> libnsl-2.8.so
+-rwxr-xr-x	root/root	lib32/libnss_compat-2.8.so
+lrwxrwxrwx	root/root	lib32/libnss_compat.so.2 -> libnss_compat-2.8.so
+-rwxr-xr-x	root/root	lib32/libnss_dns-2.8.so
+lrwxrwxrwx	root/root	lib32/libnss_dns.so.2 -> libnss_dns-2.8.so
+-rwxr-xr-x	root/root	lib32/libnss_files-2.8.so
+lrwxrwxrwx	root/root	lib32/libnss_files.so.2 -> libnss_files-2.8.so
+-rwxr-xr-x	root/root	lib32/libnss_hesiod-2.8.so
+lrwxrwxrwx	root/root	lib32/libnss_hesiod.so.2 -> libnss_hesiod-2.8.so
+-rwxr-xr-x	root/root	lib32/libnss_nis-2.8.so
+lrwxrwxrwx	root/root	lib32/libnss_nis.so.2 -> libnss_nis-2.8.so
+-rwxr-xr-x	root/root	lib32/libnss_nisplus-2.8.so
+lrwxrwxrwx	root/root	lib32/libnss_nisplus.so.2 -> libnss_nisplus-2.8.so
 -rwxr-xr-x	root/root	lib32/libpcprofile.so
--rwxr-xr-x	root/root	lib32/libpthread-2.7.so
-lrwxrwxrwx	root/root	lib32/libpthread.so.0 -> libpthread-2.7.so
--rwxr-xr-x	root/root	lib32/libresolv-2.7.so
-lrwxrwxrwx	root/root	lib32/libresolv.so.2 -> libresolv-2.7.so
--rwxr-xr-x	root/root	lib32/librt-2.7.so
-lrwxrwxrwx	root/root	lib32/librt.so.1 -> librt-2.7.so
+-rwxr-xr-x	root/root	lib32/libpthread-2.8.so
+lrwxrwxrwx	root/root	lib32/libpthread.so.0 -> libpthread-2.8.so
+-rwxr-xr-x	root/root	lib32/libresolv-2.8.so
+lrwxrwxrwx	root/root	lib32/libresolv.so.2 -> libresolv-2.8.so
+-rwxr-xr-x	root/root	lib32/librt-2.8.so
+lrwxrwxrwx	root/root	lib32/librt.so.1 -> librt-2.8.so
 -rwxr-xr-x	root/root	lib32/libthread_db-1.0.so
 lrwxrwxrwx	root/root	lib32/libthread_db.so.1 -> libthread_db-1.0.so
--rwxr-xr-x	root/root	lib32/libutil-2.7.so
-lrwxrwxrwx	root/root	lib32/libutil.so.1 -> libutil-2.7.so
+-rwxr-xr-x	root/root	lib32/libutil-2.8.so
+lrwxrwxrwx	root/root	lib32/libutil.so.1 -> libutil-2.8.so
 drwxr-xr-x	root/root	usr/
 drwxr-xr-x	root/root	usr/bin/
 -rwxr-xr-x	root/root	usr/bin/lddlibc4
@@ -111,7 +113,11 @@ drwxr-xr-x	root/root	usr/lib32/gconv/
 -rwxr-xr-x	root/root	usr/lib32/gconv/GREEK-CCITT.so
 -rwxr-xr-x	root/root	usr/lib32/gconv/GREEK7-OLD.so
 -rwxr-xr-x	root/root	usr/lib32/gconv/GREEK7.so
+-rwxr-xr-x	root/root	usr/lib32/gconv/HP-GREEK8.so
 -rwxr-xr-x	root/root	usr/lib32/gconv/HP-ROMAN8.so
+-rwxr-xr-x	root/root	usr/lib32/gconv/HP-ROMAN9.so
+-rwxr-xr-x	root/root	usr/lib32/gconv/HP-THAI8.so
+-rwxr-xr-x	root/root	usr/lib32/gconv/HP-TURKISH8.so
 -rwxr-xr-x	root/root	usr/lib32/gconv/IBM037.so
 -rwxr-xr-x	root/root	usr/lib32/gconv/IBM038.so
 -rwxr-xr-x	root/root	usr/lib32/gconv/IBM1004.so
@@ -311,6 +317,7 @@ lrwxrwxrwx	root/root	usr/lib32/libanl.so -> ../../lib32/libanl.so.1
 -rw-r--r--	root/root	usr/lib32/libc.a
 -rw-r--r--	root/root	usr/lib32/libc.so
 -rw-r--r--	root/root	usr/lib32/libc_nonshared.a
+lrwxrwxrwx	root/root	usr/lib32/libcidn.so -> ../../lib32/libcidn.so.1
 -rw-r--r--	root/root	usr/lib32/libcrypt.a
 lrwxrwxrwx	root/root	usr/lib32/libcrypt.so -> ../../lib32/libcrypt.so.1
 -rw-r--r--	root/root	usr/lib32/libdl.a

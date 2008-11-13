@@ -5,9 +5,9 @@
 # Depends on: glibc
 
 name=glibc-compat32
-version=2.7
+version=2.8
 release=1
-source=(http://ftp.gnu.org/gnu/glibc/glibc-$version.tar.bz2)
+source=(http://crux.nu/files/distfiles/glibc-$version-1.tar.bz2)
 
 build() {
     mkdir build
