@@ -4,7 +4,7 @@
 
 name=dcron
 version=3.2
-release=1
+release=2
 source=(http://apollo.backplane.com/FreeSrc/dcron32.tgz \
         crontab runjobs crond $name-$version.patch)
 
@@ -16,7 +16,7 @@ build() {
     make DESTDIR=$PKG install
 
     install -d $PKG/var/{spool/cron,log} 
-    install -d $PKG/etc/{cron.d,cron/{daily,weekly,monthly}}
+    install -d $PKG/etc/{cron.d,cron/{hourly,daily,weekly,monthly}}
     install -d -m 700 $PKG/var/spool/cron/crontabs
 
     install -m 600 $SRC/crontab $PKG/var/spool/cron/crontabs/root
