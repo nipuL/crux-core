@@ -2,6 +2,7 @@ drwxr-xr-x	root/root	etc/
 drwxr-xr-x	root/root	etc/cron.d/
 drwxr-xr-x	root/root	etc/cron/
 drwxr-xr-x	root/root	etc/cron/daily/
+drwxr-xr-x	root/root	etc/cron/hourly/
 drwxr-xr-x	root/root	etc/cron/monthly/
 drwxr-xr-x	root/root	etc/cron/weekly/
 lrwxrwxrwx	root/root	etc/crontab -> ../var/spool/cron/crontabs/root

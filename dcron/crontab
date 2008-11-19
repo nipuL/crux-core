@@ -7,5 +7,6 @@
 00 20 * * *	/usr/sbin/runjobs /etc/cron/daily
 05 20 * * mon	/usr/sbin/runjobs /etc/cron/weekly
 10 20 1 * *	/usr/sbin/runjobs /etc/cron/monthly
+15  * * * *     /usr/sbin/runjobs /etc/cron/hourly
 
 # End of file
