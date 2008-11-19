@@ -4046,3 +4046,691 @@ Patch:
 ! #define PATCHLEVEL 39
   
   #endif /* _PATCHLEVEL_H_ */
+
+			     BASH PATCH REPORT
+			     =================
+
+Bash-Release: 3.2
+Patch-ID: bash32-040
+
+Bug-Reported-by:	John McCabe-Dansted
+Bug-Reference-ID:
+Bug-Reference-URL:	https://bugs.launchpad.net/ubuntu/+source/bash/+bug/202885
+
+Bug-Description:
+
+When using the `set' builtin to list all shell variables, the shell uses
+the wrong variable when computing the length of a variable's value.
+
+Patch:
+
+*** ../bash-3.2-patched/array.c	2007-03-24 14:51:03.000000000 -0400
+--- array.c	2008-08-17 13:07:04.000000000 -0400
+***************
+*** 684,688 ****
+  		valstr = element_value (ae) ? sh_double_quote (element_value(ae))
+  					    : (char *)NULL;
+! 		elen = STRLEN (indstr) + 8 + STRLEN (valstr);
+  		RESIZE_MALLOCED_BUFFER (result, rlen, (elen + 1), rsize, rsize);
+  
+--- 809,813 ----
+  		valstr = element_value (ae) ? sh_double_quote (element_value(ae))
+  					    : (char *)NULL;
+! 		elen = STRLEN (is) + 8 + STRLEN (valstr);
+  		RESIZE_MALLOCED_BUFFER (result, rlen, (elen + 1), rsize, rsize);
+  
+*** ../bash-3.2/patchlevel.h	Thu Apr 13 08:31:04 2006
+--- patchlevel.h	Mon Oct 16 14:22:54 2006
+***************
+*** 26,30 ****
+     looks for to find the patch level (for the sccs version string). */
+  
+! #define PATCHLEVEL 39
+  
+  #endif /* _PATCHLEVEL_H_ */
+--- 26,30 ----
+     looks for to find the patch level (for the sccs version string). */
+  
+! #define PATCHLEVEL 40
+  
+  #endif /* _PATCHLEVEL_H_ */
+
+			     BASH PATCH REPORT
+			     =================
+
+Bash-Release: 3.2
+Patch-ID: bash32-041
+
+Bug-Reported-by:	Dan Jacobson <jidanni@jidanni.org>
+Bug-Reference-ID:	<873arjs11h.fsf@jidanni.org>
+Bug-Reference-URL:	http://lists.gnu.org/archive/html/bug-bash/2008-02/msg00049.html
+
+Bug-Description:
+
+Bash saved and restored the value of `set -o history' while sourcing files,
+preventing users from turning off history with `set +o history' in .bashrc.
+
+Patch:
+
+*** ../bash-3.2-patched/bashhist.c	2005-12-26 13:31:16.000000000 -0500
+--- bashhist.c	2008-08-17 13:07:40.000000000 -0400
+***************
+*** 81,84 ****
+--- 81,85 ----
+     becomes zero when we read lines from a file, for example. */
+  int remember_on_history = 1;
++ int enable_history_list = 1;	/* value for `set -o history' */
+  
+  /* The number of lines that Bash has added to this history session.  The
+***************
+*** 235,239 ****
+    history_expansion_inhibited = 1;
+  #endif
+!   remember_on_history = interact != 0;
+    history_inhibit_expansion_function = bash_history_inhibit_expansion;
+  }
+--- 236,240 ----
+    history_expansion_inhibited = 1;
+  #endif
+!   remember_on_history = enable_history_list = interact != 0;
+    history_inhibit_expansion_function = bash_history_inhibit_expansion;
+  }
+*** ../bash-3.2-patched/builtins/set.def	2006-07-27 09:41:43.000000000 -0400
+--- builtins/set.def	2008-08-14 16:33:41.000000000 -0400
+***************
+*** 190,194 ****
+  #endif /* BANG_HISTORY */
+  #if defined (HISTORY)
+!   { "history",   '\0', &remember_on_history, bash_set_history, (setopt_get_func_t *)NULL },
+  #endif
+    { "ignoreeof", '\0', &ignoreeof, set_ignoreeof, (setopt_get_func_t *)NULL },
+--- 198,202 ----
+  #endif /* BANG_HISTORY */
+  #if defined (HISTORY)
+!   { "history",   '\0', &enable_history_list, bash_set_history, (setopt_get_func_t *)NULL },
+  #endif
+    { "ignoreeof", '\0', &ignoreeof, set_ignoreeof, (setopt_get_func_t *)NULL },
+***************
+*** 382,385 ****
+--- 390,394 ----
+    if (on_or_off == FLAG_ON)
+      {
++       enable_history_list = 1;
+        bash_history_enable ();
+        if (history_lines_this_session == 0)
+***************
+*** 387,392 ****
+      }
+    else
+!     bash_history_disable ();
+!   return (1 - remember_on_history);
+  }
+  #endif
+--- 396,404 ----
+      }
+    else
+!     {
+!       enable_history_list = 0;
+!       bash_history_disable ();
+!     }
+!   return (1 - enable_history_list);
+  }
+  #endif
+***************
+*** 566,570 ****
+  {
+  #if defined (HISTORY)
+!   remember_on_history = 1;
+  #endif
+    ignoreeof = 0;
+--- 578,582 ----
+  {
+  #if defined (HISTORY)
+!   remember_on_history = enable_history_list = 1;
+  #endif
+    ignoreeof = 0;
+*** ../bash-3.2-patched/builtins/evalstring.c	2006-07-28 15:12:16.000000000 -0400
+--- builtins/evalstring.c	2008-11-10 21:17:16.000000000 -0500
+***************
+*** 68,71 ****
+--- 68,79 ----
+  static int cat_file __P((REDIRECT *));
+  
++ #if defined (HISTORY)
++ static void
++ set_history_remembering ()
++ {
++   remember_on_history = enable_history_list;
++ }
++ #endif
++ 
+  /* How to force parse_and_execute () to clean up after itself. */
+  void
+***************
+*** 116,120 ****
+  
+  #if defined (HISTORY)
+!   unwind_protect_int (remember_on_history);	/* can be used in scripts */
+  #  if defined (BANG_HISTORY)
+    if (interactive_shell)
+--- 124,131 ----
+  
+  #if defined (HISTORY)
+!   if (parse_and_execute_level == 0)
+!     add_unwind_protect (set_history_remembering, (char *)NULL);
+!   else
+!     unwind_protect_int (remember_on_history);	/* can be used in scripts */
+  #  if defined (BANG_HISTORY)
+    if (interactive_shell)
+*** ../bash-3.2-patched/bashhist.h	2005-07-01 15:44:41.000000000 -0400
+--- bashhist.h	2008-08-17 12:51:07.000000000 -0400
+***************
+*** 32,35 ****
+--- 32,38 ----
+  
+  extern int remember_on_history;
++ extern int enable_history_list;		/* value for `set -o history' */
++ extern int literal_history;		/* controlled by `shopt lithist' */
++ extern int force_append_history;
+  extern int history_lines_this_session;
+  extern int history_lines_in_file;
+*** ../bash-3.2/patchlevel.h	Thu Apr 13 08:31:04 2006
+--- patchlevel.h	Mon Oct 16 14:22:54 2006
+***************
+*** 26,30 ****
+     looks for to find the patch level (for the sccs version string). */
+  
+! #define PATCHLEVEL 40
+  
+  #endif /* _PATCHLEVEL_H_ */
+--- 26,30 ----
+     looks for to find the patch level (for the sccs version string). */
+  
+! #define PATCHLEVEL 41
+  
+  #endif /* _PATCHLEVEL_H_ */
+
+			     BASH PATCH REPORT
+			     =================
+
+Bash-Release: 3.2
+Patch-ID: bash32-042
+
+Bug-Reported-by:	Archimerged Ark Submedes <archimerged@gmail.com>
+Bug-Reference-ID:	<5ba4bef00804182116g65ff71e0qdffcf672f205e708@mail.gmail.com>
+Bug-Reference-URL:	http://lists.gnu.org/archive/html/bug-bash/2008-04/msg00041.html
+
+Bug-Description:
+
+An operator precedence error prevented the bash arithmetic evaluator from
+parsing conditional commands correctly.
+
+Patch:
+
+*** ../bash-3.2-patched/expr.c	2007-12-13 22:30:43.000000000 -0500
+--- expr.c	2008-08-17 13:09:59.000000000 -0400
+***************
+*** 521,525 ****
+  	  noeval++;
+   	}
+!       val2 = explor ();
+        if (set_noeval)
+  	noeval--;
+--- 521,526 ----
+  	  noeval++;
+   	}
+! 
+!       val2 = expcond ();
+        if (set_noeval)
+  	noeval--;
+*** ../bash-3.2/patchlevel.h	Thu Apr 13 08:31:04 2006
+--- patchlevel.h	Mon Oct 16 14:22:54 2006
+***************
+*** 26,30 ****
+     looks for to find the patch level (for the sccs version string). */
+  
+! #define PATCHLEVEL 41
+  
+  #endif /* _PATCHLEVEL_H_ */
+--- 26,30 ----
+     looks for to find the patch level (for the sccs version string). */
+  
+! #define PATCHLEVEL 42
+  
+  #endif /* _PATCHLEVEL_H_ */
+
+			     BASH PATCH REPORT
+			     =================
+
+Bash-Release: 3.2
+Patch-ID: bash32-043
+
+Bug-Reported-by:	Morita Sho <morita-pub-en-debian@inz.sakura.ne.jp>
+Bug-Reference-ID:
+Bug-Reference-URL:	http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=478096
+
+Bug-Description:
+
+Side effects caused by setting function-local versions of variables bash
+handles specially persisted after the function returned.
+
+Patch:
+
+*** ../bash-3.2-patched/variables.c	2007-08-25 13:47:05.000000000 -0400
+--- variables.c	2008-11-09 17:47:31.000000000 -0500
+***************
+*** 3459,3465 ****
+  	var->attributes &= ~(att_tempvar|att_propagate);
+        else
+!         shell_variables->flags |= VC_HASTMPVAR;
+        v->attributes |= var->attributes;
+      }
+  
+    dispose_variable (var);
+--- 3771,3779 ----
+  	var->attributes &= ~(att_tempvar|att_propagate);
+        else
+! 	shell_variables->flags |= VC_HASTMPVAR;
+        v->attributes |= var->attributes;
+      }
++   else
++     stupidly_hack_special_variables (var->name);	/* XXX */
+  
+    dispose_variable (var);
+***************
+*** 3548,3551 ****
+--- 3862,3867 ----
+        v->attributes |= var->attributes;
+      }
++   else
++     stupidly_hack_special_variables (var->name);	/* XXX */
+  
+    dispose_variable (var);
+*** ../bash-3.2/patchlevel.h	Thu Apr 13 08:31:04 2006
+--- patchlevel.h	Mon Oct 16 14:22:54 2006
+***************
+*** 26,30 ****
+     looks for to find the patch level (for the sccs version string). */
+  
+! #define PATCHLEVEL 42
+  
+  #endif /* _PATCHLEVEL_H_ */
+--- 26,30 ----
+     looks for to find the patch level (for the sccs version string). */
+  
+! #define PATCHLEVEL 43
+  
+  #endif /* _PATCHLEVEL_H_ */
+
+			     BASH PATCH REPORT
+			     =================
+
+Bash-Release: 3.2
+Patch-ID: bash32-044
+
+Bug-Reported-by:	slinkp <stuff@slinkp.com>
+Bug-Reference-ID:	<da52a26a-9f38-4861-a918-14d3482b539d@c65g2000hsa.googlegroups.com>
+Bug-Reference-URL:	http://lists.gnu.org/archive/html/bug-bash/2008-05/msg00085.html
+
+Bug-Description:
+
+The presence of invisible characters in a prompt longer than the screenwidth
+with invisible characters on the first and last prompt lines caused readline
+to place the cursor in the wrong physical location.
+
+Patch:
+
+*** ../bash-3.2-patched/lib/readline/display.c	2007-12-14 21:12:40.000000000 -0500
+--- lib/readline/display.c	2008-10-23 09:39:46.000000000 -0400
+***************
+*** 911,914 ****
+--- 944,951 ----
+  	     OFFSET (which has already been calculated above).  */
+  
++ #define INVIS_FIRST()	(prompt_physical_chars > _rl_screenwidth ? prompt_invis_chars_first_line : wrap_offset)
++ #define WRAP_OFFSET(line, offset)  ((line == 0) \
++ 					? (offset ? INVIS_FIRST() : 0) \
++ 					: ((line == prompt_last_screen_line) ? wrap_offset-prompt_invis_chars_first_line : 0))
+  #define W_OFFSET(line, offset) ((line) == 0 ? offset : 0)
+  #define VIS_LLEN(l)	((l) > _rl_vis_botlin ? 0 : (vis_lbreaks[l+1] - vis_lbreaks[l]))
+***************
+*** 945,949 ****
+  		  _rl_last_c_pos > wrap_offset &&
+  		  o_cpos < prompt_last_invisible)
+! 		_rl_last_c_pos -= wrap_offset;
+  		  
+  	      /* If this is the line with the prompt, we might need to
+--- 982,992 ----
+  		  _rl_last_c_pos > wrap_offset &&
+  		  o_cpos < prompt_last_invisible)
+! 		_rl_last_c_pos -= prompt_invis_chars_first_line;	/* XXX - was wrap_offset */
+! 	      else if (linenum == prompt_last_screen_line && prompt_physical_chars > _rl_screenwidth &&
+! 			(MB_CUR_MAX > 1 && rl_byte_oriented == 0) &&
+! 			cpos_adjusted == 0 &&
+! 			_rl_last_c_pos != o_cpos &&
+! 			_rl_last_c_pos > (prompt_last_invisible - _rl_screenwidth - prompt_invis_chars_first_line))
+! 		_rl_last_c_pos -= (wrap_offset-prompt_invis_chars_first_line);
+  		  
+  	      /* If this is the line with the prompt, we might need to
+***************
+*** 1205,1209 ****
+  {
+    register char *ofd, *ols, *oe, *nfd, *nls, *ne;
+!   int temp, lendiff, wsatend, od, nd, o_cpos;
+    int current_invis_chars;
+    int col_lendiff, col_temp;
+--- 1264,1268 ----
+  {
+    register char *ofd, *ols, *oe, *nfd, *nls, *ne;
+!   int temp, lendiff, wsatend, od, nd, twidth, o_cpos;
+    int current_invis_chars;
+    int col_lendiff, col_temp;
+***************
+*** 1221,1225 ****
+      temp = _rl_last_c_pos;
+    else
+!     temp = _rl_last_c_pos - W_OFFSET(_rl_last_v_pos, visible_wrap_offset);
+    if (temp == _rl_screenwidth && _rl_term_autowrap && !_rl_horizontal_scroll_mode
+  	&& _rl_last_v_pos == current_line - 1)
+--- 1280,1284 ----
+      temp = _rl_last_c_pos;
+    else
+!     temp = _rl_last_c_pos - WRAP_OFFSET (_rl_last_v_pos, visible_wrap_offset);
+    if (temp == _rl_screenwidth && _rl_term_autowrap && !_rl_horizontal_scroll_mode
+  	&& _rl_last_v_pos == current_line - 1)
+***************
+*** 1587,1599 ****
+  	    {
+  	      _rl_output_some_chars (nfd + lendiff, temp - lendiff);
+- #if 1
+  	     /* XXX -- this bears closer inspection.  Fixes a redisplay bug
+  		reported against bash-3.0-alpha by Andreas Schwab involving
+  		multibyte characters and prompt strings with invisible
+  		characters, but was previously disabled. */
+! 	      _rl_last_c_pos += _rl_col_width (nfd+lendiff, 0, temp-col_lendiff);
+! #else
+! 	      _rl_last_c_pos += _rl_col_width (nfd+lendiff, 0, temp-lendiff);
+! #endif
+  	    }
+  	}
+--- 1648,1660 ----
+  	    {
+  	      _rl_output_some_chars (nfd + lendiff, temp - lendiff);
+  	     /* XXX -- this bears closer inspection.  Fixes a redisplay bug
+  		reported against bash-3.0-alpha by Andreas Schwab involving
+  		multibyte characters and prompt strings with invisible
+  		characters, but was previously disabled. */
+! 	      if (MB_CUR_MAX > 1 && rl_byte_oriented == 0)
+! 		twidth = _rl_col_width (nfd+lendiff, 0, temp-col_lendiff);
+! 	      else
+! 		twidth = temp - lendiff;
+! 	      _rl_last_c_pos += twidth;
+  	    }
+  	}
+***************
+*** 1789,1793 ****
+    int cpos, dpos;		/* current and desired cursor positions */
+  
+!   woff = W_OFFSET (_rl_last_v_pos, wrap_offset);
+    cpos = _rl_last_c_pos;
+  #if defined (HANDLE_MULTIBYTE)
+--- 1850,1854 ----
+    int cpos, dpos;		/* current and desired cursor positions */
+  
+!   woff = WRAP_OFFSET (_rl_last_v_pos, wrap_offset);
+    cpos = _rl_last_c_pos;
+  #if defined (HANDLE_MULTIBYTE)
+***************
+*** 1803,1807 ****
+  	 prompt string, since they're both buffer indices and DPOS is a
+  	 desired display position. */
+!       if (new > prompt_last_invisible)		/* XXX - don't use woff here */
+  	{
+  	  dpos -= woff;
+--- 1864,1872 ----
+  	 prompt string, since they're both buffer indices and DPOS is a
+  	 desired display position. */
+!       if ((new > prompt_last_invisible) ||		/* XXX - don't use woff here */
+! 	  (prompt_physical_chars > _rl_screenwidth &&
+! 	   _rl_last_v_pos == prompt_last_screen_line &&
+! 	   wrap_offset != woff &&
+! 	   new > (prompt_last_invisible-_rl_screenwidth-wrap_offset)))
+  	{
+  	  dpos -= woff;
+*** ../bash-3.2/patchlevel.h	Thu Apr 13 08:31:04 2006
+--- patchlevel.h	Mon Oct 16 14:22:54 2006
+***************
+*** 26,30 ****
+     looks for to find the patch level (for the sccs version string). */
+  
+! #define PATCHLEVEL 43
+  
+  #endif /* _PATCHLEVEL_H_ */
+--- 26,30 ----
+     looks for to find the patch level (for the sccs version string). */
+  
+! #define PATCHLEVEL 44
+  
+  #endif /* _PATCHLEVEL_H_ */
+
+			     BASH PATCH REPORT
+			     =================
+
+Bash-Release: 3.2
+Patch-ID: bash32-045
+
+Bug-Reported-by:	Roman Rakus <rrakus@redhat.com>
+Bug-Reference-ID:	<4864B4A0.1060402@redhat.com>
+Bug-Reference-URL:	http://lists.gnu.org/archive/html/bug-bash/2008-06/msg00098.html
+
+Bug-Description:
+
+When short-circuiting execution due to the `break' or `continue' builtins,
+bash did not preserve the value of $?.
+
+Patch:
+
+*** ../bash-3.2-patched/execute_cmd.c	2008-04-28 22:00:24.000000000 -0400
+--- execute_cmd.c	2008-10-18 14:35:03.000000000 -0400
+***************
+*** 502,507 ****
+--- 514,526 ----
+    volatile int save_line_number;
+  
++ #if 0
+    if (command == 0 || breaking || continuing || read_but_dont_execute)
+      return (EXECUTION_SUCCESS);
++ #else
++   if (breaking || continuing)
++     return (last_command_exit_value);
++   if (command == 0 || read_but_dont_execute)
++     return (EXECUTION_SUCCESS);
++ #endif
+  
+    QUIT;
+*** ../bash-3.2/patchlevel.h	Thu Apr 13 08:31:04 2006
+--- patchlevel.h	Mon Oct 16 14:22:54 2006
+***************
+*** 26,30 ****
+     looks for to find the patch level (for the sccs version string). */
+  
+! #define PATCHLEVEL 44
+  
+  #endif /* _PATCHLEVEL_H_ */
+--- 26,30 ----
+     looks for to find the patch level (for the sccs version string). */
+  
+! #define PATCHLEVEL 45
+  
+  #endif /* _PATCHLEVEL_H_ */
+
+			     BASH PATCH REPORT
+			     =================
+
+Bash-Release: 3.2
+Patch-ID: bash32-046
+
+Bug-Reported-by:	Wang Xin <wxinee@gmail.com>
+Bug-Reference-ID:	<9a73e1570807062042ide16698m10e1b18036c95592@mail.gmail.com>
+Bug-Reference-URL:	http://lists.gnu.org/archive/html/bug-bash/2008-07/msg00014.html
+
+Bug-Description:
+
+Bash did not compute the length of multibyte characters correctly when
+performing array element length references (e.g., ${#var[subscript]}).
+
+Patch:
+
+*** /usr/src/local/bash/bash-3.2-patched/subst.c	2008-04-28 22:00:20.000000000 -0400
+--- subst.c	2008-11-10 22:02:38.000000000 -0500
+***************
+*** 4813,4817 ****
+      t = (ind == 0) ? value_cell (var) : (char *)NULL;
+  
+!   len = STRLEN (t);
+    return (len);
+  }
+--- 4813,4817 ----
+      t = (ind == 0) ? value_cell (var) : (char *)NULL;
+  
+!   len = MB_STRLEN (t);
+    return (len);
+  }
+*** ../bash-3.2/patchlevel.h	Thu Apr 13 08:31:04 2006
+--- patchlevel.h	Mon Oct 16 14:22:54 2006
+***************
+*** 26,30 ****
+     looks for to find the patch level (for the sccs version string). */
+  
+! #define PATCHLEVEL 45
+  
+  #endif /* _PATCHLEVEL_H_ */
+--- 26,30 ----
+     looks for to find the patch level (for the sccs version string). */
+  
+! #define PATCHLEVEL 46
+  
+  #endif /* _PATCHLEVEL_H_ */
+
+			     BASH PATCH REPORT
+			     =================
+
+Bash-Release: 3.2
+Patch-ID: bash32-047
+
+Bug-Reported-by:	Roman Rakus <rrakus@redhat.com>
+Bug-Reference-ID:	<48A89EBC.906@redhat.com>
+Bug-Reference-URL:	http://lists.gnu.org/archive/html/bug-bash/2008-08/msg00026.html
+
+Bug-Description:
+
+When using the `.' (source) builtin, under certain circumstances bash was
+too careful in discarding state to preserve internal consistency.  One
+effect was that assignments to readonly variables would cause entire scripts
+to be aborted instead of execution of the offending command.  This behavior
+was introduced by bash-3.2 patch 20.
+
+Patch:
+
+*** /usr/src/local/chet/src/bash/bash-3.2-patched/subst.c	2008-04-29 21:24:55.000000000 -0400
+--- subst.c	2008-11-13 17:44:25.000000000 -0500
+***************
+*** 138,142 ****
+  extern int last_command_exit_value, last_command_exit_signal;
+  extern int subshell_environment;
+! extern int subshell_level;
+  extern int eof_encountered;
+  extern int return_catch_flag, return_catch_value;
+--- 138,142 ----
+  extern int last_command_exit_value, last_command_exit_signal;
+  extern int subshell_environment;
+! extern int subshell_level, parse_and_execute_level;
+  extern int eof_encountered;
+  extern int return_catch_flag, return_catch_value;
+***************
+*** 7673,7677 ****
+    expanding_redir = 0;
+  
+!   top_level_cleanup ();			/* from sig.c */
+  
+    jump_to_top_level (v);
+--- 7673,7679 ----
+    expanding_redir = 0;
+  
+!   if (parse_and_execute_level == 0)
+!     top_level_cleanup ();			/* from sig.c */
+! 
+  
+    jump_to_top_level (v);
+*** ../bash-3.2/patchlevel.h	Thu Apr 13 08:31:04 2006
+--- patchlevel.h	Mon Oct 16 14:22:54 2006
+***************
+*** 26,30 ****
+     looks for to find the patch level (for the sccs version string). */
+  
+! #define PATCHLEVEL 46
+  
+  #endif /* _PATCHLEVEL_H_ */
+--- 26,30 ----
+     looks for to find the patch level (for the sccs version string). */
+  
+! #define PATCHLEVEL 47
+  
+  #endif /* _PATCHLEVEL_H_ */
+
+			     BASH PATCH REPORT
+			     =================
+
+Bash-Release: 3.2
+Patch-ID: bash32-048
+
+Bug-Reported-by:	Steffen Kiess <s-kiess@web.de>
+Bug-Reference-ID:	<1223929957.5383.6.camel@fips>
+Bug-Reference-URL:	http://lists.gnu.org/archive/html/bug-bash/2008-10/msg00047.html
+
+Bug-Description:
+
+When invoked as `bash -c', bash did not execute an EXIT trap when the last
+command in the executed list was a command run from the file system.
+
+Patch:
+
+*** /Users/chet/src/bash/bash-3.2-patched/builtins/evalstring.c	2006-07-28 15:12:16.000000000 -0400
+--- builtins/evalstring.c	2008-11-13 18:38:45.000000000 -0500
+***************
+*** 249,252 ****
+--- 249,253 ----
+  	       *   we're not running a trap AND
+  	       *   we have parsed the full command (string == '\0') AND
++ 	       *   we're not going to run the exit trap AND
+  	       *   we have a simple command without redirections AND
+  	       *   the command is not being timed AND
+***************
+*** 259,263 ****
+  		  *bash_input.location.string == '\0' &&
+  		  command->type == cm_simple &&
+! 		  !command->redirects && !command->value.Simple->redirects &&
+  		  ((command->flags & CMD_TIME_PIPELINE) == 0) &&
+  		  ((command->flags & CMD_INVERT_RETURN) == 0))
+--- 260,265 ----
+  		  *bash_input.location.string == '\0' &&
+  		  command->type == cm_simple &&
+! 		  signal_is_trapped (EXIT_TRAP) == 0 &&
+! 		  command->redirects == 0 && command->value.Simple->redirects == 0 &&
+  		  ((command->flags & CMD_TIME_PIPELINE) == 0) &&
+  		  ((command->flags & CMD_INVERT_RETURN) == 0))
+*** ../bash-3.2/patchlevel.h	Thu Apr 13 08:31:04 2006
+--- patchlevel.h	Mon Oct 16 14:22:54 2006
+***************
+*** 26,30 ****
+     looks for to find the patch level (for the sccs version string). */
+  
+! #define PATCHLEVEL 47
+  
+  #endif /* _PATCHLEVEL_H_ */
+--- 26,30 ----
+     looks for to find the patch level (for the sccs version string). */
+  
+! #define PATCHLEVEL 48
+  
+  #endif /* _PATCHLEVEL_H_ */
