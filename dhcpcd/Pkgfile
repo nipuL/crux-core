@@ -10,6 +10,12 @@ source=(http://roy.marples.name/downloads/dhcpcd/$name-$version.tar.bz2)
 
 build () {
     cd $name-$version
+
+    export LIBEXECDIR=/lib/dhcpcd
+    export DBDIR=/var/lib/dhcpcd
+    export MANPREFIX=/usr
+    export SYSCONFDIR=/etc/dhcpcd
+
     make CSTD=gnu99
     make DESTDIR=$PKG MANPREFIX=/usr install
 }
