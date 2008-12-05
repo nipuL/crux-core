@@ -12,7 +12,6 @@ lrwxrwxrwx	root/root	lib/libvolume_id.so.1 -> libvolume_id.so.1.0.6
 drwxr-xr-x	root/root	lib/udev/
 -rwxr-xr-x	root/root	lib/udev/ata_id
 -rwxr-xr-x	root/root	lib/udev/cdrom_id
--rwxr-xr-x	root/root	lib/udev/cdsymlinks
 -rwxr-xr-x	root/root	lib/udev/collect
 -rwxr-xr-x	root/root	lib/udev/create_floppy_devices
 drwxr-xr-x	root/root	lib/udev/devices/
@@ -32,6 +31,7 @@ crw-rw-rw-	root/root	lib/udev/devices/zero (1, 5)
 -rwxr-xr-x	root/root	lib/udev/path_id
 -rw-r--r--	root/root	lib/udev/rule_generator.functions
 drwxr-xr-x	root/root	lib/udev/rules.d/
+-rw-r--r--	root/root	lib/udev/rules.d/40-alsa.rules
 -rw-r--r--	root/root	lib/udev/rules.d/50-udev-default.rules
 -rw-r--r--	root/root	lib/udev/rules.d/55-lfs.rules
 -rw-r--r--	root/root	lib/udev/rules.d/60-cdrom_id.rules
@@ -45,7 +45,6 @@ drwxr-xr-x	root/root	lib/udev/rules.d/
 -rw-r--r--	root/root	lib/udev/rules.d/75-persistent-net-generator.rules
 -rw-r--r--	root/root	lib/udev/rules.d/79-fstab_import.rules
 -rw-r--r--	root/root	lib/udev/rules.d/80-drivers.rules
--rw-r--r--	root/root	lib/udev/rules.d/81-firmware.rules
 -rw-r--r--	root/root	lib/udev/rules.d/95-udev-late.rules
 -rwxr-xr-x	root/root	lib/udev/scsi_id
 -rwxr-xr-x	root/root	lib/udev/usb_id
@@ -53,9 +52,11 @@ drwxr-xr-x	root/root	lib/udev/rules.d/
 -rwxr-xr-x	root/root	lib/udev/write_cd_rules
 -rwxr-xr-x	root/root	lib/udev/write_net_rules
 drwxr-xr-x	root/root	sbin/
+lrwxrwxrwx	root/root	sbin/scsi_id -> ../lib/udev/scsi_id
 -rwxr-xr-x	root/root	sbin/start_udev
 -rwxr-xr-x	root/root	sbin/udevadm
 -rwxr-xr-x	root/root	sbin/udevd
+lrwxrwxrwx	root/root	sbin/vol_id -> ../lib/udev/vol_id
 drwxr-xr-x	root/root	usr/
 drwxr-xr-x	root/root	usr/bin/
 lrwxrwxrwx	root/root	usr/bin/udevinfo -> /sbin/udevadm
