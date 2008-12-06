@@ -290,6 +290,7 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/_syscall.2.gz
 -rw-r--r--	root/root	usr/man/man2/_sysctl.2.gz
 -rw-r--r--	root/root	usr/man/man2/accept.2.gz
+-rw-r--r--	root/root	usr/man/man2/accept4.2.gz
 -rw-r--r--	root/root	usr/man/man2/access.2.gz
 -rw-r--r--	root/root	usr/man/man2/acct.2.gz
 -rw-r--r--	root/root	usr/man/man2/adjtimex.2.gz
@@ -1313,6 +1314,9 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/globfree.3.gz
 -rw-r--r--	root/root	usr/man/man3/gmtime.3.gz
 -rw-r--r--	root/root	usr/man/man3/gmtime_r.3.gz
+-rw-r--r--	root/root	usr/man/man3/gnu_dev_major.3.gz
+-rw-r--r--	root/root	usr/man/man3/gnu_dev_makedev.3.gz
+-rw-r--r--	root/root	usr/man/man3/gnu_dev_minor.3.gz
 -rw-r--r--	root/root	usr/man/man3/gnu_get_libc_release.3.gz
 -rw-r--r--	root/root	usr/man/man3/gnu_get_libc_version.3.gz
 -rw-r--r--	root/root	usr/man/man3/grantpt.3.gz
@@ -1477,7 +1481,9 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/lsearch.3.gz
 -rw-r--r--	root/root	usr/man/man3/lseek64.3.gz
 -rw-r--r--	root/root	usr/man/man3/lutimes.3.gz
+-rw-r--r--	root/root	usr/man/man3/major.3.gz
 -rw-r--r--	root/root	usr/man/man3/makecontext.3.gz
+-rw-r--r--	root/root	usr/man/man3/makedev.3.gz
 -rw-r--r--	root/root	usr/man/man3/malloc.3.gz
 -rw-r--r--	root/root	usr/man/man3/malloc_hook.3.gz
 -rw-r--r--	root/root	usr/man/man3/matherr.3.gz
@@ -1500,6 +1506,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/mempcpy.3.gz
 -rw-r--r--	root/root	usr/man/man3/memrchr.3.gz
 -rw-r--r--	root/root	usr/man/man3/memset.3.gz
+-rw-r--r--	root/root	usr/man/man3/minor.3.gz
 -rw-r--r--	root/root	usr/man/man3/mkdtemp.3.gz
 -rw-r--r--	root/root	usr/man/man3/mkfifo.3.gz
 -rw-r--r--	root/root	usr/man/man3/mkfifoat.3.gz
@@ -1548,6 +1555,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/offsetof.3.gz
 -rw-r--r--	root/root	usr/man/man3/on_exit.3.gz
 -rw-r--r--	root/root	usr/man/man3/open_memstream.3.gz
+-rw-r--r--	root/root	usr/man/man3/open_wmemstream.3.gz
 -rw-r--r--	root/root	usr/man/man3/opendir.3.gz
 -rw-r--r--	root/root	usr/man/man3/openlog.3.gz
 -rw-r--r--	root/root	usr/man/man3/openpty.3.gz
@@ -1603,7 +1611,9 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/pthread_attr_setstacksize.3.gz
 -rw-r--r--	root/root	usr/man/man3/pthread_cancel.3.gz
 -rw-r--r--	root/root	usr/man/man3/pthread_cleanup_pop.3.gz
+-rw-r--r--	root/root	usr/man/man3/pthread_cleanup_pop_restore_np.3.gz
 -rw-r--r--	root/root	usr/man/man3/pthread_cleanup_push.3.gz
+-rw-r--r--	root/root	usr/man/man3/pthread_cleanup_push_defer_np.3.gz
 -rw-r--r--	root/root	usr/man/man3/pthread_create.3.gz
 -rw-r--r--	root/root	usr/man/man3/pthread_detach.3.gz
 -rw-r--r--	root/root	usr/man/man3/pthread_equal.3.gz
