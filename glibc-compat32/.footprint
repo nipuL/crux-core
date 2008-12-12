@@ -1,3 +1,6 @@
+drwxr-xr-x	root/root	etc/
+drwxr-xr-x	root/root	etc/ld.so.conf.d/
+-rw-r--r--	root/root	etc/ld.so.conf.d/glibc-compat32.conf
 drwxr-xr-x	root/root	lib/
 lrwxrwxrwx	root/root	lib/ld-linux.so.2 -> ../lib32/ld-2.8.so
 drwxr-xr-x	root/root	lib32/

@@ -6,7 +6,7 @@
 
 name=glibc-compat32
 version=2.8
-release=1
+release=2
 source=(http://crux.nu/files/distfiles/glibc-$version-1.tar.bz2)
 
 build() {
@@ -46,4 +46,11 @@ build() {
     # superfluous (already in 'glibc')
     rm -rf $PKG/usr/{bin32,include32,sbin,share}
     rm -rf $PKG/{etc,sbin} 
+
+    # install 32bit library locations
+    install -d $PKG/etc/ld.so.conf.d
+    cat > $PKG/etc/ld.so.conf.d/$name.conf <<EOF
+/lib32
+/usr/lib32
+EOF
 }
