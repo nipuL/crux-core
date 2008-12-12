@@ -5,9 +5,9 @@
 # Depends on:  libarchive
 
 name=pkgutils
-version=5.32.0
+version=5.33.0
 release=1
-source=(http://crux.nu/files/$name-$version.tar.gz)
+source=(http://crux64.die.net.au/files/$name-$version.tar.bz2)
 
 build () {
 	cd $name-$version
