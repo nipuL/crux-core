@@ -5,18 +5,17 @@
 # Depends on:  readline ncurses
 
 name=inetutils
-version=1.5
+version=1.6
 release=1
 source=(http://ftp.gnu.org/gnu/inetutils/inetutils-$version.tar.gz \
-        inetutils-$version.patch inetd.conf inetd)
+        inetd.conf inetd)
 
 build() {
     cd inetutils-$version
 
-    patch -p1 -i $SRC/inetutils-$version.patch
-
     ./configure --prefix=/usr \
                 --libexecdir=/usr/sbin \
+                --mandir=/usr/man \
                 --localstatedir=/var \
                 --sysconfdir=/etc \
                 --disable-{servers,clients} \
