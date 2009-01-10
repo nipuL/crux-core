@@ -5,7 +5,7 @@
 # Depends on:  
 
 name=groff
-version=1.20
+version=1.20.1
 release=1
 source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
 
