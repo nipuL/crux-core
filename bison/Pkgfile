@@ -4,16 +4,16 @@
 # Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
 
 name=bison
-version=2.3
-release=2
+version=2.4.1
+release=1
 source=(ftp://ftp.gnu.org/gnu/$name/$name-$version.tar.bz2)
 
 build() {
     cd $name-$version
-    ./configure --prefix=/usr \
+    ./configure --prefix=/usr --mandir=/usr/man \
 		--disable-nls
     make
     make DESTDIR=$PKG install
-    rm -rf $PKG/usr/info
+    rm -rf $PKG/usr/share/info
     rm $PKG/usr/share/bison/README
 }
