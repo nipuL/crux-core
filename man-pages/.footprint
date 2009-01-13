@@ -383,7 +383,7 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/getgid32.2.gz
 -rw-r--r--	root/root	usr/man/man2/getgroups.2.gz
 -rw-r--r--	root/root	usr/man/man2/getgroups32.2.gz
--rw-r--r--	root/root	usr/man/man2/gethostid.2.gz
+-rw-r--r--	root/root	usr/man/man2/gethostd.2.gz
 -rw-r--r--	root/root	usr/man/man2/gethostname.2.gz
 -rw-r--r--	root/root	usr/man/man2/getitimer.2.gz
 -rw-r--r--	root/root	usr/man/man2/getpagesize.2.gz
@@ -1217,6 +1217,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/gethostbyname_r.3.gz
 -rw-r--r--	root/root	usr/man/man3/gethostent.3.gz
 -rw-r--r--	root/root	usr/man/man3/gethostent_r.3.gz
+-rw-r--r--	root/root	usr/man/man3/gethostid.3.gz
 -rw-r--r--	root/root	usr/man/man3/getipnodebyaddr.3.gz
 -rw-r--r--	root/root	usr/man/man3/getipnodebyname.3.gz
 -rw-r--r--	root/root	usr/man/man3/getline.3.gz
@@ -1581,6 +1582,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/pthread_equal.3.gz
 -rw-r--r--	root/root	usr/man/man3/pthread_exit.3.gz
 -rw-r--r--	root/root	usr/man/man3/pthread_getattr_np.3.gz
+-rw-r--r--	root/root	usr/man/man3/pthread_getschedparam.3.gz
 -rw-r--r--	root/root	usr/man/man3/pthread_join.3.gz
 -rw-r--r--	root/root	usr/man/man3/pthread_self.3.gz
 -rw-r--r--	root/root	usr/man/man3/pthread_timedjoin_np.3.gz
@@ -1692,6 +1694,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/setenv.3.gz
 -rw-r--r--	root/root	usr/man/man3/setfsent.3.gz
 -rw-r--r--	root/root	usr/man/man3/setgrent.3.gz
+-rw-r--r--	root/root	usr/man/man3/sethostd.3.gz
 -rw-r--r--	root/root	usr/man/man3/sethostent.3.gz
 -rw-r--r--	root/root	usr/man/man3/setjmp.3.gz
 -rw-r--r--	root/root	usr/man/man3/setkey.3.gz
@@ -3261,6 +3264,7 @@ drwxr-xr-x	root/root	usr/man/man7/
 -rw-r--r--	root/root	usr/man/man7/feature_test_macros.7.gz
 -rw-r--r--	root/root	usr/man/man7/fifo.7.gz
 -rw-r--r--	root/root	usr/man/man7/futex.7.gz
+-rw-r--r--	root/root	usr/man/man7/glibc.7.gz
 -rw-r--r--	root/root	usr/man/man7/glob.7.gz
 -rw-r--r--	root/root	usr/man/man7/hier.7.gz
 -rw-r--r--	root/root	usr/man/man7/hostname.7.gz
@@ -3293,6 +3297,7 @@ drwxr-xr-x	root/root	usr/man/man7/
 -rw-r--r--	root/root	usr/man/man7/latin2.7.gz
 -rw-r--r--	root/root	usr/man/man7/latin5.7.gz
 -rw-r--r--	root/root	usr/man/man7/latin9.7.gz
+-rw-r--r--	root/root	usr/man/man7/libc.7.gz
 -rw-r--r--	root/root	usr/man/man7/locale.7.gz
 -rw-r--r--	root/root	usr/man/man7/mailaddr.7.gz
 -rw-r--r--	root/root	usr/man/man7/man-pages.7.gz
@@ -3313,6 +3318,7 @@ drwxr-xr-x	root/root	usr/man/man7/
 -rw-r--r--	root/root	usr/man/man7/pty.7.gz
 -rw-r--r--	root/root	usr/man/man7/raw.7.gz
 -rw-r--r--	root/root	usr/man/man7/regex.7.gz
+-rw-r--r--	root/root	usr/man/man7/rtld-audit.7.gz
 -rw-r--r--	root/root	usr/man/man7/rtnetlink.7.gz
 -rw-r--r--	root/root	usr/man/man7/sem_overview.7.gz
 -rw-r--r--	root/root	usr/man/man7/shm_overview.7.gz
