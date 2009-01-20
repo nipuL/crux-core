@@ -5,7 +5,7 @@
 # Depends on:  man
 
 name=man-pages
-version=3.16
+version=3.17
 release=1
 source=(http://www.kernel.org/pub/linux/docs/man-pages/$name-$version.tar.bz2 \
         http://www.kernel.org/pub/linux/docs/man-pages/man-pages-posix/man-pages-posix-2003-a.tar.bz2)
