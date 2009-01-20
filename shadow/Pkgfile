@@ -5,13 +5,13 @@
 
 name=shadow
 version=4.1.2.2
-release=1
+release=2
 source=(ftp://pkg-shadow.alioth.debian.org/pub/pkg-shadow/$name-$version.tar.bz2
-        pwck login.defs)
+        pwck login.defs shadow-su-warning.diff)
 
 build() {
     cd $name-$version
-
+    patch -p2 -i $SRC/shadow-su-warning.diff
     ./configure --prefix=/usr \
                 --mandir=/usr/man \
                 --sysconfdir=/etc \
