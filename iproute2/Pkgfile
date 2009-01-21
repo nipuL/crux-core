@@ -4,7 +4,7 @@
 # Depends on:  db
 
 name=iproute2
-version=2.6.26
+version=2.6.28
 release=1
 source=(http://developer.osdl.org/dev/iproute2/download/$name-$version.tar.bz2 \
         net.iproute2)
@@ -13,7 +13,7 @@ build() {
     cd $name-$version
     sed -i "s|local/lib/iptables|lib/xtables|" include/iptables.h
     make
-    make SBINDIR=/sbin MANDIR=/usr/man DESTDIR=$PKG install
-    rm -r $PKG/share
+    make MANDIR=/usr/man DESTDIR=$PKG install
+    rm -r $PKG/{share,usr/lib}
     install -D -m 0755 $SRC/net.iproute2 $PKG/etc/rc.d/net
 }
