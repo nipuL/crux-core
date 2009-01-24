@@ -4,7 +4,7 @@
 # Arch Maintainer: CRUX x86_64 System Team, core-ports-x86_64 at crux dot nu
 
 name=udev
-version=133
+version=137
 release=1
 source=(ftp://ftp.kernel.org/pub/linux/utils/kernel/hotplug/$name-$version.tar.bz2 \
 	http://crux.nu/files/distfiles/udev-config-20080217.tar.bz2 \
