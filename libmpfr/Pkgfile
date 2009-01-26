@@ -6,7 +6,7 @@
 name=libmpfr
 version=2.3.2
 release=1
-source=(http://www.mpfr.org/mpfr-current/mpfr-$version.tar.bz2)
+source=(http://www.mpfr.org/mpfr-$version/mpfr-$version.tar.bz2)
 
 build() {
     cd mpfr-$version
