@@ -8,6 +8,12 @@ drwxr-xr-x	root/root	etc/iproute2/
 -rw-r--r--	root/root	etc/iproute2/rt_tables
 drwxr-xr-x	root/root	etc/rc.d/
 -rwxr-xr-x	root/root	etc/rc.d/net
+drwxr-xr-x	root/root	lib/
+drwxr-xr-x	root/root	lib/tc/
+-rwxr-xr-x	root/root	lib/tc/experimental.dist
+-rwxr-xr-x	root/root	lib/tc/normal.dist
+-rwxr-xr-x	root/root	lib/tc/pareto.dist
+-rwxr-xr-x	root/root	lib/tc/paretonormal.dist
 drwxr-xr-x	root/root	sbin/
 -rwxr-xr-x	root/root	sbin/arpd
 lrwxrwxrwx	root/root	sbin/ctstat -> lnstat
@@ -26,13 +32,6 @@ lrwxrwxrwx	root/root	sbin/rtstat -> lnstat
 -rwxr-xr-x	root/root	sbin/ss
 -rwxr-xr-x	root/root	sbin/tc
 drwxr-xr-x	root/root	usr/
-drwxr-xr-x	root/root	usr/lib/
-drwxr-xr-x	root/root	usr/lib/tc/
--rwxr-xr-x	root/root	usr/lib/tc/experimental.dist
--rwxr-xr-x	root/root	usr/lib/tc/normal.dist
--rwxr-xr-x	root/root	usr/lib/tc/pareto.dist
--rwxr-xr-x	root/root	usr/lib/tc/paretonormal.dist
--rwxr-xr-x	root/root	usr/lib/tc/q_netem.so
 drwxr-xr-x	root/root	usr/man/
 drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/libnetlink.3.gz
