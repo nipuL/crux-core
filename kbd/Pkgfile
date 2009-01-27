@@ -24,7 +24,7 @@ build() {
     ln -sf default8x16.psfu.gz $PKG/usr/share/kbd/consolefonts/default.gz
 
     rm -r $PKG/usr/share/kbd/keymaps/{ppc,mac,atari,amiga,sun}
-    rm $PKG/usr/bin/{psfxtable,resizecons,mapscrn,loadunimap} \
+    rm -f $PKG/usr/bin/{psfxtable,resizecons,mapscrn,loadunimap} \
        $PKG/usr/bin/{psfaddtable,psfgettable,psfstriptable} \
        $PKG/usr/man/man1/{psfaddtable.1,psfgettable.1,psfstriptable.1,psfxtable.1} \
        $PKG/usr/man/man8/{loadunimap.8,mapscrn.8,resizecons.8}
