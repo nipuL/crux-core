@@ -32,7 +32,6 @@ crw-rw-rw-	root/root	lib/udev/devices/zero (1, 5)
 -rwxr-xr-x	root/root	lib/udev/path_id
 -rw-r--r--	root/root	lib/udev/rule_generator.functions
 drwxr-xr-x	root/root	lib/udev/rules.d/
--rw-r--r--	root/root	lib/udev/rules.d/40-alsa.rules
 -rw-r--r--	root/root	lib/udev/rules.d/50-firmware.rules
 -rw-r--r--	root/root	lib/udev/rules.d/50-udev-default.rules
 -rw-r--r--	root/root	lib/udev/rules.d/55-lfs.rules
@@ -48,7 +47,6 @@ drwxr-xr-x	root/root	lib/udev/rules.d/
 -rw-r--r--	root/root	lib/udev/rules.d/75-persistent-net-generator.rules
 -rw-r--r--	root/root	lib/udev/rules.d/79-fstab_import.rules
 -rw-r--r--	root/root	lib/udev/rules.d/80-drivers.rules
--rw-r--r--	root/root	lib/udev/rules.d/81-firmware.rules
 -rw-r--r--	root/root	lib/udev/rules.d/95-udev-late.rules
 -rwxr-xr-x	root/root	lib/udev/scsi_id
 -rwxr-xr-x	root/root	lib/udev/usb_id

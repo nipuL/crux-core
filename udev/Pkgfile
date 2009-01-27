@@ -7,7 +7,7 @@ name=udev
 version=137
 release=1
 source=(ftp://ftp.kernel.org/pub/linux/utils/kernel/hotplug/$name-$version.tar.bz2 \
-	http://crux.nu/files/distfiles/udev-config-20080217.tar.bz2 \
+	http://crux.nu/files/distfiles/udev-config-20081015.tar.bz2 \
 	start_udev cdrom.rules cdsymlinks)
 
 build() {
@@ -28,7 +28,7 @@ build() {
 	make EXTRAS="$extras"
 	make install DESTDIR=$PKG mandir="/usr/man" EXTRAS="$extras"
 
-	pushd $SRC/udev-config-20080217
+	pushd $SRC/udev-config-20081015
 	make DESTDIR=$PKG RULES_DIR=/lib/udev/rules.d install
 	popd
 
