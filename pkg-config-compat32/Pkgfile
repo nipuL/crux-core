@@ -5,8 +5,8 @@
 
 name=pkg-config-compat32
 version=0.23
-release=2
-source=(http://$name.freedesktop.org/releases/pkg-config-$version.tar.gz
+release=3
+source=(http://pkg-config.freedesktop.org/releases/pkg-config-$version.tar.gz
     $name.conf)
 
 build() {
