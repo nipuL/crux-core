@@ -1,3 +1,6 @@
+drwxr-xr-x	root/root	etc/
+drwxr-xr-x	root/root	etc/pkgmk.conf.d/
+-r-xr--r--	root/root	etc/pkgmk.conf.d/pkg-config-compat32.conf
 drwxr-xr-x	root/root	usr/
 drwxr-xr-x	root/root	usr/bin/
 -rwxr-xr-x	root/root	usr/bin/pkg-config32
