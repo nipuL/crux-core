@@ -3,17 +3,12 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=ed
-version=1.1
+version=1.2
 release=1
-source=(ftp://ftp.gnu.org/gnu/$name/$name-$version.tar.bz2)
+source=(ftp://ftp.gnu.org/gnu/$name/$name-$version.tar.gz)
 
 build() {
     cd $name-$version
-
-    # ed wants to use hard links for the binary and man pages,
-    # but pkgmk cannot compress hard linked man pages yet.
-    # as a temporary workaround, i'm making it use symlinks instead.
-    sed -i -e 's/ln /ln -s /' Makefile.in
 
     ./configure --prefix=/usr \
                 --exec-prefix=/ \
@@ -21,6 +16,6 @@ build() {
                 CFLAGS="$CFLAGS"
 
     make
-    make DESTDIR=$PKG install install-man
+    make DESTDIR=$PKG install
     rm -r $PKG/usr/share
 }
