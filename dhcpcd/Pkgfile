@@ -4,7 +4,7 @@
 # Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
 
 name=dhcpcd
-version=4.0.9
+version=4.0.10
 release=1
 source=(http://roy.marples.name/downloads/dhcpcd/$name-$version.tar.bz2)
 
