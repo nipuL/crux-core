@@ -4,13 +4,15 @@
 # Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
 
 name=module-init-tools
-version=3.5
+version=3.6
 release=1
 source=(http://www.kernel.org/pub/linux/kernel/people/rusty/modules/$name-$version.tar.bz2
+        http://crux.nu/~jue/files/dist/$name-man-$version.tar.bz2
         modprobe.conf)
 
 build() {
     cd $name-$version
+    cp $SRC/$name-man-$version/* .
     ./configure --prefix=/usr \
                 --bindir=/sbin \
                 --sbindir=/sbin
