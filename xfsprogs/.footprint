@@ -4,7 +4,9 @@ drwxr-xr-x	root/root	bin/
 -rwxr-xr-x	root/root	bin/xfs_check
 -rwxr-xr-x	root/root	bin/xfs_copy
 -rwxr-xr-x	root/root	bin/xfs_db
+-rwxr-xr-x	root/root	bin/xfs_estimate
 -rwxr-xr-x	root/root	bin/xfs_freeze
+-rwxr-xr-x	root/root	bin/xfs_fsr
 -rwxr-xr-x	root/root	bin/xfs_growfs
 -rwxr-xr-x	root/root	bin/xfs_info
 -rwxr-xr-x	root/root	bin/xfs_io
@@ -34,7 +36,9 @@ drwxr-xr-x	root/root	usr/man/man8/
 -rw-r--r--	root/root	usr/man/man8/xfs_check.8.gz
 -rw-r--r--	root/root	usr/man/man8/xfs_copy.8.gz
 -rw-r--r--	root/root	usr/man/man8/xfs_db.8.gz
+-rw-r--r--	root/root	usr/man/man8/xfs_estimate.8.gz
 -rw-r--r--	root/root	usr/man/man8/xfs_freeze.8.gz
+-rw-r--r--	root/root	usr/man/man8/xfs_fsr.8.gz
 -rw-r--r--	root/root	usr/man/man8/xfs_growfs.8.gz
 lrwxrwxrwx	root/root	usr/man/man8/xfs_info.8.gz -> xfs_growfs.8.gz
 -rw-r--r--	root/root	usr/man/man8/xfs_io.8.gz
