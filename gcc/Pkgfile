@@ -7,7 +7,7 @@
 # Depends on:  libmpfr, libgmp
 
 name=gcc
-version=4.3.2
+version=4.3.3
 release=1
 source=(ftp://sources.redhat.com/pub/gcc/releases/$name-$version/$name-{core,g++,objc}-$version.tar.bz2
         $name-$version-nocheck-fixincludes.patch)
@@ -32,7 +32,7 @@ build() {
                                 --with-x=no \
 				--enable-multilib
     make bootstrap
-    make check
+    make -j1 check
     make -j1 DESTDIR=$PKG install
     
     mv $PKG/usr/lib64/* $PKG/usr/lib/
