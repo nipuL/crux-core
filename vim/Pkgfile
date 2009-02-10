@@ -5,9 +5,11 @@
 # Depends on:  ncurses
 
 name=vim
-version=7.2
+version=7.2.102
 release=1
-source=(ftp://ftp.vim.org/pub/vim/unix/vim-7.2.tar.bz2)
+source=(ftp://ftp.vim.org/pub/vim/unix/vim-7.2.tar.bz2 \
+        http://crux.nu/~jue/files/dist/vim-7.2.001-051.tar.bz2 \
+        http://crux.nu/~jue/files/dist/vim-7.2.052-102.tar.bz2)
 
 build () {
     cd vim72/src
