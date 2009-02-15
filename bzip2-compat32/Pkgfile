@@ -1,0 +1,29 @@
+# Description: Very high-quality data compression program
+# URL: http://www.bzip.org/
+# Maintainer: CRUX System Team, core-ports at crux dot nu
+# Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
+
+name=bzip2-compat32
+version=1.0.5
+release=1
+source=(http://www.bzip.org/$version/bzip2-$version.tar.gz \
+        bzip2.patch)
+
+build() {
+    cd bzip2-$version
+    
+    patch -Np1 -i $SRC/bzip2.patch
+
+    sed "s/CC=/CC?=/" -i Makefile
+    sed "s/CC=/CC?=/" -i Makefile-libbz2_so
+
+    make
+    make PREFIX=$PKG/usr install
+
+    make -f Makefile-libbz2_so
+    make -f Makefile-libbz2_so PREFIX=$PKG/usr install
+
+    mv $PKG/usr/lib $PKG/usr/lib32
+    rm -rf $PKG/usr/{bin,include,man}
+    ln -s libbz2.so.1.0 $PKG/usr/lib32/libbz2.so.1
+}
