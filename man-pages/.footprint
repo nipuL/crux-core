@@ -661,6 +661,11 @@ drwxr-xr-x	root/root	usr/man/man2/
 -rw-r--r--	root/root	usr/man/man2/tee.2.gz
 -rw-r--r--	root/root	usr/man/man2/tgkill.2.gz
 -rw-r--r--	root/root	usr/man/man2/time.2.gz
+-rw-r--r--	root/root	usr/man/man2/timer_create.2.gz
+-rw-r--r--	root/root	usr/man/man2/timer_delete.2.gz
+-rw-r--r--	root/root	usr/man/man2/timer_getoverrun.2.gz
+-rw-r--r--	root/root	usr/man/man2/timer_gettime.2.gz
+-rw-r--r--	root/root	usr/man/man2/timer_settime.2.gz
 -rw-r--r--	root/root	usr/man/man2/timerfd_create.2.gz
 -rw-r--r--	root/root	usr/man/man2/timerfd_gettime.2.gz
 -rw-r--r--	root/root	usr/man/man2/timerfd_settime.2.gz
