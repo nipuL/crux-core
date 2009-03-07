@@ -2,10 +2,11 @@
 # URL:         http://www.gnu.org/software/coreutils/
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 # Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
+# Depends on:  libgmp
 
 name=coreutils
-version=6.12
-release=2
+version=7.1
+release=1
 source=(http://ftp.gnu.org/pub/gnu/$name/$name-$version.tar.gz 
         coreutils-uname.patch)
 
@@ -19,6 +20,8 @@ build() {
                 --mandir=/usr/man \
                 --disable-nls \
                 --disable-assert \
+                --disable-libcap \
+                --disable-xattr \
                 --enable-no-install-program=uptime,kill,chcon,runcon,groups
     make
     make DESTDIR=$PKG install 
