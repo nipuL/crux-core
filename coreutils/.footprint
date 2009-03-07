@@ -81,7 +81,9 @@ drwxr-xr-x	root/root	usr/bin/
 -rwxr-xr-x	root/root	usr/bin/tail
 -rwxr-xr-x	root/root	usr/bin/tee
 -rwxr-xr-x	root/root	usr/bin/test
+-rwxr-xr-x	root/root	usr/bin/timeout
 -rwxr-xr-x	root/root	usr/bin/tr
+-rwxr-xr-x	root/root	usr/bin/truncate
 -rwxr-xr-x	root/root	usr/bin/tsort
 -rwxr-xr-x	root/root	usr/bin/tty
 -rwxr-xr-x	root/root	usr/bin/unexpand
@@ -171,9 +173,11 @@ drwxr-xr-x	root/root	usr/man/man1/
 -rw-r--r--	root/root	usr/man/man1/tail.1.gz
 -rw-r--r--	root/root	usr/man/man1/tee.1.gz
 -rw-r--r--	root/root	usr/man/man1/test.1.gz
+-rw-r--r--	root/root	usr/man/man1/timeout.1.gz
 -rw-r--r--	root/root	usr/man/man1/touch.1.gz
 -rw-r--r--	root/root	usr/man/man1/tr.1.gz
 -rw-r--r--	root/root	usr/man/man1/true.1.gz
+-rw-r--r--	root/root	usr/man/man1/truncate.1.gz
 -rw-r--r--	root/root	usr/man/man1/tsort.1.gz
 -rw-r--r--	root/root	usr/man/man1/tty.1.gz
 -rw-r--r--	root/root	usr/man/man1/uname.1.gz
