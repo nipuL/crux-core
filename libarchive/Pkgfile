@@ -4,7 +4,7 @@
 # Depends on: bzip2, zlib
 
 name=libarchive
-version=2.6.1
+version=2.6.2
 release=1
 source=(http://$name.googlecode.com/files/$name-$version.tar.gz)
 
