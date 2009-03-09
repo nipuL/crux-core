@@ -1,0 +1,36 @@
+From: Steve Dickson <steved@redhat.com>
+Date: Sun, 8 Mar 2009 14:10:25 +0000 (-0400)
+Subject: Added back the some logging variables which are no
+X-Git-Url: http://git.linux-nfs.org/?p=steved%2Fnfs-utils.git;a=commitdiff_plain;h=06da4cfd46942acaaa5bd2e7933fd290701d186d
+
+Added back the some logging variables which are no
+longer used but, unfortunately, they are extern-ed by
+public headers files which are not under the control
+of this package.
+
+Spotted-by: Juergen Daubert <jue@jue.li>
+Signed-off-by: Steve Dickson <steved@redhat.com>
+---
+
+diff --git a/support/misc/tcpwrapper.c b/support/misc/tcpwrapper.c
+index a361496..1da6020 100644
+--- a/support/misc/tcpwrapper.c
++++ b/support/misc/tcpwrapper.c
+@@ -60,8 +60,16 @@ static void logit(int severity, struct sockaddr_in *addr,
+ 		  u_long procnum, u_long prognum, char *text);
+ static int check_files(void);
+ 
++/*
++ * These need to exist since they are externed 
++ * public header files.
++ */
++int     verboselog = 0;
++int     allow_severity = LOG_INFO;
++int     deny_severity = LOG_WARNING;
++
+ #define log_bad_host(addr, proc, prog) \
+-  logit(LOG_WARNING, addr, proc, prog, "request from unauthorized host")
++  logit(deny_severity, addr, proc, prog, "request from unauthorized host")
+ 
+ #define ALLOW 1
+ #define DENY 0

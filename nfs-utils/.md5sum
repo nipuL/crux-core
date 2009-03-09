@@ -1,4 +1,5 @@
 c5ccf58f5f9f57aba75c8b72219eb6e6  exports
 f75dd45017a56ab4ecb6e87ef40aba78  nfs
-3ed5b9cb73fd1c9b358c7bfa7a6ae150  nfs-utils-1.1.4.tar.bz2
+86b306839d1f745d5503c62bffd06bff  nfs-utils-1.1.5.patch
+2848072a5e53840b9bc520fbb6782b57  nfs-utils-1.1.5.tar.bz2
 7222d95af7b1313985505d1494927ae5  nfsserver
