@@ -13,6 +13,7 @@ source=(ftp://oss.sgi.com/projects/xfs/cmd_tars/$name-$version.tar.gz)
 build() {
     cd $name-$version
     export DEBUG=-DNDEBUG
+    export MAKEFLAGS="$MAKEFLAGS -j1"
     ./Makepkgs verbose
     tar xfz build/tar/$name-$version.tar.gz -C $PKG
     mv $PKG/usr/sbin $PKG/bin
