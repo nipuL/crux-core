@@ -5,29 +5,32 @@
 # Depends on: openssl
 
 name=openssl-compat32
-version=0.9.8i
+version=0.9.8k
 release=1
-source=(http://www.openssl.org/source/openssl-$version.tar.gz
-    openssl-0.9.8b-parallel-build.patch)
+source=(http://www.openssl.org/source/openssl-$version.tar.gz)
 
 build() {
     cd openssl-$version
-    patch -p1 -i $SRC/openssl-0.9.8b-parallel-build.patch
     i386 ./config --prefix=/usr --openssldir=/etc/ssl shared
     
     # correct engines path
     sed -i -e "s|^#define ENGINESDIR.*|#define ENGINESDIR \"/usr/lib32/engines\"|g" \
 	include/openssl/opensslconf.h \
 	crypto/opensslconf.h
-    
-    sed "s/CC= gcc/CC= $CC $CFLAGS/" -i Makefile
 
-    make
+    if [ "$CC" ]; then
+	find -name Makefile | xargs sed \
+	    -e 's/$${CC}/"&"/' \
+	    -e 's/$\(CC\)/"&"/' \
+	    -i
+    fi
+
+    make -j1
     make INSTALL_PREFIX=$PKG MANDIR=/usr/man MANSUFFIX=ssl install
     
     mv $PKG/usr/lib $PKG/usr/lib32
     mv $PKG/usr/include $PKG/usr/include32
-    
+    find $PKG -name "*fips*" -delete
     sed -i \
 	-e "s|\/lib|/lib32|g" \
 	-e "s|\/include|/include32|g" \
