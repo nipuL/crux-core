@@ -3244,6 +3244,7 @@ drwxr-xr-x	root/root	usr/man/man4/
 -rw-r--r--	root/root	usr/man/man4/console.4.gz
 -rw-r--r--	root/root	usr/man/man4/console_codes.4.gz
 -rw-r--r--	root/root	usr/man/man4/console_ioctl.4.gz
+-rw-r--r--	root/root	usr/man/man4/cpuid.4.gz
 -rw-r--r--	root/root	usr/man/man4/dsp56k.4.gz
 -rw-r--r--	root/root	usr/man/man4/epoll.4.gz
 -rw-r--r--	root/root	usr/man/man4/fd.4.gz
@@ -3257,6 +3258,7 @@ drwxr-xr-x	root/root	usr/man/man4/
 -rw-r--r--	root/root	usr/man/man4/lp.4.gz
 -rw-r--r--	root/root	usr/man/man4/mem.4.gz
 -rw-r--r--	root/root	usr/man/man4/mouse.4.gz
+-rw-r--r--	root/root	usr/man/man4/msr.4.gz
 -rw-r--r--	root/root	usr/man/man4/null.4.gz
 -rw-r--r--	root/root	usr/man/man4/port.4.gz
 -rw-r--r--	root/root	usr/man/man4/ptmx.4.gz
