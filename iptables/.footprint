@@ -16,9 +16,9 @@ lrwxrwxrwx	root/root	usr/lib/libiptc.so -> libiptc.so.0.0.0
 lrwxrwxrwx	root/root	usr/lib/libiptc.so.0 -> libiptc.so.0.0.0
 -rwxr-xr-x	root/root	usr/lib/libiptc.so.0.0.0
 -rwxr-xr-x	root/root	usr/lib/libxtables.la
-lrwxrwxrwx	root/root	usr/lib/libxtables.so -> libxtables.so.1.0.0
-lrwxrwxrwx	root/root	usr/lib/libxtables.so.1 -> libxtables.so.1.0.0
--rwxr-xr-x	root/root	usr/lib/libxtables.so.1.0.0
+lrwxrwxrwx	root/root	usr/lib/libxtables.so -> libxtables.so.2.0.0
+lrwxrwxrwx	root/root	usr/lib/libxtables.so.2 -> libxtables.so.2.0.0
+-rwxr-xr-x	root/root	usr/lib/libxtables.so.2.0.0
 drwxr-xr-x	root/root	usr/lib/pkgconfig/
 -rw-r--r--	root/root	usr/lib/pkgconfig/libiptc.pc
 -rw-r--r--	root/root	usr/lib/pkgconfig/xtables.pc
