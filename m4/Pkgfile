@@ -4,7 +4,7 @@
 # Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
 
 name=m4
-version=1.4.12
+version=1.4.13
 release=1
 source=(ftp://ftp.gnu.org/gnu/$name/$name-$version.tar.bz2)
 
