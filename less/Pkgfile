@@ -5,7 +5,7 @@
 # Depends on:  ncurses
 
 name=less
-version=418
+version=429
 release=1
 source=(http://www.greenwoodsoftware.com/less/$name-$version.tar.gz \
         filter)
