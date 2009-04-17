@@ -1641,6 +1641,7 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/pthread_exit.3.gz
 -rw-r--r--	root/root	usr/man/man3/pthread_getaffinity_np.3.gz
 -rw-r--r--	root/root	usr/man/man3/pthread_getattr_np.3.gz
+-rw-r--r--	root/root	usr/man/man3/pthread_getconcurrency.3.gz
 -rw-r--r--	root/root	usr/man/man3/pthread_getcpuclockid.3.gz
 -rw-r--r--	root/root	usr/man/man3/pthread_getschedparam.3.gz
 -rw-r--r--	root/root	usr/man/man3/pthread_join.3.gz
@@ -1650,12 +1651,14 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/pthread_setaffinity_np.3.gz
 -rw-r--r--	root/root	usr/man/man3/pthread_setcancelstate.3.gz
 -rw-r--r--	root/root	usr/man/man3/pthread_setcanceltype.3.gz
+-rw-r--r--	root/root	usr/man/man3/pthread_setconcurrency.3.gz
 -rw-r--r--	root/root	usr/man/man3/pthread_setschedparam.3.gz
 -rw-r--r--	root/root	usr/man/man3/pthread_setschedprio.3.gz
 -rw-r--r--	root/root	usr/man/man3/pthread_sigmask.3.gz
 -rw-r--r--	root/root	usr/man/man3/pthread_testcancel.3.gz
 -rw-r--r--	root/root	usr/man/man3/pthread_timedjoin_np.3.gz
 -rw-r--r--	root/root	usr/man/man3/pthread_tryjoin_np.3.gz
+-rw-r--r--	root/root	usr/man/man3/pthread_yield.3.gz
 -rw-r--r--	root/root	usr/man/man3/ptsname.3.gz
 -rw-r--r--	root/root	usr/man/man3/ptsname_r.3.gz
 -rw-r--r--	root/root	usr/man/man3/putc.3.gz
