@@ -5,15 +5,13 @@
 # Depends on:  libusb
 
 name=usbutils
-version=0.73
+version=0.80
 release=1
 source=(http://dl.sourceforge.net/sourceforge/linux-usb/$name-$version.tar.gz)
 
 build() {
     cd $name-$version
-    ./configure --prefix=/usr --disable-zlib
+    ./configure --prefix=/usr --mandir=/usr/man --disable-zlib
     make
     make DESTDIR=$PKG install
-    sed -i '/^DEST/s|usb.ids|/usr/share/usb.ids|' update-usbids.sh
-    install -D -m 755 update-usbids.sh $PKG/usr/sbin/update-usbids
 }
