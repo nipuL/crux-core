@@ -1,7 +1,7 @@
-diff -Nru e2fsprogs-1.41.0.orig/e2fsck/Makefile.in e2fsprogs-1.41.0/e2fsck/Makefile.in
---- e2fsprogs-1.41.0.orig/e2fsck/Makefile.in	2008-07-11 10:30:36.000000000 +0200
-+++ e2fsprogs-1.41.0/e2fsck/Makefile.in	2008-07-11 10:46:57.000000000 +0200
-@@ -197,16 +197,16 @@
+diff -Nru e2fsprogs-1.41.5.orig/e2fsck/Makefile.in e2fsprogs-1.41.5/e2fsck/Makefile.in
+--- e2fsprogs-1.41.5.orig/e2fsck/Makefile.in	2009-04-24 18:35:15.000000000 +0200
++++ e2fsprogs-1.41.5/e2fsck/Makefile.in	2009-04-24 18:35:35.000000000 +0200
+@@ -195,16 +195,16 @@
  		$(INSTALL_PROGRAM) $$i $(DESTDIR)$(root_sbindir)/$$i; \
  	done
  	@echo "	LINK $(root_sbindir)/fsck.ext2"
@@ -22,7 +22,7 @@ diff -Nru e2fsprogs-1.41.0.orig/e2fsck/Makefile.in e2fsprogs-1.41.0/e2fsck/Makef
  			$(DESTDIR)$(root_sbindir)/fsck.ext4dev
  	@for i in $(MANPAGES); do \
  		for j in $(COMPRESS_EXT); do \
-@@ -223,16 +223,16 @@
+@@ -221,16 +221,16 @@
  		$(INSTALL_DATA) $$i $(DESTDIR)$(man5dir)/$$i; \
  	done
  	@echo "	LINK $(man8dir)/fsck.ext2.8"
@@ -43,9 +43,9 @@ diff -Nru e2fsprogs-1.41.0.orig/e2fsck/Makefile.in e2fsprogs-1.41.0/e2fsck/Makef
  		$(DESTDIR)$(man8dir)/fsck.ext4dev.8
  
  install-strip: install
-diff -Nru e2fsprogs-1.41.0.orig/lib/uuid/Makefile.in e2fsprogs-1.41.0/lib/uuid/Makefile.in
---- e2fsprogs-1.41.0.orig/lib/uuid/Makefile.in	2008-07-11 10:30:36.000000000 +0200
-+++ e2fsprogs-1.41.0/lib/uuid/Makefile.in	2008-07-11 10:25:54.000000000 +0200
+diff -Nru e2fsprogs-1.41.5.orig/lib/uuid/Makefile.in e2fsprogs-1.41.5/lib/uuid/Makefile.in
+--- e2fsprogs-1.41.5.orig/lib/uuid/Makefile.in	2009-04-24 18:35:15.000000000 +0200
++++ e2fsprogs-1.41.5/lib/uuid/Makefile.in	2009-04-24 18:35:35.000000000 +0200
 @@ -146,9 +146,9 @@
  	@$(RM) -f $(DESTDIR)$(man3dir)/uuid_generate_random.3.gz \
  		$(DESTDIR)$(man3dir)/uuid_generate_time.3.gz
@@ -58,10 +58,10 @@ diff -Nru e2fsprogs-1.41.0.orig/lib/uuid/Makefile.in e2fsprogs-1.41.0/lib/uuid/M
  	@echo "	INSTALL_DATA $(libdir)/pkgconfig/uuid.pc"
  	@$(INSTALL_DATA) uuid.pc $(DESTDIR)$(libdir)/pkgconfig/uuid.pc
  
-diff -Nru e2fsprogs-1.41.0.orig/misc/Makefile.in e2fsprogs-1.41.0/misc/Makefile.in
---- e2fsprogs-1.41.0.orig/misc/Makefile.in	2008-07-11 10:30:36.000000000 +0200
-+++ e2fsprogs-1.41.0/misc/Makefile.in	2008-07-11 10:37:50.000000000 +0200
-@@ -277,22 +277,22 @@
+diff -Nru e2fsprogs-1.41.5.orig/misc/Makefile.in e2fsprogs-1.41.5/misc/Makefile.in
+--- e2fsprogs-1.41.5.orig/misc/Makefile.in	2009-04-24 18:35:15.000000000 +0200
++++ e2fsprogs-1.41.5/misc/Makefile.in	2009-04-24 18:38:43.000000000 +0200
+@@ -394,23 +394,23 @@
  		$(INSTALL_PROGRAM) $$i $(DESTDIR)$(sbindir)/$$i; \
  	done
  	@echo "	LINK $(root_sbindir)/mkfs.ext2"
@@ -84,13 +84,14 @@ diff -Nru e2fsprogs-1.41.0.orig/misc/Makefile.in e2fsprogs-1.41.0/misc/Makefile.
 -	@$(LN) -f $(DESTDIR)$(root_sbindir)/tune2fs \
 +	@$(LN_S) -f tune2fs \
  		$(DESTDIR)$(root_sbindir)/e2label
- 	@echo "	LINK $(root_sbindir)/findfs"
--	@$(LN) -f $(DESTDIR)$(root_sbindir)/tune2fs \
-+	@$(LN_S) -f tune2fs \
- 		$(DESTDIR)$(root_sbindir)/findfs
+ 	@if test -n "$(FINDFS_LINK)"; then \
+ 		echo "  LINK $(root_sbindir)/findfs"; \
+-		$(LN) -f $(DESTDIR)$(root_sbindir)/tune2fs \
++		$(LN_S) -f tune2fs \
+ 			$(DESTDIR)$(root_sbindir)/$(FINDFS_LINK); \
+ 	fi
  	@for i in $(UPROGS); do \
- 		echo "	INSTALL $(bindir)/$$i"; \
-@@ -312,16 +312,16 @@
+@@ -431,16 +431,16 @@
  	@$(RM) -f $(DESTDIR)$(man8dir)/mkfs.ext2.8.gz \
  		$(DESTDIR)$(man8dir)/mkfs.ext3.8.gz
  	@echo "	LINK mkfs.ext2.8"

@@ -4,7 +4,7 @@
 # Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
 
 name=e2fsprogs-compat32
-version=1.41.4
+version=1.41.5
 release=1
 source=(http://dl.sourceforge.net/sourceforge/e2fsprogs/e2fsprogs-$version.tar.gz \
         e2fsprogs-symlink.patch)
