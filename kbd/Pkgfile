@@ -27,6 +27,6 @@ build() {
     rm -f $PKG/usr/bin/{psfxtable,mapscrn,loadunimap} \
        $PKG/usr/bin/{psfaddtable,psfgettable,psfstriptable} \
        $PKG/usr/man/man1/{psfaddtable.1,psfgettable.1,psfstriptable.1,psfxtable.1} \
-       $PKG/usr/man/man8/{loadunimap.8,mapscrn.8}
+       $PKG/usr/man/man8/{loadunimap.8,mapscrn.8,resizecons.8}
     find $PKG/usr/share/kbd/ -name "README*" -exec rm {} \;
 }
