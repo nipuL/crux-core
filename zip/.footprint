@@ -7,6 +7,6 @@ drwxr-xr-x	root/root	usr/bin/
 drwxr-xr-x	root/root	usr/man/
 drwxr-xr-x	root/root	usr/man/man1/
 -rw-r--r--	root/root	usr/man/man1/zip.1.gz
-lrwxrwxrwx	root/root	usr/man/man1/zipcloak.1.gz -> zip.1.gz
-lrwxrwxrwx	root/root	usr/man/man1/zipnote.1.gz -> zip.1.gz
-lrwxrwxrwx	root/root	usr/man/man1/zipsplit.1.gz -> zip.1.gz
+-rw-r--r--	root/root	usr/man/man1/zipcloak.1.gz
+-rw-r--r--	root/root	usr/man/man1/zipnote.1.gz
+-rw-r--r--	root/root	usr/man/man1/zipsplit.1.gz
