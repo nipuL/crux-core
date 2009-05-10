@@ -6,7 +6,7 @@
 # Depends on:  ncurses
 
 name=psmisc
-version=22.6
+version=22.7
 release=1
 source=(http://dl.sourceforge.net/$name/$name-$version.tar.gz)
 
@@ -15,5 +15,5 @@ build() {
     ./configure --prefix=/usr --disable-nls --mandir=/usr/man
     make
     make DESTDIR=$PKG install
-    rm -f $PKG/usr/bin/{oldfuser,pstree.x11}
+    rm $PKG/usr/bin/pstree.x11
 }
