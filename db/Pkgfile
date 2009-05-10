@@ -4,13 +4,14 @@
 
 name=db
 version=4.7.25
-release=2
+release=3
 source=(http://download.oracle.com/berkeley-db/$name-$version.tar.gz \
-        http://www.oracle.com/technology/products/berkeley-db/db/update/$version/patch.$version.{1,2,3})
+        http://www.oracle.com/technology/products/berkeley-db/db/update/$version/patch.$version.{1,2,3,4})
 
 build() {
     cd $name-$version
     cat $SRC/patch.$version.{1,2,3} | patch -p0 
+    cat $SRC/patch.$version.4       | patch -p1
     cd build_unix
     LDFLAGS="-lpthread" \
     ../dist/configure --prefix=/usr \
