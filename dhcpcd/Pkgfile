@@ -4,13 +4,14 @@
 # Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
 
 name=dhcpcd
-version=5.0.1
+version=5.0.3
 release=1
 source=(http://roy.marples.name/downloads/dhcpcd/$name-$version.tar.bz2)
 
 build () {
     cd $name-$version
 
+    export PREFIX=/
     export LIBEXECDIR=/lib/dhcpcd
     export DBDIR=/var/lib/dhcpcd
     export MANPREFIX=/usr
