@@ -3,8 +3,8 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=libgmp
-version=4.2.4
-release=2
+version=4.3.0
+release=1
 source=(ftp://ftp.gnu.org/gnu/gmp/gmp-$version.tar.bz2)
 
 build() {
