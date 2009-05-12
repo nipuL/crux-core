@@ -1,23 +1,20 @@
 # Description: Kernel module utilities
-# URL:         http://www.kernel.org/pub/linux/kernel/people/rusty/modules
+# URL:         http://kerneltools.org/KernelTools.org
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 # Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
 
 name=module-init-tools
-version=3.6
+version=3.8
 release=1
-source=(http://www.kernel.org/pub/linux/kernel/people/rusty/modules/$name-$version.tar.bz2
-        http://crux.nu/~jue/files/dist/$name-man-$version.tar.bz2
-        modprobe.conf)
+source=(http://www.kernel.org/pub/linux/kernel/people/rusty/modules/$name-$version.tar.bz2)
 
 build() {
     cd $name-$version
-    cp $SRC/$name-man-$version/* .
     ./configure --prefix=/usr \
                 --bindir=/sbin \
                 --sbindir=/sbin
     make
     make DESTDIR=$PKG mandir=/usr/man install
-    install -D -m 644 $SRC/modprobe.conf $PKG/etc/modprobe.conf
+    install -d $PKG/etc/{modprobe.d,depmod.d}
     rm -f $PKG/sbin/generate-modprobe.conf
 }
