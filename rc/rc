@@ -87,7 +87,7 @@ fi
 # Load console keymap
 if [ "$KEYMAP" ]; then
 	echo "keyboard: $KEYMAP"
-	/bin/loadkeys -q $KEYMAP
+	/usr/bin/loadkeys -q $KEYMAP
 fi
 
 # Screen blanks after 15 minutes idle time
