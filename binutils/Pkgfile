@@ -5,10 +5,12 @@
 
 name=binutils
 version=2.19.1
-release=1
-source=(ftp://ftp.gnu.org/gnu/$name/$name-$version.tar.bz2)
+release=2
+source=(ftp://ftp.gnu.org/gnu/$name/$name-$version.tar.bz2
+        test-demangle.c.diff)
 
 build() {
+    patch -d $name-$version -p0 -i $SRC/test-demangle.c.diff
     sed -i '/^SUBDIRS/s/doc//' $name-$version/bfd/Makefile.in
     mkdir build
     cd build
