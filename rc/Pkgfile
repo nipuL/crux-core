@@ -4,7 +4,7 @@
 # Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
 
 name=rc
-version=2.21
+version=2.22
 release=1
 source=(inittab rc rc.modules rc.single rc.multi rc.local rc.fix rc.shutdown rc.conf)
 
