@@ -18,9 +18,6 @@ build() {
     make
     make DESTDIR=$PKG install
 
-    install -d $PKG/bin
-    mv $PKG/usr/bin/loadkeys $PKG/bin
-
     ln -sf default8x16.psfu.gz $PKG/usr/share/kbd/consolefonts/default.gz
 
     rm -r $PKG/usr/share/kbd/keymaps/{ppc,mac,atari,amiga,sun}

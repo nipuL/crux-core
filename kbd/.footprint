@@ -1,5 +1,3 @@
-drwxr-xr-x	root/root	bin/
--rwxr-xr-x	root/root	bin/loadkeys
 drwxr-xr-x	root/root	usr/
 drwxr-xr-x	root/root	usr/bin/
 -rwxr-xr-x	root/root	usr/bin/chvt
@@ -9,6 +7,7 @@ drwxr-xr-x	root/root	usr/bin/
 -rwxr-xr-x	root/root	usr/bin/getkeycodes
 -rwxr-xr-x	root/root	usr/bin/kbd_mode
 -rwxr-xr-x	root/root	usr/bin/kbdrate
+-rwxr-xr-x	root/root	usr/bin/loadkeys
 -rwxr-xr-x	root/root	usr/bin/openvt
 -rwxr-xr-x	root/root	usr/bin/setfont
 -rwxr-xr-x	root/root	usr/bin/setkeycodes
