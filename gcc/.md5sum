@@ -2,3 +2,4 @@ c7e65c47fa94541f7f6cd0cf3d9c850b  gcc-core-4.4.0.tar.bz2
 687cceaed97c4145281b6418c9b16847  gcc-g++-4.4.0.tar.bz2
 a617c4d3fa11e0c9410ac213eb061677  gcc-nocheck-fixincludes.patch
 74b40bb4ab4532b34258293daf6b63f9  gcc-objc-4.4.0.tar.bz2
+547895a1bfb0224835995a3bd9690ae4  test-demangle.c.diff
