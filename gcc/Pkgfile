@@ -11,7 +11,6 @@ version=4.4.0
 release=2
 source=(ftp://sources.redhat.com/pub/gcc/releases/$name-$version/$name-{core,g++,objc}-$version.tar.bz2
         $name-nocheck-fixincludes.patch test-demangle.c.diff)
-
 	
 build() {
     patch -d $name-$version -p1 -i $SRC/$name-nocheck-fixincludes.patch
