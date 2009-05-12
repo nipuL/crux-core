@@ -8,13 +8,14 @@
 
 name=gcc
 version=4.4.0
-release=1
+release=2
 source=(ftp://sources.redhat.com/pub/gcc/releases/$name-$version/$name-{core,g++,objc}-$version.tar.bz2
-        $name-nocheck-fixincludes.patch)
+        $name-nocheck-fixincludes.patch test-demangle.c.diff)
 
 	
 build() {
     patch -d $name-$version -p1 -i $SRC/$name-nocheck-fixincludes.patch
+    patch -d $name-$version -p0 -i $SRC/test-demangle.c.diff
     sed -i 's|REVISION|REVISION " (CRUX)"|' $name-$version/$name/version.c
 
     mkdir build

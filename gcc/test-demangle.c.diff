@@ -1,0 +1,40 @@
+# http://gcc.gnu.org/bugzilla/show_bug.cgi?id=39752
+
+Index: libiberty/testsuite/test-demangle.c
+===================================================================
+--- libiberty/testsuite/test-demangle.c	(revision 145957)
++++ libiberty/testsuite/test-demangle.c	(working copy)
+@@ -46,7 +46,7 @@
+ #define LINELEN 80
+ 
+ static void
+-getline(buf)
++get_line(buf)
+      struct line *buf;
+ {
+   char *data = buf->data;
+@@ -196,12 +196,12 @@
+     {
+       const char *inp;
+       
+-      getline (&format);
++      get_line (&format);
+       if (feof (stdin))
+ 	break;
+ 
+-      getline (&input);
+-      getline (&expect);
++      get_line (&input);
++      get_line (&expect);
+ 
+       inp = protect_end (input.data);
+ 
+@@ -322,7 +322,7 @@
+ 
+       if (no_params)
+ 	{
+-	  getline (&expect);
++	  get_line (&expect);
+ 	  result = cplus_demangle (inp, DMGL_ANSI|DMGL_TYPES);
+ 
+ 	  if (result
