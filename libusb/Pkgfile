@@ -3,21 +3,18 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=libusb
-version=0.1.12
+version=1.0.1
 release=1
-source=(http://dl.sourceforge.net/sourceforge/$name/$name-$version.tar.gz)
+source=(http://dl.sourceforge.net/sourceforge/$name/$name-$version.tar.bz2)
 
 build () {
     cd $name-$version
+    
     ./configure --prefix=/usr 
     make
     make DESTDIR=$PKG install
-
-    mkdir $PKG/lib
-    local file libfiles=$PKG/usr/lib/lib*-*.so.*.*.*
-    for file in $libfiles; do
-       mv $file $PKG/lib/
-       ln -sf ../../lib/${file##*/} $PKG/usr/lib/${file##*/}
-    done
-    /sbin/ldconfig -nN $PKG/lib
+    
+    install -d $PKG/lib
+    mv $PKG/usr/lib/libusb-1.0.so* $PKG/lib
+    ln -s /lib/libusb-1.0.so $PKG/usr/lib/libusb-1.0.so
 }
