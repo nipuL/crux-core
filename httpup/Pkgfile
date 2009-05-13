@@ -6,11 +6,16 @@
 
 name=httpup
 version=0.4.0j
-release=1
-source=(http://jw.tks6.net/files/crux/${name}-$version.tar.gz httpup)
+release=2
+source=(http://jw.tks6.net/files/crux/${name}-$version.tar.gz httpup
+        $name.diff)
 
 build() {
     cd $name-$version
+
+    # fix the build with gcc 4.4
+    patch -Np1 -i $SRC/$name.diff
+
     make
     mkdir -p $PKG/usr/{bin,man/man8}
 
