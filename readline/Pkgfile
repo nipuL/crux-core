@@ -4,7 +4,7 @@
 
 name=readline
 version=6.0
-release=1
+release=2
 source=(http://ftp.gnu.org/gnu/$name/$name-6.0.tar.gz \
         inputrc)
 
@@ -14,5 +14,5 @@ build() {
     make
     make DESTDIR=$PKG install
     install -D -m 644 $SRC/inputrc $PKG/etc/inputrc
-    rm -rf $PKG/usr/info
+    rm -r $PKG/usr/share/info
 }
