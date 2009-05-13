@@ -25,10 +25,6 @@ drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/history.3.gz
 -rw-r--r--	root/root	usr/man/man3/readline.3.gz
 drwxr-xr-x	root/root	usr/share/
-drwxr-xr-x	root/root	usr/share/info/
--rw-r--r--	root/root	usr/share/info/history.info
--rw-r--r--	root/root	usr/share/info/readline.info
--rw-r--r--	root/root	usr/share/info/rluserman.info
 drwxr-xr-x	root/root	usr/share/readline/
 -rw-r--r--	root/root	usr/share/readline/excallback.c
 -rw-r--r--	root/root	usr/share/readline/fileman.c
