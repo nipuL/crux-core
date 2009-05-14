@@ -4,8 +4,8 @@
 # Arch Maintainer:  Lucas Hazel, lucas at die dot net dot au
 
 name=filesystem
-version=2.5
-release=2
+version=2.6
+release=1
 source=(issue motd shells group passwd shadow securetty fstab mime.types)
 
 build() {
