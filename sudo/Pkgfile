@@ -1,7 +1,6 @@
 # Description: Sudo (superuser do)
 # URL:         http://www.sudo.ws/sudo/
-# Maintainer:  Juergen Daubert, juergen dot daubert at t-online dot de
-# Packager:    Todd Miller, todd dot miller at courtesan dot com
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=sudo
 version=1.7.1
