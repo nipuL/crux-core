@@ -1,0 +1,24 @@
+# Description: Sudo (superuser do)
+# URL:         http://www.sudo.ws/sudo/
+# Maintainer:  Juergen Daubert, juergen dot daubert at t-online dot de
+# Packager:    Todd Miller, todd dot miller at courtesan dot com
+
+name=sudo
+version=1.7.1
+release=1
+source=(http://www.sudo.ws/$name/dist/$name-$version.tar.gz)
+
+build() {
+    cd $name-$version
+
+    ./configure --prefix=/usr \
+                --libexecdir=/usr/lib \
+                --mandir=/usr/man \
+                --without-pam
+
+    make
+    make DESTDIR=$PKG install
+
+    ln -sf sudo $PKG/usr/bin/sudoedit
+    ln -sf sudo.8.gz $PKG/usr/man/man8/sudoedit.8
+}
