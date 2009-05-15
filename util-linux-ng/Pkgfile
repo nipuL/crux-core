@@ -4,18 +4,24 @@
 # Depends on:  e2fsprogs, ncurses, zlib
 
 name=util-linux-ng
-version=2.15
+version=2.15-12-g4bf7d60
 release=1
-source=(http://www.kernel.org/pub/linux/utils/$name/v2.15/$name-$version.tar.bz2)
+source=(http://crux.nu/~jue/files/dist/$name-$version.tar.bz2)
 
 build() {
     cd $name-$version
+
+    ./autogen.sh
     ./configure --prefix=/usr \
                 --mandir=/usr/man \
+                --with-fsprobe=builtin \
                 --disable-{nls,elvtune,wall} \
-                --enable-{write,rdev,raw,kill}
+                --enable-{write,rdev,raw,kill,fsck}
     make
     make DESTDIR=$PKG install
+
+    mv $PKG/lib/libblkid.{a,la} $PKG/usr/lib
+    ln -s /lib/libblkid.so $PKG/usr/lib/libblkid.so
 
     mkdir -p $PKG/etc
     touch $PKG/etc/adjtime

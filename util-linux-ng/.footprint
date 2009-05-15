@@ -6,12 +6,19 @@ drwxr-xr-x	root/root	bin/
 -rwsr-xr-x	root/root	bin/umount
 drwxr-xr-x	root/root	etc/
 -rw-r--r--	root/root	etc/adjtime (EMPTY)
+drwxr-xr-x	root/root	lib/
+lrwxrwxrwx	root/root	lib/libblkid.so -> libblkid.so.1.0.0
+lrwxrwxrwx	root/root	lib/libblkid.so.1 -> libblkid.so.1.0.0
+-rwxr-xr-x	root/root	lib/libblkid.so.1.0.0
 drwxr-xr-x	root/root	sbin/
 -rwxr-xr-x	root/root	sbin/agetty
+-rwxr-xr-x	root/root	sbin/blkid
 -rwxr-xr-x	root/root	sbin/blockdev
 -rwxr-xr-x	root/root	sbin/cfdisk
 -rwxr-xr-x	root/root	sbin/ctrlaltdel
 -rwxr-xr-x	root/root	sbin/fdisk
+-rwxr-xr-x	root/root	sbin/findfs
+-rwxr-xr-x	root/root	sbin/fsck
 -rwxr-xr-x	root/root	sbin/fsck.cramfs
 -rwxr-xr-x	root/root	sbin/hwclock
 -rwxr-xr-x	root/root	sbin/losetup
@@ -65,6 +72,15 @@ lrwxrwxrwx	root/root	usr/bin/linux64 -> setarch
 -rwxr-xr-x	root/root	usr/bin/ul
 -rwxr-xr-x	root/root	usr/bin/whereis
 -rwxr-sr-x	root/tty	usr/bin/write
+drwxr-xr-x	root/root	usr/include/
+drwxr-xr-x	root/root	usr/include/blkid/
+-rw-r--r--	root/root	usr/include/blkid/blkid.h
+drwxr-xr-x	root/root	usr/lib/
+-rw-r--r--	root/root	usr/lib/libblkid.a
+-rwxr-xr-x	root/root	usr/lib/libblkid.la
+lrwxrwxrwx	root/root	usr/lib/libblkid.so -> /lib/libblkid.so
+drwxr-xr-x	root/root	usr/lib/pkgconfig/
+-rw-r--r--	root/root	usr/lib/pkgconfig/blkid.pc
 drwxr-xr-x	root/root	usr/man/
 drwxr-xr-x	root/root	usr/man/man1/
 -rw-r--r--	root/root	usr/man/man1/cal.1.gz
@@ -105,16 +121,21 @@ drwxr-xr-x	root/root	usr/man/man1/
 -rw-r--r--	root/root	usr/man/man1/ul.1.gz
 -rw-r--r--	root/root	usr/man/man1/whereis.1.gz
 -rw-r--r--	root/root	usr/man/man1/write.1.gz
+drwxr-xr-x	root/root	usr/man/man3/
+-rw-r--r--	root/root	usr/man/man3/libblkid.3.gz
 drwxr-xr-x	root/root	usr/man/man5/
 -rw-r--r--	root/root	usr/man/man5/fstab.5.gz
 drwxr-xr-x	root/root	usr/man/man8/
 -rw-r--r--	root/root	usr/man/man8/agetty.8.gz
+-rw-r--r--	root/root	usr/man/man8/blkid.8.gz
 -rw-r--r--	root/root	usr/man/man8/blockdev.8.gz
 -rw-r--r--	root/root	usr/man/man8/cfdisk.8.gz
 -rw-r--r--	root/root	usr/man/man8/ctrlaltdel.8.gz
 -rw-r--r--	root/root	usr/man/man8/cytune.8.gz
 -rw-r--r--	root/root	usr/man/man8/fdformat.8.gz
 -rw-r--r--	root/root	usr/man/man8/fdisk.8.gz
+-rw-r--r--	root/root	usr/man/man8/findfs.8.gz
+-rw-r--r--	root/root	usr/man/man8/fsck.8.gz
 -rw-r--r--	root/root	usr/man/man8/hwclock.8.gz
 -rw-r--r--	root/root	usr/man/man8/i386.8.gz
 -rw-r--r--	root/root	usr/man/man8/isosize.8.gz
