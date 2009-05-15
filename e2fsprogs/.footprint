@@ -1,8 +1,6 @@
 drwxr-xr-x	root/root	etc/
 -rw-r--r--	root/root	etc/mke2fs.conf
 drwxr-xr-x	root/root	lib/
-lrwxrwxrwx	root/root	lib/libblkid.so.1 -> libblkid.so.1.0
--rwxr-xr-x	root/root	lib/libblkid.so.1.0
 lrwxrwxrwx	root/root	lib/libcom_err.so.2 -> libcom_err.so.2.1
 -rwxr-xr-x	root/root	lib/libcom_err.so.2.1
 lrwxrwxrwx	root/root	lib/libe2p.so.2 -> libe2p.so.2.3
@@ -15,13 +13,10 @@ lrwxrwxrwx	root/root	lib/libuuid.so.1 -> libuuid.so.1.2
 -rwxr-xr-x	root/root	lib/libuuid.so.1.2
 drwxr-xr-x	root/root	sbin/
 -rwxr-xr-x	root/root	sbin/badblocks
--rwxr-xr-x	root/root	sbin/blkid
 -rwxr-xr-x	root/root	sbin/dumpe2fs
 -rwxr-xr-x	root/root	sbin/e2fsck
 lrwxrwxrwx	root/root	sbin/e2label -> tune2fs
 -rwxr-xr-x	root/root	sbin/e2undo
-lrwxrwxrwx	root/root	sbin/findfs -> tune2fs
--rwxr-xr-x	root/root	sbin/fsck
 lrwxrwxrwx	root/root	sbin/fsck.ext2 -> e2fsck
 lrwxrwxrwx	root/root	sbin/fsck.ext3 -> e2fsck
 lrwxrwxrwx	root/root	sbin/fsck.ext4 -> e2fsck
@@ -42,9 +37,6 @@ drwxr-xr-x	root/root	usr/bin/
 -rwxr-xr-x	root/root	usr/bin/mk_cmds
 -rwxr-xr-x	root/root	usr/bin/uuidgen
 drwxr-xr-x	root/root	usr/include/
-drwxr-xr-x	root/root	usr/include/blkid/
--rw-r--r--	root/root	usr/include/blkid/blkid.h
--rw-r--r--	root/root	usr/include/blkid/blkid_types.h
 drwxr-xr-x	root/root	usr/include/e2p/
 -rw-r--r--	root/root	usr/include/e2p/e2p.h
 drwxr-xr-x	root/root	usr/include/et/
@@ -65,8 +57,6 @@ drwxr-xr-x	root/root	usr/include/ss/
 drwxr-xr-x	root/root	usr/include/uuid/
 -rw-r--r--	root/root	usr/include/uuid/uuid.h
 drwxr-xr-x	root/root	usr/lib/
--rw-r--r--	root/root	usr/lib/libblkid.a
-lrwxrwxrwx	root/root	usr/lib/libblkid.so -> /lib/libblkid.so.1
 -rw-r--r--	root/root	usr/lib/libcom_err.a
 lrwxrwxrwx	root/root	usr/lib/libcom_err.so -> /lib/libcom_err.so.2
 -rw-r--r--	root/root	usr/lib/libe2p.a
@@ -78,7 +68,6 @@ lrwxrwxrwx	root/root	usr/lib/libss.so -> /lib/libss.so.2
 -rw-r--r--	root/root	usr/lib/libuuid.a
 lrwxrwxrwx	root/root	usr/lib/libuuid.so -> /lib/libuuid.so.1
 drwxr-xr-x	root/root	usr/lib/pkgconfig/
--rw-r--r--	root/root	usr/lib/pkgconfig/blkid.pc
 -rw-r--r--	root/root	usr/lib/pkgconfig/com_err.pc
 -rw-r--r--	root/root	usr/lib/pkgconfig/e2p.pc
 -rw-r--r--	root/root	usr/lib/pkgconfig/ext2fs.pc
@@ -93,7 +82,6 @@ drwxr-xr-x	root/root	usr/man/man1/
 -rw-r--r--	root/root	usr/man/man1/uuidgen.1.gz
 drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/com_err.3.gz
--rw-r--r--	root/root	usr/man/man3/libblkid.3.gz
 -rw-r--r--	root/root	usr/man/man3/uuid.3.gz
 -rw-r--r--	root/root	usr/man/man3/uuid_clear.3.gz
 -rw-r--r--	root/root	usr/man/man3/uuid_compare.3.gz
@@ -110,14 +98,11 @@ drwxr-xr-x	root/root	usr/man/man5/
 -rw-r--r--	root/root	usr/man/man5/mke2fs.conf.5.gz
 drwxr-xr-x	root/root	usr/man/man8/
 -rw-r--r--	root/root	usr/man/man8/badblocks.8.gz
--rw-r--r--	root/root	usr/man/man8/blkid.8.gz
 -rw-r--r--	root/root	usr/man/man8/dumpe2fs.8.gz
 -rw-r--r--	root/root	usr/man/man8/e2fsck.8.gz
 -rw-r--r--	root/root	usr/man/man8/e2label.8.gz
 -rw-r--r--	root/root	usr/man/man8/e2undo.8.gz
 -rw-r--r--	root/root	usr/man/man8/filefrag.8.gz
--rw-r--r--	root/root	usr/man/man8/findfs.8.gz
--rw-r--r--	root/root	usr/man/man8/fsck.8.gz
 lrwxrwxrwx	root/root	usr/man/man8/fsck.ext2.8.gz -> e2fsck.8.gz
 lrwxrwxrwx	root/root	usr/man/man8/fsck.ext3.8.gz -> e2fsck.8.gz
 lrwxrwxrwx	root/root	usr/man/man8/fsck.ext4.8.gz -> e2fsck.8.gz
