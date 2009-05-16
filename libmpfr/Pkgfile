@@ -6,13 +6,13 @@
 
 name=libmpfr
 version=2.4.1
-release=1
+release=2
 source=(http://www.mpfr.org/mpfr-$version/mpfr-$version.tar.bz2
-        $name-$version-patch{01,02})
+        $name-$version.patch)
 
 build() {
     cd mpfr-$version
-    cat $SRC/$name-$version-patch* | patch -p1
+    patch -p1 -i $SRC/$name-$version.patch
     ./configure --prefix=/usr
     make
     make DESTDIR=$PKG install
