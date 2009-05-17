@@ -6,10 +6,10 @@
 # Depends on:	ncurses
 
 name=procps
-version=3.2.7
+version=3.2.8
 release=1
 source=(http://procps.sourceforge.net/$name-$version.tar.gz \
-	sysctl.conf)
+        sysctl.conf)
 
 build() {
     cd $name-$version
@@ -22,8 +22,7 @@ build() {
 	 man8=$PKG/usr/man/man8/ \
 	 install
     install -D -m644 ../sysctl.conf $PKG/etc/sysctl.conf
-    rm -f $PKG/bin/kill \
-	  $PKG/usr/man/man1/kill.1
+    rm -f $PKG/{bin/kill,usr/man/man1/kill.1}
     ln -sf pgrep $PKG/usr/bin/pkill
     ln -sf skill $PKG/usr/bin/snice
     chmod +w -R $PKG
