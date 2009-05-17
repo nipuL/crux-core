@@ -7,17 +7,15 @@
 # Depends on:  libmpfr, libgmp
 
 name=gcc
-version=4.3.3
+version=4.4.0
 release=1
 source=(ftp://sources.redhat.com/pub/gcc/releases/$name-$version/$name-{core,g++,objc}-$version.tar.bz2
-        $name-$version-nocheck-fixincludes.patch)
+        $name-nocheck-fixincludes.patch)
 
 	
 build() {
-    patch -d $name-$version -p1 -i $SRC/$name-$version-nocheck-fixincludes.patch
-
-    sed -i -e 's|VERSUFFIX ""|VERSUFFIX " (CRUX)"|' \
-        $name-$version/$name/version.c
+    patch -d $name-$version -p1 -i $SRC/$name-nocheck-fixincludes.patch
+    sed -i 's|REVISION|REVISION " (CRUX)"|' $name-$version/$name/version.c
 
     mkdir build
     cd build
