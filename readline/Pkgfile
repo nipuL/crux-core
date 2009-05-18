@@ -3,13 +3,14 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=readline
-version=6.0
-release=2
+version=6.0.3
+release=1
 source=(http://ftp.gnu.org/gnu/$name/$name-6.0.tar.gz \
-        inputrc)
+        $name-6.0-001-003.patch inputrc)
 
 build() {
     cd $name-6.0
+    patch -p0 -i $SRC/$name-6.0-001-003.patch
     ./configure --prefix=/usr --mandir=/usr/man
     make
     make DESTDIR=$PKG install
