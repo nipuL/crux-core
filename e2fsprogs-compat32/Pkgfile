@@ -5,7 +5,7 @@
 
 name=e2fsprogs-compat32
 version=1.41.5
-release=1
+release=2
 source=(http://dl.sourceforge.net/sourceforge/e2fsprogs/e2fsprogs-$version.tar.gz \
         e2fsprogs-symlink.patch)
 
@@ -23,9 +23,11 @@ build() {
         --disable-imager \
         --disable-e2initrd-helper \
         --disable-evms \
-        --disable-nls
+        --disable-nls \
+	--disable-fsck \
+	--disable-libblkid
     make
-    make DESTDIR=$PKG install install-libs
+    make -j1 DESTDIR=$PKG install install-libs
     rm -rf $PKG/{etc,sbin,usr/{bin,etc,include,man,sbin,share}}
     chmod +w -R $PKG
 }
