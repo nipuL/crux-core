@@ -4,16 +4,20 @@
 
 name=glibc
 version=2.10.1
-release=1
-source=(http://crux.nu/files/distfiles/glibc-$version-1.tar.bz2
-        http://crux.nu/files/distfiles/kernel-headers-2.6.29.tar.bz2
+release=2
+source=(http://ftp.gnu.org/gnu/glibc/glibc-$version.tar.bz2
+        http://ftp.gnu.org/gnu/glibc/glibc-libidn-$version.tar.bz2 
+        http://crux.nu/files/distfiles/kernel-headers-2.6.29-1.tar.bz2
         hosts resolv.conf nsswitch.conf host.conf ld.so.conf)
 
 build() {
-    # install build kernel headers
+    # install kernel headers
     mkdir $PKG/usr/
     cp -r kernel-headers-2.6.29/include $PKG/usr
     chown root:root $PKG/usr
+
+    # libidn files
+    mv $name-libidn-$version $name-$version/libidn
 
     mkdir build
     cd build
@@ -21,13 +25,14 @@ build() {
                                 --libexecdir=/usr/lib \
                                 --with-headers=$PKG/usr/include \
                                 --with-tls \
-                                --enable-kernel=2.6.16 \
+                                --enable-kernel=2.6.27 \
                                 --enable-add-ons \
                                 --disable-profile \
                                 --without-gd
     make
     #make check
     make install_root=$PKG install
+
     cp $SRC/{hosts,resolv.conf,nsswitch.conf,host.conf,ld.so.conf} $PKG/etc
     ln -sf ../usr/share/zoneinfo/UTC $PKG/etc/localtime
     mkdir -p $PKG/etc/ld.so.conf.d $PKG/usr/lib/locale

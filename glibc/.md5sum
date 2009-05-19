@@ -1,7 +1,8 @@
-28720af9d8d8dd03fe7bfecc0fe68c0a  glibc-2.10.1-1.tar.bz2
+ee71dedf724dc775e4efec9b823ed3be  glibc-2.10.1.tar.bz2
+8ef88560ec608d5923ee05eb5f0e15ea  glibc-libidn-2.10.1.tar.bz2
 96156bec8e05de67384dc93e72bdc313  host.conf
 fbbc215a9b15ba4846f326cc88108057  hosts
-a5c937c5ebe98cd2a6c3368e4515693e  kernel-headers-2.6.29.tar.bz2
+5f7ed4c03538a0ed1c5243fa38d96a4f  kernel-headers-2.6.29-1.tar.bz2
 f7fefce570a3c776e26e778c5e401490  ld.so.conf
 75931315bf9bc9be15a5e25e4ddd5f0d  nsswitch.conf
 acf9daad1ee85de5efd3543965596a63  resolv.conf
