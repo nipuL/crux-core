@@ -1,7 +1,7 @@
 28720af9d8d8dd03fe7bfecc0fe68c0a  glibc-2.10.1-1.tar.bz2
 96156bec8e05de67384dc93e72bdc313  host.conf
 fbbc215a9b15ba4846f326cc88108057  hosts
-1ae157f790b8a3d6ec6f8c2343edf49d  kernel-headers-2.6.29.tar.bz2
+32a94ba2168752076e820024826f0dce  kernel-headers-2.6.29.tar.bz2
 f7fefce570a3c776e26e778c5e401490  ld.so.conf
 75931315bf9bc9be15a5e25e4ddd5f0d  nsswitch.conf
 acf9daad1ee85de5efd3543965596a63  resolv.conf
