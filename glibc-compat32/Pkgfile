@@ -6,7 +6,7 @@
 
 name=glibc-compat32
 version=2.10.1
-release=2
+release=1
 source=(http://crux.nu/files/distfiles/glibc-$version-1.tar.bz2)
 
 build() {
