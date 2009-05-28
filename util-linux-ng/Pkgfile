@@ -5,14 +5,13 @@
 # Depends on:  e2fsprogs, ncurses, zlib
 
 name=util-linux-ng
-version=2.15-12-g4bf7d60
+version=2.15.1-rc1
 release=1
-source=(http://crux.nu/~jue/files/dist/$name-$version.tar.bz2)
+source=(http://ftp.kernel.org/pub/linux/utils/$name/v2.15/$name-$version.tar.bz2)
 
 build() {
     cd $name-$version
 
-    ./autogen.sh
     ./configure --prefix=/usr \
                 --mandir=/usr/man \
                 --with-fsprobe=builtin \
