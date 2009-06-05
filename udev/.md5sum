@@ -1,5 +1,10 @@
 c0da74341672681c9bd924439ea4e84d  cdrom.rules
 cbb9848e6c3662c966edaed90ce90c3f  cdsymlinks
 f27ca9ef668bcf7561717e7543d06f4c  start_udev
+<<<<<<< HEAD:udev/.md5sum
 1670fe81cabf5161319c52084cf81134  udev-141.tar.bz2
 54a23553332b0f1aa6366f884cd4799e  udev-config-20081015.tar.bz2
+=======
+3edc4cf383dccb06d866c5156d59ddd5  udev-142.tar.bz2
+dc6424ac6fa38635328ad962b4e489db  udev-config-20090523.tar.bz2
+>>>>>>> b764bcb... udev: updated to new LFS rules.:udev/.md5sum

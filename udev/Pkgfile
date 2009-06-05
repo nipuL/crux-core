@@ -4,11 +4,11 @@
 # Arch Maintainer: CRUX x86_64 System Team, core-ports-x86_64 at crux dot nu
 
 name=udev
-version=141
-release=1
+version=142
+release=2
 source=(ftp://ftp.kernel.org/pub/linux/utils/kernel/hotplug/$name-$version.tar.bz2 \
-	http://crux.nu/files/distfiles/udev-config-20081015.tar.bz2 \
-	start_udev cdrom.rules cdsymlinks)
+	http://crux.nu/files/distfiles/udev-config-20090523.tar.bz2 \
+	start_udev)
 
 build() {
 	local extras="extras/ata_id \
@@ -28,9 +28,8 @@ build() {
 	make EXTRAS="$extras"
 	make install DESTDIR=$PKG mandir="/usr/man" EXTRAS="$extras"
 
-	pushd $SRC/udev-config-20081015
-	make DESTDIR=$PKG RULES_DIR=/lib/udev/rules.d install
-	popd
+	# scsi_id needs to be multi-path
+	(cd $PKG/sbin; ln -s ../lib/udev/scsi_id scsi_id)
 
 	mkdir -p $PKG/lib/{firmware,udev/devices/{pts,shm}}
 	mknod -m 600 $PKG/lib/udev/devices/console c 5 1
@@ -42,13 +41,10 @@ build() {
 	ln -s /proc/self/fd/2 $PKG/lib/udev/devices/stderr
 	ln -s /proc/kcore $PKG/lib/udev/devices/core
 	install -m 0755 $SRC/start_udev $PKG/sbin
-	install -m 0755 $SRC/cdsymlinks $PKG/lib/udev/
-	install -m 644 rules/rules.d/[0-9]* $PKG/lib/udev/rules.d/
-	install -m 644 $SRC/cdrom.rules $PKG/lib/udev/rules.d/61-cdrom.rules
 
-	# Comment uucp lines in default rules
-	sed -i 's|.*uucp.*|#&|g' $PKG/lib/udev/rules.d/50-udev-default.rules
-	sed -i 's|.*uucp.*|#&|g' $PKG/lib/udev/rules.d/55-lfs.rules
+	pushd $SRC/udev-config-20090523
+	make DESTDIR=$PKG RULES_DIR=/lib/udev/rules.d install
+	popd
 
 	# Keep udevinfo for legacy support
 	mkdir -p $PKG/usr/bin
