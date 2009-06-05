@@ -4,9 +4,9 @@
 
 name=udev
 version=142
-release=1
+release=2
 source=(ftp://ftp.kernel.org/pub/linux/utils/kernel/hotplug/$name-$version.tar.bz2 \
-	http://crux.nu/files/distfiles/udev-config-20081015.tar.bz2 \
+	http://crux.nu/files/distfiles/udev-config-20090523.tar.bz2 \
 	start_udev)
 
 build() {
@@ -18,8 +18,7 @@ build() {
 	make
 	make install DESTDIR=$PKG
 
-	# scsi_id + vol_id need to be multi-path
-	(cd $PKG/sbin; ln -s ../lib/udev/vol_id vol_id)
+	# scsi_id needs to be multi-path
 	(cd $PKG/sbin; ln -s ../lib/udev/scsi_id scsi_id)
 
 	mkdir -p $PKG/lib/{firmware,udev/devices/{pts,shm}}
@@ -40,13 +39,9 @@ build() {
 	# Add CRUX items + LFS rules
 	install -m 0755 $SRC/start_udev $PKG/sbin
 
-	pushd $SRC/udev-config-20081015
+	pushd $SRC/udev-config-20090523
 	make DESTDIR=$PKG RULES_DIR=/lib/udev/rules.d install
 	popd
-
-	# Comment uucp lines in default rules
-	sed -i 's|.*uucp.*|#&|g' $PKG/lib/udev/rules.d/50-udev-default.rules
-	sed -i 's|.*uucp.*|#&|g' $PKG/lib/udev/rules.d/55-lfs.rules
 
 	# Keep udevinfo for legacy support
 	mkdir -p $PKG/usr/bin
