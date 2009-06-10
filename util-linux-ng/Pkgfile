@@ -4,7 +4,7 @@
 # Depends on:  e2fsprogs, ncurses, zlib
 
 name=util-linux-ng
-version=2.15
+version=2.15.1
 release=1
 source=(http://www.kernel.org/pub/linux/utils/$name/v2.15/$name-$version.tar.bz2)
 
