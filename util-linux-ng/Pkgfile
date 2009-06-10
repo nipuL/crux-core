@@ -4,8 +4,8 @@
 # Depends on:  e2fsprogs, ncurses, zlib
 
 name=util-linux-ng
-version=2.15.1-rc1
-release=1
+version=2.15.1
+release=2
 source=(http://ftp.kernel.org/pub/linux/utils/$name/v2.15/$name-$version.tar.bz2)
 
 build() {
