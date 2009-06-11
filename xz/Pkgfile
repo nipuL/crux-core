@@ -1,0 +1,17 @@
+# Description: Compression utility using the lzma algorithm, successor of lzma-utils
+# URL:         http://tukaani.org/xz/
+# Maintainer:  Juergen Daubert, juergen dot daubert at t-online dot de
+
+name=xz
+version=4.999.8beta-68-g1735d31
+release=1
+source=(http://jue.li/crux/files/$name-$version.tar.bz2)
+
+build() {
+    cd $name-$version
+    ./autogen.sh
+    ./configure --prefix=/usr --mandir=/usr/man
+    make
+    make DESTDIR=$PKG install
+    rm -r $PKG/usr/share
+}
