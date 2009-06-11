@@ -9,8 +9,9 @@ source=(http://crux.nu/files/distfiles/$name-$version.tar.bz2)
 
 build() {
     cd $name-${version%%-*}
-    ./configure --prefix=/usr --mandir=/usr/man
+    ./configure --prefix=/usr \
+                --mandir=/usr/man \
+                --disable-nls
     make
     make DESTDIR=$PKG install
-    rm -r $PKG/usr/share
 }
