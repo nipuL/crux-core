@@ -4,7 +4,7 @@
 
 name=lilo
 version=22.8
-release=1
+release=2
 source=(http://www.ibiblio.org/pub/Linux/system/boot/lilo/$name-$version.src.tar.gz \
         $name-config.patch lilo.conf)
 
