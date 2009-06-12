@@ -5,11 +5,13 @@
 
 #/dev/#REISERFS_ROOT#  /         reiserfs  relatime               0      0
 #/dev/#EXT3FS_ROOT#    /         ext3      relatime               0      1
+#/dev/#EXT4FS_ROOT#    /         ext4      relatime               0      1
 #/dev/#JFS_ROOT#       /         jfs       relatime               1      1
 #/dev/#XFS_ROOT#       /         xfs       relatime               0      0
 #/dev/#SWAP#           swap      swap      defaults               0      0
 #/dev/#REISERFS_HOME#  /home     reiserfs  relatime               0      0
 #/dev/#EXT3FS_HOME#    /home     ext3      relatime               0      2
+#/dev/#EXT4FS_HOME#    /home     ext4      relatime               0      2
 #/dev/#JFS_HOME#       /home     jfs       relatime               1      2
 #/dev/#XFS_HOME#       /home     xfs       relatime               0      0
 #/dev/cdrom            /cdrom    iso9660   ro,user,noauto,unhide  0      0
