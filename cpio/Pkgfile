@@ -4,17 +4,14 @@
 # Arch Maintainer: CRUX x86_64 System Team, core-ports-x86_64 at crux dot nu
 
 name=cpio
-version=2.9
-release=2
-source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.bz2
-        cpio-2.9-gcc43-inline.patch)
+version=2.10
+release=1
+source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.bz2)
 
 build() {
     cd $name-$version
-    patch -p0 -i $SRC/cpio-2.9-gcc43-inline.patch
     ./configure --prefix=/usr \
                 --mandir=/usr/man \
-                --with-rmt=/usr/lib/tar/rmt \
                 --disable-nls
     make
     make DESTDIR=$PKG install
