@@ -13,6 +13,12 @@ echo "The system is coming up.  Please wait."
 /bin/mount -n -t sysfs none /sys
 /sbin/start_udev
 
+# Create device-mapper device nodes and scan for LVM volume groups
+if [ -x /sbin/lvm ]; then
+	/sbin/vgscan --mknodes --ignorelockingfailure
+	/sbin/vgchange --ignorelockingfailure -a y
+fi
+
 # Mount root read-only
 /bin/mount -n -o remount,ro /
 
