@@ -10,6 +10,9 @@ drwxr-xr-x	root/root	lib/
 lrwxrwxrwx	root/root	lib/libblkid.so -> libblkid.so.1.0.0
 lrwxrwxrwx	root/root	lib/libblkid.so.1 -> libblkid.so.1.0.0
 -rwxr-xr-x	root/root	lib/libblkid.so.1.0.0
+lrwxrwxrwx	root/root	lib/libuuid.so -> libuuid.so.1.0.0
+lrwxrwxrwx	root/root	lib/libuuid.so.1 -> libuuid.so.1.0.0
+-rwxr-xr-x	root/root	lib/libuuid.so.1.0.0
 drwxr-xr-x	root/root	sbin/
 -rwxr-xr-x	root/root	sbin/agetty
 -rwxr-xr-x	root/root	sbin/blkid
@@ -30,6 +33,7 @@ drwxr-xr-x	root/root	sbin/
 -rwxr-xr-x	root/root	sbin/sfdisk
 lrwxrwxrwx	root/root	sbin/swapoff -> swapon
 -rwxr-xr-x	root/root	sbin/swapon
+-rwxr-xr-x	root/root	sbin/switch_root
 drwxr-xr-x	root/root	usr/
 drwxr-xr-x	root/root	usr/bin/
 -rwxr-xr-x	root/root	usr/bin/cal
@@ -70,17 +74,24 @@ lrwxrwxrwx	root/root	usr/bin/linux64 -> setarch
 -rwxr-xr-x	root/root	usr/bin/tailf
 -rwxr-xr-x	root/root	usr/bin/taskset
 -rwxr-xr-x	root/root	usr/bin/ul
+-rwxr-xr-x	root/root	usr/bin/uuidgen
 -rwxr-xr-x	root/root	usr/bin/whereis
 -rwxr-sr-x	root/tty	usr/bin/write
 drwxr-xr-x	root/root	usr/include/
 drwxr-xr-x	root/root	usr/include/blkid/
 -rw-r--r--	root/root	usr/include/blkid/blkid.h
+drwxr-xr-x	root/root	usr/include/uuid/
+-rw-r--r--	root/root	usr/include/uuid/uuid.h
 drwxr-xr-x	root/root	usr/lib/
 -rw-r--r--	root/root	usr/lib/libblkid.a
 -rwxr-xr-x	root/root	usr/lib/libblkid.la
 lrwxrwxrwx	root/root	usr/lib/libblkid.so -> /lib/libblkid.so
+-rw-r--r--	root/root	usr/lib/libuuid.a
+-rwxr-xr-x	root/root	usr/lib/libuuid.la
+lrwxrwxrwx	root/root	usr/lib/libuuid.so -> /lib/libuuid.so
 drwxr-xr-x	root/root	usr/lib/pkgconfig/
 -rw-r--r--	root/root	usr/lib/pkgconfig/blkid.pc
+-rw-r--r--	root/root	usr/lib/pkgconfig/uuid.pc
 drwxr-xr-x	root/root	usr/man/
 drwxr-xr-x	root/root	usr/man/man1/
 -rw-r--r--	root/root	usr/man/man1/cal.1.gz
@@ -119,10 +130,20 @@ drwxr-xr-x	root/root	usr/man/man1/
 -rw-r--r--	root/root	usr/man/man1/tailf.1.gz
 -rw-r--r--	root/root	usr/man/man1/taskset.1.gz
 -rw-r--r--	root/root	usr/man/man1/ul.1.gz
+-rw-r--r--	root/root	usr/man/man1/uuidgen.1.gz
 -rw-r--r--	root/root	usr/man/man1/whereis.1.gz
 -rw-r--r--	root/root	usr/man/man1/write.1.gz
 drwxr-xr-x	root/root	usr/man/man3/
 -rw-r--r--	root/root	usr/man/man3/libblkid.3.gz
+-rw-r--r--	root/root	usr/man/man3/uuid.3.gz
+-rw-r--r--	root/root	usr/man/man3/uuid_clear.3.gz
+-rw-r--r--	root/root	usr/man/man3/uuid_compare.3.gz
+-rw-r--r--	root/root	usr/man/man3/uuid_copy.3.gz
+-rw-r--r--	root/root	usr/man/man3/uuid_generate.3.gz
+-rw-r--r--	root/root	usr/man/man3/uuid_is_null.3.gz
+-rw-r--r--	root/root	usr/man/man3/uuid_parse.3.gz
+-rw-r--r--	root/root	usr/man/man3/uuid_time.3.gz
+-rw-r--r--	root/root	usr/man/man3/uuid_unparse.3.gz
 drwxr-xr-x	root/root	usr/man/man5/
 -rw-r--r--	root/root	usr/man/man5/fstab.5.gz
 drwxr-xr-x	root/root	usr/man/man8/
@@ -156,8 +177,10 @@ drwxr-xr-x	root/root	usr/man/man8/
 -rw-r--r--	root/root	usr/man/man8/sfdisk.8.gz
 -rw-r--r--	root/root	usr/man/man8/swapoff.8.gz
 -rw-r--r--	root/root	usr/man/man8/swapon.8.gz
+-rw-r--r--	root/root	usr/man/man8/switch_root.8.gz
 -rw-r--r--	root/root	usr/man/man8/tunelp.8.gz
 -rw-r--r--	root/root	usr/man/man8/umount.8.gz
+-rw-r--r--	root/root	usr/man/man8/uuidd.8.gz
 -rw-r--r--	root/root	usr/man/man8/vidmode.8.gz
 drwxr-xr-x	root/root	usr/sbin/
 -rwxr-xr-x	root/root	usr/sbin/fdformat
@@ -168,4 +191,8 @@ lrwxrwxrwx	root/root	usr/sbin/ramsize -> rdev
 lrwxrwxrwx	root/root	usr/sbin/rootflags -> rdev
 -rwxr-xr-x	root/root	usr/sbin/rtcwake
 -rwxr-xr-x	root/root	usr/sbin/tunelp
+-rwxr-xr-x	root/root	usr/sbin/uuidd
 lrwxrwxrwx	root/root	usr/sbin/vidmode -> rdev
+drwxr-xr-x	root/root	var/
+drwxr-xr-x	root/root	var/lib/
+drwxr-xr-x	root/root	var/lib/libuuid/
