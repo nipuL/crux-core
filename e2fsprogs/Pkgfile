@@ -11,7 +11,9 @@ source=(http://dl.sourceforge.net/sourceforge/$name/$name-$version.tar.gz \
 
 build() {
     cd $name-$version
+
     patch -p1 -i $SRC/$name-symlink.patch
+
     ./configure --prefix=/usr \
                 --with-root-prefix= \
                 --mandir=/usr/man \
@@ -19,9 +21,17 @@ build() {
                 --disable-debugfs \
                 --disable-imager \
                 --disable-e2initrd-helper \
-                --disable-nls
+                --disable-nls \
+                --disable-fsck \
+                --disable-libblkid \
+                --disable-libuuid \
+                --disable-uuidd
+
     make
     make -j1 DESTDIR=$PKG install install-libs
+
+    rm $PKG/usr/{bin/uuidgen,man/man1/uuidgen.1}
     rm -r $PKG/usr/share/info
+
     chmod +w -R $PKG
 }
