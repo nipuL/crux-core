@@ -5,25 +5,25 @@
 # Depends on:  e2fsprogs, ncurses, zlib
 
 name=util-linux-ng
-version=2.15.1
+version=2.16-rc1
 release=1
-source=(http://ftp.kernel.org/pub/linux/utils/$name/v2.15/$name-$version.tar.bz2)
+source=(http://ftp.kernel.org/pub/linux/utils/$name/v2.16/$name-$version.tar.bz2)
 
 build() {
     cd $name-$version
 
     ./configure --prefix=/usr \
                 --mandir=/usr/man \
-                --with-fsprobe=builtin \
-                --disable-{nls,elvtune,wall} \
-                --enable-{write,rdev,raw,kill,fsck}
+                --disable-{nls,wall} \
+                --enable-{write,rdev,raw,kill}
     make
     make DESTDIR=$PKG install
 
-    mv $PKG/lib/libblkid.{a,la} $PKG/usr/lib
+    mv $PKG/lib/lib*.{a,la} $PKG/usr/lib
     ln -s /lib/libblkid.so $PKG/usr/lib/libblkid.so
+    ln -s /lib/libuuid.so $PKG/usr/lib/libuuid.so
 
-    mkdir -p $PKG/etc
+    install -d $PKG/{etc,var/lib/libuuid}
     touch $PKG/etc/adjtime
 
     rm -r $PKG/usr/share
