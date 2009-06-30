@@ -1,7 +1,7 @@
 # Description: Filesystem utilities for XFS
 # URL:         http://oss.sgi.com/projects/xfs/
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
-# Depends on:  e2fsprogs
+# Depends on:  util-linux-ng
 
 name=xfsprogs
 version=3.0.1
