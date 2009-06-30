@@ -3,8 +3,8 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=e2fsprogs
-version=1.41.6
-release=2
+version=1.41.7
+release=1
 source=(http://dl.sourceforge.net/sourceforge/$name/$name-$version.tar.gz \
         $name-symlink.patch)
 
@@ -18,7 +18,6 @@ build() {
                 --disable-debugfs \
                 --disable-imager \
                 --disable-e2initrd-helper \
-                --disable-evms \
                 --disable-nls \
                 --disable-fsck \
                 --disable-libblkid
