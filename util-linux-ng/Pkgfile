@@ -2,7 +2,7 @@
 # URL:         http://userweb.kernel.org/~kzak/util-linux-ng/
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 # Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
-# Depends on:  e2fsprogs, ncurses, zlib
+# Depends on:  ncurses zlib
 
 name=util-linux-ng
 version=2.16-rc1
