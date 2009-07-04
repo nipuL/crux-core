@@ -4,27 +4,28 @@
 # Depends on:  ncurses zlib
 
 name=util-linux-ng
-version=2.16-rc1
-release=2
-source=(http://ftp.kernel.org/pub/linux/utils/$name/v2.16/$name-$version.tar.bz2)
+version=2.16-rc2
+release=1
+source=(http://ftp.kernel.org/pub/linux/utils/$name/v2.16/$name-$version.tar.bz2
+        $name-$version-install-hook.patch)
 
 build() {
     cd $name-$version
 
+    patch -p1 -i $SRC/$name-$version-install-hook.patch
+
+    aclocal
+    automake
+
     ./configure --prefix=/usr \
-                --libdir=/usr/lib \
                 --mandir=/usr/man \
                 --disable-{nls,wall} \
                 --enable-{write,rdev,raw,kill}
     make -j1 
-    make DESTDIR=$PKG install
+    make -j1 DESTDIR=$PKG install
 
-    install -d $PKG/lib
-    mv $PKG/usr/lib/lib*.so* $PKG/lib
-    ln -s /lib/libblkid.so $PKG/usr/lib/libblkid.so
-    ln -s /lib/libuuid.so $PKG/usr/lib/libuuid.so
-
-    install -d $PKG/{etc,var/lib/libuuid}
+    install -d $PKG/etc
+    install -d $PKG/var/{lib/libuuid,run/uuidd}
     touch $PKG/etc/adjtime
 
     rm -r $PKG/usr/share

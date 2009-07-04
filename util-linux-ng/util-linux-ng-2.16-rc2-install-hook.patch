@@ -1,0 +1,100 @@
+# http://www.spinics.net/lists/util-linux-ng/msg02369.html
+
+diff --git a/login-utils/Makefile.am b/login-utils/Makefile.am
+index 5ed581b..d91a5eb 100644
+--- a/login-utils/Makefile.am
++++ b/login-utils/Makefile.am
+@@ -124,6 +124,8 @@ install-exec-hook::
+ 	cd $(DESTDIR)$(sbindir) && ln -sf initctl need
+ 	cd $(DESTDIR)$(sbindir) && ln -sf initctl display-services
+ 	cd $(DESTDIR)$(sbindir) && ln -sf initctl provide
++
++install-data-hook:
+ 	cd $(DESTDIR)$(mandir)/man8 && ln -sf initctl.8 need.8
+ 	cd $(DESTDIR)$(mandir)/man8 && ln -sf initctl.8 display-services.8
+ 	cd $(DESTDIR)$(mandir)/man8 && ln -sf initctl.8 provide.8
+diff --git a/shlibs/blkid/src/Makefile.am b/shlibs/blkid/src/Makefile.am
+index 8b1f46b..8129d28 100644
+--- a/shlibs/blkid/src/Makefile.am
++++ b/shlibs/blkid/src/Makefile.am
+@@ -21,7 +21,7 @@ AM_CPPFLAGS += -I$(ul_libblkid_srcdir) $(common_cflags)
+ blkidincdir = $(includedir)/blkid
+ blkidinc_HEADERS = blkid.h
+ 
+-lib_LTLIBRARIES = libblkid.la
++usrlibexec_LTLIBRARIES = libblkid.la
+ libblkid_la_SOURCES = cache.c dev.c devname.c devno.c getsize.c llseek.c  \
+ 		     probe.c read.c resolve.c save.c tag.c version.c verify.c \
+ 		     encode.c blkid.h list.h blkidP.h probers/probers.h \
+@@ -49,19 +49,17 @@ test_%: %.c
+ 	$(COMPILE) -DTEST_PROGRAM $< .libs/libblkid.a -o $@ $(common_ldadd)
+ 
+ 
+-# move devel files from $(libdir) to $(usrlibexecdir) if needed
+-install-data-hook:
+-	rm  $(DESTDIR)$(libdir)/$(lib_LTLIBRARIES)
++# move lib from $(usrlibexecdir) to $(libdir) if needed
++install-exec-hook:
+ 	if test "$(usrlibexecdir)" != "$(libdir)"; then \
+-		mkdir -p $(DESTDIR)$(usrlibexecdir); \
+-		mv $(DESTDIR)$(libdir)/libblkid.a $(DESTDIR)$(usrlibexecdir)/; \
+-		so_img_name=$$(readlink $(DESTDIR)$(libdir)/libblkid.so); \
+-		rm $(DESTDIR)$(libdir)/libblkid.so; \
++		mkdir -p $(DESTDIR)$(libdir); \
++		mv $(DESTDIR)$(usrlibexecdir)/libblkid.so.* $(DESTDIR)$(libdir); \
++		so_img_name=$$(readlink $(DESTDIR)$(usrlibexecdir)/libblkid.so); \
+ 		so_img_rel_target=$$(echo $(usrlibexecdir) | sed 's,\(^/\|\)[^/][^/]*,..,g'); \
+-		ln -sf  $$so_img_rel_target$(libdir)/$$so_img_name \
+-			$(DESTDIR)$(usrlibexecdir)/libblkid.so; \
++		(cd $(DESTDIR)$(usrlibexecdir) && \
++			rm -f libblkid.so && \
++			$(LN_S) $$so_img_rel_target$(libdir)/$$so_img_name libblkid.so); \
+ 	fi
+ 
+ uninstall-hook:
+-	rm -f $(DESTDIR)$(usrlibexecdir)/libblkid.a
+-	rm -f $(DESTDIR)$(usrlibexecdir)/libblkid.so*
++	rm -f $(DESTDIR)$(libdir)/libblkid.so*
+diff --git a/shlibs/uuid/src/Makefile.am b/shlibs/uuid/src/Makefile.am
+index fff1152..81aa186 100644
+--- a/shlibs/uuid/src/Makefile.am
++++ b/shlibs/uuid/src/Makefile.am
+@@ -10,7 +10,7 @@ tst_uuid_CFLAGS = -I$(ul_libuuid_srcdir)
+ uuidincdir = $(includedir)/uuid
+ uuidinc_HEADERS = uuid.h
+ 
+-lib_LTLIBRARIES = libuuid.la
++usrlibexec_LTLIBRARIES = libuuid.la
+ libuuid_la_SOURCES = clear.c compare.c copy.c gen_uuid.c \
+            isnull.c pack.c parse.c unpack.c unparse.c uuidd.h \
+            uuidd.h uuidP.h uuid_time.c $(uuidinc_HEADERS)
+@@ -30,20 +30,18 @@ test_%: %.c
+ 	$(COMPILE) -DTEST_PROGRAM $< .libs/libuuid.a -o $@
+ 
+ 
+-# move devel files from $(libdir) to $(usrlibexecdir) if needed
+-install-data-hook:
+-	rm  $(DESTDIR)$(libdir)/$(lib_LTLIBRARIES)
++# move lib from $(usrlibexecdir) to $(libdir) if needed
++install-exec-hook:
+ 	if test "$(usrlibexecdir)" != "$(libdir)"; then \
+-		mkdir -p $(DESTDIR)$(usrlibexecdir); \
+-		mv $(DESTDIR)$(libdir)/libuuid.a $(DESTDIR)$(usrlibexecdir)/; \
+-		so_img_name=$$(readlink $(DESTDIR)$(libdir)/libuuid.so); \
+-		rm $(DESTDIR)$(libdir)/libuuid.so; \
++		mkdir -p $(DESTDIR)$(libdir); \
++		mv $(DESTDIR)$(usrlibexecdir)/libuuid.so.* $(DESTDIR)$(libdir); \
++		so_img_name=$$(readlink $(DESTDIR)$(usrlibexecdir)/libuuid.so); \
+ 		so_img_rel_target=$$(echo $(usrlibexecdir) | sed 's,\(^/\|\)[^/][^/]*,..,g'); \
+-		ln -sf  $$so_img_rel_target$(libdir)/$$so_img_name \
+-			$(DESTDIR)$(usrlibexecdir)/libuuid.so; \
++		(cd $(DESTDIR)$(usrlibexecdir) && \
++			rm -f libuuid.so && \
++			$(LN_S) $$so_img_rel_target$(libdir)/$$so_img_name libuuid.so); \
+ 	fi
+ 
+ uninstall-hook:
+-	rm -f $(DESTDIR)$(usrlibexecdir)/libuuid.a
+-	rm -f $(DESTDIR)$(usrlibexecdir)/libuuid.so*
++	rm -f $(DESTDIR)$(libdir)/libuuid.so*
+ 
