@@ -2,10 +2,11 @@
 # URL:         http://e2fsprogs.sourceforge.net/
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 # Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
+# Depends on: e2fsprogs util-linux-ng-compat32
 
 name=e2fsprogs-compat32
-version=1.41.5
-release=2
+version=1.41.7
+release=1
 source=(http://dl.sourceforge.net/sourceforge/e2fsprogs/e2fsprogs-$version.tar.gz \
         e2fsprogs-symlink.patch)
 
@@ -22,10 +23,14 @@ build() {
         --disable-debugfs \
         --disable-imager \
         --disable-e2initrd-helper \
-        --disable-evms \
         --disable-nls \
 	--disable-fsck \
-	--disable-libblkid
+	--disable-resizer \
+	--disable-libblkid \
+	--disable-libblkid \
+	--disable-libuuid \
+	--disable-uuidd
+
     make
     make -j1 DESTDIR=$PKG install install-libs
     rm -rf $PKG/{etc,sbin,usr/{bin,etc,include,man,sbin,share}}
