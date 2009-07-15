@@ -4,7 +4,7 @@
 
 name=libusb
 version=1.0.2
-release=1
+release=2
 source=(http://dl.sourceforge.net/sourceforge/$name/$name-$version.tar.bz2)
 
 build () {
@@ -15,6 +15,6 @@ build () {
     make DESTDIR=$PKG install
     
     install -d $PKG/lib
-    mv $PKG/usr/lib/libusb-1.0.so* $PKG/lib
-    ln -s /lib/libusb-1.0.so $PKG/usr/lib/libusb-1.0.so
+    mv $PKG/usr/lib/libusb-1.0.so.* $PKG/lib
+    ln -sf /lib/libusb-1.0.so.0.0.0 $PKG/usr/lib/libusb-1.0.so
 }
