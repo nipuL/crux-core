@@ -3,7 +3,7 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=sudo
-version=1.7.1
+version=1.7.2
 release=1
 source=(http://www.sudo.ws/$name/dist/$name-$version.tar.gz)
 
