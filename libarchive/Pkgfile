@@ -5,11 +5,14 @@
 
 name=libarchive
 version=2.7.0
-release=1
-source=(http://$name.googlecode.com/files/$name-$version.tar.gz)
+release=2
+source=(http://$name.googlecode.com/files/$name-$version.tar.gz
+        libarchive.diff)
 
 build() {
 	cd libarchive-$version
+
+	patch -p0 -i $SRC/libarchive.diff
 
 	./configure --prefix=/usr --mandir=/usr/man --disable-xattr
 
