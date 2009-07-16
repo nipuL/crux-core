@@ -4,20 +4,20 @@
 # Depends on:  ncurses
 
 name=tcsh
-version=6.16
+version=6.17
 release=1
 source=(ftp://ftp.astron.com/pub/tcsh/$name-$version.00.tar.gz \
         csh.login csh.logout csh.cshrc)
 
 build() {
     cd $name-$version.00
-    
-    ./configure --prefix= --mandir=/usr/man
+
+    ./configure --prefix=
     make
-    make DESTDIR=$PKG install install.man
+    make DESTDIR=$PKG mandir=/usr/man install install.man
 
     install -d $PKG/etc
     install -m 644 $SRC/csh.* $PKG/etc
-    
+
     chmod -R +w $PKG
 }
