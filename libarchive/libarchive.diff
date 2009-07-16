@@ -16,3 +16,16 @@ Index: libarchive/archive_read_support_compression_xz.c
  
  	if (ret == LZMA_OK)
  		return (ARCHIVE_OK);
+Index: libarchive/archive_read_support_compression_gzip.c
+===================================================================
+--- libarchive/archive_read_support_compression_gzip.c	(revision 1103)
++++ libarchive/archive_read_support_compression_gzip.c	(revision 1104)
+@@ -148,6 +148,7 @@
+ 		if (p == NULL)
+ 			return (0);
+ 		len += ((int)p[len + 1] << 8) | (int)p[len];
++		len += 2;
+ 	}
+ 
+ 	/* Null-terminated optional filename. */
+

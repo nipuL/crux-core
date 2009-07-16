@@ -5,7 +5,7 @@
 
 name=libarchive
 version=2.7.0
-release=2
+release=3
 source=(http://$name.googlecode.com/files/$name-$version.tar.gz
         libarchive.diff)
 
