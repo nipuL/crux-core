@@ -5,7 +5,7 @@
 name=man
 version=1.6f
 release=1
-source=(http://primates.ximian.com/~flucifredi/man/$name-$version.tar.gz \
+source=(http://www.ibiblio.org/pub/Linux/apps/doctools/man/$name-$version.tar.gz \
         makewhatis)
 
 build() {
