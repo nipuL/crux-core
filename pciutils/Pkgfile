@@ -5,11 +5,11 @@
 
 name=pciutils
 version=3.1.2
-release=1
+release=2
 source=(http://www.kernel.org/pub/software/utils/$name/$name-$version.tar.gz)
 
 build() {
     cd $name-$version
-    make OPT="$CFLAGS" PREFIX=/usr ZLIB=no
+    make OPT="$CFLAGS -fPIC" PREFIX=/usr ZLIB=no
     make DESTDIR=$PKG PREFIX=/usr MANDIR=/usr/man install install-lib
 }
