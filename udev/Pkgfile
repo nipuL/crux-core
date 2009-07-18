@@ -3,8 +3,8 @@
 # Maintainer: CRUX System Team, core-ports at crux dot nu
 
 name=udev
-version=142
-release=2
+version=145
+release=1
 source=(ftp://ftp.kernel.org/pub/linux/utils/kernel/hotplug/$name-$version.tar.bz2 \
 	http://crux.nu/files/distfiles/udev-config-20090523.tar.bz2 \
 	start_udev)
@@ -13,13 +13,11 @@ build() {
 	cd udev-$version
 
 	./configure --prefix=/usr --exec-prefix= --sysconfdir=/etc \
-	            --mandir=/usr/man
+	            --libexecdir=/lib/udev --mandir=/usr/man \
+	            --disable-extras
 
 	make
 	make install DESTDIR=$PKG
-
-	# scsi_id needs to be multi-path
-	(cd $PKG/sbin; ln -s ../lib/udev/scsi_id scsi_id)
 
 	mkdir -p $PKG/lib/{firmware,udev/devices/{pts,shm}}
 
@@ -34,7 +32,8 @@ build() {
 	ln -s /proc/kcore $PKG/lib/udev/devices/core
 
 	# Install some upstream rules
-	cp -a rules/packages/40-alsa.rules $PKG/lib/udev/rules.d/
+	install -d $PKG/lib/udev/rules.d
+	install -m 0644 rules/packages/40-alsa.rules $PKG/lib/udev/rules.d
 
 	# Add CRUX items + LFS rules
 	install -m 0755 $SRC/start_udev $PKG/sbin
@@ -46,4 +45,8 @@ build() {
 	# Keep udevinfo for legacy support
 	mkdir -p $PKG/usr/bin
 	ln -s /sbin/udevadm $PKG/usr/bin/udevinfo
+
+	# Remove junk
+	rm -rf $PKG/usr/share/{gtk-,}doc
+	rm $PKG/lib/libudev.la
 }
