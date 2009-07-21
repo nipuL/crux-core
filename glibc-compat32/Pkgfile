@@ -7,24 +7,28 @@
 name=glibc-compat32
 version=2.10.1
 release=1
-source=(http://crux.nu/files/distfiles/glibc-$version-1.tar.bz2)
+source=(http://crux.nu/files/distfiles/glibc-$version-1.tar.bz2
+        http://ftp.gnu.org/gnu/glibc/glibc-libidn-$version.tar.bz2)
 
 build() {
+    # libidn files
+    mv glibc-libidn-$version glibc-$version/libidn
+    
     mkdir build
     cd build
     
     echo 'slibdir=/lib32' >> configparms
     ../glibc-$version/configure --prefix=/usr \
-	--libdir=/usr/lib32 \
-	--libexecdir=/usr/lib32 \
-	--with-headers=/usr/include \
-	--with-tls \
-	--enable-kernel=2.6.0 \
-	--enable-add-ons \
-	--disable-profile \
-	--without-gd \
-	--build i686-gnu-linux \
-	--host i686-gnu-linux
+			--libdir=/usr/lib32 \
+			--libexecdir=/usr/lib32 \
+			--with-headers=/usr/include \
+			--with-tls \
+			--enable-kernel=2.6.0 \
+			--enable-add-ons \
+			--disable-profile \
+			--without-gd \
+			--build i686-gnu-linux \
+			--host i686-gnu-linux
 
     make
     #make check

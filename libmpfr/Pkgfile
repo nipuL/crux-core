@@ -1,8 +1,8 @@
-# Description: Multiple precision floating-point computation library with cumulative patches.
+# Description: C library for multiple-precision floating-point computations with correct rounding
 # URL: http://www.mpfr.org/
-# Maintainer: Lucas Hazel, lucas at die dot net dot au
-# Packager: acrux, acrux at homelinux dot org
-# Depends on: libgmp
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
+# Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
+# Depends on:  libgmp
 
 name=libmpfr
 version=2.4.1
@@ -18,4 +18,3 @@ build() {
     make DESTDIR=$PKG install
     rm -r $PKG/usr/share
 }
-

@@ -1,6 +1,7 @@
 # Description: Compression utility using the lzma algorithm, successor of lzma-utils
 # URL:         http://tukaani.org/xz/
 # Maintainer:  CRUX System Team, core-ports at crux dot n
+# Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
 
 name=xz
 version=4.999.8beta-68-g1735d31-2

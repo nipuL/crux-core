@@ -1,14 +1,15 @@
 # Description: a collection of utilites for controlling TCP/IP networking and traffic in Linux
 # URL: http://linux-net.osdl.org/index.php/Iproute2
-# Maintainer: Simone Rota, sip at crux dot nu
 # Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
 # Packager: Mikhail Kolesnik, mike at openbunker dot org
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
+# Depends on:  db
 
 name=iproute2
 version=2.6.28
 release=1
-source=(http://devresources.linux-foundation.org/dev/iproute2/download/$name-$version.tar.bz2 \
-	net.iproute2 $name-netem.patch)
+source=(http://developer.osdl.org/dev/iproute2/download/$name-$version.tar.bz2 \
+        net.iproute2)
 
 build() {
     cd $name-$version

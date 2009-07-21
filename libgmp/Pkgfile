@@ -10,7 +10,9 @@ source=(ftp://ftp.gnu.org/gnu/gmp/gmp-$version.tar.bz2)
 
 build() {
     cd gmp-$version
-    ABI=64 ./configure --prefix=/usr --enable-cxx
+    ABI=64 ./configure --prefix=/usr \              
+                       --enable-cxx \
+                       --build=i686-pc-linux-gnu
     make
     make DESTDIR=$PKG install
     rm -r $PKG/usr/info

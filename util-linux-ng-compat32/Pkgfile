@@ -5,28 +5,30 @@
 # Depends on:  util-linux-ng ncurses-compat32 zlib-compat32
 
 name=util-linux-ng-compat32
-version=2.16-rc1
+version=2.16-rc2
 release=1
-source=(http://ftp.kernel.org/pub/linux/utils/util-linux-ng/v2.16/util-linux-ng-$version.tar.bz2)
+source=(http://ftp.kernel.org/pub/linux/utils/util-linux-ng/v2.16/util-linux-ng-$version.tar.bz2
+        util-linux-ng-$version-install-hook.patch)
 
 build() {
     cd util-linux-ng-$version
 
+    patch -p1 -i $SRC/util-linux-ng-$version-install-hook.patch
+	
+    aclocal
+    automake
+       	
     ./configure --prefix=/usr \
-                --libdir=/usr/lib32 \
+                --libdir=/lib32 \
                 --mandir=/usr/man \
                 --disable-{nls,wall} \
                 --enable-{write,rdev,raw,kill}
+    
     make -j1 
-    make DESTDIR=$PKG install
+    make -j1 DESTDIR=$PKG install
 
-    mv $PKG/usr/lib/* $PKG/usr/lib32
-    rmdir $PKG/usr/lib
-
-    install -d $PKG/lib32
-    mv $PKG/usr/lib32/lib*.so* $PKG/lib32
-    ln -s /lib32/libblkid.so $PKG/usr/lib32/libblkid.so
-    ln -s /lib32/libuuid.so $PKG/usr/lib32/libuuid.so
-
+	mv $PKG/usr/lib $PKG/usr/lib32
+	sed 's|/lib|/lib32|' -i $PKG/usr/lib32/*la $PKG/usr/lib32/pkgconfig/*
+	
     rm -rf $PKG/{bin,sbin,etc,var,usr/{bin,sbin,include,man,share}}
 }

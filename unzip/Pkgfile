@@ -11,8 +11,7 @@ source=(http://dl.sourceforge.net/sourceforge/infozip/${name}${version//./}.tar.
 
 build() {
     cd ${name}${version//./}
-    make -f unix/Makefile LOCAL_UNZIP=-D FILE_OFFSET_BITS=64 \
-	CF="-O -Wall -I. -DUSE_UNSHRINK" prefix=/usr unzips
+    make -f unix/Makefile LOCAL_UNZIP="$CFLAGS" FILE_OFFSET_BITS=64 prefix=/usr unzips
     make -f unix/Makefile prefix=$PKG/usr install
     ln -sf unzip $PKG/usr/bin/zipinfo
 }

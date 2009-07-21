@@ -5,7 +5,7 @@
 
 name=tcp_wrappers
 version=7.6
-release=1
+release=6
 source=(ftp://ftp.porcupine.org/pub/security/tcp_wrappers_$version.tar.gz \
 	http://www.imasy.org/~ume/ipv6/tcp_wrappers_7.6-ipv6-1.14.diff.gz \
 	hosts.allow hosts.deny try-from.8 safe_finger.8 $name-$version.patch)

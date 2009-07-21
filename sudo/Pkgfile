@@ -1,9 +1,10 @@
 # Description: Sudo (superuser do)
 # URL:         http://www.sudo.ws/sudo/
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
+# Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
 
 name=sudo
-version=1.7.1
+version=1.7.2
 release=1
 source=(http://www.sudo.ws/$name/dist/$name-$version.tar.gz)
 

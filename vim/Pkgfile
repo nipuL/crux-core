@@ -1,7 +1,8 @@
 # Description: Highly configurable text editor
 # URL:         http://www.vim.org/
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
-# Arch Maintainer: CRUX x86_64 System Team, core-ports-x86_64 at crux dot nu
+# Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
+# Arch Packager: CRUX x86_64 System Team, core-ports-x86_64 at crux dot nu
 # Depends on:  ncurses
 
 name=vim
@@ -15,6 +16,8 @@ source=(ftp://ftp.vim.org/pub/vim/unix/vim-7.2.tar.bz2
 
 build () {
     cd vim72/src
+
+    cat $SRC/vim-7.2-patches/* | patch -p0 -d $SRC/vim72
 
     ./configure --prefix=/usr \
                 --mandir=/usr/man \

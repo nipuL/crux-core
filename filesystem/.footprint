@@ -21,6 +21,7 @@ lrwxrwxrwx	root/root	lib64 -> /lib
 drwxr-xr-x	root/root	mnt/
 drwxr-xr-x	root/root	opt/
 drwxr-xr-x	root/root	opt/bin/
+drwxr-xr-x	root/root	opt/sbin/
 drwxr-xr-x	root/root	proc/
 drwxr-x---	root/root	root/
 drwxr-xr-x	root/root	sbin/

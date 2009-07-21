@@ -1,9 +1,8 @@
-# Description:	The /proc file system utilities
-# URL:		http://procps.sourceforge.net/
-# Packager:	CRUX System Team, core-ports at crux dot nu
+# Description: The /proc file system utilities
+# URL:         http://procps.sourceforge.net/
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
-# Arch Maintainer: CRUX x86_64 System Team, core-ports-x86_64 at crux dot nu
-# Depends on:	ncurses
+# Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
+# Depends on:  ncurses
 
 name=procps
 version=3.2.8
@@ -15,12 +14,12 @@ build() {
     cd $name-$version
     make 
     make DESTDIR=$PKG \
-	 ldconfig=true \
-	 lib64=lib \
-	 man1=$PKG/usr/man/man1/ \
-	 man5=$PKG/usr/man/man5/ \
-	 man8=$PKG/usr/man/man8/ \
-	 install
+	     ldconfig=true \
+	     lib64=lib \
+	     man1=$PKG/usr/man/man1/ \
+	     man5=$PKG/usr/man/man5/ \
+	     man8=$PKG/usr/man/man8/ \
+	     install
     install -D -m644 ../sysctl.conf $PKG/etc/sysctl.conf
     rm -f $PKG/{bin/kill,usr/man/man1/kill.1}
     ln -sf pgrep $PKG/usr/bin/pkill

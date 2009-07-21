@@ -26,6 +26,7 @@ build() {
     mkdir $PKG/lib/modules
     mkdir $PKG/opt
     mkdir $PKG/opt/bin
+    mkdir $PKG/opt/sbin
     mkdir $PKG/usr
     mkdir $PKG/usr/{bin,include,lib,lib32,sbin,share,src,man}
     ln -s /usr/lib $PKG/usr/lib64
@@ -83,4 +84,3 @@ echo "CRUX64(multilib) version $version"
 EOF
     chmod 755 $PKG/usr/bin/crux
 }
-

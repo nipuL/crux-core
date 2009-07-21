@@ -4,15 +4,17 @@
 # Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
 
 name=readline-compat32
-version=5.2
+version=6.0.3
 release=1
-source=(http://ftp.gnu.org/gnu/readline/readline-$version.tar.gz)
+source=(http://ftp.gnu.org/gnu/readline/readline-6.0.tar.gz
+        readline-6.0-001-003.patch)
 
 build() {
-    cd readline-$version
+    cd readline-6.0
+    patch -p0 -i $SRC/readline-6.0-001-003.patch
     ./configure --prefix=/usr \
-	--libdir=/usr/lib32
+	            --libdir=/usr/lib32
     make
     make DESTDIR=$PKG install
-    rm -rf $PKG/usr/{include,info,man}
+    rm -rf $PKG/usr/{include,info,share}
 }

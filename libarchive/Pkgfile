@@ -2,15 +2,18 @@
 # URL: http://people.freebsd.org/~kientzle/libarchive/
 # Maintainer: CRUX System Team, core-ports at crux dot nu
 # Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
-# Depends on: bzip2, zlib
+# Depends on: bzip2 zlib
 
 name=libarchive
 version=2.7.0
-release=1
-source=(http://$name.googlecode.com/files/$name-$version.tar.gz)
+release=2
+source=(http://$name.googlecode.com/files/$name-$version.tar.gz
+        libarchive.diff)
 
 build() {
 	cd libarchive-$version
+
+	patch -p0 -i $SRC/libarchive.diff
 
 	./configure --prefix=/usr --mandir=/usr/man --disable-xattr
 
