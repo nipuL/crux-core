@@ -4,7 +4,7 @@
 # Depends on:  libarchive
 
 name=pkgutils
-version=5.34.1
+version=5.34.2
 release=1
 source=(http://crux.nu/files/$name-$version.tar.gz)
 
