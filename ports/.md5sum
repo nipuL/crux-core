@@ -1,13 +1,5 @@
-<<<<<<< HEAD:ports/.md5sum
-983376ff4b90e6154ebed0a5602f090d  contrib.rsync.inactive
-e8e0f3fceb266fe2b188420333c7446d  core.rsync
-cde8880126e24a2c4a37788bca90db23  opt.rsync
-1f178e2bb1beab9782993931c9832280  ports-1.5.tar.gz
-b68eaaf730c9a267ddbe1dceb88df91d  xorg.rsync
-=======
 eda17ce353fc24b421c59ea6916ba13a  contrib.rsync.inactive
-3004d426e9190cc80e49f1d7cb65faaa  core.rsync
-68b49eb43b12d4c4118b98e23c96b0c2  opt.rsync
+64966e5fbf1031f4322817efc2c64a24  core.rsync
+b94e25d814c4b4ca741e8b9c3cac9d26  opt.rsync
 1f178e2bb1beab9782993931c9832280  ports-1.5.tar.gz
-648c609e615c493a2dbde95207c9330f  xorg.rsync
->>>>>>> 2.6:ports/.md5sum
+567e52d63b270f930819bff292f02a6b  xorg.rsync
