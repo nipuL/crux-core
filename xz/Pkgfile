@@ -1,18 +1,19 @@
 # Description: Compression utility using the lzma algorithm, successor of lzma-utils
 # URL:         http://tukaani.org/xz/
-# Maintainer:  CRUX System Team, core-ports at crux dot n
 # Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
+# Maintainer:  Juergen Daubert, juergen dot daubert at t-online dot de
 
 name=xz
-version=4.999.8beta-68-g1735d31-2
-release=2
+version=4.999.8beta-105-ga35755c
+release=1
 source=(http://crux.nu/files/distfiles/$name-$version.tar.bz2)
 
 build() {
-    cd $name-${version%%-*}
+    cd $name-$version
     ./configure --prefix=/usr \
                 --mandir=/usr/man \
                 --disable-nls
     make
     make DESTDIR=$PKG install
+    rm -r $PKG/usr/share
 }

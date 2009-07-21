@@ -5,7 +5,7 @@
 # Depends on:  util-linux-ng
 
 name=e2fsprogs
-version=1.41.7
+version=1.41.8
 release=1
 source=(http://dl.sourceforge.net/sourceforge/$name/$name-$version.tar.gz \
         $name-symlink.patch)
@@ -31,7 +31,6 @@ build() {
     make
     make -j1 DESTDIR=$PKG install install-libs
 
-    rm $PKG/usr/{bin/uuidgen,man/man1/uuidgen.1}
     rm -r $PKG/usr/share/info
 
     chmod +w -R $PKG

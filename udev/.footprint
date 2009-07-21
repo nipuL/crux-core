@@ -1,12 +1,14 @@
 drwxr-xr-x	root/root	etc/
--rw-r--r--	root/root	etc/scsi_id.config
 drwxr-xr-x	root/root	etc/udev/
 drwxr-xr-x	root/root	etc/udev/rules.d/
 -rw-r--r--	root/root	etc/udev/udev.conf
 drwxr-xr-x	root/root	lib/
 drwxr-xr-x	root/root	lib/firmware/
-lrwxrwxrwx	root/root	lib/libudev.so.0 -> libudev.so.0.3.0
--rwxr-xr-x	root/root	lib/libudev.so.0.3.0
+lrwxrwxrwx	root/root	lib/libudev.so -> libudev.so.0.4.2
+lrwxrwxrwx	root/root	lib/libudev.so.0 -> libudev.so.0.4.2
+-rwxr-xr-x	root/root	lib/libudev.so.0.4.2
+drwxr-xr-x	root/root	lib/pkgconfig/
+-rw-r--r--	root/root	lib/pkgconfig/libudev.pc
 drwxr-xr-x	root/root	lib/udev/
 -rwxr-xr-x	root/root	lib/udev/ata_id
 -rwxr-xr-x	root/root	lib/udev/cdrom_id
@@ -34,6 +36,7 @@ drwxr-xr-x	root/root	lib/udev/rules.d/
 -rw-r--r--	root/root	lib/udev/rules.d/50-udev-default.rules
 -rw-r--r--	root/root	lib/udev/rules.d/55-lfs.rules
 -rw-r--r--	root/root	lib/udev/rules.d/60-cdrom_id.rules
+-rw-r--r--	root/root	lib/udev/rules.d/60-persistent-alsa.rules
 -rw-r--r--	root/root	lib/udev/rules.d/60-persistent-input.rules
 -rw-r--r--	root/root	lib/udev/rules.d/60-persistent-serial.rules
 -rw-r--r--	root/root	lib/udev/rules.d/60-persistent-storage-tape.rules
@@ -48,10 +51,10 @@ drwxr-xr-x	root/root	lib/udev/rules.d/
 -rw-r--r--	root/root	lib/udev/rules.d/95-udev-late.rules
 -rwxr-xr-x	root/root	lib/udev/scsi_id
 -rwxr-xr-x	root/root	lib/udev/usb_id
+-rwxr-xr-x	root/root	lib/udev/v4l_id
 -rwxr-xr-x	root/root	lib/udev/write_cd_rules
 -rwxr-xr-x	root/root	lib/udev/write_net_rules
 drwxr-xr-x	root/root	sbin/
-lrwxrwxrwx	root/root	sbin/scsi_id -> ../lib/udev/scsi_id
 -rwxr-xr-x	root/root	sbin/start_udev
 -rwxr-xr-x	root/root	sbin/udevadm
 -rwxr-xr-x	root/root	sbin/udevd
@@ -60,20 +63,13 @@ drwxr-xr-x	root/root	usr/bin/
 lrwxrwxrwx	root/root	usr/bin/udevinfo -> /sbin/udevadm
 drwxr-xr-x	root/root	usr/include/
 -rw-r--r--	root/root	usr/include/libudev.h
-drwxr-xr-x	root/root	usr/lib/
-lrwxrwxrwx	root/root	usr/lib/libudev.so -> ../../lib/libudev.so.0.3.0
-drwxr-xr-x	root/root	usr/lib/pkgconfig/
--rw-r--r--	root/root	usr/lib/pkgconfig/libudev.pc
 drwxr-xr-x	root/root	usr/man/
 drwxr-xr-x	root/root	usr/man/man7/
 -rw-r--r--	root/root	usr/man/man7/udev.7.gz
 drwxr-xr-x	root/root	usr/man/man8/
--rw-r--r--	root/root	usr/man/man8/ata_id.8.gz
--rw-r--r--	root/root	usr/man/man8/cdrom_id.8.gz
--rw-r--r--	root/root	usr/man/man8/create_floppy_devices.8.gz
--rw-r--r--	root/root	usr/man/man8/edd_id.8.gz
--rw-r--r--	root/root	usr/man/man8/path_id.8.gz
 -rw-r--r--	root/root	usr/man/man8/scsi_id.8.gz
 -rw-r--r--	root/root	usr/man/man8/udevadm.8.gz
 -rw-r--r--	root/root	usr/man/man8/udevd.8.gz
--rw-r--r--	root/root	usr/man/man8/usb_id.8.gz
+drwxr-xr-x	root/root	usr/share/
+drwxr-xr-x	root/root	usr/share/pkgconfig/
+-rw-r--r--	root/root	usr/share/pkgconfig/udev.pc
