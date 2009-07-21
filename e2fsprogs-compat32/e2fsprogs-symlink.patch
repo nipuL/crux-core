@@ -1,114 +1,114 @@
-diff -Nru e2fsprogs-1.41.5.orig/e2fsck/Makefile.in e2fsprogs-1.41.5/e2fsck/Makefile.in
---- e2fsprogs-1.41.5.orig/e2fsck/Makefile.in	2009-04-24 18:35:15.000000000 +0200
-+++ e2fsprogs-1.41.5/e2fsck/Makefile.in	2009-04-24 18:35:35.000000000 +0200
-@@ -195,16 +195,16 @@
+diff -Nru e2fsprogs-1.41.8.orig/e2fsck/Makefile.in e2fsprogs-1.41.8/e2fsck/Makefile.in
+--- e2fsprogs-1.41.8.orig/e2fsck/Makefile.in	2009-07-16 13:20:07.000000000 +0200
++++ e2fsprogs-1.41.8/e2fsck/Makefile.in	2009-07-16 13:30:47.000000000 +0200
+@@ -202,16 +202,16 @@
  		$(INSTALL_PROGRAM) $$i $(DESTDIR)$(root_sbindir)/$$i; \
  	done
- 	@echo "	LINK $(root_sbindir)/fsck.ext2"
--	@$(LN) -f $(DESTDIR)$(root_sbindir)/e2fsck \
-+	@$(LN_S) -f e2fsck \
+ 	$(E) "	LINK $(root_sbindir)/fsck.ext2"
+-	$(Q) $(LN) -f $(DESTDIR)$(root_sbindir)/e2fsck \
++	$(Q) $(LN_S) -f e2fsck \
  			$(DESTDIR)$(root_sbindir)/fsck.ext2
- 	@echo "	LINK $(root_sbindir)/fsck.ext3"
--	@$(LN) -f $(DESTDIR)$(root_sbindir)/e2fsck \
-+	@$(LN_S) -f e2fsck \
+ 	$(E) "	LINK $(root_sbindir)/fsck.ext3"
+-	$(Q) $(LN) -f $(DESTDIR)$(root_sbindir)/e2fsck \
++	$(Q) $(LN_S) -f e2fsck \
  			$(DESTDIR)$(root_sbindir)/fsck.ext3
- 	@echo "	LINK $(root_sbindir)/fsck.ext4"
--	@$(LN) -f $(DESTDIR)$(root_sbindir)/e2fsck \
-+	@$(LN_S) -f e2fsck \
+ 	$(E) "	LINK $(root_sbindir)/fsck.ext4"
+-	$(Q) $(LN) -f $(DESTDIR)$(root_sbindir)/e2fsck \
++	$(Q) $(LN_S) -f e2fsck \
  			$(DESTDIR)$(root_sbindir)/fsck.ext4
- 	@echo "	LINK $(root_sbindir)/fsck.ext4dev"
--	@$(LN) -f $(DESTDIR)$(root_sbindir)/e2fsck \
-+	@$(LN_S) -f e2fsck \
+ 	$(E) "	LINK $(root_sbindir)/fsck.ext4dev"
+-	$(Q) $(LN) -f $(DESTDIR)$(root_sbindir)/e2fsck \
++	$(Q) $(LN_S) -f e2fsck \
  			$(DESTDIR)$(root_sbindir)/fsck.ext4dev
- 	@for i in $(MANPAGES); do \
+ 	$(Q) for i in $(MANPAGES); do \
  		for j in $(COMPRESS_EXT); do \
-@@ -221,16 +221,16 @@
+@@ -228,16 +228,16 @@
  		$(INSTALL_DATA) $$i $(DESTDIR)$(man5dir)/$$i; \
  	done
- 	@echo "	LINK $(man8dir)/fsck.ext2.8"
--	@$(LN) -f $(DESTDIR)$(man8dir)/e2fsck.8 \
-+	@$(LN_S) -f e2fsck.8 \
+ 	$(E) "	LINK $(man8dir)/fsck.ext2.8"
+-	$(Q) $(LN) -f $(DESTDIR)$(man8dir)/e2fsck.8 \
++	$(Q) $(LN_S) -f e2fsck.8 \
  		$(DESTDIR)$(man8dir)/fsck.ext2.8
- 	@echo "	LINK $(man8dir)/fsck.ext3.8"
--	@$(LN) -f $(DESTDIR)$(man8dir)/e2fsck.8 \
-+	@$(LN_S) -f e2fsck.8 \
+ 	$(E) "	LINK $(man8dir)/fsck.ext3.8"
+-	$(Q) $(LN) -f $(DESTDIR)$(man8dir)/e2fsck.8 \
++	$(Q) $(LN_S) -f e2fsck.8 \
  		$(DESTDIR)$(man8dir)/fsck.ext3.8
- 	@echo "	LINK $(man8dir)/fsck.ext4.8"
--	@$(LN) -f $(DESTDIR)$(man8dir)/e2fsck.8 \
-+	@$(LN_S) -f e2fsck.8 \
+ 	$(E) "	LINK $(man8dir)/fsck.ext4.8"
+-	$(Q) $(LN) -f $(DESTDIR)$(man8dir)/e2fsck.8 \
++	$(Q) $(LN_S) -f e2fsck.8 \
  		$(DESTDIR)$(man8dir)/fsck.ext4.8
- 	@echo "	LINK $(man8dir)/fsck.ext4.8"
--	@$(LN) -f $(DESTDIR)$(man8dir)/e2fsck.8 \
-+	@$(LN_S) -f e2fsck.8 \
+ 	$(E) "	LINK $(man8dir)/fsck.ext4.8"
+-	$(Q) $(LN) -f $(DESTDIR)$(man8dir)/e2fsck.8 \
++	$(Q) $(LN_S) -f e2fsck.8 \
  		$(DESTDIR)$(man8dir)/fsck.ext4dev.8
  
  install-strip: install
-diff -Nru e2fsprogs-1.41.5.orig/lib/uuid/Makefile.in e2fsprogs-1.41.5/lib/uuid/Makefile.in
---- e2fsprogs-1.41.5.orig/lib/uuid/Makefile.in	2009-04-24 18:35:15.000000000 +0200
-+++ e2fsprogs-1.41.5/lib/uuid/Makefile.in	2009-04-24 18:35:35.000000000 +0200
+diff -Nru e2fsprogs-1.41.8.orig/lib/uuid/Makefile.in e2fsprogs-1.41.8/lib/uuid/Makefile.in
+--- e2fsprogs-1.41.8.orig/lib/uuid/Makefile.in	2009-07-16 13:20:07.000000000 +0200
++++ e2fsprogs-1.41.8/lib/uuid/Makefile.in	2009-07-16 13:29:17.000000000 +0200
 @@ -146,9 +146,9 @@
- 	@$(RM) -f $(DESTDIR)$(man3dir)/uuid_generate_random.3.gz \
+ 	$(Q) $(RM) -f $(DESTDIR)$(man3dir)/uuid_generate_random.3.gz \
  		$(DESTDIR)$(man3dir)/uuid_generate_time.3.gz
- 	@echo "	LINK $(man3dir)/uuid_generate_random.3"
--	@$(LN) -f $(DESTDIR)$(man3dir)/uuid_generate.3 $(DESTDIR)$(man3dir)/uuid_generate_random.3
-+	@$(LN_S) -f uuid_generate.3 $(DESTDIR)$(man3dir)/uuid_generate_random.3
- 	@echo "	LINK $(man3dir)/uuid_generate_time.3"
--	@$(LN) -f $(DESTDIR)$(man3dir)/uuid_generate.3 $(DESTDIR)$(man3dir)/uuid_generate_time.3
-+	@$(LN_S) -f uuid_generate.3 $(DESTDIR)$(man3dir)/uuid_generate_time.3
- 	@echo "	INSTALL_DATA $(libdir)/pkgconfig/uuid.pc"
- 	@$(INSTALL_DATA) uuid.pc $(DESTDIR)$(libdir)/pkgconfig/uuid.pc
+ 	$(E) "	LINK $(man3dir)/uuid_generate_random.3"
+-	$(Q) $(LN) -f $(DESTDIR)$(man3dir)/uuid_generate.3 $(DESTDIR)$(man3dir)/uuid_generate_random.3
++	$(Q) $(LN_S) -f uuid_generate.3 $(DESTDIR)$(man3dir)/uuid_generate_random.3
+ 	$(E) "	LINK $(man3dir)/uuid_generate_time.3"
+-	$(Q) $(LN) -f $(DESTDIR)$(man3dir)/uuid_generate.3 $(DESTDIR)$(man3dir)/uuid_generate_time.3
++	$(Q) $(LN_S) -f uuid_generate.3 $(DESTDIR)$(man3dir)/uuid_generate_time.3
+ 	$(E) "	INSTALL_DATA $(libdir)/pkgconfig/uuid.pc"
+ 	$(Q) $(INSTALL_DATA) uuid.pc $(DESTDIR)$(libdir)/pkgconfig/uuid.pc
  
-diff -Nru e2fsprogs-1.41.5.orig/misc/Makefile.in e2fsprogs-1.41.5/misc/Makefile.in
---- e2fsprogs-1.41.5.orig/misc/Makefile.in	2009-04-24 18:35:15.000000000 +0200
-+++ e2fsprogs-1.41.5/misc/Makefile.in	2009-04-24 18:38:43.000000000 +0200
-@@ -394,23 +394,23 @@
+diff -Nru e2fsprogs-1.41.8.orig/misc/Makefile.in e2fsprogs-1.41.8/misc/Makefile.in
+--- e2fsprogs-1.41.8.orig/misc/Makefile.in	2009-07-16 13:20:07.000000000 +0200
++++ e2fsprogs-1.41.8/misc/Makefile.in	2009-07-16 13:28:35.000000000 +0200
+@@ -395,23 +395,23 @@
  		$(INSTALL_PROGRAM) $$i $(DESTDIR)$(sbindir)/$$i; \
  	done
- 	@echo "	LINK $(root_sbindir)/mkfs.ext2"
--	@$(LN) -f $(DESTDIR)$(root_sbindir)/mke2fs \
-+	@$(LN_S) -f mke2fs \
+ 	$(E) "	LINK $(root_sbindir)/mkfs.ext2"
+-	$(Q) $(LN) -f $(DESTDIR)$(root_sbindir)/mke2fs \
++	$(Q) $(LN_S) -f mke2fs \
  		$(DESTDIR)$(root_sbindir)/mkfs.ext2
- 	@echo "	LINK $(root_sbindir)/mkfs.ext3"
--	@$(LN) -f $(DESTDIR)$(root_sbindir)/mke2fs \
-+	@$(LN_S) -f mke2fs \
+ 	$(E) "	LINK $(root_sbindir)/mkfs.ext3"
+-	$(Q) $(LN) -f $(DESTDIR)$(root_sbindir)/mke2fs \
++	$(Q) $(LN_S) -f mke2fs \
  		$(DESTDIR)$(root_sbindir)/mkfs.ext3
- 	@echo "	LINK $(root_sbindir)/mkfs.ext4"
--	@$(LN) -f $(DESTDIR)$(root_sbindir)/mke2fs \
-+	@$(LN_S) -f mke2fs \
+ 	$(E) "	LINK $(root_sbindir)/mkfs.ext4"
+-	$(Q) $(LN) -f $(DESTDIR)$(root_sbindir)/mke2fs \
++	$(Q) $(LN_S) -f mke2fs \
  		$(DESTDIR)$(root_sbindir)/mkfs.ext4
- 	@echo "	LINK $(root_sbindir)/mkfs.ext4dev"
--	@$(LN) -f $(DESTDIR)$(root_sbindir)/mke2fs \
-+	@$(LN_S) -f mke2fs \
+ 	$(E) "	LINK $(root_sbindir)/mkfs.ext4dev"
+-	$(Q) $(LN) -f $(DESTDIR)$(root_sbindir)/mke2fs \
++	$(Q) $(LN_S) -f mke2fs \
  		$(DESTDIR)$(root_sbindir)/mkfs.ext4dev
- 	@echo "	LINK $(root_sbindir)/e2label"
--	@$(LN) -f $(DESTDIR)$(root_sbindir)/tune2fs \
-+	@$(LN_S) -f tune2fs \
+ 	$(E) "	LINK $(root_sbindir)/e2label"
+-	$(Q) $(LN) -f $(DESTDIR)$(root_sbindir)/tune2fs \
++	$(Q) $(LN_S) -f tune2fs \
  		$(DESTDIR)$(root_sbindir)/e2label
- 	@if test -n "$(FINDFS_LINK)"; then \
+ 	$(Q) if test -n "$(FINDFS_LINK)"; then \
  		echo "  LINK $(root_sbindir)/findfs"; \
 -		$(LN) -f $(DESTDIR)$(root_sbindir)/tune2fs \
 +		$(LN_S) -f tune2fs \
  			$(DESTDIR)$(root_sbindir)/$(FINDFS_LINK); \
  	fi
- 	@for i in $(UPROGS); do \
-@@ -431,16 +431,16 @@
- 	@$(RM) -f $(DESTDIR)$(man8dir)/mkfs.ext2.8.gz \
+ 	$(Q) for i in $(UPROGS); do \
+@@ -432,16 +432,16 @@
+ 	$(Q) $(RM) -f $(DESTDIR)$(man8dir)/mkfs.ext2.8.gz \
  		$(DESTDIR)$(man8dir)/mkfs.ext3.8.gz
- 	@echo "	LINK mkfs.ext2.8"
--	@$(LN) -f $(DESTDIR)$(man8dir)/mke2fs.8 \
-+	@$(LN_S) -f mke2fs.8 \
+ 	$(E) "	LINK mkfs.ext2.8"
+-	$(Q) $(LN) -f $(DESTDIR)$(man8dir)/mke2fs.8 \
++	$(Q) $(LN_S) -f mke2fs.8 \
  		$(DESTDIR)$(man8dir)/mkfs.ext2.8
- 	@echo "	LINK mkfs.ext3.8"
--	@$(LN) -f $(DESTDIR)$(man8dir)/mke2fs.8 \
-+	@$(LN_S) -f mke2fs.8 \
+ 	$(E) "	LINK mkfs.ext3.8"
+-	$(Q) $(LN) -f $(DESTDIR)$(man8dir)/mke2fs.8 \
++	$(Q) $(LN_S) -f mke2fs.8 \
  		$(DESTDIR)$(man8dir)/mkfs.ext3.8
- 	@echo "	LINK mkfs.ext4.8"
--	@$(LN) -f $(DESTDIR)$(man8dir)/mke2fs.8 \
-+	@$(LN_S) -f mke2fs.8 \
+ 	$(E) "	LINK mkfs.ext4.8"
+-	$(Q) $(LN) -f $(DESTDIR)$(man8dir)/mke2fs.8 \
++	$(Q) $(LN_S) -f mke2fs.8 \
  		$(DESTDIR)$(man8dir)/mkfs.ext4.8
- 	@echo "	LINK mkfs.ext4dev.8"
--	@$(LN) -f $(DESTDIR)$(man8dir)/mke2fs.8 \
-+	@$(LN_S) -f mke2fs.8 \
+ 	$(E) "	LINK mkfs.ext4dev.8"
+-	$(Q) $(LN) -f $(DESTDIR)$(man8dir)/mke2fs.8 \
++	$(Q) $(LN_S) -f mke2fs.8 \
  		$(DESTDIR)$(man8dir)/mkfs.ext4dev.8
- 	@for i in $(UMANPAGES); do \
+ 	$(Q) for i in $(UMANPAGES); do \
  		for j in $(COMPRESS_EXT); do \
