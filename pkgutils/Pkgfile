@@ -5,7 +5,7 @@
 # Depends on:  libarchive
 
 name=pkgutils
-version=5.34.1-arch
+version=5.34.2-arch
 release=1
 source=(http://crux64.die.net.au/files/$name-$version.tar.gz)
 
