@@ -2,6 +2,7 @@
 # URL:         http://tldp.org/HOWTO/LILO.html
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 # Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
+# Depends on:  libdevmapper
 
 name=lilo
 version=22.8

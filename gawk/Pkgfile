@@ -4,8 +4,8 @@
 # Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
 
 name=gawk
-version=3.1.6
-release=2
+version=3.1.7
+release=1
 source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.bz2)
 
 build() {
