@@ -3,14 +3,12 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=hdparm
-version=9.16
+version=9.21
 release=1
 source=(http://dl.sourceforge.net/sourceforge/$name/$name-$version.tar.gz)
 
 build() {
     cd $name-$version
     make
-    install -d $PKG/usr/sbin $PKG/usr/man/man8
-    install -m 755 hdparm $PKG/usr/sbin
-    install -m 644 hdparm.8 $PKG/usr/man/man8
+    make DESTDIR=$PKG mandir=/usr/man install
 }
