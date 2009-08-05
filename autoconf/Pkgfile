@@ -4,14 +4,14 @@
 # Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
 
 name=autoconf
-version=2.63
+version=2.64
 release=1
 source=(ftp://ftp.gnu.org/gnu/$name/$name-$version.tar.bz2)
 
 build () {
     cd $name-$version
     ./configure --prefix=/usr --mandir=$PKG/usr/man
-    make -j1
+    make
     make prefix=$PKG/usr install
     rm -r $PKG/usr/share/info 
 }
