@@ -5,7 +5,7 @@
 
 name=libarchive
 version=2.7.0
-release=3
+release=4
 source=(http://$name.googlecode.com/files/$name-$version.tar.gz
         libarchive.diff)
 
@@ -14,7 +14,10 @@ build() {
 
 	patch -p0 -i $SRC/libarchive.diff
 
-	./configure --prefix=/usr --mandir=/usr/man --disable-xattr
+	# We're passing --without-lzmadec, because we want to use xz for
+	# LZMA support, not the obsolete lzmadec library.
+	./configure --prefix=/usr --mandir=/usr/man \
+	            --disable-xattr --without-lzmadec
 
 	make
 	make DESTDIR=$PKG install
