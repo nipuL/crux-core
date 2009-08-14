@@ -9,6 +9,7 @@ lrwxrwxrwx	root/root	usr/bin/lzgrep -> xzgrep
 lrwxrwxrwx	root/root	usr/bin/lzless -> xzless
 lrwxrwxrwx	root/root	usr/bin/lzma -> xz
 -rwxr-xr-x	root/root	usr/bin/lzmadec
+-rwxr-xr-x	root/root	usr/bin/lzmainfo
 lrwxrwxrwx	root/root	usr/bin/lzmore -> xzmore
 lrwxrwxrwx	root/root	usr/bin/unlzma -> xz
 lrwxrwxrwx	root/root	usr/bin/unxz -> xz
@@ -49,14 +50,21 @@ drwxr-xr-x	root/root	usr/lib/pkgconfig/
 -rw-r--r--	root/root	usr/lib/pkgconfig/liblzma.pc
 drwxr-xr-x	root/root	usr/man/
 drwxr-xr-x	root/root	usr/man/man1/
+lrwxrwxrwx	root/root	usr/man/man1/lzcat.1.gz -> xz.1.gz
 lrwxrwxrwx	root/root	usr/man/man1/lzcmp.1.gz -> xzdiff.1.gz
 lrwxrwxrwx	root/root	usr/man/man1/lzdiff.1.gz -> xzdiff.1.gz
 lrwxrwxrwx	root/root	usr/man/man1/lzegrep.1.gz -> xzgrep.1.gz
 lrwxrwxrwx	root/root	usr/man/man1/lzfgrep.1.gz -> xzgrep.1.gz
 lrwxrwxrwx	root/root	usr/man/man1/lzgrep.1.gz -> xzgrep.1.gz
 lrwxrwxrwx	root/root	usr/man/man1/lzless.1.gz -> xzless.1.gz
+lrwxrwxrwx	root/root	usr/man/man1/lzma.1.gz -> xz.1.gz
 lrwxrwxrwx	root/root	usr/man/man1/lzmadec.1.gz -> xzdec.1.gz
+-rw-r--r--	root/root	usr/man/man1/lzmainfo.1.gz
 lrwxrwxrwx	root/root	usr/man/man1/lzmore.1.gz -> xzmore.1.gz
+lrwxrwxrwx	root/root	usr/man/man1/unlzma.1.gz -> xz.1.gz
+lrwxrwxrwx	root/root	usr/man/man1/unxz.1.gz -> xz.1.gz
+-rw-r--r--	root/root	usr/man/man1/xz.1.gz
+lrwxrwxrwx	root/root	usr/man/man1/xzcat.1.gz -> xz.1.gz
 lrwxrwxrwx	root/root	usr/man/man1/xzcmp.1.gz -> xzdiff.1.gz
 -rw-r--r--	root/root	usr/man/man1/xzdec.1.gz
 -rw-r--r--	root/root	usr/man/man1/xzdiff.1.gz
