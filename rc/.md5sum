@@ -4,6 +4,6 @@ c8fe38143dffbbc628a7a33966fae408  rc.conf
 5b09d4a67beb58022879fa9ce0f5af1b  rc.fix
 d1be35927946756c68242f29c16ee983  rc.local
 394d5cff98ab59fd1a0ec64fe79292cb  rc.modules
-8a6e0bd75b531238ddbf68d2019f5ce7  rc.multi
+a2d24525ca3ff1daf5753edcdf89466b  rc.multi
 d3a1e6e3edad489020fd56305bed8d6f  rc.shutdown
 d8d9bd102b0177a7bb30db9fd088a6e8  rc.single
