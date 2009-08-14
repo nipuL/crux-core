@@ -3,22 +3,25 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=libdevmapper
-version=1.02.35
+version=1.02.36
 release=1
-source=(ftp://sources.redhat.com/pub/lvm2/LVM2.2.02.50.tgz)
+source=(ftp://sources.redhat.com/pub/lvm2/LVM2.2.02.51.tgz)
 
 build() {
-    cd LVM2.2.02.50
+    cd LVM2.2.02.51
 
     ./configure --prefix=/usr \
                 --sbindir=/sbin \
                 --mandir=/usr/man \
                 --disable-readline \
-                --enable-pkgconfig
+                --enable-pkgconfig \
+                --enable-static_link
 
     make device-mapper
     make DESTDIR=$PKG install_device-mapper
 
+    mv $PKG/usr/lib/{libdevmapper.a.1.02,libdevmapper.a}
+    rm $PKG/sbin/dmsetup.static
     install -d $PKG/lib
     mv $PKG/usr/lib/libdevmapper.so.1.02 $PKG/lib
     ln -sf ../../lib/libdevmapper.so.1.02 $PKG/usr/lib/libdevmapper.so
