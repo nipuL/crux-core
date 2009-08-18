@@ -4,7 +4,7 @@
 # Depends on:  libusb-compat
 
 name=usbutils
-version=0.84
+version=0.86
 release=1
 source=(http://dl.sourceforge.net/sourceforge/linux-usb/$name-$version.tar.gz)
 
@@ -12,5 +12,5 @@ build() {
     cd $name-$version
     ./configure --prefix=/usr --mandir=/usr/man --disable-zlib
     make
-    make DESTDIR=$PKG install
+    make DESTDIR=$PKG pkgconfigdir=/usr/lib/pkgconfig install
 }
