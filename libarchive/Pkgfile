@@ -4,15 +4,12 @@
 # Depends on: bzip2, zlib
 
 name=libarchive
-version=2.7.0
-release=4
-source=(http://$name.googlecode.com/files/$name-$version.tar.gz
-        libarchive.diff)
+version=2.7.1
+release=1
+source=(http://$name.googlecode.com/files/$name-$version.tar.gz)
 
 build() {
 	cd libarchive-$version
-
-	patch -p0 -i $SRC/libarchive.diff
 
 	# We're passing --without-lzmadec, because we want to use xz for
 	# LZMA support, not the obsolete lzmadec library.
