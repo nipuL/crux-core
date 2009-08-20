@@ -4,15 +4,16 @@
 # Maintainer:  Juergen Daubert, juergen dot daubert at t-online dot de
 
 name=xz
-version=4.999.8beta-105-ga35755c
+version=4.999.8beta-132-g66da129
 release=1
-source=(http://crux.nu/files/distfiles/$name-$version.tar.bz2)
+source=(http://crux.nu/files/distfiles/$name-$version.tar.xz)
 
 build() {
     cd $name-$version
     ./configure --prefix=/usr \
                 --mandir=/usr/man \
-                --disable-nls
+                --disable-nls \
+                --enable-dynamic
     make
     make DESTDIR=$PKG install
     rm -r $PKG/usr/share

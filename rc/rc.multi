@@ -12,7 +12,7 @@ if [ -x /etc/rc.fix ]; then
 fi
 
 # Start services
-if [ "${SERVICES[*]}" ]; then
+if [ "$SYSLOG" -o "${SERVICES[*]}" ]; then
 	echo -n "starting services:"
 	if [ -f /etc/rc.d/$SYSLOG -a -x /etc/rc.d/$SYSLOG ]; then
 		echo -n " $SYSLOG"
