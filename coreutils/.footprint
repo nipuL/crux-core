@@ -76,6 +76,7 @@ drwxr-xr-x	root/root	usr/bin/
 -rwxr-xr-x	root/root	usr/bin/sort
 -rwxr-xr-x	root/root	usr/bin/split
 -rwxr-xr-x	root/root	usr/bin/stat
+-rwxr-xr-x	root/root	usr/bin/stdbuf
 -rwxr-xr-x	root/root	usr/bin/sum
 -rwxr-xr-x	root/root	usr/bin/tac
 -rwxr-xr-x	root/root	usr/bin/tail
@@ -95,6 +96,9 @@ drwxr-xr-x	root/root	usr/bin/
 -rwxr-xr-x	root/root	usr/bin/who
 -rwxr-xr-x	root/root	usr/bin/whoami
 -rwxr-xr-x	root/root	usr/bin/yes
+drwxr-xr-x	root/root	usr/lib/
+drwxr-xr-x	root/root	usr/lib/coreutils/
+-rwxr-xr-x	root/root	usr/lib/coreutils/libstdbuf.so
 drwxr-xr-x	root/root	usr/man/
 drwxr-xr-x	root/root	usr/man/man1/
 -rw-r--r--	root/root	usr/man/man1/base64.1.gz
@@ -166,6 +170,7 @@ drwxr-xr-x	root/root	usr/man/man1/
 -rw-r--r--	root/root	usr/man/man1/sort.1.gz
 -rw-r--r--	root/root	usr/man/man1/split.1.gz
 -rw-r--r--	root/root	usr/man/man1/stat.1.gz
+-rw-r--r--	root/root	usr/man/man1/stdbuf.1.gz
 -rw-r--r--	root/root	usr/man/man1/stty.1.gz
 -rw-r--r--	root/root	usr/man/man1/sum.1.gz
 -rw-r--r--	root/root	usr/man/man1/sync.1.gz
