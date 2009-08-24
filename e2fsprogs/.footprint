@@ -112,6 +112,7 @@ drwxr-xr-x	root/root	usr/man/man8/
 -rw-r--r--	root/root	usr/man/man8/badblocks.8.gz
 -rw-r--r--	root/root	usr/man/man8/blkid.8.gz
 -rw-r--r--	root/root	usr/man/man8/dumpe2fs.8.gz
+-rw-r--r--	root/root	usr/man/man8/e2freefrag.8.gz
 -rw-r--r--	root/root	usr/man/man8/e2fsck.8.gz
 -rw-r--r--	root/root	usr/man/man8/e2label.8.gz
 -rw-r--r--	root/root	usr/man/man8/e2undo.8.gz
@@ -133,6 +134,7 @@ lrwxrwxrwx	root/root	usr/man/man8/mkfs.ext4dev.8.gz -> mke2fs.8.gz
 -rw-r--r--	root/root	usr/man/man8/tune2fs.8.gz
 -rw-r--r--	root/root	usr/man/man8/uuidd.8.gz
 drwxr-xr-x	root/root	usr/sbin/
+-rwxr-xr-x	root/root	usr/sbin/e2freefrag
 -rwxr-xr-x	root/root	usr/sbin/filefrag
 -rwxr-xr-x	root/root	usr/sbin/mklost+found
 -rwxr-xr-x	root/root	usr/sbin/uuidd
