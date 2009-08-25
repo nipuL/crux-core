@@ -3,8 +3,8 @@
 # Maintainer: CRUX System Team, core-ports at crux dot nu
 
 name=udev
-version=145
-release=2
+version=146
+release=1
 source=(ftp://ftp.kernel.org/pub/linux/utils/kernel/hotplug/$name-$version.tar.bz2 \
 	http://crux.nu/files/distfiles/udev-config-20090523.tar.bz2 \
 	start_udev)
@@ -20,6 +20,11 @@ build() {
 	make install DESTDIR=$PKG
 
 	mkdir -p $PKG/lib/{firmware,udev/devices/{pts,shm}}
+	mkdir -p $PKG/usr/lib
+
+	# Fix location of devel lib
+	rm $PKG/lib/libudev.so
+	ln -sf ../../lib/libudev.so.0.5.0 $PKG/usr/lib/libudev.so
 
 	# Populate nodes
 	mknod -m 600 $PKG/lib/udev/devices/console c 5 1
