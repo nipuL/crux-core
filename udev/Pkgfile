@@ -4,7 +4,7 @@
 
 name=udev
 version=146
-release=1
+release=2
 source=(ftp://ftp.kernel.org/pub/linux/utils/kernel/hotplug/$name-$version.tar.bz2 \
 	http://crux.nu/files/distfiles/udev-config-20090523.tar.bz2 \
 	start_udev)
@@ -17,7 +17,8 @@ build() {
 	            --disable-extras
 
 	make
-	make install DESTDIR=$PKG
+	make install DESTDIR=$PKG \
+	     pkgconfigdir=/usr/lib/pkgconfig
 
 	mkdir -p $PKG/lib/{firmware,udev/devices/{pts,shm}}
 	mkdir -p $PKG/usr/lib

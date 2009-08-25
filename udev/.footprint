@@ -6,8 +6,6 @@ drwxr-xr-x	root/root	lib/
 drwxr-xr-x	root/root	lib/firmware/
 lrwxrwxrwx	root/root	lib/libudev.so.0 -> libudev.so.0.5.0
 -rwxr-xr-x	root/root	lib/libudev.so.0.5.0
-drwxr-xr-x	root/root	lib/pkgconfig/
--rw-r--r--	root/root	lib/pkgconfig/libudev.pc
 drwxr-xr-x	root/root	lib/udev/
 -rwxr-xr-x	root/root	lib/udev/ata_id
 -rwxr-xr-x	root/root	lib/udev/cdrom_id
@@ -63,6 +61,8 @@ drwxr-xr-x	root/root	usr/include/
 -rw-r--r--	root/root	usr/include/libudev.h
 drwxr-xr-x	root/root	usr/lib/
 lrwxrwxrwx	root/root	usr/lib/libudev.so -> ../../lib/libudev.so.0.5.0
+drwxr-xr-x	root/root	usr/lib/pkgconfig/
+-rw-r--r--	root/root	usr/lib/pkgconfig/libudev.pc
 drwxr-xr-x	root/root	usr/man/
 drwxr-xr-x	root/root	usr/man/man7/
 -rw-r--r--	root/root	usr/man/man7/udev.7.gz
