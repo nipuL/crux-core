@@ -5,12 +5,12 @@
 
 name=usbutils
 version=0.86
-release=1
+release=2
 source=(http://dl.sourceforge.net/sourceforge/linux-usb/$name-$version.tar.gz)
 
 build() {
     cd $name-$version
     ./configure --prefix=/usr --mandir=/usr/man --disable-zlib
     make
-    make DESTDIR=$PKG pkgconfigdir=/usr/lib/pkgconfig install
+    make DESTDIR=$PKG install
 }
