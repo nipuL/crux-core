@@ -31,7 +31,6 @@ crw-rw-rw-	root/root	lib/udev/devices/zero (1, 5)
 -rwxr-xr-x	root/root	lib/udev/path_id
 -rw-r--r--	root/root	lib/udev/rule_generator.functions
 drwxr-xr-x	root/root	lib/udev/rules.d/
--rw-r--r--	root/root	lib/udev/rules.d/40-alsa.rules
 -rw-r--r--	root/root	lib/udev/rules.d/50-firmware.rules
 -rw-r--r--	root/root	lib/udev/rules.d/50-udev-default.rules
 -rw-r--r--	root/root	lib/udev/rules.d/55-lfs.rules

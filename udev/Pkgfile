@@ -4,7 +4,7 @@
 
 name=udev
 version=145
-release=1
+release=2
 source=(ftp://ftp.kernel.org/pub/linux/utils/kernel/hotplug/$name-$version.tar.bz2 \
 	http://crux.nu/files/distfiles/udev-config-20090523.tar.bz2 \
 	start_udev)
@@ -30,10 +30,6 @@ build() {
 	ln -s /proc/self/fd/1 $PKG/lib/udev/devices/stdout
 	ln -s /proc/self/fd/2 $PKG/lib/udev/devices/stderr
 	ln -s /proc/kcore $PKG/lib/udev/devices/core
-
-	# Install some upstream rules
-	install -d $PKG/lib/udev/rules.d
-	install -m 0644 rules/packages/40-alsa.rules $PKG/lib/udev/rules.d
 
 	# Add CRUX items + LFS rules
 	install -m 0755 $SRC/start_udev $PKG/sbin
