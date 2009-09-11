@@ -4,13 +4,12 @@
 
 name=libstdc++-compat
 version=3.1
-release=1
-source=(http://www.fukt.bsnet.se/~per/crux/files/libstdc++/libstdc++-2-libc6.1-1-2.9.0.so \
-	http://www.fukt.bsnet.se/~per/crux/files/libstdc++/libstdc++-3-libc6.2-2-2.10.0.so \
-	http://www.fukt.bsnet.se/~per/crux/files/libstdc++/libstdc++.so.5.0.6)
+release=2
+source=(http://crux.nu/files/distfiles/$name-$version.tar.xz)
 
 build() {
-    mkdir -p $PKG/usr/lib
+    cd $name-$version
+    install -d $PKG/usr/lib
     install -m 755 libstdc++-2-libc6.1-1-2.9.0.so $PKG/usr/lib
     install -m 755 libstdc++-3-libc6.2-2-2.10.0.so $PKG/usr/lib
     install -m 755 libstdc++.so.5.0.6 $PKG/usr/lib
