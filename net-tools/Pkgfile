@@ -27,6 +27,6 @@ build() {
     patch -p1 < ../$name-$version-virtualname.patch
     patch -p1 < ../$name-$version-ipv6.patch
     patch -p1 < ../$name-$version-miiioctl.patch
-    make COPTS="$CFLAGS -D_GNU_SOURCE -Wall"
+    make -j1 COPTS="$CFLAGS -D_GNU_SOURCE -Wall"
     make BASEDIR=$PKG mandir=/usr/man install
 }
