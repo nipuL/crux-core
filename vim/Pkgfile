@@ -4,18 +4,20 @@
 # Depends on:  ncurses
 
 name=vim
-version=7.2.209
+version=7.2.259
 release=1
 source=(ftp://ftp.vim.org/pub/vim/unix/vim-7.2.tar.bz2
-        http://crux.nu/files/distfiles/vim-7.2.001-051.tar.bz2
-        http://crux.nu/files/distfiles/vim-7.2.052-102.tar.bz2
-        http://crux.nu/files/distfiles/vim-7.2.103-160.tar.bz2
-        http://crux.nu/files/distfiles/vim-7.2.161-209.tar.bz2)
+        ftp://ftp.vim.org/pub/vim/extra/vim-7.2-extra.tar.gz
+        ftp://ftp.vim.org/pub/vim/extra/vim-7.2-lang.tar.gz
+        ftp://ftp.vim.org/pub/vim/patches/7.2/7.2.001-100.gz
+        ftp://ftp.vim.org/pub/vim/patches/7.2/7.2.101-200.gz
+        http://crux.nu/files/distfiles/vim-7.2.201-259.xz)
 
 build () {
     cd vim72/src
 
-    cat $SRC/vim-7.2-patches/* | patch -p0 -d $SRC/vim72
+    gunzip -c $SRC/7.2.*.gz | patch -p0 -d $SRC/vim72
+    unxz -c $SRC/vim-7.2.*.xz | patch -p0 -d $SRC/vim72
 
     ./configure --prefix=/usr \
                 --mandir=/usr/man \
@@ -30,7 +32,7 @@ build () {
     make VIMRTDIR= DESTDIR=$PKG installvimbin installruntime installlinks
 
     mv $PKG/usr/share/vim/vimrc_example.vim $PKG/usr/share/vim/vimrc
-    rm -rf $PKG/usr/man/man?/vimtutor* $PKG/usr/share/vim/tutor $PKG/usr/share/vim/macros
+    rm -r $PKG/usr/{man/man?/vimtutor*,share/vim/{tutor,macros}}
     rm $PKG/usr/share/vim/*/README.txt
     ln -sf vim $PKG/usr/bin/evim
     ln -sf /bin/vi $PKG/usr/bin/vi
