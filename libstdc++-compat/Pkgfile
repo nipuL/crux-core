@@ -9,9 +9,9 @@ release=1
 source=(http://crux64.die.net.au/files/compat-libstdc++-$version.rpm)
 
 build() {
-	rpm2targz compat-libstdc++-$version.rpm
-	tar -zxf compat-libstdc++-$version.tar.gz
-	cp -R usr $PKG
-	mv $PKG/usr/lib64 $PKG/usr/lib
-	ln -s libstdc++.so.5.0.7 $PKG/usr/lib/libstdc++.so.5
+    rpm2targz compat-libstdc++-$version.rpm
+    tar -zxf compat-libstdc++-$version.tar.gz
+    cp -R usr $PKG
+    mv $PKG/usr/lib64 $PKG/usr/lib
+    ln -s libstdc++.so.5.0.7 $PKG/usr/lib/libstdc++.so.5
 }

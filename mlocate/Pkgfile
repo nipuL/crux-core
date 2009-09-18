@@ -4,7 +4,7 @@
 # Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
 
 name=mlocate
-version=0.22
+version=0.22.1
 release=1
 source=(https://fedorahosted.org/releases/m/l/$name/$name-$version.tar.bz2 \
         mlocate updatedb.conf)

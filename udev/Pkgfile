@@ -4,8 +4,8 @@
 # Arch Maintainer: CRUX x86_64 System Team, core-ports-x86_64 at crux dot nu
 
 name=udev
-version=145
-release=1
+version=146
+release=2
 source=(ftp://ftp.kernel.org/pub/linux/utils/kernel/hotplug/$name-$version.tar.bz2 \
 	http://crux.nu/files/distfiles/udev-config-20090523.tar.bz2 \
 	start_udev)
@@ -18,9 +18,15 @@ build() {
 	            --disable-extras
 
 	make
-	make install DESTDIR=$PKG
+	make install DESTDIR=$PKG \
+	     pkgconfigdir=/usr/lib/pkgconfig
 
 	mkdir -p $PKG/lib/{firmware,udev/devices/{pts,shm}}
+	mkdir -p $PKG/usr/lib
+
+	# Fix location of devel lib
+	rm $PKG/lib/libudev.so
+	ln -sf ../../lib/libudev.so.0.5.0 $PKG/usr/lib/libudev.so
 
 	# Populate nodes
 	mknod -m 600 $PKG/lib/udev/devices/console c 5 1
@@ -31,10 +37,6 @@ build() {
 	ln -s /proc/self/fd/1 $PKG/lib/udev/devices/stdout
 	ln -s /proc/self/fd/2 $PKG/lib/udev/devices/stderr
 	ln -s /proc/kcore $PKG/lib/udev/devices/core
-
-	# Install some upstream rules
-	install -d $PKG/lib/udev/rules.d
-	install -m 0644 rules/packages/40-alsa.rules $PKG/lib/udev/rules.d
 
 	# Add CRUX items + LFS rules
 	install -m 0755 $SRC/start_udev $PKG/sbin

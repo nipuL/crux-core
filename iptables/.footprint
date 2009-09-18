@@ -1,6 +1,6 @@
 drwxr-xr-x	root/root	usr/
 drwxr-xr-x	root/root	usr/bin/
--rwxr-xr-x	root/root	usr/bin/iptables-xml
+lrwxrwxrwx	root/root	usr/bin/iptables-xml -> /usr/sbin/iptables-multi
 drwxr-xr-x	root/root	usr/include/
 -rw-r--r--	root/root	usr/include/libipq.h
 drwxr-xr-x	root/root	usr/include/libiptc/
@@ -10,15 +10,23 @@ drwxr-xr-x	root/root	usr/include/libiptc/
 -rw-r--r--	root/root	usr/include/libiptc/libxtc.h
 -rw-r--r--	root/root	usr/include/xtables.h
 drwxr-xr-x	root/root	usr/lib/
+-rwxr-xr-x	root/root	usr/lib/libip4tc.la
+lrwxrwxrwx	root/root	usr/lib/libip4tc.so -> libip4tc.so.0.0.0
+lrwxrwxrwx	root/root	usr/lib/libip4tc.so.0 -> libip4tc.so.0.0.0
+-rwxr-xr-x	root/root	usr/lib/libip4tc.so.0.0.0
+-rwxr-xr-x	root/root	usr/lib/libip6tc.la
+lrwxrwxrwx	root/root	usr/lib/libip6tc.so -> libip6tc.so.0.0.0
+lrwxrwxrwx	root/root	usr/lib/libip6tc.so.0 -> libip6tc.so.0.0.0
+-rwxr-xr-x	root/root	usr/lib/libip6tc.so.0.0.0
 -rw-r--r--	root/root	usr/lib/libipq.a
 -rwxr-xr-x	root/root	usr/lib/libiptc.la
 lrwxrwxrwx	root/root	usr/lib/libiptc.so -> libiptc.so.0.0.0
 lrwxrwxrwx	root/root	usr/lib/libiptc.so.0 -> libiptc.so.0.0.0
 -rwxr-xr-x	root/root	usr/lib/libiptc.so.0.0.0
 -rwxr-xr-x	root/root	usr/lib/libxtables.la
-lrwxrwxrwx	root/root	usr/lib/libxtables.so -> libxtables.so.2.0.0
-lrwxrwxrwx	root/root	usr/lib/libxtables.so.2 -> libxtables.so.2.0.0
--rwxr-xr-x	root/root	usr/lib/libxtables.so.2.0.0
+lrwxrwxrwx	root/root	usr/lib/libxtables.so -> libxtables.so.2.1.0
+lrwxrwxrwx	root/root	usr/lib/libxtables.so.2 -> libxtables.so.2.1.0
+-rwxr-xr-x	root/root	usr/lib/libxtables.so.2.1.0
 drwxr-xr-x	root/root	usr/lib/pkgconfig/
 -rw-r--r--	root/root	usr/lib/pkgconfig/libiptc.pc
 -rw-r--r--	root/root	usr/lib/pkgconfig/xtables.pc
@@ -131,11 +139,11 @@ drwxr-xr-x	root/root	usr/man/man8/
 -rw-r--r--	root/root	usr/man/man8/iptables-xml.8.gz
 -rw-r--r--	root/root	usr/man/man8/iptables.8.gz
 drwxr-xr-x	root/root	usr/sbin/
--rwxr-xr-x	root/root	usr/sbin/ip6tables
+lrwxrwxrwx	root/root	usr/sbin/ip6tables -> ip6tables-multi
 -rwxr-xr-x	root/root	usr/sbin/ip6tables-multi
--rwxr-xr-x	root/root	usr/sbin/ip6tables-restore
--rwxr-xr-x	root/root	usr/sbin/ip6tables-save
--rwxr-xr-x	root/root	usr/sbin/iptables
+lrwxrwxrwx	root/root	usr/sbin/ip6tables-restore -> ip6tables-multi
+lrwxrwxrwx	root/root	usr/sbin/ip6tables-save -> ip6tables-multi
+lrwxrwxrwx	root/root	usr/sbin/iptables -> iptables-multi
 -rwxr-xr-x	root/root	usr/sbin/iptables-multi
--rwxr-xr-x	root/root	usr/sbin/iptables-restore
--rwxr-xr-x	root/root	usr/sbin/iptables-save
+lrwxrwxrwx	root/root	usr/sbin/iptables-restore -> iptables-multi
+lrwxrwxrwx	root/root	usr/sbin/iptables-save -> iptables-multi

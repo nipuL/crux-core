@@ -1,7 +1,3 @@
-drwxr-xr-x	root/root	lib/
-lrwxrwxrwx	root/root	lib/libhandle.so -> libhandle.so.1
-lrwxrwxrwx	root/root	lib/libhandle.so.1 -> libhandle.so.1.0.3
--rw-r--r--	root/root	lib/libhandle.so.1.0.3
 drwxr-xr-x	root/root	sbin/
 -rwxr-xr-x	root/root	sbin/fsck.xfs
 -rwxr-xr-x	root/root	sbin/mkfs.xfs
@@ -39,7 +35,9 @@ drwxr-xr-x	root/root	usr/lib/
 -rw-r--r--	root/root	usr/lib/libdisk.a
 -rw-r--r--	root/root	usr/lib/libhandle.a
 -rw-r--r--	root/root	usr/lib/libhandle.la
-lrwxrwxrwx	root/root	usr/lib/libhandle.so -> /lib/libhandle.so
+lrwxrwxrwx	root/root	usr/lib/libhandle.so -> libhandle.so.1
+lrwxrwxrwx	root/root	usr/lib/libhandle.so.1 -> libhandle.so.1.0.3
+-rw-r--r--	root/root	usr/lib/libhandle.so.1.0.3
 drwxr-xr-x	root/root	usr/man/
 drwxr-xr-x	root/root	usr/man/man3/
 lrwxrwxrwx	root/root	usr/man/man3/attr_list_by_handle.3.gz -> path_to_handle.3.gz

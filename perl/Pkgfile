@@ -5,9 +5,9 @@
 # Depends on:  db gdbm
 
 name=perl
-version=5.10.0
+version=5.10.1
 release=1
-source=(ftp://ftp.perl.org/pub/CPAN/src/$name-$version.tar.gz)
+source=(http://www.cpan.org/src/$name-$version.tar.bz2)
 
 build() {
     cd $name-$version

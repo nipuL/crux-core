@@ -5,7 +5,7 @@
 # Depends on:  libgmp
 
 name=coreutils
-version=7.4
+version=7.6
 release=1
 source=(http://ftp.gnu.org/pub/gnu/$name/$name-$version.tar.xz
         coreutils-uname.patch)

@@ -5,7 +5,7 @@
 # Depends on:  ncurses zlib
 
 name=util-linux-ng
-version=2.16
+version=2.16.1
 release=1
 source=(http://ftp.kernel.org/pub/linux/utils/$name/v2.16/$name-$version.tar.bz2)
 
