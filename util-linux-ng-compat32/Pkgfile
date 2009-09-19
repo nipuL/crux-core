@@ -5,7 +5,7 @@
 # Depends on:  util-linux-ng ncurses-compat32 zlib-compat32
 
 name=util-linux-ng-compat32
-version=2.16
+version=2.16.1
 release=1
 source=(http://ftp.kernel.org/pub/linux/utils/util-linux-ng/v2.16/util-linux-ng-$version.tar.bz2)
 
