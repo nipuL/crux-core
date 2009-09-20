@@ -1,0 +1,25 @@
+# Description: Perl Compatible Regular Expressions
+# URL:         http://www.pcre.org
+# Maintainer:  CRUX System Team, core-ports at crux dot nu
+# Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
+# Depends on: libpcre
+
+name=libpcre-compat32
+version=7.9
+release=1
+source=(ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-$version.tar.bz2)
+
+build() {
+    cd pcre-$version
+
+    ./configure --prefix=/usr \
+                --libdir=/usr/lib32 \
+                --program-suffix=-32 \
+                --mandir=/usr/man \
+                --enable-utf8 \
+                --enable-unicode-properties
+    make
+    make DESTDIR=$PKG install
+
+    rm -r $PKG/usr/{include,man,share}
+}

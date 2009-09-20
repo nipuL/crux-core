@@ -1,0 +1,24 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/bin/
+-rwxr-xr-x	root/root	usr/bin/pcre-config-32
+-rwxr-xr-x	root/root	usr/bin/pcregrep-32
+-rwxr-xr-x	root/root	usr/bin/pcretest-32
+drwxr-xr-x	root/root	usr/lib32/
+-rw-r--r--	root/root	usr/lib32/libpcre.a
+-rwxr-xr-x	root/root	usr/lib32/libpcre.la
+lrwxrwxrwx	root/root	usr/lib32/libpcre.so -> libpcre.so.0.0.1
+lrwxrwxrwx	root/root	usr/lib32/libpcre.so.0 -> libpcre.so.0.0.1
+-rwxr-xr-x	root/root	usr/lib32/libpcre.so.0.0.1
+-rw-r--r--	root/root	usr/lib32/libpcrecpp.a
+-rwxr-xr-x	root/root	usr/lib32/libpcrecpp.la
+lrwxrwxrwx	root/root	usr/lib32/libpcrecpp.so -> libpcrecpp.so.0.0.0
+lrwxrwxrwx	root/root	usr/lib32/libpcrecpp.so.0 -> libpcrecpp.so.0.0.0
+-rwxr-xr-x	root/root	usr/lib32/libpcrecpp.so.0.0.0
+-rw-r--r--	root/root	usr/lib32/libpcreposix.a
+-rwxr-xr-x	root/root	usr/lib32/libpcreposix.la
+lrwxrwxrwx	root/root	usr/lib32/libpcreposix.so -> libpcreposix.so.0.0.0
+lrwxrwxrwx	root/root	usr/lib32/libpcreposix.so.0 -> libpcreposix.so.0.0.0
+-rwxr-xr-x	root/root	usr/lib32/libpcreposix.so.0.0.0
+drwxr-xr-x	root/root	usr/lib32/pkgconfig/
+-rw-r--r--	root/root	usr/lib32/pkgconfig/libpcre.pc
+-rw-r--r--	root/root	usr/lib32/pkgconfig/libpcrecpp.pc
