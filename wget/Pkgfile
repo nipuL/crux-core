@@ -1,24 +1,26 @@
 # Description: A network utility for downloading content from the Web
 # URL:         http://www.gnu.org/software/wget/
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
-# Packager:    CRUX System Team, core-ports at crux dot nu
 # Depends on:  openssl
 
 name=wget
-version=1.11.4
+version=1.12
 release=1
-source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.bz2 \
-	wgetrc)
+source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.lzma \
+        wgetrc)
 
 build() {
     cd $name-$version
-    ./configure --prefix=/usr \
-		--sysconfdir=/etc \
-		--mandir=$PKG/usr/man \
-		--disable-debug \
-		--disable-nls
-    make
-    make prefix=$PKG/usr install.bin install.man
-    install -D -m 644 ../wgetrc $PKG/etc/wgetrc
-}
 
+    ./configure --prefix=/usr \
+                --sysconfdir=/etc \
+                --mandir=/usr/man \
+                --disable-debug \
+                --disable-nls
+
+    make
+    make DESTDIR=$PKG install 
+    install -D -m 644 $SRC/wgetrc $PKG/etc/wgetrc
+
+    rm -r $PKG/usr/share
+}
