@@ -4,7 +4,7 @@
 # Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
 
 name=dhcpcd
-version=5.1.0
+version=5.1.1
 release=1
 source=(http://roy.marples.name/downloads/dhcpcd/$name-$version.tar.bz2)
 
@@ -15,7 +15,8 @@ build () {
                 --libexecdir=/lib/dhcpcd \
                 --dbdir=/var/lib/dhcpcd \
                 --mandir=/usr/man \
-                --sysconfdir=/etc/dhcpcd
+                --sysconfdir=/etc/dhcpcd \
+                --os=linux
 
     make 
     make DESTDIR=$PKG install
