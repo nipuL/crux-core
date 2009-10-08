@@ -1,11 +1,11 @@
 # Description: Library to create and read several archive formats
 # URL: http://people.freebsd.org/~kientzle/libarchive/
 # Maintainer: CRUX System Team, core-ports at crux dot nu
-# Depends on: bzip2, zlib
+# Depends on: bzip2, xz, zlib
 
 name=libarchive
 version=2.7.1
-release=1
+release=2
 source=(http://$name.googlecode.com/files/$name-$version.tar.gz)
 
 build() {
