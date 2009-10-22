@@ -3,10 +3,9 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=module-init-tools
-version=3.11
+version=3.11.1
 release=1
-source=(http://www.kernel.org/pub/linux/kernel/people/rusty/modules/$name-$version.tar.bz2
-        http://crux.nu/files/distfiles/$name-man-$version.tar.xz)
+source=(http://www.kernel.org/pub/linux/kernel/people/rusty/modules/$name-$version.tar.bz2)
 
 build() {
     cd $name-$version
