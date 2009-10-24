@@ -1,27 +1,11 @@
+drwxr-xr-x	root/root	lib/
+lrwxrwxrwx	root/root	lib/libhandle.so.1 -> libhandle.so.1.0.3
+-rwxr-xr-x	root/root	lib/libhandle.so.1.0.3
 drwxr-xr-x	root/root	sbin/
 -rwxr-xr-x	root/root	sbin/fsck.xfs
 -rwxr-xr-x	root/root	sbin/mkfs.xfs
 -rwxr-xr-x	root/root	sbin/xfs_repair
 drwxr-xr-x	root/root	usr/
-drwxr-xr-x	root/root	usr/bin/
--rwxr-xr-x	root/root	usr/bin/xfs_admin
--rwxr-xr-x	root/root	usr/bin/xfs_bmap
--rwxr-xr-x	root/root	usr/bin/xfs_check
--rwxr-xr-x	root/root	usr/bin/xfs_copy
--rwxr-xr-x	root/root	usr/bin/xfs_db
--rwxr-xr-x	root/root	usr/bin/xfs_estimate
--rwxr-xr-x	root/root	usr/bin/xfs_freeze
--rwxr-xr-x	root/root	usr/bin/xfs_fsr
--rwxr-xr-x	root/root	usr/bin/xfs_growfs
--rwxr-xr-x	root/root	usr/bin/xfs_info
--rwxr-xr-x	root/root	usr/bin/xfs_io
--rwxr-xr-x	root/root	usr/bin/xfs_logprint
--rwxr-xr-x	root/root	usr/bin/xfs_mdrestore
--rwxr-xr-x	root/root	usr/bin/xfs_metadump
--rwxr-xr-x	root/root	usr/bin/xfs_mkfile
--rwxr-xr-x	root/root	usr/bin/xfs_ncheck
--rwxr-xr-x	root/root	usr/bin/xfs_quota
--rwxr-xr-x	root/root	usr/bin/xfs_rtcp
 drwxr-xr-x	root/root	usr/include/
 drwxr-xr-x	root/root	usr/include/xfs/
 -rw-r--r--	root/root	usr/include/xfs/handle.h
@@ -34,10 +18,8 @@ drwxr-xr-x	root/root	usr/include/xfs/
 drwxr-xr-x	root/root	usr/lib/
 -rw-r--r--	root/root	usr/lib/libdisk.a
 -rw-r--r--	root/root	usr/lib/libhandle.a
--rw-r--r--	root/root	usr/lib/libhandle.la
-lrwxrwxrwx	root/root	usr/lib/libhandle.so -> libhandle.so.1
-lrwxrwxrwx	root/root	usr/lib/libhandle.so.1 -> libhandle.so.1.0.3
--rw-r--r--	root/root	usr/lib/libhandle.so.1.0.3
+-rwxr-xr-x	root/root	usr/lib/libhandle.la
+lrwxrwxrwx	root/root	usr/lib/libhandle.so -> ../../lib/libhandle.so.1.0.3
 drwxr-xr-x	root/root	usr/man/
 drwxr-xr-x	root/root	usr/man/man3/
 lrwxrwxrwx	root/root	usr/man/man3/attr_list_by_handle.3.gz -> path_to_handle.3.gz
@@ -79,3 +61,22 @@ lrwxrwxrwx	root/root	usr/man/man8/xfs_info.8.gz -> xfs_growfs.8.gz
 -rw-r--r--	root/root	usr/man/man8/xfs_quota.8.gz
 -rw-r--r--	root/root	usr/man/man8/xfs_repair.8.gz
 -rw-r--r--	root/root	usr/man/man8/xfs_rtcp.8.gz
+drwxr-xr-x	root/root	usr/sbin/
+-rwxr-xr-x	root/root	usr/sbin/xfs_admin
+-rwxr-xr-x	root/root	usr/sbin/xfs_bmap
+-rwxr-xr-x	root/root	usr/sbin/xfs_check
+-rwxr-xr-x	root/root	usr/sbin/xfs_copy
+-rwxr-xr-x	root/root	usr/sbin/xfs_db
+-rwxr-xr-x	root/root	usr/sbin/xfs_estimate
+-rwxr-xr-x	root/root	usr/sbin/xfs_freeze
+-rwxr-xr-x	root/root	usr/sbin/xfs_fsr
+-rwxr-xr-x	root/root	usr/sbin/xfs_growfs
+-rwxr-xr-x	root/root	usr/sbin/xfs_info
+-rwxr-xr-x	root/root	usr/sbin/xfs_io
+-rwxr-xr-x	root/root	usr/sbin/xfs_logprint
+-rwxr-xr-x	root/root	usr/sbin/xfs_mdrestore
+-rwxr-xr-x	root/root	usr/sbin/xfs_metadump
+-rwxr-xr-x	root/root	usr/sbin/xfs_mkfile
+-rwxr-xr-x	root/root	usr/sbin/xfs_ncheck
+-rwxr-xr-x	root/root	usr/sbin/xfs_quota
+-rwxr-xr-x	root/root	usr/sbin/xfs_rtcp
