@@ -4,7 +4,7 @@
 # Depends on:  util-linux-ng
 
 name=xfsprogs
-version=3.0.5
+version=3.0.3
 release=1
 source=(ftp://oss.sgi.com/projects/xfs/cmd_tars/$name-$version.tar.gz)
 
@@ -16,15 +16,12 @@ build() {
 
     ./configure --prefix=/usr \
                 --mandir=/usr/man \
-                --enable-gettext=no 
+                --libexecdir=/usr/lib \
+                --sbindir=/sbin \
+                --enable-gettext=no  
 
     make
     make DIST_ROOT=$PKG install install-dev
-
-    rm $PKG/lib/libhandle.{la,a,so}
-    ln -sf ../../lib/libhandle.so.1.0.3 $PKG/usr/lib/libhandle.so
-    chmod 0755 $PKG/{lib/*,usr/lib/libhandle.la}
-    sed -i '/^libdir/s|/lib|/usr/lib|' $PKG/usr/lib/libhandle.la
 
     rm -r $PKG/usr/share
 }
