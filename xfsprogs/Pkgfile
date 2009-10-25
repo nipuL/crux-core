@@ -6,7 +6,7 @@
 name=xfsprogs
 version=3.0.3
 release=1
-source=(ftp://oss.sgi.com/projects/xfs/cmd_tars/$name-$version.tar.gz)
+source=(ftp://oss.sgi.com/projects/xfs/previous/$name-$version.tar.gz)
 
 build() {
     cd $name-$version
