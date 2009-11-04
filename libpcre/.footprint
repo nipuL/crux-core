@@ -29,6 +29,7 @@ lrwxrwxrwx	root/root	usr/lib/libpcreposix.so.0 -> libpcreposix.so.0.0.0
 drwxr-xr-x	root/root	usr/lib/pkgconfig/
 -rw-r--r--	root/root	usr/lib/pkgconfig/libpcre.pc
 -rw-r--r--	root/root	usr/lib/pkgconfig/libpcrecpp.pc
+-rw-r--r--	root/root	usr/lib/pkgconfig/libpcreposix.pc
 drwxr-xr-x	root/root	usr/man/
 drwxr-xr-x	root/root	usr/man/man1/
 -rw-r--r--	root/root	usr/man/man1/pcre-config.1.gz
