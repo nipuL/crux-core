@@ -4,7 +4,7 @@
 # Depends on:  util-linux-ng
 
 name=nfs-utils
-version=1.2.0
+version=1.2.1
 release=1
 source=(http://dl.sourceforge.net/nfs/$name-$version.tar.bz2 \
         exports nfs nfsserver)
@@ -17,6 +17,7 @@ build () {
                 --enable-nfsv3 \
                 --disable-nfsv4 \
                 --disable-gss \
+                --disable-tirpc \
                 --with-statedir=/var/lib/nfs \
                 --sysconfdir=/etc
     make
