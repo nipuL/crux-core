@@ -13,7 +13,6 @@ build() {
     cd $name-$version
 
     sed "s/#CFLAGS#/$CFLAGS/" $SRC/$name-config.patch | patch -p1
-    #mkdir Local
     cp src/EDITME Local/Makefile
 
     make -j1
