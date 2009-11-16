@@ -4,16 +4,16 @@
 # Depends on:  db openssl libpcre
 
 name=exim
-version=4.69
-release=3
+version=4.70
+release=1
 source=(ftp://ftp.exim.org/pub/exim/exim4/$name-$version.tar.bz2 \
-        $name $name-config.patch $name-syspcre.patch)
+        $name $name-config.patch)
 
 build() {
     cd $name-$version
 
-    patch -p1 -i $SRC/$name-syspcre.patch
     sed "s/#CFLAGS#/$CFLAGS/" $SRC/$name-config.patch | patch -p1
+    #mkdir Local
     cp src/EDITME Local/Makefile
 
     make -j1
@@ -29,6 +29,6 @@ build() {
     chown mail:mail $PKG/var/log/exim/*
     chmod 640 $PKG/var/log/exim/*
 
-    ln -sf $name-$version-1 $PKG/usr/sbin/sendmail
-    ln -sf ../sbin/$name-$version-1 $PKG/usr/bin/mailq
+    ln -sf $name-4.70-1 $PKG/usr/sbin/sendmail
+    ln -sf ../sbin/$name-4.70-1 $PKG/usr/bin/mailq
 }
