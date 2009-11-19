@@ -4,20 +4,19 @@
 # Depends on:  ncurses
 
 name=vim
-version=7.2.259
+version=7.2.300
 release=1
 source=(ftp://ftp.vim.org/pub/vim/unix/vim-7.2.tar.bz2
         ftp://ftp.vim.org/pub/vim/extra/vim-7.2-extra.tar.gz
         ftp://ftp.vim.org/pub/vim/extra/vim-7.2-lang.tar.gz
         ftp://ftp.vim.org/pub/vim/patches/7.2/7.2.001-100.gz
         ftp://ftp.vim.org/pub/vim/patches/7.2/7.2.101-200.gz
-        http://crux.nu/files/distfiles/vim-7.2.201-259.xz)
+        ftp://ftp.vim.org/pub/vim/patches/7.2/7.2.201-300.gz)
 
 build () {
     cd vim72/src
 
     gunzip -c $SRC/7.2.*.gz | patch -p0 -d $SRC/vim72
-    unxz -c $SRC/vim-7.2.*.xz | patch -p0 -d $SRC/vim72
 
     ./configure --prefix=/usr \
                 --mandir=/usr/man \
