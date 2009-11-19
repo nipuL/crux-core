@@ -3,13 +3,13 @@
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 
 name=libtool
-version=2.2.6a
+version=2.2.6b
 release=1
-source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.gz \
+source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.lzma \
         libtool.1 libtoolize.1)
 
 build() {
-    cd $name-${version/a/}
+    cd $name-$version
     ./configure --prefix=/usr
     make
     make DESTDIR=$PKG install
