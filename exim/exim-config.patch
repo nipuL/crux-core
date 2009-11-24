@@ -1,6 +1,6 @@
-diff -Nru exim-4.70_RC3.orig/src/EDITME exim-4.70_RC3/src/EDITME
---- exim-4.70_RC3.orig/src/EDITME	2009-11-08 16:55:49.000000000 +0100
-+++ exim-4.70_RC3/src/EDITME	2009-11-08 17:00:39.000000000 +0100
+diff -Nru exim-4.71.orig/src/EDITME exim-4.71/src/EDITME
+--- exim-4.71.orig/src/EDITME	2009-11-24 15:34:37.000000000 +0100
++++ exim-4.71/src/EDITME	2009-11-24 15:37:15.000000000 +0100
 @@ -74,7 +74,7 @@
  # this would be wanted.
  ###############################################################################
@@ -46,14 +46,13 @@ diff -Nru exim-4.70_RC3.orig/src/EDITME exim-4.70_RC3/src/EDITME
  # SUPPORT_MAILSTORE=yes
  # SUPPORT_MBX=yes
  
-@@ -261,9 +261,9 @@
- LOOKUP_DBM=yes
+@@ -262,8 +262,8 @@
  LOOKUP_LSEARCH=yes
+ LOOKUP_DNSDB=yes
  
 -# LOOKUP_CDB=yes
-+LOOKUP_CDB=yes
- # LOOKUP_DNSDB=yes
 -# LOOKUP_DSEARCH=yes
++LOOKUP_CDB=yes
 +LOOKUP_DSEARCH=yes
  # LOOKUP_IBASE=yes
  # LOOKUP_LDAP=yes
@@ -171,9 +170,9 @@ diff -Nru exim-4.70_RC3.orig/src/EDITME exim-4.70_RC3/src/EDITME
  
  # If PID_FILE_PATH is not defined, Exim writes a file in its spool directory
  # using the name "exim-daemon.pid".
-diff -Nru exim-4.70_RC3.orig/src/configure.default exim-4.70_RC3/src/configure.default
---- exim-4.70_RC3.orig/src/configure.default	2009-11-08 16:55:49.000000000 +0100
-+++ exim-4.70_RC3/src/configure.default	2009-11-08 16:56:12.000000000 +0100
+diff -Nru exim-4.71.orig/src/configure.default exim-4.71/src/configure.default
+--- exim-4.71.orig/src/configure.default	2009-11-24 15:34:37.000000000 +0100
++++ exim-4.71/src/configure.default	2009-11-24 15:34:56.000000000 +0100
 @@ -56,7 +56,7 @@
  # +local_domains, +relay_to_domains, and +relay_from_hosts, respectively. They
  # are all colon-separated lists:
