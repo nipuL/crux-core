@@ -1,6 +1,7 @@
 # Description: Compatibility library for libusb 1.0
 # URL:         http://libusb.sourceforge.net/
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
+# Depends on:  libusb
 
 name=libusb-compat
 version=0.1.3
