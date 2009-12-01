@@ -4,9 +4,9 @@
 # Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
 
 name=autoconf
-version=2.64
+version=2.65
 release=1
-source=(ftp://ftp.gnu.org/gnu/$name/$name-$version.tar.bz2)
+source=(ftp://ftp.gnu.org/gnu/$name/$name-$version.tar.xz)
 
 build () {
     cd $name-$version

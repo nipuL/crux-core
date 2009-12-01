@@ -5,11 +5,13 @@
 
 name=flex
 version=2.5.35
-release=1
-source=(http://dl.sourceforge.net/sourceforge/flex/$name-$version.tar.bz2)
+release=2
+source=(http://dl.sourceforge.net/sourceforge/flex/$name-$version.tar.bz2 
+        $name-$version-gcc44-1.patch)
 
 build() {
     cd $name-$version
+    patch -p1 -i $SRC/$name-$version-gcc44-1.patch
     ./configure --prefix=/usr --disable-nls
     make
     make DESTDIR=$PKG install

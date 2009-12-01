@@ -2,6 +2,7 @@
 # URL:         http://libusb.sourceforge.net/
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 # Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
+# Depends on:  libusb
 
 name=libusb-compat
 version=0.1.3
