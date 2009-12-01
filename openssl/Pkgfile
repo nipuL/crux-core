@@ -4,7 +4,7 @@
 # Arch Maintainer: Lucas Hazel, lucas at die dot net dot au
 
 name=openssl
-version=0.9.8k
+version=0.9.8l
 release=1
 source=(http://www.openssl.org/source/$name-$version.tar.gz \
         mksslcert.sh)
