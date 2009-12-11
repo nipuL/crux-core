@@ -4,7 +4,7 @@
 # Depends on:  gawk, perl, autoconf
 
 name=automake
-version=1.11
+version=1.11.1
 release=1
 source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.bz2)
 
@@ -15,11 +15,6 @@ build () {
 
     make
     make DESTDIR=$PKG install
-
-    ln -sf automake-$version $PKG/usr/bin/automake
-    ln -sf aclocal-$version $PKG/usr/bin/aclocal
-    mv $PKG/usr/man/man1/automake{-$version.1,.1}
-    mv $PKG/usr/man/man1/aclocal{-$version.1,.1}
 
     rm -r  $PKG/usr/share/{info,doc}
     rm $PKG/usr/share/automake-*/texinfo.tex
