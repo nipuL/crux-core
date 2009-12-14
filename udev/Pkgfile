@@ -3,8 +3,8 @@
 # Maintainer: CRUX System Team, core-ports at crux dot nu
 
 name=udev
-version=146
-release=2
+version=149
+release=1
 source=(ftp://ftp.kernel.org/pub/linux/utils/kernel/hotplug/$name-$version.tar.bz2 \
 	http://crux.nu/files/distfiles/udev-config-20090523.tar.bz2 \
 	start_udev)
@@ -14,7 +14,7 @@ build() {
 
 	./configure --prefix=/usr --exec-prefix= --sysconfdir=/etc \
 	            --libexecdir=/lib/udev --mandir=/usr/man \
-	            --disable-extras
+	            --disable-extras --disable-introspection
 
 	make
 	make install DESTDIR=$PKG \
