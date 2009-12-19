@@ -4,7 +4,7 @@
 # Arch Maintainer: CRUX x86_64 System Team, core-ports-x86_64 at crux dot nu
 
 name=udev
-version=146
+version=149
 release=2
 source=(ftp://ftp.kernel.org/pub/linux/utils/kernel/hotplug/$name-$version.tar.bz2 \
 	http://crux.nu/files/distfiles/udev-config-20090523.tar.bz2 \
@@ -15,7 +15,7 @@ build() {
 
 	./configure --prefix=/usr --exec-prefix= --sysconfdir=/etc \
 	            --libexecdir=/lib/udev --mandir=/usr/man \
-	            --disable-extras
+	            --disable-extras --disable-introspection
 
 	make
 	make install DESTDIR=$PKG \
@@ -26,7 +26,7 @@ build() {
 
 	# Fix location of devel lib
 	rm $PKG/lib/libudev.so
-	ln -sf ../../lib/libudev.so.0.5.0 $PKG/usr/lib/libudev.so
+	ln -sf ../../lib/libudev.so.0.5.1 $PKG/usr/lib/libudev.so
 
 	# Populate nodes
 	mknod -m 600 $PKG/lib/udev/devices/console c 5 1

@@ -5,7 +5,7 @@
 # Depends on:  readline ncurses
 
 name=inetutils
-version=1.6
+version=1.7
 release=1
 source=(http://ftp.gnu.org/gnu/inetutils/inetutils-$version.tar.gz \
         inetd.conf inetd)
@@ -20,13 +20,13 @@ build() {
                 --sysconfdir=/etc \
                 --disable-{servers,clients} \
                 --enable-{inetd,ftp,telnet}
+    
     make
-
-    for p in inetd ftp telnet; do
-        (cd $p; make DESTDIR=$PKG install)
-    done
+    make DESTDIR=$PKG install
 
     install -d $PKG/etc/rc.d
     install -m 644 $SRC/inetd.conf $PKG/etc
     install -m 755 $SRC/inetd $PKG/etc/rc.d
+
+    rm -r $PKG/usr/share
 }
