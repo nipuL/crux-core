@@ -1,17 +1,17 @@
 # Description: A collection of utilites for controlling TCP/IP networking and traffic in Linux
-# URL:         http://linux-net.osdl.org/index.php/Iproute2
+# URL:         http://www.linuxfoundation.org/collaborate/workgroups/networking/iproute2
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
 # Depends on:  db
 
 name=iproute2
-version=2.6.28
+version=2.6.31
 release=1
-source=(http://developer.osdl.org/dev/iproute2/download/$name-$version.tar.bz2 \
+source=(http://devresources.linuxfoundation.org/dev/iproute2/download/$name-$version.tar.bz2 \
         net.iproute2)
 
 build() {
     cd $name-$version
-    sed -i "s|local/lib/iptables|lib/xtables|" include/iptables.h
+    sed -i "s|-O2|$CFLAGS -DIPT_LIB_DIR=\\\\\"/usr/lib/xtables\\\\\"|" Makefile
     make
     make MANDIR=/usr/man DESTDIR=$PKG install
     rm -r $PKG/{share,usr/lib}
