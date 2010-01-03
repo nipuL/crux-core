@@ -4,12 +4,14 @@
 # Depends on:  ncurses
 
 name=psmisc
-version=22.8
+version=22.9
 release=1
-source=(http://dl.sourceforge.net/$name/$name-$version.tar.gz)
+source=(http://dl.sourceforge.net/$name/$name-$version.tar.gz
+        $name-$version-locale.patch)
 
 build() {
     cd $name-$version
+    patch -p1 -i $SRC/$name-$version-locale.patch
     ./configure --prefix=/usr --disable-nls --mandir=/usr/man
     make
     make DESTDIR=$PKG install
