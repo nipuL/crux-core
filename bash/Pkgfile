@@ -4,16 +4,13 @@
 # Depends on:  ncurses
 
 name=bash
-version=4.0.35
+version=4.1
 release=1
-source=(http://ftp.gnu.org/gnu/$name/$name-4.0.tar.gz \
-        $name-4.0-001-035.patch.gz \
+source=(http://ftp.gnu.org/gnu/$name/$name-4.1.tar.gz \
         profile)
 
 build() {
-    cd $name-4.0
-
-    gunzip -c $SRC/$name-4.0-001-035.patch.gz | patch -p0
+    cd $name-4.1
 
     ./configure --prefix=/usr \
                 --exec-prefix= \
